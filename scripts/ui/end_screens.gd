@@ -17,11 +17,17 @@ func setup(result: Dictionary) -> void:
 	center.add_child(p)
 	var v := UITheme.vbox(14)
 	p.add_child(v)
-	var t := UITheme.title(tr("battle.victory"), 64)
+	var endless: bool = result.get("endless", false)
+	var t := UITheme.title(tr("mode.endless") if endless else tr("battle.victory"), 56 if endless else 64)
 	v.add_child(t)
 	var stars := StarRow.make(0, 3, 72)
 	stars.alignment = BoxContainer.ALIGNMENT_CENTER
-	v.add_child(stars)
+	if endless:
+		v.add_child(UITheme.label("%s: %d" % [tr("mode.wave_reached"), int(result.wave)], 34, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
+		var bl := UITheme.label("%s: %d%s" % [tr("mode.best_wave"), int(result.best), ("   ★ " + tr("ui.new")) if result.get("new_best", false) else ""], 22, Color(1, 0.7, 0.3), true, HORIZONTAL_ALIGNMENT_CENTER)
+		v.add_child(bl)
+	else:
+		v.add_child(stars)
 	for i in int(result.get("stars", 0)):
 		var idx := i
 		get_tree().create_timer(0.35 + i * 0.35).timeout.connect(func():

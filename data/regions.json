@@ -1,94 +1,2246 @@
 {
-  "layouts": {
-    "serpent": {"paths": [[[-30, -30], [-26, -16], [-12, -13], [4, -17], [20, -13], [25, -3], [14, 3], [-2, 1], [-18, 5], [-22, 13], [-10, 18], [2, 19], [6, 30]]], "castle": [6, 26], "bounds": [-40, -32, 40, 30]},
-    "twin":    {"paths": [[[-30, -30], [-24, -18], [-14, -10], [-10, 2], [-2, 10], [2, 20], [4, 30]], [[30, -30], [24, -18], [14, -12], [10, 0], [4, 10], [2, 20], [4, 30]]], "castle": [4, 26], "bounds": [-40, -32, 40, 30]},
-    "spiral":  {"paths": [[[32, -28], [20, -22], [0, -24], [-20, -18], [-26, -4], [-18, 8], [0, 10], [14, 4], [12, -8], [0, -10], [-8, -2], [-4, 8], [-2, 20], [0, 30]]], "castle": [0, 26], "bounds": [-40, -32, 40, 30]},
-    "zigzag":  {"paths": [[[-6, -32], [-4, -20], [-26, -16], [-26, -6], [22, -4], [24, 6], [-18, 8], [-20, 18], [0, 20], [2, 30]]], "castle": [2, 26], "bounds": [-40, -32, 40, 30]}
+ "layouts": {
+  "serpent": {
+   "paths": [
+    [
+     [
+      -30,
+      -30
+     ],
+     [
+      -26,
+      -16
+     ],
+     [
+      -12,
+      -13
+     ],
+     [
+      4,
+      -17
+     ],
+     [
+      20,
+      -13
+     ],
+     [
+      25,
+      -3
+     ],
+     [
+      14,
+      3
+     ],
+     [
+      -2,
+      1
+     ],
+     [
+      -18,
+      5
+     ],
+     [
+      -22,
+      13
+     ],
+     [
+      -10,
+      18
+     ],
+     [
+      2,
+      19
+     ],
+     [
+      6,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    6,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
   },
-  "regions": [
-    {"id": "shattered_citadel", "map_pos": [0, 6], "color": [1.0, 0.45, 0.12], "boss": "ashen_warlord",
-     "theme": {"ground": [0.15, 0.135, 0.13], "ground2": [0.085, 0.075, 0.075], "path": [0.26, 0.22, 0.19], "fog": [0.16, 0.09, 0.07], "sky_top": [0.04, 0.035, 0.05], "sky_horizon": [0.4, 0.16, 0.07], "sun": [1.0, 0.8, 0.64], "sun_energy": 1.5, "ambient": [0.2, 0.18, 0.22], "particles": "embers", "props": ["ruins", "dead_trees", "graves", "rocks", "torches", "lava"]},
-     "pool": ["skeleton_minion", "skeleton_warrior", "skeleton_archer", "ash_brute", "cultist"],
-     "stages": [
-       {"id": "r1s1", "layout": "serpent", "towers": ["archer", "mage", "artillery"], "waves": "explicit"},
-       {"id": "r1s2", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier"], "new": ["cultist"]},
-       {"id": "r1s3", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow"], "new": ["ash_brute"]},
-       {"id": "r1s4", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "trap"], "boss": true}
-     ]},
-    {"id": "shadow_lands", "map_pos": [-22, 2], "color": [0.35, 0.45, 1.0], "boss": "shadow_reaper",
-     "theme": {"ground": [0.1, 0.1, 0.14], "ground2": [0.05, 0.05, 0.08], "path": [0.17, 0.16, 0.2], "fog": [0.08, 0.08, 0.18], "sky_top": [0.02, 0.02, 0.05], "sky_horizon": [0.15, 0.15, 0.35], "sun": [0.6, 0.65, 1.0], "sun_energy": 0.9, "ambient": [0.2, 0.2, 0.35], "particles": "shadow", "props": ["dead_trees", "graves", "rocks", "crystals_purple", "torches"]},
-     "pool": ["skeleton_minion", "skeleton_archer", "shadow_stalker", "bone_mage", "winged_fiend"],
-     "stages": [
-       {"id": "r2s1", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow"], "new": ["shadow_stalker"]},
-       {"id": "r2s2", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap"], "new": ["bone_mage"]},
-       {"id": "r2s3", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind"], "new": ["winged_fiend"]},
-       {"id": "r2s4", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind"], "boss": true}
-     ]},
-    {"id": "inferno_tower", "map_pos": [-10, -12], "color": [1.0, 0.3, 0.05], "boss": "inferno_titan",
-     "theme": {"ground": [0.14, 0.08, 0.06], "ground2": [0.3, 0.07, 0.02], "path": [0.22, 0.14, 0.1], "fog": [0.35, 0.1, 0.03], "sky_top": [0.1, 0.02, 0.01], "sky_horizon": [0.8, 0.2, 0.04], "sun": [1.0, 0.5, 0.3], "sun_energy": 1.4, "ambient": [0.45, 0.2, 0.15], "particles": "embers", "props": ["lava", "rocks", "ruins", "torches"]},
-     "pool": ["cultist", "ash_brute", "skeleton_warrior", "war_herald", "winged_fiend"],
-     "stages": [
-       {"id": "r3s1", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire"], "new": ["war_herald"]},
-       {"id": "r3s2", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire"]},
-       {"id": "r3s3", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth"]},
-       {"id": "r3s4", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth"], "boss": true}
-     ]},
-    {"id": "poison_forest", "map_pos": [8, -8], "color": [0.35, 1.0, 0.2], "boss": "plague_colossus",
-     "theme": {"ground": [0.09, 0.13, 0.07], "ground2": [0.05, 0.08, 0.04], "path": [0.18, 0.17, 0.12], "fog": [0.12, 0.22, 0.06], "sky_top": [0.02, 0.04, 0.02], "sky_horizon": [0.2, 0.4, 0.1], "sun": [0.75, 1.0, 0.6], "sun_energy": 0.9, "ambient": [0.2, 0.3, 0.18], "particles": "spores", "props": ["trees", "dead_trees", "rocks", "mushrooms", "graves"]},
-     "pool": ["cultist", "dark_priest", "necromancer", "skeleton_archer", "ash_brute"],
-     "stages": [
-       {"id": "r4s1", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison"], "new": ["dark_priest"]},
-       {"id": "r4s2", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison"], "new": ["necromancer"]},
-       {"id": "r4s3", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison"]},
-       {"id": "r4s4", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison"], "boss": true}
-     ]},
-    {"id": "frost_lands", "map_pos": [16, -18], "color": [0.45, 0.85, 1.0], "boss": "frost_lich",
-     "theme": {"ground": [0.5, 0.55, 0.62], "ground2": [0.25, 0.3, 0.38], "path": [0.3, 0.3, 0.34], "fog": [0.35, 0.45, 0.6], "sky_top": [0.05, 0.07, 0.12], "sky_horizon": [0.4, 0.55, 0.75], "sun": [0.8, 0.9, 1.0], "sun_energy": 1.1, "ambient": [0.35, 0.42, 0.55], "particles": "snow", "props": ["crystals_ice", "rocks", "dead_trees", "ruins"]},
-     "pool": ["skeleton_warrior", "bone_mage", "winged_fiend", "war_herald", "death_knight"],
-     "stages": [
-       {"id": "r5s1", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice"]},
-       {"id": "r5s2", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice"], "new": ["death_knight"]},
-       {"id": "r5s3", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning"]},
-       {"id": "r5s4", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning"], "boss": true}
-     ]},
-    {"id": "tower_of_evil", "map_pos": [26, 0], "color": [0.7, 0.2, 1.0], "boss": "demon_lord",
-     "theme": {"ground": [0.12, 0.08, 0.14], "ground2": [0.2, 0.05, 0.3], "path": [0.2, 0.16, 0.22], "fog": [0.2, 0.06, 0.3], "sky_top": [0.04, 0.01, 0.06], "sky_horizon": [0.4, 0.1, 0.55], "sun": [0.85, 0.6, 1.0], "sun_energy": 1.0, "ambient": [0.3, 0.2, 0.38], "particles": "shadow", "props": ["crystals_purple", "ruins", "rocks", "torches", "graves"]},
-     "pool": ["shadow_stalker", "necromancer", "war_herald", "death_knight", "winged_fiend", "bone_mage"],
-     "stages": [
-       {"id": "r6s1", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r6s2", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r6s3", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r6s4", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"], "boss": true}
-     ]},
-    {"id": "oblivion_crypt", "map_pos": [20, 14], "color": [0.8, 0.85, 0.8], "boss": "bone_emperor",
-     "theme": {"ground": [0.13, 0.13, 0.12], "ground2": [0.07, 0.08, 0.07], "path": [0.2, 0.2, 0.18], "fog": [0.16, 0.18, 0.16], "sky_top": [0.02, 0.03, 0.03], "sky_horizon": [0.2, 0.25, 0.22], "sun": [0.7, 0.85, 0.75], "sun_energy": 0.8, "ambient": [0.22, 0.28, 0.24], "particles": "shadow", "props": ["graves", "dead_trees", "ruins", "rocks", "torches"]},
-     "pool": ["skeleton_minion", "skeleton_warrior", "skeleton_archer", "necromancer", "dark_priest", "death_knight"],
-     "stages": [
-       {"id": "r7s1", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r7s2", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r7s3", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r7s4", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"], "boss": true}
-     ]},
-    {"id": "the_gate", "map_pos": [-26, 18], "color": [0.55, 0.35, 1.0], "boss": "gatekeeper",
-     "theme": {"ground": [0.1, 0.07, 0.1], "ground2": [0.25, 0.08, 0.35], "path": [0.18, 0.13, 0.2], "fog": [0.18, 0.05, 0.25], "sky_top": [0.03, 0.01, 0.05], "sky_horizon": [0.5, 0.15, 0.6], "sun": [0.9, 0.55, 1.0], "sun_energy": 1.1, "ambient": [0.3, 0.18, 0.36], "particles": "shadow", "props": ["crystals_purple", "lava", "ruins", "rocks", "torches"]},
-     "pool": ["death_knight", "shadow_stalker", "necromancer", "war_herald", "ash_brute", "winged_fiend", "bone_mage"],
-     "stages": [
-       {"id": "r8s1", "layout": "spiral", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r8s2", "layout": "serpent", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r8s3", "layout": "zigzag", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"]},
-       {"id": "r8s4", "layout": "twin", "towers": ["archer", "mage", "artillery", "soldier", "crossbow", "shadow", "trap", "wind", "fire", "earth", "poison", "ice", "lightning", "light"], "boss": true}
-     ]}
-  ],
-  "explicit_waves": {
-    "r1s1": {
-      "start_gold": 360,
-      "waves": [
-        {"groups": [{"enemy": "skeleton_minion", "count": 8, "interval": 1.3}]},
-        {"groups": [{"enemy": "skeleton_minion", "count": 10, "interval": 1.0}, {"enemy": "skeleton_archer", "count": 3, "interval": 2.0, "delay": 5}]},
-        {"groups": [{"enemy": "skeleton_warrior", "count": 3, "interval": 3.0}, {"enemy": "skeleton_minion", "count": 10, "interval": 0.9, "delay": 2}, {"enemy": "skeleton_archer", "count": 5, "interval": 1.6, "delay": 8}]},
-        {"groups": [{"enemy": "skeleton_minion", "count": 14, "interval": 0.7}, {"enemy": "skeleton_warrior", "count": 5, "interval": 2.4, "delay": 4}, {"enemy": "skeleton_archer", "count": 7, "interval": 1.3, "delay": 9}]},
-        {"groups": [{"enemy": "skeleton_minion", "count": 12, "interval": 0.8}, {"enemy": "skeleton_archer", "count": 6, "interval": 1.4, "delay": 3}, {"enemy": "skeleton_warrior", "count": 4, "interval": 2.5, "delay": 7}, {"enemy": "ashen_warlord", "count": 1, "interval": 1, "delay": 16, "hp": 0.7}]}
-      ]
-    }
+  "twin": {
+   "paths": [
+    [
+     [
+      -30,
+      -30
+     ],
+     [
+      -24,
+      -18
+     ],
+     [
+      -14,
+      -10
+     ],
+     [
+      -10,
+      2
+     ],
+     [
+      -2,
+      10
+     ],
+     [
+      2,
+      20
+     ],
+     [
+      4,
+      30
+     ]
+    ],
+    [
+     [
+      30,
+      -30
+     ],
+     [
+      24,
+      -18
+     ],
+     [
+      14,
+      -12
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      4,
+      10
+     ],
+     [
+      2,
+      20
+     ],
+     [
+      4,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    4,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "spiral": {
+   "paths": [
+    [
+     [
+      32,
+      -28
+     ],
+     [
+      20,
+      -22
+     ],
+     [
+      0,
+      -24
+     ],
+     [
+      -20,
+      -18
+     ],
+     [
+      -26,
+      -4
+     ],
+     [
+      -18,
+      8
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      12,
+      -8
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -4,
+      8
+     ],
+     [
+      -2,
+      20
+     ],
+     [
+      0,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    0,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "zigzag": {
+   "paths": [
+    [
+     [
+      -6,
+      -32
+     ],
+     [
+      -4,
+      -20
+     ],
+     [
+      -26,
+      -16
+     ],
+     [
+      -26,
+      -6
+     ],
+     [
+      22,
+      -4
+     ],
+     [
+      24,
+      6
+     ],
+     [
+      -18,
+      8
+     ],
+     [
+      -20,
+      18
+     ],
+     [
+      0,
+      20
+     ],
+     [
+      2,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    2,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "labyrinth": {
+   "paths": [
+    [
+     [
+      0,
+      -32
+     ],
+     [
+      0,
+      -22
+     ],
+     [
+      -24,
+      -20
+     ],
+     [
+      -27,
+      -8
+     ],
+     [
+      -4,
+      -6
+     ],
+     [
+      20,
+      -8
+     ],
+     [
+      27,
+      4
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      -20,
+      8
+     ],
+     [
+      -23,
+      18
+     ],
+     [
+      -4,
+      20
+     ],
+     [
+      2,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    2,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "crossroads": {
+   "paths": [
+    [
+     [
+      -32,
+      -28
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      -12,
+      -6
+     ],
+     [
+      -2,
+      6
+     ],
+     [
+      0,
+      18
+     ],
+     [
+      2,
+      30
+     ]
+    ],
+    [
+     [
+      32,
+      -28
+     ],
+     [
+      26,
+      -10
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      4,
+      -2
+     ],
+     [
+      -2,
+      6
+     ],
+     [
+      0,
+      18
+     ],
+     [
+      2,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    2,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "horseshoe": {
+   "paths": [
+    [
+     [
+      -30,
+      -30
+     ],
+     [
+      -28,
+      -8
+     ],
+     [
+      -24,
+      10
+     ],
+     [
+      -10,
+      18
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      12,
+      -4
+     ],
+     [
+      18,
+      -20
+     ],
+     [
+      30,
+      -18
+     ],
+     [
+      33,
+      0
+     ],
+     [
+      27,
+      16
+     ],
+     [
+      14,
+      23
+     ],
+     [
+      8,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    8,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
+  },
+  "gauntlet": {
+   "paths": [
+    [
+     [
+      30,
+      -32
+     ],
+     [
+      28,
+      -20
+     ],
+     [
+      6,
+      -22
+     ],
+     [
+      -22,
+      -24
+     ],
+     [
+      -30,
+      -12
+     ],
+     [
+      -18,
+      -2
+     ],
+     [
+      10,
+      -4
+     ],
+     [
+      28,
+      2
+     ],
+     [
+      26,
+      14
+     ],
+     [
+      6,
+      16
+     ],
+     [
+      -10,
+      13
+     ],
+     [
+      -6,
+      23
+     ],
+     [
+      -2,
+      30
+     ]
+    ]
+   ],
+   "castle": [
+    -2,
+    26
+   ],
+   "bounds": [
+    -40,
+    -32,
+    40,
+    30
+   ]
   }
+ },
+ "regions": [
+  {
+   "id": "shattered_citadel",
+   "map_pos": [
+    0,
+    6
+   ],
+   "color": [
+    1.0,
+    0.45,
+    0.12
+   ],
+   "boss": "ashen_warlord",
+   "theme": {
+    "ground": [
+     0.15,
+     0.135,
+     0.13
+    ],
+    "ground2": [
+     0.085,
+     0.075,
+     0.075
+    ],
+    "path": [
+     0.26,
+     0.22,
+     0.19
+    ],
+    "fog": [
+     0.16,
+     0.09,
+     0.07
+    ],
+    "sky_top": [
+     0.04,
+     0.035,
+     0.05
+    ],
+    "sky_horizon": [
+     0.4,
+     0.16,
+     0.07
+    ],
+    "sun": [
+     1.0,
+     0.8,
+     0.64
+    ],
+    "sun_energy": 1.5,
+    "ambient": [
+     0.2,
+     0.18,
+     0.22
+    ],
+    "particles": "embers",
+    "props": [
+     "ruins",
+     "dead_trees",
+     "graves",
+     "rocks",
+     "torches",
+     "lava"
+    ]
+   },
+   "pool": [
+    "skeleton_minion",
+    "skeleton_warrior",
+    "skeleton_archer",
+    "ash_brute",
+    "cultist"
+   ],
+   "stages": [
+    {
+     "id": "r1s1",
+     "layout": "serpent",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery"
+     ],
+     "waves": "explicit"
+    },
+    {
+     "id": "r1s2",
+     "layout": "labyrinth",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier"
+     ],
+     "new": [
+      "cultist"
+     ]
+    },
+    {
+     "id": "r1s3",
+     "layout": "crossroads",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow"
+     ],
+     "new": [
+      "ash_brute"
+     ]
+    },
+    {
+     "id": "r1s4",
+     "layout": "horseshoe",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "trap"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "shadow_lands",
+   "map_pos": [
+    -22,
+    2
+   ],
+   "color": [
+    0.35,
+    0.45,
+    1.0
+   ],
+   "boss": "shadow_reaper",
+   "theme": {
+    "ground": [
+     0.1,
+     0.1,
+     0.14
+    ],
+    "ground2": [
+     0.05,
+     0.05,
+     0.08
+    ],
+    "path": [
+     0.17,
+     0.16,
+     0.2
+    ],
+    "fog": [
+     0.08,
+     0.08,
+     0.18
+    ],
+    "sky_top": [
+     0.02,
+     0.02,
+     0.05
+    ],
+    "sky_horizon": [
+     0.15,
+     0.15,
+     0.35
+    ],
+    "sun": [
+     0.6,
+     0.65,
+     1.0
+    ],
+    "sun_energy": 0.9,
+    "ambient": [
+     0.2,
+     0.2,
+     0.35
+    ],
+    "particles": "shadow",
+    "props": [
+     "dead_trees",
+     "graves",
+     "rocks",
+     "crystals_purple",
+     "torches"
+    ]
+   },
+   "pool": [
+    "skeleton_minion",
+    "skeleton_archer",
+    "shadow_stalker",
+    "bone_mage",
+    "winged_fiend"
+   ],
+   "stages": [
+    {
+     "id": "r2s1",
+     "layout": "gauntlet",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow"
+     ],
+     "new": [
+      "shadow_stalker"
+     ]
+    },
+    {
+     "id": "r2s2",
+     "layout": "serpent",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap"
+     ],
+     "new": [
+      "bone_mage"
+     ]
+    },
+    {
+     "id": "r2s3",
+     "layout": "spiral",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind"
+     ],
+     "new": [
+      "winged_fiend"
+     ]
+    },
+    {
+     "id": "r2s4",
+     "layout": "crossroads",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "inferno_tower",
+   "map_pos": [
+    -10,
+    -12
+   ],
+   "color": [
+    1.0,
+    0.3,
+    0.05
+   ],
+   "boss": "inferno_titan",
+   "theme": {
+    "ground": [
+     0.14,
+     0.08,
+     0.06
+    ],
+    "ground2": [
+     0.3,
+     0.07,
+     0.02
+    ],
+    "path": [
+     0.22,
+     0.14,
+     0.1
+    ],
+    "fog": [
+     0.35,
+     0.1,
+     0.03
+    ],
+    "sky_top": [
+     0.1,
+     0.02,
+     0.01
+    ],
+    "sky_horizon": [
+     0.8,
+     0.2,
+     0.04
+    ],
+    "sun": [
+     1.0,
+     0.5,
+     0.3
+    ],
+    "sun_energy": 1.4,
+    "ambient": [
+     0.45,
+     0.2,
+     0.15
+    ],
+    "particles": "embers",
+    "props": [
+     "lava",
+     "rocks",
+     "ruins",
+     "torches"
+    ]
+   },
+   "pool": [
+    "cultist",
+    "ash_brute",
+    "skeleton_warrior",
+    "war_herald",
+    "winged_fiend"
+   ],
+   "stages": [
+    {
+     "id": "r3s1",
+     "layout": "twin",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire"
+     ],
+     "new": [
+      "war_herald"
+     ]
+    },
+    {
+     "id": "r3s2",
+     "layout": "labyrinth",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire"
+     ]
+    },
+    {
+     "id": "r3s3",
+     "layout": "zigzag",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth"
+     ]
+    },
+    {
+     "id": "r3s4",
+     "layout": "horseshoe",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "poison_forest",
+   "map_pos": [
+    8,
+    -8
+   ],
+   "color": [
+    0.35,
+    1.0,
+    0.2
+   ],
+   "boss": "plague_colossus",
+   "theme": {
+    "ground": [
+     0.09,
+     0.13,
+     0.07
+    ],
+    "ground2": [
+     0.05,
+     0.08,
+     0.04
+    ],
+    "path": [
+     0.18,
+     0.17,
+     0.12
+    ],
+    "fog": [
+     0.12,
+     0.22,
+     0.06
+    ],
+    "sky_top": [
+     0.02,
+     0.04,
+     0.02
+    ],
+    "sky_horizon": [
+     0.2,
+     0.4,
+     0.1
+    ],
+    "sun": [
+     0.75,
+     1.0,
+     0.6
+    ],
+    "sun_energy": 0.9,
+    "ambient": [
+     0.2,
+     0.3,
+     0.18
+    ],
+    "particles": "spores",
+    "props": [
+     "trees",
+     "dead_trees",
+     "rocks",
+     "mushrooms",
+     "graves"
+    ]
+   },
+   "pool": [
+    "cultist",
+    "dark_priest",
+    "necromancer",
+    "skeleton_archer",
+    "ash_brute"
+   ],
+   "stages": [
+    {
+     "id": "r4s1",
+     "layout": "serpent",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison"
+     ],
+     "new": [
+      "dark_priest"
+     ]
+    },
+    {
+     "id": "r4s2",
+     "layout": "twin",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison"
+     ],
+     "new": [
+      "necromancer"
+     ]
+    },
+    {
+     "id": "r4s3",
+     "layout": "gauntlet",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison"
+     ]
+    },
+    {
+     "id": "r4s4",
+     "layout": "spiral",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "frost_lands",
+   "map_pos": [
+    16,
+    -18
+   ],
+   "color": [
+    0.45,
+    0.85,
+    1.0
+   ],
+   "boss": "frost_lich",
+   "theme": {
+    "ground": [
+     0.5,
+     0.55,
+     0.62
+    ],
+    "ground2": [
+     0.25,
+     0.3,
+     0.38
+    ],
+    "path": [
+     0.3,
+     0.3,
+     0.34
+    ],
+    "fog": [
+     0.35,
+     0.45,
+     0.6
+    ],
+    "sky_top": [
+     0.05,
+     0.07,
+     0.12
+    ],
+    "sky_horizon": [
+     0.4,
+     0.55,
+     0.75
+    ],
+    "sun": [
+     0.8,
+     0.9,
+     1.0
+    ],
+    "sun_energy": 1.1,
+    "ambient": [
+     0.35,
+     0.42,
+     0.55
+    ],
+    "particles": "snow",
+    "props": [
+     "crystals_ice",
+     "rocks",
+     "dead_trees",
+     "ruins"
+    ]
+   },
+   "pool": [
+    "skeleton_warrior",
+    "bone_mage",
+    "winged_fiend",
+    "war_herald",
+    "death_knight"
+   ],
+   "stages": [
+    {
+     "id": "r5s1",
+     "layout": "crossroads",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice"
+     ]
+    },
+    {
+     "id": "r5s2",
+     "layout": "spiral",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice"
+     ],
+     "new": [
+      "death_knight"
+     ]
+    },
+    {
+     "id": "r5s3",
+     "layout": "twin",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning"
+     ]
+    },
+    {
+     "id": "r5s4",
+     "layout": "labyrinth",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "tower_of_evil",
+   "map_pos": [
+    26,
+    0
+   ],
+   "color": [
+    0.7,
+    0.2,
+    1.0
+   ],
+   "boss": "demon_lord",
+   "theme": {
+    "ground": [
+     0.12,
+     0.08,
+     0.14
+    ],
+    "ground2": [
+     0.2,
+     0.05,
+     0.3
+    ],
+    "path": [
+     0.2,
+     0.16,
+     0.22
+    ],
+    "fog": [
+     0.2,
+     0.06,
+     0.3
+    ],
+    "sky_top": [
+     0.04,
+     0.01,
+     0.06
+    ],
+    "sky_horizon": [
+     0.4,
+     0.1,
+     0.55
+    ],
+    "sun": [
+     0.85,
+     0.6,
+     1.0
+    ],
+    "sun_energy": 1.0,
+    "ambient": [
+     0.3,
+     0.2,
+     0.38
+    ],
+    "particles": "shadow",
+    "props": [
+     "crystals_purple",
+     "ruins",
+     "rocks",
+     "torches",
+     "graves"
+    ]
+   },
+   "pool": [
+    "shadow_stalker",
+    "necromancer",
+    "war_herald",
+    "death_knight",
+    "winged_fiend",
+    "bone_mage"
+   ],
+   "stages": [
+    {
+     "id": "r6s1",
+     "layout": "serpent",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r6s2",
+     "layout": "horseshoe",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r6s3",
+     "layout": "gauntlet",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r6s4",
+     "layout": "zigzag",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "oblivion_crypt",
+   "map_pos": [
+    20,
+    14
+   ],
+   "color": [
+    0.8,
+    0.85,
+    0.8
+   ],
+   "boss": "bone_emperor",
+   "theme": {
+    "ground": [
+     0.13,
+     0.13,
+     0.12
+    ],
+    "ground2": [
+     0.07,
+     0.08,
+     0.07
+    ],
+    "path": [
+     0.2,
+     0.2,
+     0.18
+    ],
+    "fog": [
+     0.16,
+     0.18,
+     0.16
+    ],
+    "sky_top": [
+     0.02,
+     0.03,
+     0.03
+    ],
+    "sky_horizon": [
+     0.2,
+     0.25,
+     0.22
+    ],
+    "sun": [
+     0.7,
+     0.85,
+     0.75
+    ],
+    "sun_energy": 0.8,
+    "ambient": [
+     0.22,
+     0.28,
+     0.24
+    ],
+    "particles": "shadow",
+    "props": [
+     "graves",
+     "dead_trees",
+     "ruins",
+     "rocks",
+     "torches"
+    ]
+   },
+   "pool": [
+    "skeleton_minion",
+    "skeleton_warrior",
+    "skeleton_archer",
+    "necromancer",
+    "dark_priest",
+    "death_knight"
+   ],
+   "stages": [
+    {
+     "id": "r7s1",
+     "layout": "labyrinth",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r7s2",
+     "layout": "zigzag",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r7s3",
+     "layout": "crossroads",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r7s4",
+     "layout": "spiral",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ],
+     "boss": true
+    }
+   ]
+  },
+  {
+   "id": "the_gate",
+   "map_pos": [
+    -26,
+    18
+   ],
+   "color": [
+    0.55,
+    0.35,
+    1.0
+   ],
+   "boss": "gatekeeper",
+   "theme": {
+    "ground": [
+     0.1,
+     0.07,
+     0.1
+    ],
+    "ground2": [
+     0.25,
+     0.08,
+     0.35
+    ],
+    "path": [
+     0.18,
+     0.13,
+     0.2
+    ],
+    "fog": [
+     0.18,
+     0.05,
+     0.25
+    ],
+    "sky_top": [
+     0.03,
+     0.01,
+     0.05
+    ],
+    "sky_horizon": [
+     0.5,
+     0.15,
+     0.6
+    ],
+    "sun": [
+     0.9,
+     0.55,
+     1.0
+    ],
+    "sun_energy": 1.1,
+    "ambient": [
+     0.3,
+     0.18,
+     0.36
+    ],
+    "particles": "shadow",
+    "props": [
+     "crystals_purple",
+     "lava",
+     "ruins",
+     "rocks",
+     "torches"
+    ]
+   },
+   "pool": [
+    "death_knight",
+    "shadow_stalker",
+    "necromancer",
+    "war_herald",
+    "ash_brute",
+    "winged_fiend",
+    "bone_mage"
+   ],
+   "stages": [
+    {
+     "id": "r8s1",
+     "layout": "horseshoe",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r8s2",
+     "layout": "serpent",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r8s3",
+     "layout": "gauntlet",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ]
+    },
+    {
+     "id": "r8s4",
+     "layout": "twin",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth",
+      "poison",
+      "ice",
+      "lightning",
+      "light"
+     ],
+     "boss": true
+    }
+   ]
+  }
+ ],
+ "explicit_waves": {
+  "r1s1": {
+   "start_gold": 360,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 8,
+       "interval": 1.3
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 10,
+       "interval": 1.0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 3,
+       "interval": 2.0,
+       "delay": 5
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 3,
+       "interval": 3.0
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 10,
+       "interval": 0.9,
+       "delay": 2
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 5,
+       "interval": 1.6,
+       "delay": 8
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 14,
+       "interval": 0.7
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 5,
+       "interval": 2.4,
+       "delay": 4
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 7,
+       "interval": 1.3,
+       "delay": 9
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 12,
+       "interval": 0.8
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.4,
+       "delay": 3
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.5,
+       "delay": 7
+      },
+      {
+       "enemy": "ashen_warlord",
+       "count": 1,
+       "interval": 1,
+       "delay": 16,
+       "hp": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  "r1s2": {
+   "start_gold": 420,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 10,
+       "interval": 1.1,
+       "delay": 0,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 4,
+       "interval": 1.6,
+       "delay": 6,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 6,
+       "interval": 1.2,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 3,
+       "interval": 2.8,
+       "delay": 5,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 4,
+       "interval": 1.6,
+       "delay": 10,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 12,
+       "interval": 0.7,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 6,
+       "interval": 1.0,
+       "delay": 5,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.4,
+       "delay": 10,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.9,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 5,
+       "interval": 2.2,
+       "delay": 6,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.3,
+       "delay": 10,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 10,
+       "interval": 0.7,
+       "delay": 16,
+       "path": 0
+      }
+     ]
+    }
+   ]
+  },
+  "r1s3": {
+   "start_gold": 580,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 8,
+       "interval": 1.1,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 8,
+       "interval": 1.1,
+       "delay": 3,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 6,
+       "interval": 1.2,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 4,
+       "path": 1
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 5,
+       "interval": 1.5,
+       "delay": 8,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 2,
+       "interval": 2.5,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 2,
+       "interval": 2.5,
+       "delay": 0,
+       "path": 1
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 10,
+       "interval": 0.8,
+       "delay": 6,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 3.5,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 3,
+       "path": 1
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.3,
+       "delay": 9,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 1
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.0,
+       "delay": 4,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 9,
+       "interval": 0.6,
+       "delay": 8,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 12,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.6,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.6,
+       "delay": 0,
+       "path": 1
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 2.5,
+       "delay": 8,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.0,
+       "delay": 12,
+       "path": 1
+      }
+     ]
+    }
+   ]
+  },
+  "r1s4": {
+   "start_gold": 540,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 12,
+       "interval": 0.9,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 4,
+       "interval": 1.4,
+       "delay": 8,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.3,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.4,
+       "delay": 4,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 6,
+       "interval": 1.0,
+       "delay": 10,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.5,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 14,
+       "interval": 0.6,
+       "delay": 4,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 6,
+       "interval": 1.2,
+       "delay": 10,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 6,
+       "interval": 2.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 10,
+       "interval": 0.8,
+       "delay": 5,
+       "path": 0
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.0,
+       "delay": 12,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_minion",
+       "count": 16,
+       "interval": 0.5,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 6,
+       "interval": 1.8,
+       "delay": 5,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_archer",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 9,
+       "path": 0
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 4,
+       "interval": 2.6,
+       "delay": 14,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 10,
+       "interval": 0.8,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.2,
+       "delay": 4,
+       "path": 0
+      },
+      {
+       "enemy": "ashen_warlord",
+       "count": 1,
+       "interval": 1,
+       "delay": 14,
+       "path": 0,
+       "hp": 0.85
+      },
+      {
+       "enemy": "skeleton_minion",
+       "count": 12,
+       "interval": 0.8,
+       "delay": 18,
+       "path": 0
+      }
+     ]
+    }
+   ]
+  }
+ }
 }

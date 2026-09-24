@@ -61,14 +61,14 @@ func setup(b: BattleController) -> void:
 	Events.battle_gold_changed.connect(func(g): gold_label.text = Loc.num(g))
 	Events.battle_lives_changed.connect(_on_lives)
 	Events.wave_started.connect(func(i, n):
-		wave_label.text = "%s %d/%d" % [tr("battle.wave"), i + 1, n]
+		wave_label.text = ("%s %d" % [tr("battle.wave"), i + 1]) if battle.waves.endless else ("%s %d/%d" % [tr("battle.wave"), i + 1, n])
 		if i == 0:
 			show_hint(""))
 	Events.boss_spawned.connect(_on_boss)
 	Events.toast.connect(toast)
 	Events.battle_ended.connect(_on_end)
 	Events.boss_phase_changed.connect(func(_b, _p): toast(tr("battle.boss_phase"), Color(1, 0.3, 0.2)))
-	wave_label.text = "%s 0/%d" % [tr("battle.wave"), battle.waves.total()]
+	wave_label.text = ("%s 0" % tr("battle.wave")) if battle.waves.endless else ("%s 0/%d" % [tr("battle.wave"), battle.waves.total()])
 	show_hint(tr("battle.first_wave_hint"))
 
 
@@ -84,7 +84,8 @@ func _build_top() -> void:
 	h.add_child(Icon.make("skull", Color(0.9, 0.3, 0.2), 34))
 	wave_label = UITheme.label("", 24, UITheme.GOLD, true)
 	h.add_child(wave_label)
-	var stage_lbl := UITheme.label("  " + tr("region." + str(DB.stage_info(battle.stage_id).region.id)) + "  " + DB.stage_label(battle.stage_id), 16, UITheme.TEXT_DIM)
+	var stage_name := tr("mode.endless") if battle.stage_id == DB.ENDLESS else tr("region." + str(DB.stage_info(battle.stage_id).region.id)) + "  " + DB.stage_label(battle.stage_id)
+	var stage_lbl := UITheme.label("  " + stage_name, 16, UITheme.TEXT_DIM)
 	h.add_child(stage_lbl)
 	wave_btn = UITheme.primary_button(tr("battle.start"), call_next_wave, 20, 230, 50)
 	v.add_child(wave_btn)
@@ -577,6 +578,6 @@ func _on_end(victory: bool, result: Dictionary) -> void:
 	close_popups()
 	Engine.time_scale = 1.0
 	await get_tree().create_timer(1.2).timeout
-	var screen: Control = VictoryScreen.new() if victory else DefeatScreen.new()
+	var screen: Control = VictoryScreen.new() if (victory or result.get("endless", false)) else DefeatScreen.new()
 	root.add_child(screen)
 	screen.setup(result)

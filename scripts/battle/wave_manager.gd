@@ -18,13 +18,22 @@ var start_gold := 320
 var _queue: Array = []         # [{t, enemy, path}]
 var _wave_time := 0.0
 var finished_spawning := false
+var endless := false
+var _stage_info: Dictionary = {}
 
 
 func setup(b: Node, stage_id: String) -> void:
 	battle = b
 	var info := DB.stage_info(stage_id)
+	_stage_info = info
 	var gi := DB.stage_order.find(stage_id)
 	hp_mult = 1.0 + gi * 0.08
+	if stage_id == DB.ENDLESS:
+		endless = true
+		hp_mult = 1.0
+		start_gold = 700
+		waves = [_endless_wave(0)]
+		return
 	if DB.explicit_waves.has(stage_id):
 		var ex: Dictionary = DB.explicit_waves[stage_id]
 		waves = ex.waves
@@ -84,8 +93,34 @@ func _generate(info: Dictionary, gi: int) -> Array:
 	return out
 
 
+## Endless: waves are generated on demand; HP and count keep climbing and a
+## random boss appears every 10th wave.
+func _endless_wave(w: int) -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash("endless") + w * 7919
+	var pool: Array = DB.enemies.keys()
+	pool = pool.filter(func(id): return w >= 6 or float(DB.enemy(id).hp) <= 300.0)
+	var groups: Array = []
+	var budget := 700.0 * pow(1.16, w)
+	var kinds := mini(4, 1 + w / 3)
+	var delay := 0.0
+	for k in kinds:
+		var id: String = pool[rng.randi_range(0, pool.size() - 1)]
+		var e := DB.enemy(id)
+		var share := budget / kinds
+		if e.get("flying", false):
+			share *= 0.5
+		var cnt := clampi(int(share / float(e.hp)), 2, 28)
+		groups.append({"enemy": id, "count": cnt, "interval": clampf(0.4 + float(e.hp) / 500.0, 0.5, 2.5), "delay": delay, "path": 0})
+		delay += rng.randf_range(3.0, 6.0)
+	if w > 0 and (w + 1) % 10 == 0:
+		var bosses: Array = DB.bosses.keys()
+		groups.append({"enemy": bosses[(w / 10) % bosses.size()], "count": 1, "interval": 1.0, "delay": delay + 5.0, "path": 0, "hp": 0.5 + w * 0.03})
+	return {"groups": groups}
+
+
 func total() -> int:
-	return waves.size()
+	return 9999 if endless else waves.size()
 
 
 func is_waiting_first() -> bool:
@@ -93,6 +128,8 @@ func is_waiting_first() -> bool:
 
 
 func start_next_wave(early := false) -> void:
+	if endless and current + 1 >= waves.size():
+		waves.append(_endless_wave(current + 1))
 	if current + 1 >= waves.size():
 		return
 	if early and countdown > 0.0 and current >= 0:
@@ -122,11 +159,11 @@ func _physics_process(delta: float) -> void:
 		while not _queue.is_empty() and float(_queue[0].t) <= _wave_time:
 			var q: Dictionary = _queue.pop_front()
 			var pidx := mini(int(q.path), battle.routes.size() - 1)
-			var wave_hp := hp_mult * (1.0 + current * 0.06) * float(q.get("hp", 1.0))
+			var wave_hp := hp_mult * (1.0 + current * (0.09 if endless else 0.06)) * float(q.get("hp", 1.0))
 			battle.spawn_enemy(q.enemy, pidx, 0.0, false, wave_hp)
 		if _queue.is_empty():
 			spawning = false
-			if current + 1 < waves.size():
+			if endless or current + 1 < waves.size():
 				countdown = BETWEEN_WAVES
 			else:
 				finished_spawning = true

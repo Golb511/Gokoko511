@@ -5,6 +5,7 @@ extends Unit
 
 signal energy_changed(value: float, max_value: float)
 signal respawn_tick(seconds: float)
+signal commanded(point: Vector3)
 
 var hero_id := "hell_knight"
 var hdef: Dictionary
@@ -31,6 +32,7 @@ var splash := 0.0
 var _think := 0.0
 var _busy := 0.0
 var selection_ring: MeshInstance3D
+var _ability_bonus := 1.0
 var move_marker: Node3D
 
 
@@ -78,6 +80,23 @@ func setup(b: Node, id: String, pos: Vector3) -> void:
 	l.omni_range = 4.0
 	l.position = Vector3(0, 1.6, 0)
 	add_child(l)
+	_gear_aura()
+
+
+## Heroes wearing epic-or-better gear radiate an aura of the best rarity colour.
+func _gear_aura() -> void:
+	var best := -1
+	for slot in DB.items.slots:
+		var it := Game.equipped_item(hero_id, slot)
+		if not it.is_empty():
+			best = maxi(best, int(it.get("rarity", 0)))
+	if best < 2:
+		return
+	var c := DB.rarity_color(best)
+	VFX.particles(self, global_position + Vector3(0, 0.3, 0), {"amount": 10 + best * 6, "lifetime": 1.4, "one_shot": false, "local": true,
+		"speed": 0.4, "size": 0.14, "color": c, "radius": 0.7, "gravity": Vector3(0, 1.4, 0), "explosiveness": 0.0})
+	if model:
+		model.set_param("rim_strength", 0.6 + 0.25 * best)
 
 
 func _make_selection_ring() -> void:
@@ -112,6 +131,7 @@ func command_move(p: Vector3) -> void:
 	moving = true
 	_release_target()
 	VFX.ground_ring(battle.fx_root, move_target, 0.9, Color(1, 0.8, 0.3), 0.5)
+	commanded.emit(move_target)
 
 
 func can_cast(i: int) -> bool:
@@ -126,10 +146,14 @@ func cast(i: int, point: Vector3, target_enemy: Enemy = null) -> bool:
 		return false
 	var id: String = ability_ids[i]
 	var ab: Dictionary = DB.abilities[id]
-	if not AbilityExecutor.execute(self, id, ab, point, target_enemy):
+	var rank := Game.skill_rank(hero_id, "ab%d" % i) if i < 4 else 0
+	_ability_bonus = 1.0 + 0.12 * rank
+	var ok := AbilityExecutor.execute(self, id, ab, point, target_enemy)
+	_ability_bonus = 1.0
+	if not ok:
 		return false
 	energy -= float(ab.energy)
-	cooldowns[i] = float(ab.cooldown) * (1.0 - cdr)
+	cooldowns[i] = float(ab.cooldown) * (1.0 - cdr) * (1.0 - Game.ABILITY_CDR_PER_RANK * rank)
 	energy_changed.emit(energy, max_energy)
 	Events.track("abilities_used")
 	return true
@@ -140,7 +164,7 @@ func ability_def(i: int) -> Dictionary:
 
 
 func damage_value(mult: float, ultimate := false) -> float:
-	return stats.damage * mult * damage_mult() * (stats.ult_mult if ultimate else 1.0)
+	return stats.damage * mult * damage_mult() * (stats.ult_mult if ultimate else 1.0) * _ability_bonus
 
 
 func dmg_type() -> String:

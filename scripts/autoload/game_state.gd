@@ -12,7 +12,13 @@ const SKILL_TREE := [
 	{"id": "focus",      "branch": "mastery", "stat": "cdr",          "per_rank": 0.04, "req": ""},
 	{"id": "swiftness",  "branch": "mastery", "stat": "move_speed",   "per_rank": 0.04, "req": "focus"},
 	{"id": "mastery",    "branch": "mastery", "stat": "ult_mult",     "per_rank": 0.10, "req": "swiftness"},
+	# Hero-specific branch: one node per ability (named after the hero's own abilities).
+	{"id": "ab0", "branch": "abilities", "stat": "ability", "per_rank": 0.12, "req": ""},
+	{"id": "ab1", "branch": "abilities", "stat": "ability", "per_rank": 0.12, "req": ""},
+	{"id": "ab2", "branch": "abilities", "stat": "ability", "per_rank": 0.12, "req": "ab0"},
+	{"id": "ab3", "branch": "abilities", "stat": "ability", "per_rank": 0.12, "req": "ab1"},
 ]
+const ABILITY_CDR_PER_RANK := 0.05
 const SKILL_MAX_RANK := 3
 
 var profile: Dictionary = {}
@@ -200,7 +206,17 @@ func total_stars() -> int:
 	return t
 
 
+func is_endless_unlocked() -> bool:
+	return stage_stars("r1s4") > 0
+
+
+func endless_best() -> int:
+	return int(profile.get("endless_best", 0))
+
+
 func is_stage_unlocked(stage_id: String) -> bool:
+	if stage_id == DB.ENDLESS:
+		return is_endless_unlocked()
 	var idx := DB.stage_order.find(stage_id)
 	if idx <= 0:
 		return idx == 0

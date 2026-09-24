@@ -45,7 +45,7 @@ func _build_ui() -> void:
 	var h := UITheme.hbox(4)
 	h.alignment = BoxContainer.ALIGNMENT_CENTER
 	nav.add_child(h)
-	var portal := _nav_button("portal", "nav.portal", func(): map3d.focus_region(DB.regions.size() - 1); _open_region(DB.regions.size() - 1), Color(0.6, 0.35, 1.0), 96)
+	var portal := _nav_button("portal", "nav.portal", _open_portal, Color(0.6, 0.35, 1.0), 96)
 	h.add_child(portal)
 	h.add_child(UITheme.spacer())
 	for it in [["hero", "nav.heroes", "heroes"], ["missions", "nav.missions", "missions"], ["shop", "nav.shop", "shop"], ["crossed", "nav.arsenal", "inventory"], ["trophy", "nav.achievements", "achievements"], ["guild", "nav.guild", "guild"], ["more", "nav.more", "settings"]]:
@@ -106,6 +106,31 @@ func _side_panel() -> VBoxContainer:
 	var tw := panel.create_tween()
 	tw.tween_property(panel, "modulate:a", 1.0, 0.2)
 	return v
+
+
+func _open_portal() -> void:
+	map3d.focus_region(DB.regions.size() - 1)
+	var v := _side_panel()
+	var head := UITheme.hbox(8)
+	v.add_child(head)
+	var t := UITheme.title(tr("mode.endless"), 30)
+	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	head.add_child(t)
+	head.add_child(UITheme.button("✕", _close_panel, 18, 44, 44))
+	var ic := Icon.make("portal", Color(0.6, 0.35, 1.0), 120)
+	ic.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	v.add_child(ic)
+	var d := UITheme.label(tr("mode.endless.desc"), 18, UITheme.TEXT, false, HORIZONTAL_ALIGNMENT_CENTER)
+	d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(d)
+	v.add_child(UITheme.label("%s: %d" % [tr("mode.best_wave"), Game.endless_best()], 22, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
+	v.add_child(UITheme.spacer(false))
+	if Game.is_endless_unlocked():
+		v.add_child(UITheme.primary_button("%s   ⚡ %d" % [tr("mode.enter"), int(DB.cfg.stage_energy_cost)], func(): Router.start_battle(DB.ENDLESS), 24, 380, 68))
+	else:
+		var l := UITheme.label(tr("mode.endless.locked"), 18, UITheme.TEXT_DIM, true, HORIZONTAL_ALIGNMENT_CENTER)
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		v.add_child(l)
 
 
 func _open_region(ri: int) -> void:

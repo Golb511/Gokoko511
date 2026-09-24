@@ -45,6 +45,11 @@ func setup(b: Node, s: Node, id: String) -> void:
 	rally_point = battle.nearest_path_point(global_position, 4.5)
 	_build_visual()
 	_make_range_ring()
+	# Construction: the tower rises out of the ground in a cloud of dust.
+	_visual.position.y = -_top_height - 0.5
+	var tw := create_tween()
+	tw.tween_property(_visual, "position:y", 0.0, 0.55).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	cooldown = 0.6
 	if attack_type() == "barracks":
 		_spawn_all_soldiers()
 
@@ -121,6 +126,8 @@ func upgrade(branch_idx: int = -1) -> void:
 	invested += cost
 	data = DB.tower_level_data(tower_id, level, branch)
 	_build_visual()
+	_visual.scale = Vector3(0.85, 0.7, 0.85)
+	_visual.create_tween().tween_property(_visual, "scale", Vector3.ONE, 0.4).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	VFX.build_dust(battle.fx_root, global_position)
 	VFX.level_up(battle.fx_root, global_position)
 	Sfx.play("levelup", -6.0)

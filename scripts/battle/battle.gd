@@ -72,6 +72,10 @@ func _ready() -> void:
 	input.setup(self)
 	Events.battle_gold_changed.emit(gold)
 	Events.battle_lives_changed.emit(lives)
+	if stage_id == "r1s1" and not bool(Game.setting("tutorial_done", false)) and not autoplay:
+		var tut := TutorialDirector.new()
+		add_child(tut)
+		tut.setup(self)
 	if autoplay:
 		_autoplay_bot = AutoplayBot.new()
 		add_child(_autoplay_bot)
@@ -346,7 +350,26 @@ func _end(victory: bool) -> void:
 	ended = true
 	var result := {"victory": victory, "stage": stage_id, "kills": kills, "lives": lives, "time": elapsed}
 	var gi := DB.stage_order.find(stage_id)
-	if victory:
+	if waves.endless:
+		# Endless runs always pay out: rewards scale with the wave reached.
+		var w := maxi(0, waves.current)
+		var prev_best := Game.endless_best()
+		var best := maxi(prev_best, w)
+		Game.profile["endless_best"] = best
+		var reward_gold := 80 * w + gold_earned / 2
+		var gems := (w / 5) * 5 + (10 if w > prev_best else 0)
+		Game.add_gold(reward_gold)
+		if gems > 0:
+			Game.add_gems(gems)
+		var hero_xp := xp_earned / 2 + 20 * w
+		var lv := Game.add_hero_xp(hero.hero_id, hero_xp)
+		Game.add_player_xp(15 * w)
+		for it in loot:
+			Game.add_item(it)
+		result.merge({"endless": true, "wave": w, "best": best, "new_best": w > prev_best, "stars": 0, "gold": reward_gold,
+			"gems": gems, "hero_xp": hero_xp, "player_xp": 15 * w, "loot": loot.duplicate(), "hero_levels": lv})
+		Sfx.play("victory" if w > prev_best else "defeat", 0.0, 0.0)
+	elif victory:
 		var stars := stars_for_lives()
 		var first := Game.stage_stars(stage_id) == 0
 		var reward_gold := 150 + gi * 40 + gold_earned / 2

@@ -14,6 +14,7 @@ var layouts: Dictionary = {}
 var regions: Array = []
 var explicit_waves: Dictionary = {}
 
+const ENDLESS := "endless"
 var hero_order: Array = []
 var tower_order: Array = []
 var stage_order: Array = []           # flat list of stage ids in progression order
@@ -43,6 +44,9 @@ func _ready() -> void:
 			var s: Dictionary = r.stages[si]
 			stage_order.append(s.id)
 			_stage_index[s.id] = {"region_idx": ri, "stage_idx": si, "data": s, "region": r}
+	# Endless mode lives at the Gate (last region) and is not part of the campaign order.
+	_stage_index[ENDLESS] = {"region_idx": regions.size() - 1, "stage_idx": -1, "region": regions[-1],
+		"data": {"id": ENDLESS, "layout": "gauntlet", "towers": towers.keys(), "endless": true}}
 
 
 func _load(path: String) -> Dictionary:
@@ -72,10 +76,13 @@ func stage_info(stage_id: String) -> Dictionary:
 
 
 func stage_label(stage_id: String) -> String:
+	if stage_id == ENDLESS:
+		return "∞"
 	var info := stage_info(stage_id)
 	if info.is_empty():
 		return stage_id
-	return "%d-%d" % [info.region_idx + 1, info.stage_idx + 1]
+	# Wrapped in a left-to-right isolate so Arabic text around it can't flip "1-3" into "3-1".
+	return "\u2066%d-%d\u2069" % [info.region_idx + 1, info.stage_idx + 1]
 
 
 func rarity(idx: int) -> Dictionary:

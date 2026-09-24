@@ -193,34 +193,39 @@ func _fill_detail() -> void:
 
 func _skill_tree() -> void:
 	var id := selected
-	var v := modal(760)
+	var v := modal(1000)
 	v.add_child(UITheme.title(tr("ui.skill_tree"), 34))
 	v.add_child(UITheme.label("%s: %d" % [tr("ui.skill_points"), Game.skill_points_available(id)], 20, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
 	var cols := UITheme.hbox(18)
 	cols.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(cols)
-	for branch in ["offense", "defense", "mastery"]:
-		var cv := UITheme.vbox(10)
+	var abil_names: Array = DB.heroes[id].abilities
+	for branch in ["offense", "defense", "mastery", "abilities"]:
+		var cv := UITheme.vbox(6)
 		cols.add_child(cv)
 		cv.add_child(UITheme.label(tr("skill.branch." + branch), 20, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
 		for n in Game.SKILL_TREE:
 			if n.branch != branch:
 				continue
 			var rank := Game.skill_rank(id, n.id)
-			var p := UITheme.panel(Color(0.08, 0.05, 0.03), UITheme.GOLD if rank > 0 else UITheme.GOLD_DARK, 8)
-			p.custom_minimum_size = Vector2(220, 0)
+			var p := UITheme.panel(Color(0.08, 0.05, 0.03), UITheme.GOLD if rank > 0 else UITheme.GOLD_DARK, 6)
+			p.custom_minimum_size = Vector2(215, 0)
 			cv.add_child(p)
 			var nv := UITheme.vbox(4)
 			p.add_child(nv)
-			nv.add_child(UITheme.label(tr("skill." + str(n.id)), 18, UITheme.TEXT, true, HORIZONTAL_ALIGNMENT_CENTER))
-			var stat_key: String = str(n.stat).replace("_pct", "").replace("ult_mult", "damage")
-			nv.add_child(UITheme.label("%s %s / %s" % [tr("stat." + stat_key), Loc.stat_value("crit", float(n.per_rank)), tr("ui.rank")], 14, UITheme.TEXT_DIM, false, HORIZONTAL_ALIGNMENT_CENTER))
-			nv.add_child(UITheme.label("%s %d/%d" % [tr("ui.rank"), rank, Game.SKILL_MAX_RANK], 16, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
-			var btn := UITheme.button("+", func():
+			if n.branch == "abilities":
+				var ai := int(str(n.id).substr(2))
+				nv.add_child(UITheme.label(tr("ability." + str(abil_names[ai])), 18, UITheme.TEXT, true, HORIZONTAL_ALIGNMENT_CENTER))
+				nv.add_child(UITheme.label(tr("skill.ability_desc"), 14, UITheme.TEXT_DIM, false, HORIZONTAL_ALIGNMENT_CENTER))
+			else:
+				nv.add_child(UITheme.label(tr("skill." + str(n.id)), 18, UITheme.TEXT, true, HORIZONTAL_ALIGNMENT_CENTER))
+				var stat_key: String = str(n.stat).replace("_pct", "").replace("ult_mult", "damage")
+				nv.add_child(UITheme.label("%s %s / %s" % [tr("stat." + stat_key), Loc.stat_value("crit", float(n.per_rank)), tr("ui.rank")], 14, UITheme.TEXT_DIM, false, HORIZONTAL_ALIGNMENT_CENTER))
+			var btn := UITheme.button("+   %d/%d" % [rank, Game.SKILL_MAX_RANK], func():
 				if Game.learn_skill(id, n.id):
 					Sfx.play("levelup", -4.0)
 					close_modal()
-					_skill_tree(), 22, 0, 44)
+					_skill_tree(), 18, 0, 38)
 			btn.disabled = not Game.can_learn(id, n)
 			nv.add_child(btn)
 	v.add_child(UITheme.button(tr("ui.close"), func():

@@ -5,6 +5,13 @@ Heroes, branching towers, enemy AI, multi-phase bosses, loot, inventory, shop an
 progression. Menus are in Arabic and English, and the controls work with mouse,
 keyboard or touch.
 
+> **New in 0.2:** hand-designed stages 1-2 to 1-4 and 4 new map layouts
+> (labyrinth, crossroads, horseshoe, gauntlet), an interactive first-battle
+> tutorial, **Endless Siege** through the Gate (unlocks after stage 1-4; a boss
+> every 10 waves; best wave is saved), a hero-specific **Abilities** branch in
+> the skill tree, towers that rise out of the ground when built, enemies that
+> emerge from the portal, and an aura on heroes wearing epic-or-better gear.
+>
 > Status: **Vertical slice is complete and playable** (main menu → world map →
 > stage 1-1 with 5 waves and a boss → victory/defeat, rewards, loot, inventory,
 > saving). All 12 heroes, 14 towers, 12 enemy types, 8 bosses and 32 stages
@@ -38,7 +45,7 @@ Developer flags go after `--`:
 
 | Flag | Effect |
 |---|---|
-| `--battle` / `--stage=r2s3` | start a battle (default `r1s1`) |
+| `--battle` / `--stage=r2s3` | start a battle (default `r1s1`; `--stage=endless` for Endless Siege) |
 | `--hero=frost_mage` | unlock the hero and use it |
 | `--hero-level=20` | set every hero's level |
 | `--screen=heroes` | open a menu screen (`heroes`, `inventory`, `shop`, `missions`, `achievements`, `guild`, `settings`) |
@@ -154,7 +161,7 @@ real-time shadows.
 
 ## Roadmap
 
-- Hand-authored layouts and waves for stages 1-2 onward (currently generated)
+- Hand-authored waves for regions 2-8 (region 1 is hand-designed; the rest are generated)
 - Bespoke creature models (dragon, monsters) to replace procedural assemblies
 - Store plugins (Google Play Billing / StoreKit) for real gem purchases (currently a test stub)
 - Online guild features (the current guild is offline, with AI companions)

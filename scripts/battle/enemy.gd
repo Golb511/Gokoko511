@@ -65,6 +65,11 @@ func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, s
 		bar_height += 0.2
 	global_position = _path_pos()
 	_think = randf() * 0.3
+	if start_progress <= 0.5 and model:
+		# Emerge from the portal.
+		model.set_param("dissolve", 0.95)
+		var tw := create_tween()
+		tw.tween_method(func(v): if model: model.set_param("dissolve", v), 0.95, 0.0, 0.8)
 
 
 func _path_pos() -> Vector3:
