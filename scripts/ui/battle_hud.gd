@@ -452,7 +452,11 @@ func _position_popup(p: Control, world: Vector3) -> void:
 		return
 	var sp := battle.camera_rig.camera.unproject_position(world)
 	var vs := root.get_viewport_rect().size
-	p.position = Vector2(clampf(sp.x - p.size.x * 0.5, 8, vs.x - p.size.x - 8), clampf(sp.y - p.size.y - 50, 8, vs.y - p.size.y - 8))
+	# Open beside the target so the tower / slot itself stays visible.
+	var x := sp.x + 110.0
+	if x + p.size.x > vs.x - 8:
+		x = sp.x - 110.0 - p.size.x
+	p.position = Vector2(clampf(x, 8, vs.x - p.size.x - 8), clampf(sp.y - p.size.y * 0.5, 90, vs.y - p.size.y - 8))
 
 
 func open_tower_menu(t: Tower) -> void:
@@ -527,7 +531,7 @@ func open_tower_menu(t: Tower) -> void:
 	row.add_child(UITheme.button("%s  +%d" % [tr("ui.sell"), t.sell_value()], func():
 		battle.sell_tower(t)
 		close_popups(), 16, 150, 46))
-	_position_popup(p, t.global_position + Vector3(0, 4, 0))
+	_position_popup(p, t.global_position + Vector3(0, 1.5, 0))
 
 
 func _refresh_tower_popup_affordability() -> void:

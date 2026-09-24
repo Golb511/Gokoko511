@@ -25,20 +25,29 @@ func update(delta: float) -> void:
 			hero.command_move(hero.spawn_pos)
 		_use_defensive()
 		return
-	# Most dangerous enemy = furthest along its route (closest to the citadel).
+	# Most dangerous enemy = furthest along its route (closest to the citadel),
+	# discounted by distance so the hero doesn't run back and forth across the map.
 	var danger: Enemy = null
+	var best_score := -INF
 	for e in b.enemies:
-		if e.alive and not e.stealthed and (danger == null or e.progress / e.route.length > danger.progress / danger.route.length):
-			if hero.melee and e.flying:
-				continue
+		if not is_instance_valid(e) or not e.alive or e.stealthed or (hero.melee and e.flying):
+			continue
+		var score: float = e.progress / e.route.length * 40.0 - e.global_position.distance_to(hero.global_position) * (0.6 if hero.melee else 1.0)
+		if score > best_score:
+			best_score = score
 			danger = e
 	if danger == null:
 		return
-	var want: Vector3 = danger.global_position
-	if not hero.melee:
-		var back: Vector3 = danger.route.sample(danger.progress + 6.0)
-		want = back
-	if want.distance_to(hero.guard_pos) > 3.5:
+	var engaged: bool = hero.target != null and is_instance_valid(hero.target) and hero.target.alive \
+		and hero.target.global_position.distance_to(hero.global_position) <= hero.attack_range + 1.5
+	var desired := 1.2 if hero.melee else hero.attack_range * 0.8
+	var dist: float = hero.global_position.distance_to(danger.global_position)
+	if not (engaged and dist < desired + 6.0) and dist > desired + 1.5 and not hero.moving:
+		var want: Vector3 = danger.global_position
+		if not hero.melee:
+			var away: Vector3 = hero.global_position - danger.global_position
+			away.y = 0.0
+			want = danger.global_position + away.normalized() * desired
 		hero.command_move(want)
 	_use_abilities()
 
@@ -51,10 +60,10 @@ func _use_abilities() -> void:
 		var ab: Dictionary = hero.ability_def(i)
 		var r := float(ab.get("radius", 3.0))
 		var rng := float(ab.get("range", 8.0))
-		var cluster := _best_cluster(hero.global_position, rng, maxf(2.0, r))
+		var cluster := _best_cluster(hero.global_position, rng, maxf(3.0, r))
 		var n: int = cluster.count
 		var boss_near: bool = cluster.boss
-		var need := 5 if i == 4 else 3
+		var need := 3 if i == 4 else 2
 		match ab.type:
 			"buff", "taunt", "tower_buff":
 				if n >= 2 or boss_near:
@@ -66,7 +75,7 @@ func _use_abilities() -> void:
 					return
 			"melee_aoe", "nova":
 				var near: Array = b.enemies_near(hero.global_position, r)
-				if near.size() >= need - 1 or (boss_near and near.size() > 0):
+				if near.size() >= need or (boss_near and near.size() > 0):
 					hero.cast(i, hero.global_position)
 					return
 			_:

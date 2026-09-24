@@ -231,7 +231,7 @@ static func torch_flame(parent: Node, pos: Vector3, c: Color = Color(1.0, 0.45, 
 	var root := Node3D.new()
 	parent.add_child(root)
 	root.global_position = pos
-	particles(root, pos, {"amount": 16, "lifetime": 0.55, "one_shot": false, "speed": 0.7, "size": 0.28, "color": c, "radius": 0.05, "gravity": Vector3(0, 2.2, 0), "spread": 10.0})
+	particles(root, pos, {"amount": 9, "lifetime": 0.5, "one_shot": false, "speed": 0.6, "size": 0.24, "color": c.darkened(0.15), "radius": 0.05, "gravity": Vector3(0, 2.0, 0), "spread": 10.0})
 	if with_light and _quality > 0:
 		var l := OmniLight3D.new()
 		l.light_color = c

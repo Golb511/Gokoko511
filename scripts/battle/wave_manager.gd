@@ -24,41 +24,62 @@ func setup(b: Node, stage_id: String) -> void:
 	battle = b
 	var info := DB.stage_info(stage_id)
 	var gi := DB.stage_order.find(stage_id)
-	hp_mult = 1.0 + gi * 0.2
+	hp_mult = 1.0 + gi * 0.08
 	if DB.explicit_waves.has(stage_id):
 		var ex: Dictionary = DB.explicit_waves[stage_id]
 		waves = ex.waves
 		start_gold = int(ex.get("start_gold", 320))
 	else:
 		waves = _generate(info, gi)
-		start_gold = 320 + gi * 30
+		start_gold = 360 + gi * 35
 
 
+## Budgeted wave generator. Each wave gets an HP budget that follows the
+## hand-tuned curve of stage 1-1 and grows per stage; groups are drawn from the
+## region pool. New enemy types are introduced in small numbers, flyers are
+## capped so ground-only defences are never hopeless, and boss stages end with
+## the region boss.
 func _generate(info: Dictionary, gi: int) -> Array:
 	var region: Dictionary = info.region
 	var stage: Dictionary = info.data
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash(stage.id)
 	var pool: Array = region.pool.duplicate()
+	var basic: Array = pool.filter(func(id): return not DB.enemy(id).get("flying", false) and float(DB.enemy(id).hp) <= 160.0)
+	if basic.is_empty():
+		basic = ["skeleton_minion", "cultist"]
 	var paths: int = DB.layouts[stage.layout].paths.size()
-	var n := 5 + mini(3, info.region_idx) + (1 if stage.get("boss", false) else 0)
+	var is_boss: bool = stage.get("boss", false)
+	var n := 5 + mini(2, info.region_idx / 2) + (1 if is_boss else 0)
+	var mult := 1.0 + gi * 0.08
+	var base := 520.0 + 70.0 * gi
 	var out: Array = []
 	for w in n:
-		var budget := 10.0 + w * 5.5 + gi * 2.5
+		var budget := base * (1.0 + 0.7 * w)
 		var groups: Array = []
 		var delay := 0.0
-		var kinds := 1 + mini(2, w / 2)
+		var flyer_budget := budget * 0.3
+		# Introduce the new enemy type gently in waves 2-3.
+		if stage.has("new") and w in [1, 2]:
+			var nid: String = stage.new[0]
+			var ne := DB.enemy(nid)
+			var cnt := clampi(int(budget * 0.35 / (float(ne.hp) * mult)), 2, 6)
+			groups.append({"enemy": nid, "count": cnt, "interval": 2.2, "delay": 4.0, "path": w % paths})
+			budget -= cnt * float(ne.hp) * mult
+		var kinds := 1 if w == 0 else rng.randi_range(2, 3)
 		for k in kinds:
-			var id: String = pool[rng.randi_range(0, pool.size() - 1)]
-			if w <= 1 and stage.has("new") and k == 0:
-				id = stage.new[0]
+			var id: String = basic[rng.randi_range(0, basic.size() - 1)] if (k == 0 or w == 0) else pool[rng.randi_range(0, pool.size() - 1)]
 			var e := DB.enemy(id)
-			var cost := maxf(1.0, float(e.hp) / 80.0)
-			var count := clampi(int(budget / kinds / cost), 1, 24)
-			groups.append({"enemy": id, "count": count, "interval": clampf(0.5 + cost * 0.35, 0.6, 3.0), "delay": delay, "path": (w + k) % paths})
-			delay += rng.randf_range(3.0, 7.0)
-		if w == n - 1 and stage.get("boss", false):
-			groups.append({"enemy": region.boss, "count": 1, "interval": 1.0, "delay": delay + 8.0, "path": 0})
+			var share := budget / (kinds - k)
+			if e.get("flying", false):
+				share = minf(share, flyer_budget)
+			var unit_hp := float(e.hp) * mult
+			var count := clampi(int(share / unit_hp), 1, 20)
+			budget -= count * unit_hp
+			groups.append({"enemy": id, "count": count, "interval": clampf(0.45 + unit_hp / 400.0, 0.6, 3.0), "delay": delay, "path": (w + k) % paths})
+			delay += rng.randf_range(4.0, 8.0)
+		if w == n - 1 and is_boss:
+			groups.append({"enemy": region.boss, "count": 1, "interval": 1.0, "delay": delay + 8.0, "path": 0, "hp": 0.8})
 		out.append({"groups": groups})
 	return out
 

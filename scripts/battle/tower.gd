@@ -546,8 +546,9 @@ func _build_visual() -> void:
 	_visual = Node3D.new()
 	add_child(_visual)
 	var m: Dictionary = tdef.model
-	var tint := Color(0.42, 0.38, 0.36)
-	var model := ModelLib.prop(m.base, tint, accent(), 0.6 + level * 0.15)
+	var tint := Color(0.42, 0.38, 0.36) if branch < 0 else Color(0.36, 0.33, 0.32)
+	var base_key: String = DB.tower_attr(tower_id, branch, "model_base", m.base)
+	var model := ModelLib.prop(base_key, tint, accent(), 0.6 + level * 0.15)
 	_visual.add_child(model)
 	# Normalise any source asset to a common footprint, then grow with level.
 	var aabb := _aabb_of(model)
@@ -563,6 +564,7 @@ func _build_visual() -> void:
 	_visual.add_child(plinth)
 	_build_top(m.get("top", "none"))
 	_build_pips()
+	_build_level_decor()
 
 
 func _aabb_of(n: Node3D) -> AABB:
@@ -671,6 +673,50 @@ func _build_top(kind: String) -> void:
 			var ang := TAU * k / 4.0
 			shard.position = Vector3(cos(ang) * 0.8, -0.2, sin(ang) * 0.8)
 			_orb.add_child(shard)
+
+
+## Level 2+: iron braziers at the plinth corners. Level 3+: floating rune ring.
+func _build_level_decor() -> void:
+	if level >= 2:
+		for k in 4:
+			var a := TAU * k / 4.0 + PI * 0.25
+			var p := Vector3(cos(a), 0, sin(a)) * 1.35
+			var post := ModelLib.prop("graveyard/fence_pillar", Color(0.3, 0.28, 0.27))
+			post.scale = Vector3.ONE * 0.9
+			post.position = p
+			_visual.add_child(post)
+			if level >= 3 and k % 2 == 0:
+				VFX.torch_flame(_visual, global_position + p + Vector3(0, 0.95, 0), accent(), false)
+	if level >= 3:
+		var ring := MeshInstance3D.new()
+		var tm := TorusMesh.new()
+		tm.inner_radius = 1.25
+		tm.outer_radius = 1.32
+		tm.rings = 48
+		tm.ring_segments = 6
+		ring.mesh = tm
+		var gm := StandardMaterial3D.new()
+		gm.albedo_color = accent()
+		gm.emission_enabled = true
+		gm.emission = accent()
+		gm.emission_energy_multiplier = 2.0 + level * 0.4
+		gm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		ring.material_override = gm
+		ring.position.y = _top_height * 0.55
+		ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_visual.add_child(ring)
+		var spin := ring.create_tween().set_loops()
+		spin.tween_property(ring, "rotation:y", TAU, 6.0).from(0.0)
+		for k in 6:
+			var rune := MeshInstance3D.new()
+			var bm := BoxMesh.new()
+			bm.size = Vector3(0.12, 0.3, 0.04)
+			rune.mesh = bm
+			rune.material_override = gm
+			var a := TAU * k / 6.0
+			rune.position = Vector3(cos(a) * 1.28, 0.0, sin(a) * 1.28)
+			rune.rotation.y = -a
+			ring.add_child(rune)
 
 
 func _build_pips() -> void:

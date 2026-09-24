@@ -170,6 +170,8 @@ func _physics_process(delta: float) -> void:
 		return
 	if moving:
 		_move(delta)
+		if not melee:
+			_kite_shot()
 		return
 	_think -= delta
 	if _think <= 0.0:
@@ -193,6 +195,23 @@ func _move(delta: float) -> void:
 		moving = false
 		return
 	_step_towards(move_target, delta)
+
+
+## Ranged heroes keep firing at anything in range while repositioning.
+func _kite_shot() -> void:
+	if attack_cd > 0.0:
+		return
+	var best: Enemy = null
+	var bd := attack_range + 0.5
+	for e in battle.enemies_near(global_position, attack_range + 0.5):
+		var d: float = e.global_position.distance_to(global_position)
+		if e.is_valid_target() and d < bd:
+			bd = d
+			best = e
+	if best == null:
+		return
+	attack_cd = 1.0 / maxf(0.1, attack_rate)
+	_deal_basic(weakref(best))
 
 
 func _step_towards(p: Vector3, delta: float) -> void:
@@ -256,14 +275,14 @@ func _combat(delta: float) -> void:
 		_busy = minf(0.45, attack_cd * 0.8)
 		if model:
 			model.play_action("attack", clampf(attack_rate * 1.2, 0.9, 1.8))
-		var tgt := target
-		get_tree().create_timer(0.28, false).timeout.connect(func(): _deal_basic(tgt))
+		get_tree().create_timer(0.28, false).timeout.connect(_deal_basic.bind(weakref(target)))
 	elif model and not model.is_locked():
 		model.play_loop("idle")
 
 
-func _deal_basic(tgt: Enemy) -> void:
-	if not alive or not is_instance_valid(tgt) or not tgt.alive:
+func _deal_basic(ref: WeakRef) -> void:
+	var tgt: Enemy = ref.get_ref()
+	if not alive or tgt == null or not tgt.alive:
 		return
 	var is_crit := randf() < crit
 	var dmg := roll_damage() * (crit_dmg if is_crit else 1.0)
@@ -284,7 +303,7 @@ func _deal_basic(tgt: Enemy) -> void:
 		var status := {}
 		if not st.is_empty():
 			status = {"id": st.id, "duration": float(st.duration), "power": float(st.power) * (stats.damage if st.id in ["burn", "poison"] else 1.0)}
-		battle.spawn_projectile(global_position + Vector3(0, 1.4, 0), tgt, {"type": hdef.attack.get("projectile", "arrow"), "damage": dmg, "dmg_type": elem, "speed": 22.0, "team": Team.PLAYER, "source": self, "status": status, "splash": splash, "crit": is_crit, "lifesteal": lifesteal})
+		battle.spawn_projectile(global_position + Vector3(0, 1.4, 0), tgt, {"type": hdef.attack.get("projectile", "arrow"), "damage": dmg, "dmg_type": elem, "speed": 22.0, "team": Team.PLAYER, "source": self, "status": status, "splash": splash, "crit": is_crit, "lifesteal": lifesteal, "pierce": int(hdef.attack.get("pierce", 0))})
 		Sfx.play("arrow" if elem == "physical" else "magic", -10.0)
 	energy = minf(max_energy, energy + 1.5)
 

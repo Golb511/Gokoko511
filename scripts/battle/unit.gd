@@ -78,6 +78,12 @@ func take_damage(amount: float, dmg_type: String = "physical", source: Node = nu
 		dealt *= 1.2
 	hp -= dealt
 	damaged.emit(self, dealt)
+	if battle and team == Team.ENEMY:
+		var key := "other"
+		if source is Hero: key = "hero"
+		elif source is Tower: key = "tower_" + source.tower_id
+		elif source is AllyUnit: key = "ally"
+		battle.damage_log[key] = float(battle.damage_log.get(key, 0.0)) + dealt
 	if model:
 		model.flash()
 	if hp_bar:

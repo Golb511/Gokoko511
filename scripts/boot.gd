@@ -10,8 +10,19 @@ func _ready() -> void:
 	for k in ["detail", "normal", "cell", "cell_normal"]:
 		ModelLib.noise_tex(k)
 	await get_tree().process_frame
-	if OS.has_feature("movie") or "--battle" in OS.get_cmdline_user_args():
-		Game.current_stage = "r1s1"
+	var stage := "r1s1"
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--stage="):
+			stage = a.substr(8)
+		elif a.begins_with("--hero="):
+			var hid := a.substr(7)
+			Game.profile.heroes[hid].unlocked = true
+			Game.profile.selected_hero = hid
+		elif a.begins_with("--hero-level="):
+			for h in Game.profile.heroes.values():
+				h.level = int(a.substr(13))
+	if "--battle" in OS.get_cmdline_user_args():
+		Game.current_stage = stage
 		Router.goto("battle")
 	elif "--map" in OS.get_cmdline_user_args():
 		Router.goto("world_map")

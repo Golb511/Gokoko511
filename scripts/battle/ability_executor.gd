@@ -177,14 +177,16 @@ static func execute(hero: Hero, id: String, ab: Dictionary, point: Vector3, targ
 				return false
 			hero.model.face_instant(t.global_position)
 			_anim(hero, "special", 0.45)
+			var tref := weakref(t)
 			_later(hero, 0.3, func():
-				if not is_instance_valid(t) or not t.alive: return
+				var tt: Enemy = tref.get_ref()
+				if tt == null or not tt.alive: return
 				var thr := float(ab.get("execute", 0.0))
-				if thr > 0.0 and t.hp_ratio() <= thr and not t.tags.has("boss"):
-					t.take_damage(t.hp + 1.0, "true", hero, true)
+				if thr > 0.0 and tt.hp_ratio() <= thr and not tt.tags.has("boss"):
+					tt.take_damage(tt.hp + 1.0, "true", hero, true)
 				else:
-					_hit(hero, t, dmg, dtype, ab)
-				VFX.explosion(b.fx_root, t.global_position, 1.2, elem if elem != "physical" else "fire")
+					_hit(hero, tt, dmg, dtype, ab)
+				VFX.explosion(b.fx_root, tt.global_position, 1.2, elem if elem != "physical" else "fire")
 				Sfx.play("slash", 0.0))
 		"tower_buff":
 			_anim(hero, "cast", 0.4)

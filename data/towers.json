@@ -1,240 +1,1761 @@
 {
   "archer": {
-    "attack": "projectile", "projectile": "arrow", "dmg_type": "physical", "air": true, "element": "physical",
-    "model": {"base": "env/building_tower_A_red", "accent": [0.95, 0.75, 0.4], "scale": 0.9, "top": "banner"},
+    "attack": "projectile",
+    "projectile": "arrow",
+    "dmg_type": "physical",
+    "air": true,
+    "element": "physical",
+    "model": {
+      "base": "env/building_tower_A_red",
+      "accent": [
+        0.95,
+        0.75,
+        0.4
+      ],
+      "scale": 0.9,
+      "top": "banner"
+    },
     "levels": [
-      {"cost": 70,  "dmg": [5, 9],   "rate": 1.25, "range": 9.0},
-      {"cost": 110, "dmg": [9, 15],  "rate": 1.35, "range": 9.8},
-      {"cost": 160, "dmg": [15, 24], "rate": 1.45, "range": 10.5}
+      {
+        "cost": 70,
+        "dmg": [
+          5,
+          9
+        ],
+        "rate": 1.25,
+        "range": 9.0
+      },
+      {
+        "cost": 110,
+        "dmg": [
+          9,
+          15
+        ],
+        "rate": 1.35,
+        "range": 9.8
+      },
+      {
+        "cost": 160,
+        "dmg": [
+          15,
+          24
+        ],
+        "rate": 1.45,
+        "range": 10.5
+      }
     ],
     "branches": [
-      {"id": "marksman", "accent": [1.0, 0.85, 0.3], "levels": [
-        {"cost": 230, "dmg": [30, 46], "rate": 1.1, "range": 13.5, "crit": 0.25},
-        {"cost": 300, "dmg": [44, 66], "rate": 1.2, "range": 15.0, "crit": 0.35}]},
-      {"id": "ranger", "accent": [0.4, 0.95, 0.4], "levels": [
-        {"cost": 230, "dmg": [16, 24], "rate": 2.0, "range": 11.0, "multishot": 3},
-        {"cost": 300, "dmg": [22, 32], "rate": 2.3, "range": 11.5, "multishot": 4, "status": {"id": "poison", "duration": 3, "power": 4}}]}
+      {
+        "id": "marksman",
+        "accent": [
+          1.0,
+          0.85,
+          0.3
+        ],
+        "levels": [
+          {
+            "cost": 230,
+            "dmg": [
+              30,
+              46
+            ],
+            "rate": 1.1,
+            "range": 13.5,
+            "crit": 0.25
+          },
+          {
+            "cost": 300,
+            "dmg": [
+              44,
+              66
+            ],
+            "rate": 1.2,
+            "range": 15.0,
+            "crit": 0.35
+          }
+        ],
+        "model_base": "env/building_tower_B_red"
+      },
+      {
+        "id": "ranger",
+        "accent": [
+          0.4,
+          0.95,
+          0.4
+        ],
+        "levels": [
+          {
+            "cost": 230,
+            "dmg": [
+              16,
+              24
+            ],
+            "rate": 2.0,
+            "range": 11.0,
+            "multishot": 3
+          },
+          {
+            "cost": 300,
+            "dmg": [
+              22,
+              32
+            ],
+            "rate": 2.3,
+            "range": 11.5,
+            "multishot": 4,
+            "status": {
+              "id": "poison",
+              "duration": 3,
+              "power": 4
+            }
+          }
+        ]
+      }
     ]
   },
   "mage": {
-    "attack": "projectile", "projectile": "arcane_orb", "dmg_type": "arcane", "air": true, "element": "arcane",
-    "model": {"base": "env/building_tower_B_red", "accent": [0.65, 0.35, 1.0], "scale": 0.9, "top": "crystal"},
+    "attack": "projectile",
+    "projectile": "arcane_orb",
+    "dmg_type": "arcane",
+    "air": true,
+    "element": "arcane",
+    "model": {
+      "base": "env/building_tower_B_red",
+      "accent": [
+        0.65,
+        0.35,
+        1.0
+      ],
+      "scale": 0.9,
+      "top": "crystal"
+    },
     "levels": [
-      {"cost": 100, "dmg": [12, 22], "rate": 0.65, "range": 8.0},
-      {"cost": 160, "dmg": [22, 38], "rate": 0.7,  "range": 8.6},
-      {"cost": 220, "dmg": [36, 60], "rate": 0.75, "range": 9.2}
+      {
+        "cost": 100,
+        "dmg": [
+          12,
+          22
+        ],
+        "rate": 0.65,
+        "range": 8.0
+      },
+      {
+        "cost": 160,
+        "dmg": [
+          22,
+          38
+        ],
+        "rate": 0.7,
+        "range": 8.6
+      },
+      {
+        "cost": 220,
+        "dmg": [
+          36,
+          60
+        ],
+        "rate": 0.75,
+        "range": 9.2
+      }
     ],
     "branches": [
-      {"id": "fire_mage", "accent": [1.0, 0.4, 0.08], "element": "fire", "projectile": "fireball", "dmg_type": "fire", "levels": [
-        {"cost": 280, "dmg": [50, 80],  "rate": 0.75, "range": 9.5, "splash": 2.2, "status": {"id": "burn", "duration": 3, "power": 8}},
-        {"cost": 360, "dmg": [70, 110], "rate": 0.8,  "range": 10.0, "splash": 2.6, "status": {"id": "burn", "duration": 4, "power": 14}}]},
-      {"id": "ice_mage", "accent": [0.4, 0.8, 1.0], "element": "ice", "projectile": "frost_bolt", "dmg_type": "ice", "levels": [
-        {"cost": 260, "dmg": [38, 60], "rate": 0.85, "range": 9.5, "splash": 1.8, "status": {"id": "slow", "duration": 2.5, "power": 0.45}},
-        {"cost": 340, "dmg": [52, 80], "rate": 0.9,  "range": 10.0, "splash": 2.2, "status": {"id": "slow", "duration": 3, "power": 0.5}, "freeze_chance": 0.15}]}
+      {
+        "id": "fire_mage",
+        "accent": [
+          1.0,
+          0.4,
+          0.08
+        ],
+        "element": "fire",
+        "projectile": "fireball",
+        "dmg_type": "fire",
+        "levels": [
+          {
+            "cost": 280,
+            "dmg": [
+              50,
+              80
+            ],
+            "rate": 0.75,
+            "range": 9.5,
+            "splash": 2.2,
+            "status": {
+              "id": "burn",
+              "duration": 3,
+              "power": 8
+            }
+          },
+          {
+            "cost": 360,
+            "dmg": [
+              70,
+              110
+            ],
+            "rate": 0.8,
+            "range": 10.0,
+            "splash": 2.6,
+            "status": {
+              "id": "burn",
+              "duration": 4,
+              "power": 14
+            }
+          }
+        ],
+        "model_base": "env/building_tower_A_red"
+      },
+      {
+        "id": "ice_mage",
+        "accent": [
+          0.4,
+          0.8,
+          1.0
+        ],
+        "element": "ice",
+        "projectile": "frost_bolt",
+        "dmg_type": "ice",
+        "levels": [
+          {
+            "cost": 260,
+            "dmg": [
+              38,
+              60
+            ],
+            "rate": 0.85,
+            "range": 9.5,
+            "splash": 1.8,
+            "status": {
+              "id": "slow",
+              "duration": 2.5,
+              "power": 0.45
+            }
+          },
+          {
+            "cost": 340,
+            "dmg": [
+              52,
+              80
+            ],
+            "rate": 0.9,
+            "range": 10.0,
+            "splash": 2.2,
+            "status": {
+              "id": "slow",
+              "duration": 3,
+              "power": 0.5
+            },
+            "freeze_chance": 0.15
+          }
+        ],
+        "model_base": "env/building_tower_B_red"
+      }
     ]
   },
   "artillery": {
-    "attack": "artillery", "projectile": "bomb", "dmg_type": "physical", "air": false, "element": "fire",
-    "model": {"base": "env/building_tower_catapult_red", "accent": [1.0, 0.5, 0.15], "scale": 0.85, "top": "none"},
+    "attack": "artillery",
+    "projectile": "bomb",
+    "dmg_type": "physical",
+    "air": false,
+    "element": "fire",
+    "model": {
+      "base": "env/building_tower_catapult_red",
+      "accent": [
+        1.0,
+        0.5,
+        0.15
+      ],
+      "scale": 0.85,
+      "top": "none"
+    },
     "levels": [
-      {"cost": 120, "dmg": [14, 26], "rate": 0.4,  "range": 9.0, "splash": 2.2},
-      {"cost": 180, "dmg": [26, 46], "rate": 0.42, "range": 9.5, "splash": 2.4},
-      {"cost": 250, "dmg": [42, 72], "rate": 0.45, "range": 10.0, "splash": 2.6}
+      {
+        "cost": 120,
+        "dmg": [
+          14,
+          26
+        ],
+        "rate": 0.4,
+        "range": 9.0,
+        "splash": 2.2
+      },
+      {
+        "cost": 180,
+        "dmg": [
+          26,
+          46
+        ],
+        "rate": 0.42,
+        "range": 9.5,
+        "splash": 2.4
+      },
+      {
+        "cost": 250,
+        "dmg": [
+          42,
+          72
+        ],
+        "rate": 0.45,
+        "range": 10.0,
+        "splash": 2.6
+      }
     ],
     "branches": [
-      {"id": "hellfire_mortar", "accent": [1.0, 0.3, 0.05], "dmg_type": "fire", "levels": [
-        {"cost": 320, "dmg": [60, 96],  "rate": 0.45, "range": 11.0, "splash": 3.0, "ground_fire": {"duration": 3, "dps": 18}},
-        {"cost": 420, "dmg": [84, 130], "rate": 0.5,  "range": 11.5, "splash": 3.2, "ground_fire": {"duration": 4, "dps": 30}}]},
-      {"id": "siege_cannon", "accent": [0.8, 0.8, 0.85], "levels": [
-        {"cost": 320, "dmg": [110, 170], "rate": 0.3,  "range": 12.0, "splash": 2.6, "stun_chance": 0.35},
-        {"cost": 420, "dmg": [160, 240], "rate": 0.32, "range": 13.0, "splash": 2.8, "stun_chance": 0.5}]}
+      {
+        "id": "hellfire_mortar",
+        "accent": [
+          1.0,
+          0.3,
+          0.05
+        ],
+        "dmg_type": "fire",
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              60,
+              96
+            ],
+            "rate": 0.45,
+            "range": 11.0,
+            "splash": 3.0,
+            "ground_fire": {
+              "duration": 3,
+              "dps": 18
+            }
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              84,
+              130
+            ],
+            "rate": 0.5,
+            "range": 11.5,
+            "splash": 3.2,
+            "ground_fire": {
+              "duration": 4,
+              "dps": 30
+            }
+          }
+        ]
+      },
+      {
+        "id": "siege_cannon",
+        "accent": [
+          0.8,
+          0.8,
+          0.85
+        ],
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              110,
+              170
+            ],
+            "rate": 0.3,
+            "range": 12.0,
+            "splash": 2.6,
+            "stun_chance": 0.35
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              160,
+              240
+            ],
+            "rate": 0.32,
+            "range": 13.0,
+            "splash": 2.8,
+            "stun_chance": 0.5
+          }
+        ],
+        "model_base": "env/building_blacksmith_red"
+      }
     ]
   },
   "soldier": {
-    "attack": "barracks", "dmg_type": "physical", "air": false, "element": "physical",
-    "model": {"base": "env/building_barracks_red", "accent": [0.9, 0.8, 0.6], "scale": 0.85, "top": "banner"},
+    "attack": "barracks",
+    "dmg_type": "physical",
+    "air": false,
+    "element": "physical",
+    "model": {
+      "base": "env/building_barracks_red",
+      "accent": [
+        0.9,
+        0.8,
+        0.6
+      ],
+      "scale": 0.85,
+      "top": "banner"
+    },
     "levels": [
-      {"cost": 90,  "soldiers": 3, "hp": 140, "dmg": [3, 5],  "armor": 10, "respawn": 10, "range": 7.0},
-      {"cost": 130, "soldiers": 3, "hp": 220, "dmg": [6, 10], "armor": 20, "respawn": 9,  "range": 7.5},
-      {"cost": 180, "soldiers": 3, "hp": 320, "dmg": [10, 16], "armor": 30, "respawn": 8, "range": 8.0}
+      {
+        "cost": 90,
+        "soldiers": 3,
+        "hp": 140,
+        "dmg": [
+          3,
+          5
+        ],
+        "armor": 10,
+        "respawn": 10,
+        "range": 7.0
+      },
+      {
+        "cost": 130,
+        "soldiers": 3,
+        "hp": 220,
+        "dmg": [
+          6,
+          10
+        ],
+        "armor": 20,
+        "respawn": 9,
+        "range": 7.5
+      },
+      {
+        "cost": 180,
+        "soldiers": 3,
+        "hp": 320,
+        "dmg": [
+          10,
+          16
+        ],
+        "armor": 30,
+        "respawn": 8,
+        "range": 8.0
+      }
     ],
     "branches": [
-      {"id": "black_guard", "accent": [0.5, 0.55, 0.7], "levels": [
-        {"cost": 240, "soldiers": 3, "hp": 600, "dmg": [14, 22], "armor": 55, "respawn": 8, "range": 8.5, "unit": "black_guard"},
-        {"cost": 320, "soldiers": 3, "hp": 850, "dmg": [18, 28], "armor": 65, "respawn": 7, "range": 9.0, "unit": "black_guard"}]},
-      {"id": "berserkers", "accent": [0.9, 0.2, 0.15], "levels": [
-        {"cost": 240, "soldiers": 3, "hp": 420, "dmg": [26, 38], "armor": 25, "respawn": 7, "range": 8.5, "unit": "berserker", "lifesteal": 0.3},
-        {"cost": 320, "soldiers": 4, "hp": 520, "dmg": [34, 50], "armor": 30, "respawn": 6, "range": 9.0, "unit": "berserker", "lifesteal": 0.35}]}
+      {
+        "id": "black_guard",
+        "accent": [
+          0.5,
+          0.55,
+          0.7
+        ],
+        "levels": [
+          {
+            "cost": 240,
+            "soldiers": 3,
+            "hp": 600,
+            "dmg": [
+              14,
+              22
+            ],
+            "armor": 55,
+            "respawn": 8,
+            "range": 8.5,
+            "unit": "black_guard"
+          },
+          {
+            "cost": 320,
+            "soldiers": 3,
+            "hp": 850,
+            "dmg": [
+              18,
+              28
+            ],
+            "armor": 65,
+            "respawn": 7,
+            "range": 9.0,
+            "unit": "black_guard"
+          }
+        ],
+        "model_base": "env/building_castle_red"
+      },
+      {
+        "id": "berserkers",
+        "accent": [
+          0.9,
+          0.2,
+          0.15
+        ],
+        "levels": [
+          {
+            "cost": 240,
+            "soldiers": 3,
+            "hp": 420,
+            "dmg": [
+              26,
+              38
+            ],
+            "armor": 25,
+            "respawn": 7,
+            "range": 8.5,
+            "unit": "berserker",
+            "lifesteal": 0.3
+          },
+          {
+            "cost": 320,
+            "soldiers": 4,
+            "hp": 520,
+            "dmg": [
+              34,
+              50
+            ],
+            "armor": 30,
+            "respawn": 6,
+            "range": 9.0,
+            "unit": "berserker",
+            "lifesteal": 0.35
+          }
+        ],
+        "model_base": "env/building_tavern_red"
+      }
     ]
   },
   "poison": {
-    "attack": "projectile", "projectile": "poison_bolt", "dmg_type": "poison", "air": true, "element": "poison",
-    "model": {"base": "env/building_well_red", "accent": [0.35, 1.0, 0.2], "scale": 1.0, "top": "cauldron"},
+    "attack": "projectile",
+    "projectile": "poison_bolt",
+    "dmg_type": "poison",
+    "air": true,
+    "element": "poison",
+    "model": {
+      "base": "env/building_well_red",
+      "accent": [
+        0.35,
+        1.0,
+        0.2
+      ],
+      "scale": 1.0,
+      "top": "cauldron"
+    },
     "levels": [
-      {"cost": 100, "dmg": [4, 6],  "rate": 0.9, "range": 8.0, "status": {"id": "poison", "duration": 4, "power": 5}},
-      {"cost": 150, "dmg": [6, 9],  "rate": 1.0, "range": 8.5, "status": {"id": "poison", "duration": 4, "power": 9}},
-      {"cost": 210, "dmg": [9, 13], "rate": 1.1, "range": 9.0, "status": {"id": "poison", "duration": 5, "power": 14}}
+      {
+        "cost": 100,
+        "dmg": [
+          4,
+          6
+        ],
+        "rate": 0.9,
+        "range": 8.0,
+        "status": {
+          "id": "poison",
+          "duration": 4,
+          "power": 5
+        }
+      },
+      {
+        "cost": 150,
+        "dmg": [
+          6,
+          9
+        ],
+        "rate": 1.0,
+        "range": 8.5,
+        "status": {
+          "id": "poison",
+          "duration": 4,
+          "power": 9
+        }
+      },
+      {
+        "cost": 210,
+        "dmg": [
+          9,
+          13
+        ],
+        "rate": 1.1,
+        "range": 9.0,
+        "status": {
+          "id": "poison",
+          "duration": 5,
+          "power": 14
+        }
+      }
     ],
     "branches": [
-      {"id": "plague_spire", "accent": [0.6, 1.0, 0.1], "levels": [
-        {"cost": 270, "dmg": [12, 18], "rate": 1.1, "range": 9.5, "splash": 2.2, "status": {"id": "poison", "duration": 5, "power": 22}},
-        {"cost": 350, "dmg": [16, 24], "rate": 1.2, "range": 10.0, "splash": 2.6, "status": {"id": "poison", "duration": 6, "power": 32}}]},
-      {"id": "venom_spire", "accent": [0.2, 0.9, 0.6], "levels": [
-        {"cost": 270, "dmg": [14, 20], "rate": 1.2, "range": 9.5, "status": {"id": "armor_break", "duration": 4, "power": 0.4}},
-        {"cost": 350, "dmg": [20, 30], "rate": 1.3, "range": 10.0, "status": {"id": "armor_break", "duration": 5, "power": 0.6}}]}
+      {
+        "id": "plague_spire",
+        "accent": [
+          0.6,
+          1.0,
+          0.1
+        ],
+        "levels": [
+          {
+            "cost": 270,
+            "dmg": [
+              12,
+              18
+            ],
+            "rate": 1.1,
+            "range": 9.5,
+            "splash": 2.2,
+            "status": {
+              "id": "poison",
+              "duration": 5,
+              "power": 22
+            }
+          },
+          {
+            "cost": 350,
+            "dmg": [
+              16,
+              24
+            ],
+            "rate": 1.2,
+            "range": 10.0,
+            "splash": 2.6,
+            "status": {
+              "id": "poison",
+              "duration": 6,
+              "power": 32
+            }
+          }
+        ],
+        "model_base": "env/building_market_red"
+      },
+      {
+        "id": "venom_spire",
+        "accent": [
+          0.2,
+          0.9,
+          0.6
+        ],
+        "levels": [
+          {
+            "cost": 270,
+            "dmg": [
+              14,
+              20
+            ],
+            "rate": 1.2,
+            "range": 9.5,
+            "status": {
+              "id": "armor_break",
+              "duration": 4,
+              "power": 0.4
+            }
+          },
+          {
+            "cost": 350,
+            "dmg": [
+              20,
+              30
+            ],
+            "rate": 1.3,
+            "range": 10.0,
+            "status": {
+              "id": "armor_break",
+              "duration": 5,
+              "power": 0.6
+            }
+          }
+        ]
+      }
     ]
   },
   "fire": {
-    "attack": "beam", "dmg_type": "fire", "air": true, "element": "fire",
-    "model": {"base": "env/building_tower_A_red", "accent": [1.0, 0.35, 0.05], "scale": 0.9, "top": "brazier"},
+    "attack": "beam",
+    "dmg_type": "fire",
+    "air": true,
+    "element": "fire",
+    "model": {
+      "base": "env/building_tower_A_red",
+      "accent": [
+        1.0,
+        0.35,
+        0.05
+      ],
+      "scale": 0.9,
+      "top": "brazier"
+    },
     "levels": [
-      {"cost": 120, "dmg": [14, 14], "rate": 1.0, "range": 7.0, "ramp": 0.5},
-      {"cost": 170, "dmg": [24, 24], "rate": 1.0, "range": 7.5, "ramp": 0.6},
-      {"cost": 240, "dmg": [38, 38], "rate": 1.0, "range": 8.0, "ramp": 0.7}
+      {
+        "cost": 120,
+        "dmg": [
+          14,
+          14
+        ],
+        "rate": 1.0,
+        "range": 7.0,
+        "ramp": 0.5
+      },
+      {
+        "cost": 170,
+        "dmg": [
+          24,
+          24
+        ],
+        "rate": 1.0,
+        "range": 7.5,
+        "ramp": 0.6
+      },
+      {
+        "cost": 240,
+        "dmg": [
+          38,
+          38
+        ],
+        "rate": 1.0,
+        "range": 8.0,
+        "ramp": 0.7
+      }
     ],
     "branches": [
-      {"id": "inferno", "accent": [1.0, 0.2, 0.02], "levels": [
-        {"cost": 300, "dmg": [60, 60], "rate": 1.0, "range": 8.5, "ramp": 1.0},
-        {"cost": 400, "dmg": [85, 85], "rate": 1.0, "range": 9.0, "ramp": 1.3}]},
-      {"id": "phoenix", "accent": [1.0, 0.7, 0.2], "attack": "projectile", "projectile": "fireball", "levels": [
-        {"cost": 300, "dmg": [40, 60], "rate": 1.0, "range": 9.5, "splash": 2.0, "multishot": 2, "status": {"id": "burn", "duration": 3, "power": 10}},
-        {"cost": 400, "dmg": [56, 84], "rate": 1.1, "range": 10.0, "splash": 2.4, "multishot": 3, "status": {"id": "burn", "duration": 3, "power": 16}}]}
+      {
+        "id": "inferno",
+        "accent": [
+          1.0,
+          0.2,
+          0.02
+        ],
+        "levels": [
+          {
+            "cost": 300,
+            "dmg": [
+              60,
+              60
+            ],
+            "rate": 1.0,
+            "range": 8.5,
+            "ramp": 1.0
+          },
+          {
+            "cost": 400,
+            "dmg": [
+              85,
+              85
+            ],
+            "rate": 1.0,
+            "range": 9.0,
+            "ramp": 1.3
+          }
+        ]
+      },
+      {
+        "id": "phoenix",
+        "accent": [
+          1.0,
+          0.7,
+          0.2
+        ],
+        "attack": "projectile",
+        "projectile": "fireball",
+        "levels": [
+          {
+            "cost": 300,
+            "dmg": [
+              40,
+              60
+            ],
+            "rate": 1.0,
+            "range": 9.5,
+            "splash": 2.0,
+            "multishot": 2,
+            "status": {
+              "id": "burn",
+              "duration": 3,
+              "power": 10
+            }
+          },
+          {
+            "cost": 400,
+            "dmg": [
+              56,
+              84
+            ],
+            "rate": 1.1,
+            "range": 10.0,
+            "splash": 2.4,
+            "multishot": 3,
+            "status": {
+              "id": "burn",
+              "duration": 3,
+              "power": 16
+            }
+          }
+        ],
+        "model_base": "env/building_church_red"
+      }
     ]
   },
   "ice": {
-    "attack": "projectile", "projectile": "frost_bolt", "dmg_type": "ice", "air": true, "element": "ice",
-    "model": {"base": "env/building_tower_B_red", "accent": [0.45, 0.85, 1.0], "scale": 0.9, "top": "ice"},
+    "attack": "projectile",
+    "projectile": "frost_bolt",
+    "dmg_type": "ice",
+    "air": true,
+    "element": "ice",
+    "model": {
+      "base": "env/building_tower_B_red",
+      "accent": [
+        0.45,
+        0.85,
+        1.0
+      ],
+      "scale": 0.9,
+      "top": "ice"
+    },
     "levels": [
-      {"cost": 100, "dmg": [6, 10],  "rate": 0.9, "range": 8.0, "status": {"id": "slow", "duration": 2, "power": 0.3}},
-      {"cost": 150, "dmg": [10, 16], "rate": 0.95, "range": 8.5, "status": {"id": "slow", "duration": 2, "power": 0.38}},
-      {"cost": 210, "dmg": [16, 24], "rate": 1.0, "range": 9.0, "status": {"id": "slow", "duration": 2.5, "power": 0.45}}
+      {
+        "cost": 100,
+        "dmg": [
+          6,
+          10
+        ],
+        "rate": 0.9,
+        "range": 8.0,
+        "status": {
+          "id": "slow",
+          "duration": 2,
+          "power": 0.3
+        }
+      },
+      {
+        "cost": 150,
+        "dmg": [
+          10,
+          16
+        ],
+        "rate": 0.95,
+        "range": 8.5,
+        "status": {
+          "id": "slow",
+          "duration": 2,
+          "power": 0.38
+        }
+      },
+      {
+        "cost": 210,
+        "dmg": [
+          16,
+          24
+        ],
+        "rate": 1.0,
+        "range": 9.0,
+        "status": {
+          "id": "slow",
+          "duration": 2.5,
+          "power": 0.45
+        }
+      }
     ],
     "branches": [
-      {"id": "glacier", "accent": [0.6, 0.9, 1.0], "levels": [
-        {"cost": 260, "dmg": [26, 38], "rate": 1.0, "range": 9.5, "status": {"id": "slow", "duration": 2.5, "power": 0.5}, "freeze_chance": 0.2},
-        {"cost": 340, "dmg": [36, 52], "rate": 1.05, "range": 10.0, "status": {"id": "slow", "duration": 3, "power": 0.55}, "freeze_chance": 0.3}]},
-      {"id": "frost_nova", "accent": [0.3, 0.6, 1.0], "attack": "pulse", "levels": [
-        {"cost": 260, "dmg": [20, 28], "rate": 0.5, "range": 6.5, "status": {"id": "slow", "duration": 3, "power": 0.6}},
-        {"cost": 340, "dmg": [30, 42], "rate": 0.55, "range": 7.0, "status": {"id": "slow", "duration": 3.5, "power": 0.65}}]}
+      {
+        "id": "glacier",
+        "accent": [
+          0.6,
+          0.9,
+          1.0
+        ],
+        "levels": [
+          {
+            "cost": 260,
+            "dmg": [
+              26,
+              38
+            ],
+            "rate": 1.0,
+            "range": 9.5,
+            "status": {
+              "id": "slow",
+              "duration": 2.5,
+              "power": 0.5
+            },
+            "freeze_chance": 0.2
+          },
+          {
+            "cost": 340,
+            "dmg": [
+              36,
+              52
+            ],
+            "rate": 1.05,
+            "range": 10.0,
+            "status": {
+              "id": "slow",
+              "duration": 3,
+              "power": 0.55
+            },
+            "freeze_chance": 0.3
+          }
+        ]
+      },
+      {
+        "id": "frost_nova",
+        "accent": [
+          0.3,
+          0.6,
+          1.0
+        ],
+        "attack": "pulse",
+        "levels": [
+          {
+            "cost": 260,
+            "dmg": [
+              20,
+              28
+            ],
+            "rate": 0.5,
+            "range": 6.5,
+            "status": {
+              "id": "slow",
+              "duration": 3,
+              "power": 0.6
+            }
+          },
+          {
+            "cost": 340,
+            "dmg": [
+              30,
+              42
+            ],
+            "rate": 0.55,
+            "range": 7.0,
+            "status": {
+              "id": "slow",
+              "duration": 3.5,
+              "power": 0.65
+            }
+          }
+        ],
+        "model_base": "env/building_tower_A_red"
+      }
     ]
   },
   "lightning": {
-    "attack": "chain", "dmg_type": "lightning", "air": true, "element": "lightning",
-    "model": {"base": "env/building_tower_B_red", "accent": [0.5, 0.75, 1.0], "scale": 0.85, "top": "coil"},
+    "attack": "chain",
+    "dmg_type": "lightning",
+    "air": true,
+    "element": "lightning",
+    "model": {
+      "base": "env/building_tower_B_red",
+      "accent": [
+        0.5,
+        0.75,
+        1.0
+      ],
+      "scale": 0.85,
+      "top": "coil"
+    },
     "levels": [
-      {"cost": 130, "dmg": [14, 26], "rate": 0.55, "range": 8.0, "chain": 2},
-      {"cost": 190, "dmg": [24, 42], "rate": 0.6,  "range": 8.5, "chain": 3},
-      {"cost": 260, "dmg": [38, 64], "rate": 0.65, "range": 9.0, "chain": 3}
+      {
+        "cost": 130,
+        "dmg": [
+          14,
+          26
+        ],
+        "rate": 0.55,
+        "range": 8.0,
+        "chain": 2
+      },
+      {
+        "cost": 190,
+        "dmg": [
+          24,
+          42
+        ],
+        "rate": 0.6,
+        "range": 8.5,
+        "chain": 3
+      },
+      {
+        "cost": 260,
+        "dmg": [
+          38,
+          64
+        ],
+        "rate": 0.65,
+        "range": 9.0,
+        "chain": 3
+      }
     ],
     "branches": [
-      {"id": "tesla", "accent": [0.4, 0.9, 1.0], "levels": [
-        {"cost": 320, "dmg": [50, 84],  "rate": 0.7,  "range": 9.5, "chain": 5},
-        {"cost": 420, "dmg": [70, 110], "rate": 0.75, "range": 10.0, "chain": 7}]},
-      {"id": "stormcaller", "accent": [0.7, 0.6, 1.0], "attack": "storm", "levels": [
-        {"cost": 320, "dmg": [60, 90],  "rate": 1.2, "range": 10.0, "splash": 1.6, "stun_chance": 0.15},
-        {"cost": 420, "dmg": [80, 120], "rate": 1.4, "range": 11.0, "splash": 1.8, "stun_chance": 0.2}]}
+      {
+        "id": "tesla",
+        "accent": [
+          0.4,
+          0.9,
+          1.0
+        ],
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              50,
+              84
+            ],
+            "rate": 0.7,
+            "range": 9.5,
+            "chain": 5
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              70,
+              110
+            ],
+            "rate": 0.75,
+            "range": 10.0,
+            "chain": 7
+          }
+        ]
+      },
+      {
+        "id": "stormcaller",
+        "accent": [
+          0.7,
+          0.6,
+          1.0
+        ],
+        "attack": "storm",
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              60,
+              90
+            ],
+            "rate": 1.2,
+            "range": 10.0,
+            "splash": 1.6,
+            "stun_chance": 0.15
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              80,
+              120
+            ],
+            "rate": 1.4,
+            "range": 11.0,
+            "splash": 1.8,
+            "stun_chance": 0.2
+          }
+        ],
+        "model_base": "env/building_church_red"
+      }
     ]
   },
   "shadow": {
-    "attack": "projectile", "projectile": "shadow_orb", "dmg_type": "shadow", "air": true, "element": "shadow",
-    "model": {"base": "graveyard/crypt", "accent": [0.6, 0.2, 1.0], "scale": 1.6, "top": "void"},
+    "attack": "projectile",
+    "projectile": "shadow_orb",
+    "dmg_type": "shadow",
+    "air": true,
+    "element": "shadow",
+    "model": {
+      "base": "graveyard/crypt",
+      "accent": [
+        0.6,
+        0.2,
+        1.0
+      ],
+      "scale": 1.6,
+      "top": "void"
+    },
     "levels": [
-      {"cost": 140, "dmg": [18, 30], "rate": 0.6,  "range": 8.5, "status": {"id": "weaken", "duration": 3, "power": 0.2}},
-      {"cost": 200, "dmg": [30, 50], "rate": 0.65, "range": 9.0, "status": {"id": "weaken", "duration": 3, "power": 0.25}},
-      {"cost": 270, "dmg": [46, 74], "rate": 0.7,  "range": 9.5, "status": {"id": "weaken", "duration": 3.5, "power": 0.3}}
+      {
+        "cost": 140,
+        "dmg": [
+          18,
+          30
+        ],
+        "rate": 0.6,
+        "range": 8.5,
+        "status": {
+          "id": "weaken",
+          "duration": 3,
+          "power": 0.2
+        }
+      },
+      {
+        "cost": 200,
+        "dmg": [
+          30,
+          50
+        ],
+        "rate": 0.65,
+        "range": 9.0,
+        "status": {
+          "id": "weaken",
+          "duration": 3,
+          "power": 0.25
+        }
+      },
+      {
+        "cost": 270,
+        "dmg": [
+          46,
+          74
+        ],
+        "rate": 0.7,
+        "range": 9.5,
+        "status": {
+          "id": "weaken",
+          "duration": 3.5,
+          "power": 0.3
+        }
+      }
     ],
     "branches": [
-      {"id": "void_spire", "accent": [0.5, 0.1, 1.0], "levels": [
-        {"cost": 340, "dmg": [66, 100], "rate": 0.7, "range": 10.0, "instakill": 0.04},
-        {"cost": 440, "dmg": [90, 136], "rate": 0.75, "range": 10.5, "instakill": 0.06}]},
-      {"id": "nightmare_spire", "accent": [0.8, 0.3, 0.9], "levels": [
-        {"cost": 320, "dmg": [50, 76], "rate": 0.8, "range": 10.0, "status": {"id": "fear", "duration": 1.5, "power": 1}},
-        {"cost": 420, "dmg": [70, 104], "rate": 0.85, "range": 10.5, "status": {"id": "fear", "duration": 2.0, "power": 1}}]}
+      {
+        "id": "void_spire",
+        "accent": [
+          0.5,
+          0.1,
+          1.0
+        ],
+        "levels": [
+          {
+            "cost": 340,
+            "dmg": [
+              66,
+              100
+            ],
+            "rate": 0.7,
+            "range": 10.0,
+            "instakill": 0.04
+          },
+          {
+            "cost": 440,
+            "dmg": [
+              90,
+              136
+            ],
+            "rate": 0.75,
+            "range": 10.5,
+            "instakill": 0.06
+          }
+        ]
+      },
+      {
+        "id": "nightmare_spire",
+        "accent": [
+          0.8,
+          0.3,
+          0.9
+        ],
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              50,
+              76
+            ],
+            "rate": 0.8,
+            "range": 10.0,
+            "status": {
+              "id": "fear",
+              "duration": 1.5,
+              "power": 1
+            }
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              70,
+              104
+            ],
+            "rate": 0.85,
+            "range": 10.5,
+            "status": {
+              "id": "fear",
+              "duration": 2.0,
+              "power": 1
+            }
+          }
+        ],
+        "model_base": "graveyard/shrine"
+      }
     ]
   },
   "light": {
-    "attack": "beam", "dmg_type": "holy", "air": true, "element": "holy",
-    "model": {"base": "graveyard/shrine", "accent": [1.0, 0.92, 0.6], "scale": 1.6, "top": "halo"},
+    "attack": "beam",
+    "dmg_type": "holy",
+    "air": true,
+    "element": "holy",
+    "model": {
+      "base": "graveyard/shrine",
+      "accent": [
+        1.0,
+        0.92,
+        0.6
+      ],
+      "scale": 1.6,
+      "top": "halo"
+    },
     "levels": [
-      {"cost": 130, "dmg": [18, 18], "rate": 1.0, "range": 8.0, "ramp": 0.2, "bonus_vs": "undead"},
-      {"cost": 190, "dmg": [28, 28], "rate": 1.0, "range": 8.5, "ramp": 0.25, "bonus_vs": "undead"},
-      {"cost": 260, "dmg": [42, 42], "rate": 1.0, "range": 9.0, "ramp": 0.3, "bonus_vs": "undead"}
+      {
+        "cost": 130,
+        "dmg": [
+          18,
+          18
+        ],
+        "rate": 1.0,
+        "range": 8.0,
+        "ramp": 0.2,
+        "bonus_vs": "undead"
+      },
+      {
+        "cost": 190,
+        "dmg": [
+          28,
+          28
+        ],
+        "rate": 1.0,
+        "range": 8.5,
+        "ramp": 0.25,
+        "bonus_vs": "undead"
+      },
+      {
+        "cost": 260,
+        "dmg": [
+          42,
+          42
+        ],
+        "rate": 1.0,
+        "range": 9.0,
+        "ramp": 0.3,
+        "bonus_vs": "undead"
+      }
     ],
     "branches": [
-      {"id": "sanctum", "accent": [1.0, 1.0, 0.8], "levels": [
-        {"cost": 320, "dmg": [58, 58], "rate": 1.0, "range": 9.5, "ramp": 0.3, "bonus_vs": "undead", "heal_allies": 18},
-        {"cost": 420, "dmg": [78, 78], "rate": 1.0, "range": 10.0, "ramp": 0.35, "bonus_vs": "undead", "heal_allies": 30}]},
-      {"id": "radiant_lance", "accent": [1.0, 0.8, 0.3], "attack": "lance", "levels": [
-        {"cost": 320, "dmg": [110, 150], "rate": 0.45, "range": 12.0, "bonus_vs": "undead"},
-        {"cost": 420, "dmg": [150, 210], "rate": 0.5, "range": 13.0, "bonus_vs": "undead"}]}
+      {
+        "id": "sanctum",
+        "accent": [
+          1.0,
+          1.0,
+          0.8
+        ],
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              58,
+              58
+            ],
+            "rate": 1.0,
+            "range": 9.5,
+            "ramp": 0.3,
+            "bonus_vs": "undead",
+            "heal_allies": 18
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              78,
+              78
+            ],
+            "rate": 1.0,
+            "range": 10.0,
+            "ramp": 0.35,
+            "bonus_vs": "undead",
+            "heal_allies": 30
+          }
+        ]
+      },
+      {
+        "id": "radiant_lance",
+        "accent": [
+          1.0,
+          0.8,
+          0.3
+        ],
+        "attack": "lance",
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              110,
+              150
+            ],
+            "rate": 0.45,
+            "range": 12.0,
+            "bonus_vs": "undead"
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              150,
+              210
+            ],
+            "rate": 0.5,
+            "range": 13.0,
+            "bonus_vs": "undead"
+          }
+        ],
+        "model_base": "env/building_tower_B_red"
+      }
     ]
   },
   "earth": {
-    "attack": "pulse", "dmg_type": "physical", "air": false, "element": "earth",
-    "model": {"base": "env/building_mine_red", "accent": [1.0, 0.55, 0.2], "scale": 1.0, "top": "rocks"},
+    "attack": "pulse",
+    "dmg_type": "physical",
+    "air": false,
+    "element": "earth",
+    "model": {
+      "base": "env/building_mine_red",
+      "accent": [
+        1.0,
+        0.55,
+        0.2
+      ],
+      "scale": 1.0,
+      "top": "rocks"
+    },
     "levels": [
-      {"cost": 120, "dmg": [16, 24], "rate": 0.35, "range": 5.5, "stun_chance": 0.1},
-      {"cost": 180, "dmg": [28, 40], "rate": 0.37, "range": 6.0, "stun_chance": 0.12},
-      {"cost": 250, "dmg": [44, 62], "rate": 0.4,  "range": 6.5, "stun_chance": 0.15}
+      {
+        "cost": 120,
+        "dmg": [
+          16,
+          24
+        ],
+        "rate": 0.35,
+        "range": 5.5,
+        "stun_chance": 0.1
+      },
+      {
+        "cost": 180,
+        "dmg": [
+          28,
+          40
+        ],
+        "rate": 0.37,
+        "range": 6.0,
+        "stun_chance": 0.12
+      },
+      {
+        "cost": 250,
+        "dmg": [
+          44,
+          62
+        ],
+        "rate": 0.4,
+        "range": 6.5,
+        "stun_chance": 0.15
+      }
     ],
     "branches": [
-      {"id": "quake_forge", "accent": [1.0, 0.4, 0.1], "levels": [
-        {"cost": 320, "dmg": [70, 96],  "rate": 0.42, "range": 7.0, "stun_chance": 0.3},
-        {"cost": 420, "dmg": [96, 130], "rate": 0.45, "range": 7.5, "stun_chance": 0.4}]},
-      {"id": "golem_pit", "accent": [0.7, 0.6, 0.5], "attack": "barracks", "levels": [
-        {"cost": 300, "soldiers": 1, "hp": 1800, "dmg": [40, 60], "armor": 50, "respawn": 14, "range": 8.0, "unit": "stone_golem"},
-        {"cost": 400, "soldiers": 1, "hp": 2800, "dmg": [60, 90], "armor": 60, "respawn": 12, "range": 8.5, "unit": "stone_golem"}]}
+      {
+        "id": "quake_forge",
+        "accent": [
+          1.0,
+          0.4,
+          0.1
+        ],
+        "levels": [
+          {
+            "cost": 320,
+            "dmg": [
+              70,
+              96
+            ],
+            "rate": 0.42,
+            "range": 7.0,
+            "stun_chance": 0.3
+          },
+          {
+            "cost": 420,
+            "dmg": [
+              96,
+              130
+            ],
+            "rate": 0.45,
+            "range": 7.5,
+            "stun_chance": 0.4
+          }
+        ]
+      },
+      {
+        "id": "golem_pit",
+        "accent": [
+          0.7,
+          0.6,
+          0.5
+        ],
+        "attack": "barracks",
+        "levels": [
+          {
+            "cost": 300,
+            "soldiers": 1,
+            "hp": 1800,
+            "dmg": [
+              40,
+              60
+            ],
+            "armor": 50,
+            "respawn": 14,
+            "range": 8.0,
+            "unit": "stone_golem"
+          },
+          {
+            "cost": 400,
+            "soldiers": 1,
+            "hp": 2800,
+            "dmg": [
+              60,
+              90
+            ],
+            "armor": 60,
+            "respawn": 12,
+            "range": 8.5,
+            "unit": "stone_golem"
+          }
+        ],
+        "model_base": "graveyard/crypt"
+      }
     ]
   },
   "wind": {
-    "attack": "pulse", "dmg_type": "physical", "air": true, "element": "wind",
-    "model": {"base": "env/building_windmill_red", "accent": [0.75, 0.95, 0.9], "scale": 0.85, "top": "none"},
+    "attack": "pulse",
+    "dmg_type": "physical",
+    "air": true,
+    "element": "wind",
+    "model": {
+      "base": "env/building_windmill_red",
+      "accent": [
+        0.75,
+        0.95,
+        0.9
+      ],
+      "scale": 0.85,
+      "top": "none"
+    },
     "levels": [
-      {"cost": 110, "dmg": [6, 10],  "rate": 0.4,  "range": 6.5, "knockback": 1.5, "air_bonus": 2.0},
-      {"cost": 160, "dmg": [10, 16], "rate": 0.42, "range": 7.0, "knockback": 2.0, "air_bonus": 2.0},
-      {"cost": 220, "dmg": [16, 24], "rate": 0.45, "range": 7.5, "knockback": 2.5, "air_bonus": 2.2}
+      {
+        "cost": 110,
+        "dmg": [
+          6,
+          10
+        ],
+        "rate": 0.4,
+        "range": 6.5,
+        "knockback": 1.5,
+        "air_bonus": 2.0
+      },
+      {
+        "cost": 160,
+        "dmg": [
+          10,
+          16
+        ],
+        "rate": 0.42,
+        "range": 7.0,
+        "knockback": 2.0,
+        "air_bonus": 2.0
+      },
+      {
+        "cost": 220,
+        "dmg": [
+          16,
+          24
+        ],
+        "rate": 0.45,
+        "range": 7.5,
+        "knockback": 2.5,
+        "air_bonus": 2.2
+      }
     ],
     "branches": [
-      {"id": "tornado_spire", "accent": [0.6, 0.9, 1.0], "levels": [
-        {"cost": 280, "dmg": [24, 34], "rate": 0.45, "range": 8.0, "knockback": 4.0, "air_bonus": 2.2},
-        {"cost": 360, "dmg": [32, 46], "rate": 0.5,  "range": 8.5, "knockback": 5.0, "air_bonus": 2.4}]},
-      {"id": "gale_spire", "accent": [0.9, 1.0, 0.8], "levels": [
-        {"cost": 280, "dmg": [30, 44], "rate": 0.6, "range": 9.0, "knockback": 1.0, "air_bonus": 3.5, "status": {"id": "slow", "duration": 2, "power": 0.4}},
-        {"cost": 360, "dmg": [42, 60], "rate": 0.65, "range": 9.5, "knockback": 1.0, "air_bonus": 4.0, "status": {"id": "slow", "duration": 2.5, "power": 0.45}}]}
+      {
+        "id": "tornado_spire",
+        "accent": [
+          0.6,
+          0.9,
+          1.0
+        ],
+        "levels": [
+          {
+            "cost": 280,
+            "dmg": [
+              24,
+              34
+            ],
+            "rate": 0.45,
+            "range": 8.0,
+            "knockback": 4.0,
+            "air_bonus": 2.2
+          },
+          {
+            "cost": 360,
+            "dmg": [
+              32,
+              46
+            ],
+            "rate": 0.5,
+            "range": 8.5,
+            "knockback": 5.0,
+            "air_bonus": 2.4
+          }
+        ]
+      },
+      {
+        "id": "gale_spire",
+        "accent": [
+          0.9,
+          1.0,
+          0.8
+        ],
+        "levels": [
+          {
+            "cost": 280,
+            "dmg": [
+              30,
+              44
+            ],
+            "rate": 0.6,
+            "range": 9.0,
+            "knockback": 1.0,
+            "air_bonus": 3.5,
+            "status": {
+              "id": "slow",
+              "duration": 2,
+              "power": 0.4
+            }
+          },
+          {
+            "cost": 360,
+            "dmg": [
+              42,
+              60
+            ],
+            "rate": 0.65,
+            "range": 9.5,
+            "knockback": 1.0,
+            "air_bonus": 4.0,
+            "status": {
+              "id": "slow",
+              "duration": 2.5,
+              "power": 0.45
+            }
+          }
+        ]
+      }
     ]
   },
   "crossbow": {
-    "attack": "projectile", "projectile": "bolt", "dmg_type": "physical", "air": true, "element": "physical",
-    "model": {"base": "env/building_archeryrange_red", "accent": [0.85, 0.75, 0.55], "scale": 0.85, "top": "ballista"},
+    "attack": "projectile",
+    "projectile": "bolt",
+    "dmg_type": "physical",
+    "air": true,
+    "element": "physical",
+    "model": {
+      "base": "env/building_archeryrange_red",
+      "accent": [
+        0.85,
+        0.75,
+        0.55
+      ],
+      "scale": 0.85,
+      "top": "ballista"
+    },
     "levels": [
-      {"cost": 90,  "dmg": [10, 14], "rate": 0.9, "range": 10.0, "pierce": 1},
-      {"cost": 140, "dmg": [16, 24], "rate": 0.95, "range": 10.5, "pierce": 1},
-      {"cost": 190, "dmg": [26, 36], "rate": 1.0, "range": 11.0, "pierce": 2}
+      {
+        "cost": 90,
+        "dmg": [
+          10,
+          14
+        ],
+        "rate": 0.9,
+        "range": 10.0,
+        "pierce": 1
+      },
+      {
+        "cost": 140,
+        "dmg": [
+          16,
+          24
+        ],
+        "rate": 0.95,
+        "range": 10.5,
+        "pierce": 1
+      },
+      {
+        "cost": 190,
+        "dmg": [
+          26,
+          36
+        ],
+        "rate": 1.0,
+        "range": 11.0,
+        "pierce": 2
+      }
     ],
     "branches": [
-      {"id": "ballista", "accent": [0.9, 0.6, 0.3], "levels": [
-        {"cost": 260, "dmg": [60, 90],  "rate": 0.6, "range": 13.0, "pierce": 5},
-        {"cost": 340, "dmg": [90, 130], "rate": 0.65, "range": 14.0, "pierce": 7}]},
-      {"id": "repeater", "accent": [0.8, 0.8, 0.9], "levels": [
-        {"cost": 260, "dmg": [18, 26], "rate": 3.0, "range": 10.5, "pierce": 1},
-        {"cost": 340, "dmg": [24, 34], "rate": 3.6, "range": 11.0, "pierce": 2}]}
+      {
+        "id": "ballista",
+        "accent": [
+          0.9,
+          0.6,
+          0.3
+        ],
+        "levels": [
+          {
+            "cost": 260,
+            "dmg": [
+              60,
+              90
+            ],
+            "rate": 0.6,
+            "range": 13.0,
+            "pierce": 5
+          },
+          {
+            "cost": 340,
+            "dmg": [
+              90,
+              130
+            ],
+            "rate": 0.65,
+            "range": 14.0,
+            "pierce": 7
+          }
+        ],
+        "model_base": "env/building_tower_catapult_red"
+      },
+      {
+        "id": "repeater",
+        "accent": [
+          0.8,
+          0.8,
+          0.9
+        ],
+        "levels": [
+          {
+            "cost": 260,
+            "dmg": [
+              18,
+              26
+            ],
+            "rate": 3.0,
+            "range": 10.5,
+            "pierce": 1
+          },
+          {
+            "cost": 340,
+            "dmg": [
+              24,
+              34
+            ],
+            "rate": 3.6,
+            "range": 11.0,
+            "pierce": 2
+          }
+        ]
+      }
     ]
   },
   "trap": {
-    "attack": "trap", "dmg_type": "physical", "air": false, "element": "physical",
-    "model": {"base": "env/building_scaffolding", "accent": [0.8, 0.5, 0.3], "scale": 0.9, "top": "spikes"},
+    "attack": "trap",
+    "dmg_type": "physical",
+    "air": false,
+    "element": "physical",
+    "model": {
+      "base": "env/building_scaffolding",
+      "accent": [
+        0.8,
+        0.5,
+        0.3
+      ],
+      "scale": 0.9,
+      "top": "spikes"
+    },
     "levels": [
-      {"cost": 80,  "dmg": [30, 40],  "rate": 0.25, "range": 7.0, "traps": 2},
-      {"cost": 120, "dmg": [50, 70],  "rate": 0.27, "range": 7.5, "traps": 3},
-      {"cost": 170, "dmg": [80, 110], "rate": 0.3,  "range": 8.0, "traps": 3}
+      {
+        "cost": 80,
+        "dmg": [
+          30,
+          40
+        ],
+        "rate": 0.25,
+        "range": 7.0,
+        "traps": 2
+      },
+      {
+        "cost": 120,
+        "dmg": [
+          50,
+          70
+        ],
+        "rate": 0.27,
+        "range": 7.5,
+        "traps": 3
+      },
+      {
+        "cost": 170,
+        "dmg": [
+          80,
+          110
+        ],
+        "rate": 0.3,
+        "range": 8.0,
+        "traps": 3
+      }
     ],
     "branches": [
-      {"id": "spike_pit", "accent": [0.9, 0.3, 0.2], "levels": [
-        {"cost": 230, "dmg": [140, 190], "rate": 0.32, "range": 8.5, "traps": 4},
-        {"cost": 300, "dmg": [200, 270], "rate": 0.35, "range": 9.0, "traps": 5}]},
-      {"id": "snare_pit", "accent": [0.5, 0.8, 0.4], "levels": [
-        {"cost": 230, "dmg": [80, 110],  "rate": 0.35, "range": 8.5, "traps": 4, "status": {"id": "root", "duration": 2.5, "power": 1}},
-        {"cost": 300, "dmg": [110, 150], "rate": 0.38, "range": 9.0, "traps": 5, "status": {"id": "root", "duration": 3.0, "power": 1}}]}
+      {
+        "id": "spike_pit",
+        "accent": [
+          0.9,
+          0.3,
+          0.2
+        ],
+        "levels": [
+          {
+            "cost": 230,
+            "dmg": [
+              140,
+              190
+            ],
+            "rate": 0.32,
+            "range": 8.5,
+            "traps": 4
+          },
+          {
+            "cost": 300,
+            "dmg": [
+              200,
+              270
+            ],
+            "rate": 0.35,
+            "range": 9.0,
+            "traps": 5
+          }
+        ]
+      },
+      {
+        "id": "snare_pit",
+        "accent": [
+          0.5,
+          0.8,
+          0.4
+        ],
+        "levels": [
+          {
+            "cost": 230,
+            "dmg": [
+              80,
+              110
+            ],
+            "rate": 0.35,
+            "range": 8.5,
+            "traps": 4,
+            "status": {
+              "id": "root",
+              "duration": 2.5,
+              "power": 1
+            }
+          },
+          {
+            "cost": 300,
+            "dmg": [
+              110,
+              150
+            ],
+            "rate": 0.38,
+            "range": 9.0,
+            "traps": 5,
+            "status": {
+              "id": "root",
+              "duration": 3.0,
+              "power": 1
+            }
+          }
+        ],
+        "model_base": "env/building_home_A_red"
+      }
     ]
   }
 }

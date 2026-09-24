@@ -206,7 +206,7 @@ func _free(p: Vector3, r: float) -> bool:
 
 
 func _mountains() -> void:
-	var tint := _c("ground").lightened(0.5)
+	var tint := Color(0.23, 0.21, 0.2)
 	var per := bounds.size.x * 2 + bounds.size.y * 2
 	var step := 7.0
 	var t := 0.0
@@ -312,6 +312,7 @@ func _lava_pool(p: Vector3) -> void:
 	m.emission = Color(1.0, 0.28, 0.02)
 	m.emission_energy_multiplier = 1.1
 	m.emission_texture = ModelLib.noise_tex("detail")
+	m.emission_operator = BaseMaterial3D.EMISSION_OP_MULTIPLY
 	mi.material_override = m
 	mi.scale = Vector3(1, 1, rng.randf_range(0.5, 1.0))
 	root.add_child(mi)

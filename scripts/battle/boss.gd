@@ -121,6 +121,7 @@ func _skill_tower_smash() -> bool:
 			best = t
 	if best == null:
 		return false
+	var tref := weakref(best)
 	var tower = best
 	_busy = 1.3
 	model.face_instant(tower.global_position)
@@ -128,7 +129,8 @@ func _skill_tower_smash() -> bool:
 	var tele := VFX.area_disc(battle.fx_root, tower.global_position, 2.2, Color(1, 0.1, 0.05))
 	get_tree().create_timer(1.0, false).timeout.connect(func():
 		if is_instance_valid(tele): tele.queue_free()
-		if not alive or not is_instance_valid(tower): return
+		tower = tref.get_ref()
+		if not alive or tower == null: return
 		VFX.lightning(battle.fx_root, global_position + Vector3(0, 4, 0), tower.global_position + Vector3(0, 2, 0), Color(1, 0.35, 0.1), 0.25, 0.3)
 		VFX.explosion(battle.fx_root, tower.global_position, 2.5, "fire")
 		tower.disable(7.0 + phase)

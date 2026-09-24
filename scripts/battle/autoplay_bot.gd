@@ -11,7 +11,8 @@ var _t := 0.0
 func setup(b: BattleController) -> void:
 	battle = b
 	battle.hero.auto_mode = true
-	Engine.time_scale = 3.0
+	battle.camera_rig.follow = battle.hero
+	Engine.time_scale = 3.0 if not "--realtime" in OS.get_cmdline_user_args() else 1.0
 	Events.wave_started.connect(func(i, _n): _log("wave %d start" % (i + 1)))
 	Events.enemy_leaked.connect(func(e, n): _log("leak %s -%d" % [e.unit_id, n]))
 	Events.boss_phase_changed.connect(func(_b, p): _log("boss phase %d" % p))
@@ -56,8 +57,14 @@ func _build() -> void:
 	free.sort_custom(func(a, b): return _slot_value(a) > _slot_value(b))
 	if battle.towers.size() >= 7 and battle.towers.any(func(t): return t.can_upgrade() or t.needs_branch_choice()):
 		return
+	# Rotate through a sensible core (air-capable damage + blockers) first.
+	var core := ["archer", "mage", "soldier", "artillery", "crossbow", "shadow", "lightning", "ice", "fire", "poison"]
+	var prefs: Array = core.filter(func(t): return t in avail)
+	for t in avail:
+		if not t in prefs:
+			prefs.append(t)
 	for s in free:
-		var id: String = avail[battle.towers.size() % avail.size()]
+		var id: String = prefs[battle.towers.size() % prefs.size()]
 		var cost := int(DB.towers[id].levels[0].cost)
 		if battle.gold >= cost + 20:
 			battle.build_tower(s, id)

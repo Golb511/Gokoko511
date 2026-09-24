@@ -309,6 +309,7 @@ func _lava(p: Vector3) -> void:
 	m.emission = Color(1.0, 0.3, 0.03)
 	m.emission_energy_multiplier = 1.2
 	m.emission_texture = ModelLib.noise_tex("detail")
+	m.emission_operator = BaseMaterial3D.EMISSION_OP_MULTIPLY
 	mi.material_override = m
 	add_child(mi)
 	mi.position = p + Vector3(0, 0.03, 0)

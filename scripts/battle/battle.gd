@@ -28,6 +28,7 @@ var xp_earned := 0
 var ended := false
 var elapsed := 0.0
 var show_damage_numbers := true
+var damage_log: Dictionary = {}     # source -> damage dealt to enemies (balance telemetry)
 var autoplay := false
 var _autoplay_bot: AutoplayBot
 
@@ -177,6 +178,7 @@ func spawn_enemy(id: String, route_idx: int, progress := 0.0, summoned := false,
 	var mult := hp_mult if hp_mult > 0.0 else waves.hp_mult * (1.0 + maxi(0, waves.current) * 0.06)
 	e.setup(self, id, routes[clampi(route_idx, 0, routes.size() - 1)], route_idx, mult, progress)
 	e.summoned = summoned
+	e.gold = int(ceil(e.gold * (1.0 + DB.stage_order.find(stage_id) * 0.04)))
 	if summoned:
 		e.gold = maxi(1, e.gold / 2)
 		e.xp = maxi(1, e.xp / 2)
@@ -379,4 +381,8 @@ func _end(victory: bool) -> void:
 	Events.battle_ended.emit(victory, result)
 	if autoplay:
 		print("AUTOPLAY_RESULT ", JSON.stringify({"victory": victory, "lives": lives, "kills": kills, "time": elapsed, "wave": waves.current + 1, "stars": result.get("stars", 0), "loot": loot.size()}))
+		var dl := {}
+		for k in damage_log:
+			dl[k] = int(damage_log[k])
+		print("DAMAGE ", JSON.stringify(dl))
 		get_tree().create_timer(0.5, true).timeout.connect(get_tree().quit)

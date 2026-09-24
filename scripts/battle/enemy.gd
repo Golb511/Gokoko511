@@ -198,9 +198,10 @@ func _role_skills() -> void:
 			if not t.is_disabled():
 				model.face_instant(t.global_position)
 				_busy = model.play_action("special", 1.0) * 0.8
-				var tower = t
+				var tref := weakref(t)
 				get_tree().create_timer(0.45, false).timeout.connect(func():
-					if alive and is_instance_valid(tower):
+					var tower = tref.get_ref()
+					if alive and tower != null:
 						tower.disable(float(sk.disable))
 						VFX.explosion(battle.fx_root, tower.global_position, 1.6, "earth")
 						Sfx.play("explosion", -6.0))
@@ -283,14 +284,10 @@ func _fight(delta: float) -> void:
 		model.face_towards(blocker.global_position, delta)
 	if attack_cd <= 0.0:
 		attack_cd = 1.0 / maxf(0.1, attack_rate)
-		var tgt := blocker
 		_busy = 0.35
 		if model:
 			model.play_action("attack", 1.1)
-		get_tree().create_timer(0.3, false).timeout.connect(func():
-			if alive and is_instance_valid(tgt) and tgt.alive and not attack_miss():
-				tgt.take_damage(roll_damage(), "physical", self)
-				Sfx.play("hit", -12.0))
+		get_tree().create_timer(0.3, false).timeout.connect(_melee_hit.bind(weakref(blocker)))
 	elif model and not model.is_locked():
 		model.play_loop("idle")
 
@@ -305,15 +302,25 @@ func _shoot(delta: float) -> void:
 		model.face_towards(shoot_target.global_position, delta)
 	if attack_cd <= 0.0:
 		attack_cd = 1.0 / maxf(0.1, attack_rate)
-		var tgt := shoot_target
 		_busy = 0.4
 		if model:
 			model.play_action("attack", 1.2)
-		get_tree().create_timer(0.3, false).timeout.connect(func():
-			if alive and is_instance_valid(tgt) and tgt.alive:
-				battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": "physical" if projectile_type == "bolt" else "shadow", "speed": 14.0, "team": Team.ENEMY, "source": self}))
+		get_tree().create_timer(0.3, false).timeout.connect(_ranged_shot.bind(weakref(shoot_target)))
 	elif model and not model.is_locked():
 		model.play_loop("idle")
+
+
+func _melee_hit(ref: WeakRef) -> void:
+	var tgt: Unit = ref.get_ref()
+	if alive and tgt != null and tgt.alive and not attack_miss():
+		tgt.take_damage(roll_damage(), "physical", self)
+		Sfx.play("hit", -12.0)
+
+
+func _ranged_shot(ref: WeakRef) -> void:
+	var tgt: Unit = ref.get_ref()
+	if alive and tgt != null and tgt.alive:
+		battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": "physical" if projectile_type == "bolt" else "shadow", "speed": 14.0, "team": Team.ENEMY, "source": self})
 
 
 func _retreat(delta: float) -> void:

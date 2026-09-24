@@ -28,8 +28,8 @@ void fragment() {
 	vec3 col = mix(color_a, color_b, smoothstep(0.35, 0.7, big * 0.7 + mid * 0.3));
 	col *= 0.75 + 0.5 * fine;
 	// pebbles
-	float peb = smoothstep(0.12, 0.02, cells) * step(0.45, mid);
-	col = mix(col, col * 1.7 + vec3(0.03), peb);
+	float peb = smoothstep(0.1, 0.02, cells) * smoothstep(0.45, 0.6, mid);
+	col = mix(col, col * 1.35 + vec3(0.015), peb * 0.7);
 	col = mix(col, vec3(0.1, 0.16, 0.06), moss * smoothstep(0.45, 0.7, mid));
 	col = mix(col, vec3(0.78, 0.82, 0.9), snow * smoothstep(0.3, 0.6, big + fine * 0.3));
 	float ridge = 1.0 - abs(mid * 2.0 - 1.0);

@@ -23,7 +23,8 @@ func _process(delta: float) -> void:
 		_lunge = maxf(0.0, _lunge - delta * 2.5)
 		body.rotation.x = -_lunge * 0.4
 	for i in tail.size():
-		tail[i].position.x = sin(_time * 2.0 - i * 0.5) * 0.06 * i
+		tail[i].rotation.y = sin(_time * 1.8 - i * 0.5) * 0.22
+		tail[i].rotation.x = sin(_time * 1.3) * 0.06
 
 
 func play_loop(_logical: String, speed: float = 1.0) -> void:

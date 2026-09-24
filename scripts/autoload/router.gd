@@ -18,6 +18,7 @@ var current: String = ""
 var _fade: ColorRect
 var _layer: CanvasLayer
 var _busy := false
+var _fps: Label
 
 
 func _ready() -> void:
@@ -30,6 +31,19 @@ func _ready() -> void:
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_layer.add_child(_fade)
+	_fps = Label.new()
+	_fps.position = Vector2(8, 70)
+	_fps.add_theme_font_size_override("font_size", 16)
+	_fps.add_theme_color_override("font_color", Color(0.6, 1, 0.6))
+	_fps.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_layer.add_child(_fps)
+
+
+func _process(_d: float) -> void:
+	var show := bool(Game.setting("show_fps", false))
+	_fps.visible = show
+	if show:
+		_fps.text = "FPS %d" % Engine.get_frames_per_second()
 
 
 func goto(scene_key: String) -> void:

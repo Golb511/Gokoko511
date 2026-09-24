@@ -19,9 +19,9 @@ static func _membrane_mat(col: Color, glow: Color) -> StandardMaterial3D:
 	m.rim_enabled = true
 	m.rim = 0.6
 	m.emission_enabled = true
-	m.emission = glow * 0.25
+	m.emission = glow * 0.08
 	m.backlight_enabled = true
-	m.backlight = glow * 0.6
+	m.backlight = glow * 0.22
 	return m
 
 
@@ -92,12 +92,57 @@ static func _wing(parent: Node3D, side: float, span: float, mem: Material, bone_
 		var ang := lerpf(0.15, 1.45, t)
 		var len := span * lerpf(1.0, 0.55, t)
 		var bone := CylinderMesh.new()
-		bone.top_radius = 0.015 * span
-		bone.bottom_radius = 0.04 * span
+		bone.top_radius = 0.004 * span
+		bone.bottom_radius = 0.014 * span
 		bone.height = len
 		var bm := _part(pivot, bone, bone_mat, Vector3(cos(ang) * len * 0.5, 0.02, -sin(ang) * len * 0.5))
 		bm.rotation = Vector3(0, ang, -PI / 2)
 	return pivot
+
+
+## Lofted tube mesh along a smoothed spine. radii: [rx, ry] per point.
+static func loft(points: Array, radii: Array, rings_per_seg := 6, sides := 16) -> ArrayMesh:
+	var sp: Array[Vector3] = []
+	var sr: Array[Vector2] = []
+	for i in points.size() - 1:
+		var p0: Vector3 = points[maxi(0, i - 1)]
+		var p1: Vector3 = points[i]
+		var p2: Vector3 = points[i + 1]
+		var p3: Vector3 = points[mini(points.size() - 1, i + 2)]
+		for k in rings_per_seg:
+			var t := float(k) / rings_per_seg
+			sp.append(p1.cubic_interpolate(p2, p0, p3, t))
+			var ra: Vector2 = radii[i]
+			var rb: Vector2 = radii[i + 1]
+			sr.append(ra.lerp(rb, t * t * (3.0 - 2.0 * t)))
+	sp.append(points[-1])
+	sr.append(radii[-1])
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var n := sp.size()
+	var rings: Array = []
+	for i in n:
+		var tan := (sp[mini(n - 1, i + 1)] - sp[maxi(0, i - 1)]).normalized()
+		var up := Vector3.UP if absf(tan.dot(Vector3.UP)) < 0.95 else Vector3.FORWARD
+		var nx := tan.cross(up).normalized()
+		var ny := nx.cross(tan).normalized()
+		var ring: Array = []
+		for k in sides + 1:
+			var a := TAU * k / sides
+			var off := nx * cos(a) * sr[i].x + ny * sin(a) * sr[i].y
+			ring.append([sp[i] + off, off.normalized(), Vector2(float(k) / sides, float(i) / (n - 1))])
+		rings.append(ring)
+	for i in n - 1:
+		for k in sides:
+			var a: Array = rings[i][k]
+			var b: Array = rings[i][k + 1]
+			var c: Array = rings[i + 1][k + 1]
+			var d: Array = rings[i + 1][k]
+			for v in [a, b, c, a, c, d]:
+				st.set_normal(v[1])
+				st.set_uv(v[2])
+				st.add_vertex(v[0])
+	return st.commit()
 
 
 static func dragon(scale: float = 1.0) -> Node3D:
@@ -106,8 +151,8 @@ static func dragon(scale: float = 1.0) -> Node3D:
 	var body_root := Node3D.new()
 	root.add_child(body_root)
 	root.body = body_root
-	var scales := _scale_mat(Color(0.35, 0.07, 0.04), Color(1.0, 0.4, 0.05), "dragon_scales")
-	var belly := _scale_mat(Color(0.55, 0.35, 0.18), Color(1.0, 0.5, 0.1), "dragon_belly")
+	var scales := _scale_mat(Color(0.3, 0.06, 0.035), Color(1.0, 0.4, 0.05), "dragon_scales")
+	var belly := _scale_mat(Color(0.5, 0.3, 0.15), Color(1.0, 0.5, 0.1), "dragon_belly")
 	var horn := _scale_mat(Color(0.12, 0.1, 0.09), Color(1, 0.3, 0.05), "dragon_horn")
 	var eye := StandardMaterial3D.new()
 	eye.albedo_color = Color(1, 0.8, 0.2)
@@ -117,46 +162,70 @@ static func dragon(scale: float = 1.0) -> Node3D:
 	root.materials.append(scales)
 	root.materials.append(belly)
 	root.materials.append(horn)
-	# torso
-	_part(body_root, _sphere(1.0), scales, Vector3(0, 0, 0), Vector3(0.95, 0.8, 1.7))
-	_part(body_root, _sphere(0.9), belly, Vector3(0, -0.25, 0.2), Vector3(0.8, 0.6, 1.4))
-	_part(body_root, _sphere(0.85), scales, Vector3(0, 0.15, 1.1), Vector3(1.0, 0.9, 1.0))
-	# neck
-	var neck_pts := [Vector3(0, 0.45, 1.8), Vector3(0, 0.85, 2.3), Vector3(0, 1.2, 2.75), Vector3(0, 1.45, 3.2)]
-	for i in neck_pts.size():
-		_part(body_root, _sphere(0.5 - i * 0.07), scales, neck_pts[i], Vector3(1, 1, 1.2))
-		_part(body_root, _cone(0.12, 0.45), horn, neck_pts[i] + Vector3(0, 0.45 - i * 0.05, -0.1), Vector3.ONE, Vector3(-0.5, 0, 0))
-	# head
+	# Body + neck + head as one smooth lofted tube.
+	var spine := [Vector3(0, 0.1, -1.6), Vector3(0, 0.05, -0.6), Vector3(0, 0.1, 0.5), Vector3(0, 0.35, 1.5), Vector3(0, 0.9, 2.3), Vector3(0, 1.4, 2.9), Vector3(0, 1.62, 3.45), Vector3(0, 1.58, 4.0), Vector3(0, 1.45, 4.6), Vector3(0, 1.38, 4.95)]
+	var rad := [Vector2(0.5, 0.45), Vector2(0.85, 0.75), Vector2(0.95, 0.85), Vector2(0.62, 0.6), Vector2(0.42, 0.42), Vector2(0.33, 0.35), Vector2(0.4, 0.36), Vector2(0.3, 0.26), Vector2(0.2, 0.15), Vector2(0.06, 0.05)]
+	var torso := MeshInstance3D.new()
+	torso.mesh = loft(spine, rad)
+	torso.material_override = scales
+	body_root.add_child(torso)
+	# Belly plates
+	var bl := MeshInstance3D.new()
+	bl.mesh = loft([Vector3(0, -0.35, -1.2), Vector3(0, -0.55, 0.0), Vector3(0, -0.35, 1.3), Vector3(0, 0.2, 2.2)], [Vector2(0.4, 0.2), Vector2(0.7, 0.35), Vector2(0.5, 0.3), Vector2(0.25, 0.15)])
+	bl.material_override = belly
+	body_root.add_child(bl)
+	# Head details: jaw, horns, eyes, brow ridges
 	var head := Node3D.new()
-	head.position = Vector3(0, 1.6, 3.7)
+	head.position = Vector3(0, 1.58, 4.0)
 	body_root.add_child(head)
 	root.head = head
-	_part(head, _sphere(0.42), scales, Vector3(0, 0, 0), Vector3(1.0, 0.8, 1.3))
-	_part(head, _sphere(0.3), scales, Vector3(0, -0.05, 0.5), Vector3(0.9, 0.6, 1.5))
-	_part(head, _sphere(0.26), belly, Vector3(0, -0.28, 0.4), Vector3(0.85, 0.35, 1.5))
+	var jaw := MeshInstance3D.new()
+	jaw.mesh = loft([Vector3(0, -0.2, -0.4), Vector3(0, -0.28, 0.2), Vector3(0, -0.22, 0.75)], [Vector2(0.25, 0.1), Vector2(0.2, 0.08), Vector2(0.06, 0.04)])
+	jaw.material_override = belly
+	head.add_child(jaw)
 	for s in [-1.0, 1.0]:
-		_part(head, _cone(0.1, 0.9), horn, Vector3(0.2 * s, 0.3, -0.35), Vector3.ONE, Vector3(-2.2, 0, 0.35 * s))
-		_part(head, _cone(0.06, 0.5), horn, Vector3(0.32 * s, 0.1, -0.25), Vector3.ONE, Vector3(-2.0, 0, 0.8 * s))
-		_part(head, _sphere(0.06), eye, Vector3(0.22 * s, 0.12, 0.28))
-	# tail
-	var prev := Vector3(0, 0, -1.4)
-	for i in 9:
-		var r := 0.55 * pow(0.8, i)
-		var p := prev + Vector3(0, -0.02 * i, -0.55 + i * 0.01)
-		var seg := _part(body_root, _sphere(r), scales, p, Vector3(1, 0.9, 1.3))
-		root.tail.append(seg)
-		_part(seg, _cone(0.1, 0.35), horn, Vector3(0, r * 0.9 / 0.9, 0), Vector3(1, 1, 1), Vector3(-0.4, 0, 0))
-		prev = p
-	_part(body_root, _cone(0.3, 0.8), horn, prev + Vector3(0, 0, -0.4), Vector3(1, 0.3, 1), Vector3(-PI / 2, 0, 0))
-	# legs
+		var h1 := MeshInstance3D.new()
+		h1.mesh = loft([Vector3(0.18 * s, 0.2, -0.35), Vector3(0.3 * s, 0.45, -0.8), Vector3(0.35 * s, 0.5, -1.3), Vector3(0.32 * s, 0.35, -1.6)], [Vector2(0.09, 0.09), Vector2(0.07, 0.07), Vector2(0.04, 0.04), Vector2(0.005, 0.005)], 5, 8)
+		h1.material_override = horn
+		head.add_child(h1)
+		var h2 := MeshInstance3D.new()
+		h2.mesh = loft([Vector3(0.3 * s, 0.05, -0.2), Vector3(0.55 * s, 0.1, -0.5), Vector3(0.62 * s, 0.05, -0.8)], [Vector2(0.05, 0.05), Vector2(0.03, 0.03), Vector2(0.003, 0.003)], 5, 8)
+		h2.material_override = horn
+		head.add_child(h2)
+		_part(head, _sphere(0.055), eye, Vector3(0.2 * s, 0.1, 0.12))
+		_part(head, _sphere(0.08), scales, Vector3(0.2 * s, 0.17, 0.08), Vector3(1.2, 0.5, 1.4))
+	# Dorsal spines along the back and neck
+	for i in 14:
+		var t := float(i) / 13.0
+		var pz := lerpf(-1.4, 3.2, t)
+		var y := 0.85 if pz < 1.2 else lerpf(0.85, 1.9, (pz - 1.2) / 2.0)
+		var h := lerpf(0.35, 0.18, absf(t - 0.35) * 1.5)
+		_part(body_root, _cone(0.09, h), horn, Vector3(0, y, pz), Vector3.ONE, Vector3(-0.5, 0, 0))
+	# Tail: separate lofted piece so it can sway from its base.
+	var tail_pivot := Node3D.new()
+	tail_pivot.position = Vector3(0, 0.1, -1.5)
+	body_root.add_child(tail_pivot)
+	var tail := MeshInstance3D.new()
+	tail.mesh = loft([Vector3(0, 0, 0.1), Vector3(0, -0.05, -1.2), Vector3(0.1, 0.0, -2.6), Vector3(0, 0.1, -4.0), Vector3(-0.1, 0.15, -5.2)], [Vector2(0.48, 0.42), Vector2(0.32, 0.3), Vector2(0.2, 0.18), Vector2(0.1, 0.09), Vector2(0.02, 0.02)])
+	tail.material_override = scales
+	tail_pivot.add_child(tail)
+	_part(tail_pivot, _cone(0.28, 0.7), horn, Vector3(-0.1, 0.15, -5.4), Vector3(1, 0.25, 1), Vector3(-PI / 2, 0, 0))
+	for i in 6:
+		_part(tail_pivot, _cone(0.07, 0.22), horn, Vector3(0, 0.35 - i * 0.05, -0.6 - i * 0.8), Vector3.ONE, Vector3(-0.6, 0, 0))
+	root.tail.append(tail_pivot)
+	# Legs (lofted, clawed, folded under in flight)
 	for s in [-1.0, 1.0]:
-		for z in [0.9, -0.8]:
-			var leg := _part(body_root, CapsuleMesh.new(), scales, Vector3(0.65 * s, -0.7, z), Vector3(0.35, 0.5, 0.35), Vector3(0.6, 0, 0))
-			_part(leg, _cone(0.15, 0.5), horn, Vector3(0, -1.1, 0.3), Vector3.ONE * 1.5, Vector3(1.2, 0, 0))
-	# wings
-	var mem := _membrane_mat(Color(0.18, 0.04, 0.03), Color(1.0, 0.35, 0.05))
-	root.wing_l = _wing(body_root, -1.0, 4.2, mem, horn, Vector3(-0.6, 0.6, 1.0))
-	root.wing_r = _wing(body_root, 1.0, 4.2, mem, horn, Vector3(0.6, 0.6, 1.0))
+		for z in [0.9, -0.9]:
+			var leg := MeshInstance3D.new()
+			leg.mesh = loft([Vector3(0.55 * s, -0.2, z), Vector3(0.75 * s, -0.7, z + 0.2), Vector3(0.7 * s, -1.0, z - 0.25), Vector3(0.72 * s, -1.15, z + 0.1)], [Vector2(0.24, 0.24), Vector2(0.16, 0.16), Vector2(0.11, 0.11), Vector2(0.08, 0.06)], 5, 10)
+			leg.material_override = scales
+			body_root.add_child(leg)
+			for c in 3:
+				_part(body_root, _cone(0.035, 0.18), horn, Vector3(0.72 * s + (c - 1) * 0.06, -1.18, z + 0.18), Vector3.ONE, Vector3(1.4, 0, 0))
+	# Wings
+	var mem := _membrane_mat(Color(0.16, 0.035, 0.025), Color(1.0, 0.35, 0.05))
+	root.wing_l = _wing(body_root, -1.0, 4.4, mem, horn, Vector3(-0.55, 0.7, 1.0))
+	root.wing_r = _wing(body_root, 1.0, 4.4, mem, horn, Vector3(0.55, 0.7, 1.0))
 	root.flap_speed = 3.2
 	root.scale = Vector3.ONE * scale
 	for mi in root.find_children("*", "MeshInstance3D", true, false):

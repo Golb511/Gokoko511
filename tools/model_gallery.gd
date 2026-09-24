@@ -42,10 +42,10 @@ func _ready() -> void:
 		p.scale = Vector3.ONE * 1.6
 		x += 3.4
 	VFX.torch_flame(self, Vector3(-9, 0.5, 2))
-	var d := ProceduralCreatures.dragon(0.8)
+	var d := ProceduralCreatures.dragon(0.9)
 	add_child(d)
-	d.position = Vector3(8, 3, -2)
-	d.rotation.y = -0.8
+	d.position = Vector3(3.5, 3.2, 2)
+	d.rotation.y = -1.2
 	var cam := Camera3D.new()
 	add_child(cam)
 	cam.fov = 45

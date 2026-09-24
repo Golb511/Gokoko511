@@ -113,9 +113,10 @@ func _engage(delta: float) -> void:
 		_busy = 0.3
 		if model:
 			model.play_action("attack", 1.1)
-		var tgt := target
+		var tref := weakref(target)
 		get_tree().create_timer(0.28, false).timeout.connect(func():
-			if not alive or not is_instance_valid(tgt) or not tgt.alive: return
+			var tgt = tref.get_ref()
+			if not alive or tgt == null or not tgt.alive: return
 			if projectile != "":
 				battle.spawn_projectile(global_position + Vector3(0, 0.5, 0), tgt, {"type": projectile, "damage": roll_damage(), "dmg_type": "fire", "speed": 16.0, "team": Team.PLAYER, "source": self})
 			else:
