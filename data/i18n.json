@@ -1,476 +1,1858 @@
 {
-  "game.title": ["SHADOW CROWN", "تاج الظل"],
-  "game.subtitle": ["ETERNAL SIEGE", "الحصار الأبدي"],
-  "menu.start": ["Begin Your Journey", "ابدأ رحلتك الآن"],
-  "menu.continue": ["Continue", "متابعة"],
-  "menu.settings": ["Settings", "الإعدادات"],
-  "menu.quit": ["Quit", "خروج"],
-  "menu.tap": ["Tap to begin", "اضغط للبدء"],
-  "nav.heroes": ["Heroes", "الأبطال"],
-  "nav.missions": ["Missions", "المهام"],
-  "nav.shop": ["Shop", "متجر"],
-  "nav.arsenal": ["Arsenal", "الترسانة"],
-  "nav.achievements": ["Achievements", "الإنجازات"],
-  "nav.guild": ["Guild", "النقابة"],
-  "nav.more": ["More", "المزيد"],
-  "nav.campaign": ["Campaign", "حملة"],
-  "nav.portal": ["The Gate", "البوابة"],
-  "nav.back": ["Back", "رجوع"],
-  "nav.map": ["World Map", "خريطة العالم"],
-  "ui.player": ["PLAYER", "اللاعب"],
-  "ui.level": ["Level", "المستوى"],
-  "ui.lv": ["Lv.", "مستوى"],
-  "ui.gold": ["Gold", "ذهب"],
-  "ui.gems": ["Gems", "جواهر"],
-  "ui.energy": ["Energy", "طاقة"],
-  "ui.stars": ["Stars", "نجوم"],
-  "ui.xp": ["XP", "خبرة"],
-  "ui.close": ["Close", "إغلاق"],
-  "ui.confirm": ["Confirm", "تأكيد"],
-  "ui.cancel": ["Cancel", "إلغاء"],
-  "ui.buy": ["Buy", "شراء"],
-  "ui.claim": ["Claim", "استلام"],
-  "ui.claimed": ["Claimed", "تم الاستلام"],
-  "ui.locked": ["Locked", "مقفل"],
-  "ui.unlock": ["Unlock", "فتح"],
-  "ui.play": ["Play", "العب"],
-  "ui.select": ["Select", "اختيار"],
-  "ui.selected": ["Selected", "مختار"],
-  "ui.all": ["All", "الكل"],
-  "ui.not_enough": ["Not enough resources", "الموارد غير كافية"],
-  "ui.not_enough_energy": ["Not enough energy", "الطاقة غير كافية"],
-  "ui.inventory_full": ["Inventory full", "الحقيبة ممتلئة"],
-  "ui.saved": ["Progress saved", "تم حفظ التقدم"],
-  "ui.stage": ["Stage", "المرحلة"],
-  "ui.boss_stage": ["Boss Stage", "مرحلة الزعيم"],
-  "ui.recommended": ["Recommended power", "القوة الموصى بها"],
-  "ui.waves": ["Waves", "الموجات"],
-  "ui.enemies": ["Enemies", "الأعداء"],
-  "ui.towers": ["Towers", "الأبراج"],
-  "ui.hero": ["Hero", "البطل"],
-  "ui.power": ["Power", "القوة"],
-  "ui.skills": ["Skills", "المهارات"],
-  "ui.skill_tree": ["Skill Tree", "شجرة المهارات"],
-  "ui.equipment": ["Equipment", "المعدات"],
-  "ui.stats": ["Stats", "الإحصائيات"],
-  "ui.quick_equip": ["Quick Equip", "تجهيز سريع"],
-  "ui.equip": ["Equip", "تجهيز"],
-  "ui.unequip": ["Unequip", "خلع"],
-  "ui.upgrade": ["Upgrade", "تطوير"],
-  "ui.sell": ["Sell", "بيع"],
-  "ui.delete": ["Delete", "حذف"],
-  "ui.compare": ["Compare", "مقارنة"],
-  "ui.socket": ["Socket Gem", "ترصيع جوهرة"],
-  "ui.sockets": ["Sockets", "فتحات"],
-  "ui.quality": ["Quality", "الجودة"],
-  "ui.value": ["Value", "القيمة"],
-  "ui.rarity": ["Rarity", "الندرة"],
-  "ui.damage": ["Damage", "الضرر"],
-  "ui.defense": ["Defense", "الدفاع"],
-  "ui.bonuses": ["Bonuses", "المكافآت"],
-  "ui.equipped": ["Equipped", "مُجهّز"],
-  "ui.materials": ["Materials", "المواد"],
-  "ui.empty_slot": ["Empty", "فارغ"],
-  "ui.skill_points": ["Skill points", "نقاط المهارة"],
-  "ui.rank": ["Rank", "الرتبة"],
-  "ui.cooldown": ["Cooldown", "وقت التهدئة"],
-  "ui.energy_cost": ["Energy", "الطاقة"],
-  "ui.ultimate": ["Ultimate", "القدرة الخارقة"],
-  "ui.daily_offers": ["Daily Offers", "عروض يومية"],
-  "ui.limited_offers": ["Limited Offers", "عروض محدودة"],
-  "ui.ends_in": ["Ends in", "ينتهي خلال"],
-  "ui.daily_rewards": ["Daily Rewards", "المكافآت اليومية"],
-  "ui.day": ["Day", "اليوم"],
-  "ui.daily_quests": ["Daily Quests", "المهام اليومية"],
-  "ui.language": ["Language", "اللغة"],
-  "ui.music": ["Music", "الموسيقى"],
-  "ui.sfx": ["Sound Effects", "المؤثرات الصوتية"],
-  "ui.graphics": ["Graphics Quality", "جودة الرسومات"],
-  "ui.low": ["Low", "منخفضة"],
-  "ui.medium": ["Medium", "متوسطة"],
-  "ui.high": ["High", "عالية"],
-  "ui.ultra": ["Ultra", "فائقة"],
-  "ui.shadows": ["Real-time Shadows", "الظلال الحية"],
-  "ui.fog": ["Volumetric Fog", "الضباب الحجمي"],
-  "ui.camera_speed": ["Camera Speed", "سرعة الكاميرا"],
-  "ui.show_fps": ["Show FPS", "عرض الإطارات"],
-  "ui.reset_save": ["Reset Progress", "إعادة ضبط التقدم"],
-  "ui.reset_confirm": ["Erase all progress? This cannot be undone.", "هل تريد مسح كل التقدم؟ لا يمكن التراجع."],
-  "ui.new": ["NEW", "جديد"],
-  "ui.reward": ["Reward", "المكافأة"],
-  "ui.progress": ["Progress", "التقدم"],
-  "ui.tier": ["Tier", "المستوى"],
-  "ui.members": ["Members", "الأعضاء"],
-  "ui.perks": ["Guild Perks", "امتيازات النقابة"],
-  "ui.donate": ["Donate 1000 Gold", "تبرع بـ 1000 ذهب"],
-  "ui.guild_level": ["Guild Level", "مستوى النقابة"],
-  "ui.guild_name": ["Order of the Black Flame", "أخوية اللهب الأسود"],
-  "ui.guild_desc": ["Your guildmates are AI companions who fight alongside your legend. Donate gold to strengthen the order.", "رفاقك في النقابة رفاق ذكاء اصطناعي يقاتلون إلى جانب أسطورتك. تبرع بالذهب لتقوية الأخوية."],
-  "ui.gold_pack": ["Gold Pack", "حزمة ذهب"],
-  "ui.gem_pack": ["Gem Pack", "حزمة جواهر"],
-  "ui.iap_offline": ["Store not connected in this build — granted as a test purchase.", "المتجر غير متصل في هذه النسخة — تمت الإضافة كشراء تجريبي."],
-  "ui.refill_energy": ["Refill Energy", "إعادة ملء الطاقة"],
-  "ui.opened_chest": ["Chest opened!", "تم فتح الصندوق!"],
-  "ui.hero_level_up": ["Hero level up!", "ارتقى البطل مستوى!"],
-  "ui.player_level_up": ["Player level up!", "ارتقيت مستوى!"],
-  "ui.unlocked_hero": ["New hero unlocked", "تم فتح بطل جديد"],
-  "ui.compare_title": ["Compared to equipped", "مقارنة بالمُجهّز"],
-  "ui.no_items": ["No items", "لا توجد عناصر"],
-  "ui.choose_gem": ["Choose a gem to socket", "اختر جوهرة للترصيع"],
-  "ui.no_gems": ["No gems available", "لا توجد جواهر"],
-  "ui.coming_soon": ["Coming soon", "قريباً"],
-  "ui.max": ["MAX", "الحد الأقصى"],
-  "ui.requires": ["Requires", "يتطلب"],
-  "ui.cost": ["Cost", "التكلفة"],
-  "ui.fps": ["FPS", "إطار/ث"],
-  "ui.controls": ["Controls", "التحكم"],
-  "ui.controls_text": ["Tap a build spot to construct towers. Tap a tower to upgrade or sell. Select your hero (portrait or tap), then tap the ground to move. Right-click also moves the hero on PC. Keys 1-4 and R cast abilities, Q/W/E/T cast global powers, Space calls the next wave, drag or WASD pans, wheel/pinch zooms.", "اضغط على موقع بناء لإنشاء برج. اضغط على البرج لتطويره أو بيعه. اختر بطلك (الصورة أو بالضغط عليه) ثم اضغط على الأرض لتحريكه. زر الفأرة الأيمن يحرك البطل على الكمبيوتر. المفاتيح 1-4 و R للقدرات، Q/W/E/T للقدرات العامة، المسافة للموجة التالية، السحب أو WASD لتحريك الكاميرا، العجلة أو القرص للتقريب."],
-
-  "battle.wave": ["Wave", "الموجة"],
-  "battle.next_wave": ["Call Next Wave", "استدعاء الموجة التالية"],
-  "battle.start": ["Start Battle", "ابدأ المعركة"],
-  "battle.paused": ["Paused", "متوقف مؤقتاً"],
-  "battle.resume": ["Resume", "استئناف"],
-  "battle.restart": ["Restart", "إعادة"],
-  "battle.quit": ["Quit to Map", "العودة للخريطة"],
-  "battle.victory": ["VICTORY", "النصر"],
-  "battle.defeat": ["DEFEAT", "الهزيمة"],
-  "battle.defeat_text": ["The citadel has fallen. Rise again, champion.", "لقد سقطت القلعة. انهض من جديد أيها البطل."],
-  "battle.continue": ["Continue", "متابعة"],
-  "battle.retry": ["Retry", "إعادة المحاولة"],
-  "battle.loot": ["Loot", "الغنائم"],
-  "battle.rewards": ["Rewards", "المكافآت"],
-  "battle.lives": ["Lives", "الأرواح"],
-  "battle.build": ["Build", "بناء"],
-  "battle.choose_path": ["Choose Path", "اختر المسار"],
-  "battle.boss_incoming": ["BOSS INCOMING", "الزعيم قادم"],
-  "battle.boss_phase": ["The boss grows stronger!", "الزعيم يزداد قوة!"],
-  "battle.hero_dead": ["Hero has fallen — respawning", "سقط البطل — سيعود قريباً"],
-  "battle.select_target": ["Select a target location", "اختر موقع الهدف"],
-  "battle.auto": ["AUTO", "تلقائي"],
-  "battle.wave_bonus": ["Early call bonus", "مكافأة الاستدعاء المبكر"],
-  "battle.tower_disabled": ["Tower disabled!", "تم تعطيل البرج!"],
-  "battle.rally": ["Set Rally Point", "تحديد نقطة التجمع"],
-  "battle.range": ["Range", "المدى"],
-  "battle.rate": ["Rate", "السرعة"],
-  "battle.air": ["Hits air", "يصيب الطائرين"],
-  "battle.ground_only": ["Ground only", "أرضي فقط"],
-  "battle.soldiers": ["Soldiers", "الجنود"],
-  "battle.first_wave_hint": ["Build towers on the glowing runes, then start the battle.", "ابنِ الأبراج على الرموز المتوهجة ثم ابدأ المعركة."],
-
-  "global.meteor": ["Meteor", "النيزك"],
-  "global.freeze": ["Freeze", "التجميد"],
-  "global.tower_buff": ["Tower Fury", "غضب الأبراج"],
-  "global.summon_dragon": ["Summon Dragon", "استدعاء التنين"],
-  "global.meteor.desc": ["Call down a burning meteor on an area.", "استدعِ نيزكاً مشتعلاً على منطقة."],
-  "global.freeze.desc": ["Freeze all enemies in a wide area.", "جمّد كل الأعداء في منطقة واسعة."],
-  "global.tower_buff.desc": ["All towers attack faster and harder for a short time.", "كل الأبراج تهاجم أسرع وأقوى لفترة قصيرة."],
-  "global.summon_dragon.desc": ["A dragon sweeps the battlefield with fire.", "تنين يكتسح ساحة المعركة بالنار."],
-
-  "region.shattered_citadel": ["The Shattered Citadel", "القلعة المحطمة"],
-  "region.shadow_lands": ["Land of Shadows", "أرض الظلال"],
-  "region.inferno_tower": ["Tower of the Inferno", "برج المحرقة"],
-  "region.poison_forest": ["Forest of Venom", "غابة السموم"],
-  "region.frost_lands": ["Land of Ice", "أرض الجليد"],
-  "region.tower_of_evil": ["Tower of Evil", "برج الشرور"],
-  "region.oblivion_crypt": ["Crypt of Oblivion", "مقبرة النسيان"],
-  "region.the_gate": ["The Gate", "البوابة"],
-
-  "hero.hell_knight": ["Hell Knight", "فارس الجحيم"],
-  "hero.poison_sorcerer": ["Poison Sorcerer", "ساحر السموم"],
-  "hero.raven_archer": ["Raven Archer", "رامي الغربان"],
-  "hero.bone_king": ["Bone King", "ملك العظام"],
-  "hero.frost_mage": ["Frost Mage", "ساحر الجليد"],
-  "hero.blueflame_warlock": ["Blue Flame Warlock", "ساحر اللهب الأزرق"],
-  "hero.giant_executioner": ["Giant Executioner", "الجلاد العملاق"],
-  "hero.dragon_lord": ["Dragon Lord", "سيد التنانين"],
-  "hero.stone_beast": ["Stone Beast", "وحش الحجر"],
-  "hero.shadow_knight": ["Shadow Knight", "فارس الظلال"],
-  "hero.night_sniper": ["Night Sniper", "قناص الليل"],
-  "hero.storm_warden": ["Storm Warden", "حارس العواصف"],
-  "hero.style.bruiser": ["Burning melee bruiser with area cleaves", "مقاتل التحامي ناري بضربات واسعة"],
-  "hero.style.dot": ["Toxic caster: damage over time and clouds", "ساحر سموم: ضرر مستمر وسحب سامة"],
-  "hero.style.marksman": ["Swift marksman with critical shots", "رامٍ سريع بضربات حرجة"],
-  "hero.style.necro_tank": ["Undying tank who raises the dead", "مدرّع لا يموت يُحيي الموتى"],
-  "hero.style.control": ["Crowd control: slows and freezes", "سيطرة على الحشود: إبطاء وتجميد"],
-  "hero.style.burst": ["Explosive arcane burst damage", "ضرر سحري انفجاري"],
-  "hero.style.executioner": ["Slow, brutal cleaves that execute", "ضربات بطيئة ووحشية تُعدم الأعداء"],
-  "hero.style.summoner": ["Commander of dragons and flame", "قائد التنانين واللهب"],
-  "hero.style.juggernaut": ["Unstoppable wall of living stone", "جدار لا يُوقف من الحجر الحي"],
-  "hero.style.assassin": ["Shadow assassin: dashes and blink strikes", "قاتل الظلال: اندفاع وضربات خاطفة"],
-  "hero.style.sniper": ["Extreme range, devastating single shots", "مدى هائل وطلقات مدمرة"],
-  "hero.style.storm": ["Chain lightning and tower support", "برق متسلسل ودعم للأبراج"],
-  "role.attacker": ["Attacker", "مهاجم"],
-  "role.tank": ["Tank", "مدرّع"],
-  "role.ranged": ["Ranged", "بعيد المدى"],
-  "role.mage": ["Mage", "ساحر"],
-  "role.support": ["Support", "داعم"],
-  "role.trickster": ["Trickster", "مخادع"],
-  "role.commander": ["Commander", "قائد"],
-
-  "ability.heavy_strike": ["Heavy Strike", "الضربة الثقيلة"],
-  "ability.infernal_dash": ["Infernal Dash", "الاندفاع الجهنمي"],
-  "ability.dash": ["Dash", "الاندفاع"],
-  "ability.shadow_attack": ["Shadow Attack", "هجوم الظل"],
-  "ability.summon_hellspawn": ["Summon Soldiers", "استدعاء الجنود"],
-  "ability.hellfire_blast": ["Hellfire Blast", "انفجار نار الجحيم"],
-  "ability.toxic_blast": ["Toxic Blast", "الانفجار السام"],
-  "ability.plague_cloud": ["Plague Cloud", "سحابة الطاعون"],
-  "ability.venom_nova": ["Venom Nova", "نوفا السم"],
-  "ability.summon_plaguelings": ["Summon Plaguelings", "استدعاء الموبوئين"],
-  "ability.pestilence": ["Pestilence", "الوباء"],
-  "ability.raven_volley": ["Raven Volley", "وابل الغربان"],
-  "ability.shadow_step": ["Shadow Step", "خطوة الظل"],
-  "ability.piercing_shot": ["Piercing Shot", "الطلقة الخارقة"],
-  "ability.summon_ravens": ["Summon Ravens", "استدعاء الغربان"],
-  "ability.murder_of_crows": ["Murder of Crows", "سرب الموت"],
-  "ability.bone_bash": ["Bone Bash", "سحق العظام"],
-  "ability.grave_taunt": ["Grave Taunt", "استفزاز القبر"],
-  "ability.bone_armor": ["Bone Armor", "درع العظام"],
-  "ability.raise_skeletons": ["Raise Skeletons", "إحياء الهياكل"],
-  "ability.army_of_the_dead": ["Army of the Dead", "جيش الموتى"],
-  "ability.frost_blast": ["Frost Blast", "انفجار الصقيع"],
-  "ability.blizzard": ["Blizzard", "العاصفة الثلجية"],
-  "ability.ice_prison": ["Ice Prison", "سجن الجليد"],
-  "ability.frost_armor": ["Frost Armor", "درع الصقيع"],
-  "ability.absolute_zero": ["Absolute Zero", "الصفر المطلق"],
-  "ability.magical_blast": ["Magical Blast", "الانفجار السحري"],
-  "ability.blue_inferno": ["Blue Inferno", "الجحيم الأزرق"],
-  "ability.flame_wave": ["Flame Wave", "موجة اللهب"],
-  "ability.arcane_surge": ["Arcane Surge", "الاندفاع السحري"],
-  "ability.azure_cataclysm": ["Azure Cataclysm", "الكارثة اللازوردية"],
-  "ability.executioners_chop": ["Executioner's Chop", "ضربة الجلاد"],
-  "ability.brutal_charge": ["Brutal Charge", "الهجوم الوحشي"],
-  "ability.blood_frenzy": ["Blood Frenzy", "هيجان الدم"],
-  "ability.decapitation": ["Decapitation", "قطع الرؤوس"],
-  "ability.dragon_breath": ["Dragon Breath", "نفث التنين"],
-  "ability.wing_dash": ["Wing Dash", "اندفاع الأجنحة"],
-  "ability.summon_whelps": ["Summon Whelps", "استدعاء صغار التنانين"],
-  "ability.dragonscale": ["Dragonscale", "حراشف التنين"],
-  "ability.call_of_the_wyrm": ["Call of the Wyrm", "نداء التنين الأعظم"],
-  "ability.earthquake": ["Earthquake", "الزلزال"],
-  "ability.boulder_throw": ["Boulder Throw", "رمي الصخرة"],
-  "ability.stone_skin": ["Stone Skin", "جلد الحجر"],
-  "ability.tectonic_rupture": ["Tectonic Rupture", "التصدع العظيم"],
-  "ability.umbral_blades": ["Umbral Blades", "شفرات الظلام"],
-  "ability.shadow_clones": ["Shadow Clones", "نسخ الظل"],
-  "ability.eclipse": ["Eclipse", "الكسوف"],
-  "ability.smoke_bomb": ["Smoke Bomb", "قنبلة الدخان"],
-  "ability.explosive_bolt": ["Explosive Bolt", "السهم المتفجر"],
-  "ability.mark_target": ["Mark Target", "تعليم الهدف"],
-  "ability.deadeye": ["Deadeye", "العين القاتلة"],
-  "ability.chain_lightning": ["Chain Lightning", "البرق المتسلسل"],
-  "ability.thunder_clap": ["Thunder Clap", "صفقة الرعد"],
-  "ability.storm_shield": ["Storm Shield", "درع العاصفة"],
-  "ability.tower_overcharge": ["Tower Overcharge", "شحن الأبراج"],
-  "ability.tempest": ["Tempest", "الإعصار"],
-  "abtype.melee_aoe": ["Smash all nearby enemies", "يسحق كل الأعداء القريبين"],
-  "abtype.dash": ["Dash to a location, hitting enemies on the way", "يندفع إلى موقع ويضرب الأعداء في الطريق"],
-  "abtype.blink_strike": ["Blink between enemies with devastating strikes", "ينتقل بين الأعداء بضربات مدمرة"],
-  "abtype.summon": ["Summon allied warriors to fight", "يستدعي محاربين حلفاء للقتال"],
-  "abtype.blast": ["Explosion at the target area", "انفجار في منطقة الهدف"],
-  "abtype.cloud": ["Lingering damaging area", "منطقة ضرر مستمرة"],
-  "abtype.nova": ["Burst around the hero", "انفجار حول البطل"],
-  "abtype.buff": ["Empower the hero temporarily", "يقوي البطل مؤقتاً"],
-  "abtype.chain": ["Lightning jumps between enemies", "برق يقفز بين الأعداء"],
-  "abtype.volley": ["Rain of projectiles over an area", "وابل من المقذوفات على منطقة"],
-  "abtype.line": ["Hits all enemies in a line", "يصيب كل الأعداء في خط"],
-  "abtype.taunt": ["Force enemies to attack the hero", "يجبر الأعداء على مهاجمة البطل"],
-  "abtype.execute": ["Heavy single-target hit", "ضربة قوية لهدف واحد"],
-  "abtype.tower_buff": ["Empower nearby towers", "يقوي الأبراج القريبة"],
-  "abtype.summon_dragon": ["Summon a dragon to scorch the field", "يستدعي تنيناً يحرق الساحة"],
-
-  "tower.archer": ["Archer Tower", "برج الرماة"],
-  "tower.mage": ["Mage Tower", "برج السحرة"],
-  "tower.artillery": ["Artillery Tower", "برج المدفعية"],
-  "tower.soldier": ["Soldier Tower", "برج الجنود"],
-  "tower.poison": ["Poison Tower", "برج السم"],
-  "tower.fire": ["Fire Tower", "برج النار"],
-  "tower.ice": ["Ice Tower", "برج الجليد"],
-  "tower.lightning": ["Lightning Tower", "برج البرق"],
-  "tower.shadow": ["Shadow Tower", "برج الظلال"],
-  "tower.light": ["Light Tower", "برج النور"],
-  "tower.earth": ["Earth Tower", "برج الأرض"],
-  "tower.wind": ["Wind Tower", "برج الرياح"],
-  "tower.crossbow": ["Crossbow Tower", "برج القوس والنشاب"],
-  "tower.trap": ["Trap Tower", "برج الفخاخ"],
-  "branch.marksman": ["Marksman Spire", "برج القناصة"],
-  "branch.ranger": ["Ranger Lodge", "نُزل الجوّالين"],
-  "branch.fire_mage": ["Fire Mage", "ساحر النار"],
-  "branch.ice_mage": ["Ice Mage", "ساحر الجليد"],
-  "branch.hellfire_mortar": ["Hellfire Mortar", "هاون نار الجحيم"],
-  "branch.siege_cannon": ["Siege Cannon", "مدفع الحصار"],
-  "branch.black_guard": ["Black Guard", "الحرس الأسود"],
-  "branch.berserkers": ["Berserker Hall", "قاعة الهائجين"],
-  "branch.plague_spire": ["Plague Spire", "برج الطاعون"],
-  "branch.venom_spire": ["Venom Spire", "برج الزعاف"],
-  "branch.inferno": ["Inferno Pillar", "عمود الجحيم"],
-  "branch.phoenix": ["Phoenix Roost", "عش العنقاء"],
-  "branch.glacier": ["Glacier Keep", "حصن الجليد"],
-  "branch.frost_nova": ["Frost Nova", "نوفا الصقيع"],
-  "branch.tesla": ["Tesla Coil", "ملف تسلا"],
-  "branch.stormcaller": ["Stormcaller", "مستدعي العاصفة"],
-  "branch.void_spire": ["Void Spire", "برج الفراغ"],
-  "branch.nightmare_spire": ["Nightmare Spire", "برج الكوابيس"],
-  "branch.sanctum": ["Holy Sanctum", "المحراب المقدس"],
-  "branch.radiant_lance": ["Radiant Lance", "رمح النور"],
-  "branch.quake_forge": ["Quake Forge", "مسبك الزلازل"],
-  "branch.golem_pit": ["Golem Pit", "حفرة الغولم"],
-  "branch.tornado_spire": ["Tornado Spire", "برج الإعصار"],
-  "branch.gale_spire": ["Gale Spire", "برج العواصف"],
-  "branch.ballista": ["Ballista", "المنجنيق"],
-  "branch.repeater": ["Repeater", "القوس المتكرر"],
-  "branch.spike_pit": ["Spike Pit", "حفرة الأشواك"],
-  "branch.snare_pit": ["Snare Pit", "حفرة الأشراك"],
-
-  "enemy.skeleton_minion": ["Skeleton Minion", "هيكل عظمي تابع"],
-  "enemy.skeleton_warrior": ["Skeleton Warrior", "محارب هيكلي"],
-  "enemy.skeleton_archer": ["Skeleton Archer", "رامٍ هيكلي"],
-  "enemy.bone_mage": ["Bone Mage", "ساحر العظام"],
-  "enemy.dark_priest": ["Dark Priest", "الكاهن المظلم"],
-  "enemy.necromancer": ["Necromancer", "مستحضر الأرواح"],
-  "enemy.ash_brute": ["Ash Brute", "وحش الرماد"],
-  "enemy.cultist": ["Cultist", "المتعصب"],
-  "enemy.shadow_stalker": ["Shadow Stalker", "متربص الظل"],
-  "enemy.war_herald": ["War Herald", "بشير الحرب"],
-  "enemy.winged_fiend": ["Winged Fiend", "الشيطان المجنح"],
-  "enemy.death_knight": ["Death Knight", "فارس الموت"],
-  "boss.ashen_warlord": ["Ashen Warlord", "أمير الحرب الرمادي"],
-  "boss.shadow_reaper": ["Shadow Reaper", "حاصد الظلال"],
-  "boss.inferno_titan": ["Inferno Titan", "عملاق المحرقة"],
-  "boss.plague_colossus": ["Plague Colossus", "عملاق الطاعون"],
-  "boss.frost_lich": ["Frost Lich", "ليتش الصقيع"],
-  "boss.demon_lord": ["Demon Lord", "سيد الشياطين"],
-  "boss.bone_emperor": ["Bone Emperor", "إمبراطور العظام"],
-  "boss.gatekeeper": ["The Gatekeeper", "حارس البوابة"],
-
-  "rarity.common": ["Common", "عادي"],
-  "rarity.rare": ["Rare", "نادر"],
-  "rarity.epic": ["Epic", "ملحمي"],
-  "rarity.legendary": ["Legendary", "أسطوري"],
-  "rarity.mythic": ["Mythic", "خرافي"],
-  "slot.weapon": ["Weapon", "السلاح"],
-  "slot.armor": ["Armor", "الدرع"],
-  "slot.gloves": ["Gauntlets", "القفازات"],
-  "slot.boots": ["Boots", "الحذاء"],
-  "slot.ring": ["Ring", "الخاتم"],
-  "slot.necklace": ["Necklace", "القلادة"],
-  "slot.gem": ["Gem", "جوهرة"],
-  "slot.rune": ["Rune", "رون"],
-  "slot.material": ["Material", "مادة"],
-  "slot.chest": ["Chest", "صندوق"],
-  "stat.health": ["Health", "الصحة"],
-  "stat.damage": ["Damage", "الهجوم"],
-  "stat.defense": ["Defense", "الدفاع"],
-  "stat.attack_speed": ["Attack Speed", "سرعة الهجوم"],
-  "stat.move_speed": ["Move Speed", "سرعة الحركة"],
-  "stat.energy": ["Energy", "الطاقة"],
-  "stat.crit": ["Critical Chance", "فرصة الضربة الحرجة"],
-  "stat.crit_dmg": ["Critical Damage", "ضرر الضربة الحرجة"],
-  "stat.energy_regen": ["Energy Regen", "تجدد الطاقة"],
-  "stat.cdr": ["Cooldown Reduction", "تقليل التهدئة"],
-  "stat.lifesteal": ["Lifesteal", "سرقة الحياة"],
-  "stat.range": ["Range", "المدى"],
-  "stat.power": ["Power", "القوة"],
-  "item.w_greatsword": ["Greatsword", "سيف عظيم"],
-  "item.w_axe": ["War Axe", "فأس حرب"],
-  "item.w_staff": ["Staff", "عصا سحرية"],
-  "item.w_crossbow": ["Crossbow", "قوس ونشاب"],
-  "item.w_blade": ["Blade", "نصل"],
-  "item.a_plate": ["Plate Armor", "درع صفائح"],
-  "item.a_robe": ["Robe", "رداء"],
-  "item.a_mail": ["Chainmail", "درع زرد"],
-  "item.g_gauntlets": ["Gauntlets", "قفازات حديدية"],
-  "item.g_claws": ["Claws", "مخالب"],
-  "item.b_greaves": ["Greaves", "واقيات الساق"],
-  "item.b_treads": ["Treads", "أحذية"],
-  "item.r_band": ["Band", "خاتم"],
-  "item.r_seal": ["Seal", "خاتم ختم"],
-  "item.n_amulet": ["Amulet", "تميمة"],
-  "item.n_talisman": ["Talisman", "طلسم"],
-  "item.gem_ruby": ["Ruby", "ياقوت أحمر"],
-  "item.gem_sapphire": ["Sapphire", "ياقوت أزرق"],
-  "item.gem_emerald": ["Emerald", "زمرد"],
-  "item.gem_topaz": ["Topaz", "توباز"],
-  "item.gem_amethyst": ["Amethyst", "جمشت"],
-  "item.rune_fury": ["Rune of Fury", "رون الغضب"],
-  "item.rune_haste": ["Rune of Haste", "رون العجلة"],
-  "item.rune_vigor": ["Rune of Vigor", "رون الحيوية"],
-  "item.rune_blood": ["Rune of Blood", "رون الدم"],
-  "item.iron_ore": ["Iron Ore", "خام الحديد"],
-  "item.soul_shard": ["Soul Shard", "شظية الروح"],
-  "item.dragon_scale": ["Dragon Scale", "حرشفة التنين"],
-  "item.void_essence": ["Void Essence", "جوهر الفراغ"],
-  "item.chest_common": ["Iron Chest", "صندوق حديدي"],
-  "item.chest_epic": ["Epic Chest", "صندوق ملحمي"],
-  "item.chest_legendary": ["Legendary Chest", "صندوق أسطوري"],
-  "prefix.infernal": ["Infernal", "الجهنمي"],
-  "prefix.cursed": ["Cursed", "الملعون"],
-  "prefix.shadow": ["Shadow", "الظلي"],
-  "prefix.frozen": ["Frozen", "المتجمد"],
-  "prefix.venomous": ["Venomous", "السام"],
-  "prefix.ancient": ["Ancient", "العتيق"],
-  "prefix.bloodforged": ["Bloodforged", "المصهور بالدم"],
-  "prefix.stormbound": ["Stormbound", "المقيد بالعاصفة"],
-  "prefix.grim": ["Grim", "القاتم"],
-  "prefix.eternal": ["Eternal", "الأبدي"],
-  "suffix.of_ruin": ["of Ruin", "للخراب"],
-  "suffix.of_the_abyss": ["of the Abyss", "من الهاوية"],
-  "suffix.of_kings": ["of Kings", "للملوك"],
-  "suffix.of_flame": ["of Flame", "اللهب"],
-  "suffix.of_frost": ["of Frost", "الصقيع"],
-  "suffix.of_the_crow": ["of the Crow", "الغراب"],
-  "suffix.of_bones": ["of Bones", "العظام"],
-  "suffix.of_storms": ["of Storms", "العواصف"],
-  "suffix.of_the_void": ["of the Void", "الفراغ"],
-  "suffix.of_the_siege": ["of the Siege", "الحصار"],
-  "status.burn": ["Burning", "احتراق"],
-  "status.poison": ["Poisoned", "مسموم"],
-  "status.slow": ["Slowed", "مُبطأ"],
-  "status.freeze": ["Frozen", "متجمد"],
-  "status.stun": ["Stunned", "مصعوق"],
-
-  "skill.brutality": ["Brutality", "الوحشية"],
-  "skill.precision": ["Precision", "الدقة"],
-  "skill.fury": ["Fury", "الغضب"],
-  "skill.iron_skin": ["Iron Skin", "الجلد الحديدي"],
-  "skill.vitality": ["Vitality", "الحيوية"],
-  "skill.bulwark": ["Bulwark", "الحصن"],
-  "skill.focus": ["Focus", "التركيز"],
-  "skill.swiftness": ["Swiftness", "الرشاقة"],
-  "skill.mastery": ["Ultimate Mastery", "إتقان القدرة الخارقة"],
-  "skill.branch.offense": ["Offense", "الهجوم"],
-  "skill.branch.defense": ["Defense", "الدفاع"],
-  "skill.branch.mastery": ["Mastery", "الإتقان"],
-
-  "ach.slayer": ["Slayer", "السفّاح"],
-  "ach.boss_hunter": ["Boss Hunter", "صائد الزعماء"],
-  "ach.architect": ["Architect", "المعماري"],
-  "ach.evolution": ["Evolution", "التطور"],
-  "ach.star_collector": ["Star Collector", "جامع النجوم"],
-  "ach.treasure": ["Treasure Hunter", "صائد الكنوز"],
-  "ach.legend": ["Legend Seeker", "باحث الأساطير"],
-  "ach.caster": ["Spellweaver", "حائك التعاويذ"],
-  "ach.victor": ["Victor", "المنتصر"],
-  "ach.flawless": ["Flawless", "بلا خدش"],
-  "ach.blacksmith": ["Blacksmith", "الحداد"],
-  "ach.dragon_rider": ["Dragon Rider", "راكب التنين"],
-  "stat_desc.kills": ["Defeat enemies", "اهزم الأعداء"],
-  "stat_desc.boss_kills": ["Defeat bosses", "اهزم الزعماء"],
-  "stat_desc.towers_built": ["Build towers", "ابنِ الأبراج"],
-  "stat_desc.tower_upgrades": ["Upgrade towers", "طوّر الأبراج"],
-  "stat_desc.stars": ["Collect stars", "اجمع النجوم"],
-  "stat_desc.stars_earned": ["Earn stars", "احصل على النجوم"],
-  "stat_desc.items_looted": ["Loot items", "اجمع الغنائم"],
-  "stat_desc.legendary_found": ["Find legendary items", "اعثر على عناصر أسطورية"],
-  "stat_desc.abilities_used": ["Use hero abilities", "استخدم قدرات البطل"],
-  "stat_desc.victories": ["Win battles", "انتصر في المعارك"],
-  "stat_desc.perfect_wins": ["Win with 3 stars", "انتصر بثلاث نجوم"],
-  "stat_desc.item_upgrades": ["Upgrade items", "طوّر العناصر"],
-  "stat_desc.dragons_summoned": ["Summon the dragon", "استدعِ التنين"],
-  "stat_desc.global_used": ["Use global powers", "استخدم القدرات العامة"],
-  "perk.perk_gold": ["Treasury", "الخزينة"],
-  "perk.perk_xp": ["Wisdom", "الحكمة"],
-  "perk.perk_tower": ["Siegecraft", "فن الحصار"],
-  "perk.perk_loot": ["Fortune", "الحظ"]
+  "game.title": [
+    "SHADOW CROWN",
+    "تاج الظل"
+  ],
+  "game.subtitle": [
+    "ETERNAL SIEGE",
+    "الحصار الأبدي"
+  ],
+  "menu.start": [
+    "Begin Your Journey",
+    "ابدأ رحلتك الآن"
+  ],
+  "menu.continue": [
+    "Continue",
+    "متابعة"
+  ],
+  "menu.settings": [
+    "Settings",
+    "الإعدادات"
+  ],
+  "menu.quit": [
+    "Quit",
+    "خروج"
+  ],
+  "menu.tap": [
+    "Tap to begin",
+    "اضغط للبدء"
+  ],
+  "nav.heroes": [
+    "Heroes",
+    "الأبطال"
+  ],
+  "nav.missions": [
+    "Missions",
+    "المهام"
+  ],
+  "nav.shop": [
+    "Shop",
+    "متجر"
+  ],
+  "nav.arsenal": [
+    "Arsenal",
+    "الترسانة"
+  ],
+  "nav.achievements": [
+    "Achievements",
+    "الإنجازات"
+  ],
+  "nav.guild": [
+    "Guild",
+    "النقابة"
+  ],
+  "nav.more": [
+    "More",
+    "المزيد"
+  ],
+  "nav.campaign": [
+    "Campaign",
+    "حملة"
+  ],
+  "nav.portal": [
+    "The Gate",
+    "البوابة"
+  ],
+  "nav.back": [
+    "Back",
+    "رجوع"
+  ],
+  "nav.map": [
+    "World Map",
+    "خريطة العالم"
+  ],
+  "ui.player": [
+    "PLAYER",
+    "اللاعب"
+  ],
+  "ui.level": [
+    "Level",
+    "المستوى"
+  ],
+  "ui.lv": [
+    "Lv.",
+    "مستوى"
+  ],
+  "ui.gold": [
+    "Gold",
+    "ذهب"
+  ],
+  "ui.gems": [
+    "Gems",
+    "جواهر"
+  ],
+  "ui.energy": [
+    "Energy",
+    "طاقة"
+  ],
+  "ui.stars": [
+    "Stars",
+    "نجوم"
+  ],
+  "ui.xp": [
+    "XP",
+    "خبرة"
+  ],
+  "ui.close": [
+    "Close",
+    "إغلاق"
+  ],
+  "ui.confirm": [
+    "Confirm",
+    "تأكيد"
+  ],
+  "ui.cancel": [
+    "Cancel",
+    "إلغاء"
+  ],
+  "ui.buy": [
+    "Buy",
+    "شراء"
+  ],
+  "ui.claim": [
+    "Claim",
+    "استلام"
+  ],
+  "ui.claimed": [
+    "Claimed",
+    "تم الاستلام"
+  ],
+  "ui.locked": [
+    "Locked",
+    "مقفل"
+  ],
+  "ui.unlock": [
+    "Unlock",
+    "فتح"
+  ],
+  "ui.play": [
+    "Play",
+    "العب"
+  ],
+  "ui.select": [
+    "Select",
+    "اختيار"
+  ],
+  "ui.selected": [
+    "Selected",
+    "مختار"
+  ],
+  "ui.all": [
+    "All",
+    "الكل"
+  ],
+  "ui.not_enough": [
+    "Not enough resources",
+    "الموارد غير كافية"
+  ],
+  "ui.not_enough_energy": [
+    "Not enough energy",
+    "الطاقة غير كافية"
+  ],
+  "ui.inventory_full": [
+    "Inventory full",
+    "الحقيبة ممتلئة"
+  ],
+  "ui.saved": [
+    "Progress saved",
+    "تم حفظ التقدم"
+  ],
+  "ui.stage": [
+    "Stage",
+    "المرحلة"
+  ],
+  "ui.boss_stage": [
+    "Boss Stage",
+    "مرحلة الزعيم"
+  ],
+  "ui.recommended": [
+    "Recommended power",
+    "القوة الموصى بها"
+  ],
+  "ui.waves": [
+    "Waves",
+    "الموجات"
+  ],
+  "ui.enemies": [
+    "Enemies",
+    "الأعداء"
+  ],
+  "ui.towers": [
+    "Towers",
+    "الأبراج"
+  ],
+  "ui.hero": [
+    "Hero",
+    "البطل"
+  ],
+  "ui.power": [
+    "Power",
+    "القوة"
+  ],
+  "ui.skills": [
+    "Skills",
+    "المهارات"
+  ],
+  "ui.skill_tree": [
+    "Skill Tree",
+    "شجرة المهارات"
+  ],
+  "ui.equipment": [
+    "Equipment",
+    "المعدات"
+  ],
+  "ui.stats": [
+    "Stats",
+    "الإحصائيات"
+  ],
+  "ui.quick_equip": [
+    "Quick Equip",
+    "تجهيز سريع"
+  ],
+  "ui.equip": [
+    "Equip",
+    "تجهيز"
+  ],
+  "ui.unequip": [
+    "Unequip",
+    "خلع"
+  ],
+  "ui.upgrade": [
+    "Upgrade",
+    "تطوير"
+  ],
+  "ui.sell": [
+    "Sell",
+    "بيع"
+  ],
+  "ui.delete": [
+    "Delete",
+    "حذف"
+  ],
+  "ui.compare": [
+    "Compare",
+    "مقارنة"
+  ],
+  "ui.socket": [
+    "Socket Gem",
+    "ترصيع جوهرة"
+  ],
+  "ui.sockets": [
+    "Sockets",
+    "فتحات"
+  ],
+  "ui.quality": [
+    "Quality",
+    "الجودة"
+  ],
+  "ui.value": [
+    "Value",
+    "القيمة"
+  ],
+  "ui.rarity": [
+    "Rarity",
+    "الندرة"
+  ],
+  "ui.damage": [
+    "Damage",
+    "الضرر"
+  ],
+  "ui.defense": [
+    "Defense",
+    "الدفاع"
+  ],
+  "ui.bonuses": [
+    "Bonuses",
+    "المكافآت"
+  ],
+  "ui.equipped": [
+    "Equipped",
+    "مُجهّز"
+  ],
+  "ui.materials": [
+    "Materials",
+    "المواد"
+  ],
+  "ui.empty_slot": [
+    "Empty",
+    "فارغ"
+  ],
+  "ui.skill_points": [
+    "Skill points",
+    "نقاط المهارة"
+  ],
+  "ui.rank": [
+    "Rank",
+    "الرتبة"
+  ],
+  "ui.cooldown": [
+    "Cooldown",
+    "وقت التهدئة"
+  ],
+  "ui.energy_cost": [
+    "Energy",
+    "الطاقة"
+  ],
+  "ui.ultimate": [
+    "Ultimate",
+    "القدرة الخارقة"
+  ],
+  "ui.daily_offers": [
+    "Daily Offers",
+    "عروض يومية"
+  ],
+  "ui.limited_offers": [
+    "Limited Offers",
+    "عروض محدودة"
+  ],
+  "ui.ends_in": [
+    "Ends in",
+    "ينتهي خلال"
+  ],
+  "ui.daily_rewards": [
+    "Daily Rewards",
+    "المكافآت اليومية"
+  ],
+  "ui.day": [
+    "Day",
+    "اليوم"
+  ],
+  "ui.daily_quests": [
+    "Daily Quests",
+    "المهام اليومية"
+  ],
+  "ui.language": [
+    "Language",
+    "اللغة"
+  ],
+  "ui.music": [
+    "Music",
+    "الموسيقى"
+  ],
+  "ui.sfx": [
+    "Sound Effects",
+    "المؤثرات الصوتية"
+  ],
+  "ui.graphics": [
+    "Graphics Quality",
+    "جودة الرسومات"
+  ],
+  "ui.low": [
+    "Low",
+    "منخفضة"
+  ],
+  "ui.medium": [
+    "Medium",
+    "متوسطة"
+  ],
+  "ui.high": [
+    "High",
+    "عالية"
+  ],
+  "ui.ultra": [
+    "Ultra",
+    "فائقة"
+  ],
+  "ui.shadows": [
+    "Real-time Shadows",
+    "الظلال الحية"
+  ],
+  "ui.fog": [
+    "Volumetric Fog",
+    "الضباب الحجمي"
+  ],
+  "ui.camera_speed": [
+    "Camera Speed",
+    "سرعة الكاميرا"
+  ],
+  "ui.show_fps": [
+    "Show FPS",
+    "عرض الإطارات"
+  ],
+  "ui.reset_save": [
+    "Reset Progress",
+    "إعادة ضبط التقدم"
+  ],
+  "ui.reset_confirm": [
+    "Erase all progress? This cannot be undone.",
+    "هل تريد مسح كل التقدم؟ لا يمكن التراجع."
+  ],
+  "ui.new": [
+    "NEW",
+    "جديد"
+  ],
+  "ui.reward": [
+    "Reward",
+    "المكافأة"
+  ],
+  "ui.progress": [
+    "Progress",
+    "التقدم"
+  ],
+  "ui.tier": [
+    "Tier",
+    "المستوى"
+  ],
+  "ui.members": [
+    "Members",
+    "الأعضاء"
+  ],
+  "ui.perks": [
+    "Guild Perks",
+    "امتيازات النقابة"
+  ],
+  "ui.donate": [
+    "Donate 1000 Gold",
+    "تبرع بـ 1000 ذهب"
+  ],
+  "ui.guild_level": [
+    "Guild Level",
+    "مستوى النقابة"
+  ],
+  "ui.guild_name": [
+    "Order of the Black Flame",
+    "أخوية اللهب الأسود"
+  ],
+  "ui.guild_desc": [
+    "Your guildmates are AI companions who fight alongside your legend. Donate gold to strengthen the order.",
+    "رفاقك في النقابة رفاق ذكاء اصطناعي يقاتلون إلى جانب أسطورتك. تبرع بالذهب لتقوية الأخوية."
+  ],
+  "ui.gold_pack": [
+    "Gold Pack",
+    "حزمة ذهب"
+  ],
+  "ui.gem_pack": [
+    "Gem Pack",
+    "حزمة جواهر"
+  ],
+  "ui.iap_offline": [
+    "Store not connected in this build — granted as a test purchase.",
+    "المتجر غير متصل في هذه النسخة — تمت الإضافة كشراء تجريبي."
+  ],
+  "ui.refill_energy": [
+    "Refill Energy",
+    "إعادة ملء الطاقة"
+  ],
+  "ui.opened_chest": [
+    "Chest opened!",
+    "تم فتح الصندوق!"
+  ],
+  "ui.hero_level_up": [
+    "Hero level up!",
+    "ارتقى البطل مستوى!"
+  ],
+  "ui.player_level_up": [
+    "Player level up!",
+    "ارتقيت مستوى!"
+  ],
+  "ui.unlocked_hero": [
+    "New hero unlocked",
+    "تم فتح بطل جديد"
+  ],
+  "ui.compare_title": [
+    "Compared to equipped",
+    "مقارنة بالمُجهّز"
+  ],
+  "ui.no_items": [
+    "No items",
+    "لا توجد عناصر"
+  ],
+  "ui.choose_gem": [
+    "Choose a gem to socket",
+    "اختر جوهرة للترصيع"
+  ],
+  "ui.no_gems": [
+    "No gems available",
+    "لا توجد جواهر"
+  ],
+  "ui.coming_soon": [
+    "Coming soon",
+    "قريباً"
+  ],
+  "ui.max": [
+    "MAX",
+    "الحد الأقصى"
+  ],
+  "ui.requires": [
+    "Requires",
+    "يتطلب"
+  ],
+  "ui.cost": [
+    "Cost",
+    "التكلفة"
+  ],
+  "ui.fps": [
+    "FPS",
+    "إطار/ث"
+  ],
+  "ui.controls": [
+    "Controls",
+    "التحكم"
+  ],
+  "ui.controls_text": [
+    "Tap a glowing rune to build a tower. Tap a tower to upgrade, choose its branch or sell it. Select your hero (portrait, H, or tap the hero) and tap the ground to move; right-click also moves the hero on PC. Keys 1-4 and R cast abilities, Z/X/C/V cast global powers, Space calls the next wave, F toggles speed, Esc pauses. Drag or WASD pans the camera, wheel or pinch zooms.",
+    "اضغط على الرمز المتوهج لبناء برج. اضغط على البرج لتطويره أو اختيار مساره أو بيعه. اختر بطلك (الصورة أو المفتاح H أو بالضغط عليه) ثم اضغط على الأرض لتحريكه، كما يحرّكه زر الفأرة الأيمن على الكمبيوتر. المفاتيح 1-4 وR للقدرات، وZ/X/C/V للقدرات العامة، والمسافة للموجة التالية، وF لتغيير السرعة، وEsc للإيقاف المؤقت. السحب أو WASD لتحريك الكاميرا، والعجلة أو القرص للتقريب."
+  ],
+  "battle.wave": [
+    "Wave",
+    "الموجة"
+  ],
+  "battle.next_wave": [
+    "Call Next Wave",
+    "استدعاء الموجة التالية"
+  ],
+  "battle.start": [
+    "Start Battle",
+    "ابدأ المعركة"
+  ],
+  "battle.paused": [
+    "Paused",
+    "متوقف مؤقتاً"
+  ],
+  "battle.resume": [
+    "Resume",
+    "استئناف"
+  ],
+  "battle.restart": [
+    "Restart",
+    "إعادة"
+  ],
+  "battle.quit": [
+    "Quit to Map",
+    "العودة للخريطة"
+  ],
+  "battle.victory": [
+    "VICTORY",
+    "النصر"
+  ],
+  "battle.defeat": [
+    "DEFEAT",
+    "الهزيمة"
+  ],
+  "battle.defeat_text": [
+    "The citadel has fallen. Rise again, champion.",
+    "لقد سقطت القلعة. انهض من جديد أيها البطل."
+  ],
+  "battle.continue": [
+    "Continue",
+    "متابعة"
+  ],
+  "battle.retry": [
+    "Retry",
+    "إعادة المحاولة"
+  ],
+  "battle.loot": [
+    "Loot",
+    "الغنائم"
+  ],
+  "battle.rewards": [
+    "Rewards",
+    "المكافآت"
+  ],
+  "battle.lives": [
+    "Lives",
+    "الأرواح"
+  ],
+  "battle.build": [
+    "Build",
+    "بناء"
+  ],
+  "battle.choose_path": [
+    "Choose Path",
+    "اختر المسار"
+  ],
+  "battle.boss_incoming": [
+    "BOSS INCOMING",
+    "الزعيم قادم"
+  ],
+  "battle.boss_phase": [
+    "The boss grows stronger!",
+    "الزعيم يزداد قوة!"
+  ],
+  "battle.hero_dead": [
+    "Hero has fallen — respawning",
+    "سقط البطل — سيعود قريباً"
+  ],
+  "battle.select_target": [
+    "Select a target location",
+    "اختر موقع الهدف"
+  ],
+  "battle.auto": [
+    "AUTO",
+    "تلقائي"
+  ],
+  "battle.wave_bonus": [
+    "Early call bonus",
+    "مكافأة الاستدعاء المبكر"
+  ],
+  "battle.tower_disabled": [
+    "Tower disabled!",
+    "تم تعطيل البرج!"
+  ],
+  "battle.rally": [
+    "Set Rally Point",
+    "تحديد نقطة التجمع"
+  ],
+  "battle.range": [
+    "Range",
+    "المدى"
+  ],
+  "battle.rate": [
+    "Rate",
+    "السرعة"
+  ],
+  "battle.air": [
+    "Hits air",
+    "يصيب الطائرين"
+  ],
+  "battle.ground_only": [
+    "Ground only",
+    "أرضي فقط"
+  ],
+  "battle.soldiers": [
+    "Soldiers",
+    "الجنود"
+  ],
+  "battle.first_wave_hint": [
+    "Build towers on the glowing runes, then start the battle.",
+    "ابنِ الأبراج على الرموز المتوهجة ثم ابدأ المعركة."
+  ],
+  "global.meteor": [
+    "Meteor",
+    "النيزك"
+  ],
+  "global.freeze": [
+    "Freeze",
+    "التجميد"
+  ],
+  "global.tower_buff": [
+    "Tower Fury",
+    "غضب الأبراج"
+  ],
+  "global.summon_dragon": [
+    "Summon Dragon",
+    "استدعاء التنين"
+  ],
+  "global.meteor.desc": [
+    "Call down a burning meteor on an area.",
+    "استدعِ نيزكاً مشتعلاً على منطقة."
+  ],
+  "global.freeze.desc": [
+    "Freeze all enemies in a wide area.",
+    "جمّد كل الأعداء في منطقة واسعة."
+  ],
+  "global.tower_buff.desc": [
+    "All towers attack faster and harder for a short time.",
+    "كل الأبراج تهاجم أسرع وأقوى لفترة قصيرة."
+  ],
+  "global.summon_dragon.desc": [
+    "A dragon sweeps the battlefield with fire.",
+    "تنين يكتسح ساحة المعركة بالنار."
+  ],
+  "region.shattered_citadel": [
+    "The Shattered Citadel",
+    "القلعة المحطمة"
+  ],
+  "region.shadow_lands": [
+    "Land of Shadows",
+    "أرض الظلال"
+  ],
+  "region.inferno_tower": [
+    "Tower of the Inferno",
+    "برج المحرقة"
+  ],
+  "region.poison_forest": [
+    "Forest of Venom",
+    "غابة السموم"
+  ],
+  "region.frost_lands": [
+    "Land of Ice",
+    "أرض الجليد"
+  ],
+  "region.tower_of_evil": [
+    "Tower of Evil",
+    "برج الشرور"
+  ],
+  "region.oblivion_crypt": [
+    "Crypt of Oblivion",
+    "مقبرة النسيان"
+  ],
+  "region.the_gate": [
+    "The Gate",
+    "البوابة"
+  ],
+  "hero.hell_knight": [
+    "Hell Knight",
+    "فارس الجحيم"
+  ],
+  "hero.poison_sorcerer": [
+    "Poison Sorcerer",
+    "ساحر السموم"
+  ],
+  "hero.raven_archer": [
+    "Raven Archer",
+    "رامي الغربان"
+  ],
+  "hero.bone_king": [
+    "Bone King",
+    "ملك العظام"
+  ],
+  "hero.frost_mage": [
+    "Frost Mage",
+    "ساحر الجليد"
+  ],
+  "hero.blueflame_warlock": [
+    "Blue Flame Warlock",
+    "ساحر اللهب الأزرق"
+  ],
+  "hero.giant_executioner": [
+    "Giant Executioner",
+    "الجلاد العملاق"
+  ],
+  "hero.dragon_lord": [
+    "Dragon Lord",
+    "سيد التنانين"
+  ],
+  "hero.stone_beast": [
+    "Stone Beast",
+    "وحش الحجر"
+  ],
+  "hero.shadow_knight": [
+    "Shadow Knight",
+    "فارس الظلال"
+  ],
+  "hero.night_sniper": [
+    "Night Sniper",
+    "قناص الليل"
+  ],
+  "hero.storm_warden": [
+    "Storm Warden",
+    "حارس العواصف"
+  ],
+  "hero.style.bruiser": [
+    "Burning melee bruiser with area cleaves",
+    "مقاتل التحامي ناري بضربات واسعة"
+  ],
+  "hero.style.dot": [
+    "Toxic caster: damage over time and clouds",
+    "ساحر سموم: ضرر مستمر وسحب سامة"
+  ],
+  "hero.style.marksman": [
+    "Swift marksman with critical shots",
+    "رامٍ سريع بضربات حرجة"
+  ],
+  "hero.style.necro_tank": [
+    "Undying tank who raises the dead",
+    "مدرّع لا يموت يُحيي الموتى"
+  ],
+  "hero.style.control": [
+    "Crowd control: slows and freezes",
+    "سيطرة على الحشود: إبطاء وتجميد"
+  ],
+  "hero.style.burst": [
+    "Explosive arcane burst damage",
+    "ضرر سحري انفجاري"
+  ],
+  "hero.style.executioner": [
+    "Slow, brutal cleaves that execute",
+    "ضربات بطيئة ووحشية تُعدم الأعداء"
+  ],
+  "hero.style.summoner": [
+    "Commander of dragons and flame",
+    "قائد التنانين واللهب"
+  ],
+  "hero.style.juggernaut": [
+    "Unstoppable wall of living stone",
+    "جدار لا يُوقف من الحجر الحي"
+  ],
+  "hero.style.assassin": [
+    "Shadow assassin: dashes and blink strikes",
+    "قاتل الظلال: اندفاع وضربات خاطفة"
+  ],
+  "hero.style.sniper": [
+    "Extreme range, devastating single shots",
+    "مدى هائل وطلقات مدمرة"
+  ],
+  "hero.style.storm": [
+    "Chain lightning and tower support",
+    "برق متسلسل ودعم للأبراج"
+  ],
+  "role.attacker": [
+    "Attacker",
+    "مهاجم"
+  ],
+  "role.tank": [
+    "Tank",
+    "مدرّع"
+  ],
+  "role.ranged": [
+    "Ranged",
+    "بعيد المدى"
+  ],
+  "role.mage": [
+    "Mage",
+    "ساحر"
+  ],
+  "role.support": [
+    "Support",
+    "داعم"
+  ],
+  "role.trickster": [
+    "Trickster",
+    "مخادع"
+  ],
+  "role.commander": [
+    "Commander",
+    "قائد"
+  ],
+  "ability.heavy_strike": [
+    "Heavy Strike",
+    "الضربة الثقيلة"
+  ],
+  "ability.infernal_dash": [
+    "Infernal Dash",
+    "الاندفاع الجهنمي"
+  ],
+  "ability.dash": [
+    "Dash",
+    "الاندفاع"
+  ],
+  "ability.shadow_attack": [
+    "Shadow Attack",
+    "هجوم الظل"
+  ],
+  "ability.summon_hellspawn": [
+    "Summon Soldiers",
+    "استدعاء الجنود"
+  ],
+  "ability.hellfire_blast": [
+    "Hellfire Blast",
+    "انفجار نار الجحيم"
+  ],
+  "ability.toxic_blast": [
+    "Toxic Blast",
+    "الانفجار السام"
+  ],
+  "ability.plague_cloud": [
+    "Plague Cloud",
+    "سحابة الطاعون"
+  ],
+  "ability.venom_nova": [
+    "Venom Nova",
+    "نوفا السم"
+  ],
+  "ability.summon_plaguelings": [
+    "Summon Plaguelings",
+    "استدعاء الموبوئين"
+  ],
+  "ability.pestilence": [
+    "Pestilence",
+    "الوباء"
+  ],
+  "ability.raven_volley": [
+    "Raven Volley",
+    "وابل الغربان"
+  ],
+  "ability.shadow_step": [
+    "Shadow Step",
+    "خطوة الظل"
+  ],
+  "ability.piercing_shot": [
+    "Piercing Shot",
+    "الطلقة الخارقة"
+  ],
+  "ability.summon_ravens": [
+    "Summon Ravens",
+    "استدعاء الغربان"
+  ],
+  "ability.murder_of_crows": [
+    "Murder of Crows",
+    "سرب الموت"
+  ],
+  "ability.bone_bash": [
+    "Bone Bash",
+    "سحق العظام"
+  ],
+  "ability.grave_taunt": [
+    "Grave Taunt",
+    "استفزاز القبر"
+  ],
+  "ability.bone_armor": [
+    "Bone Armor",
+    "درع العظام"
+  ],
+  "ability.raise_skeletons": [
+    "Raise Skeletons",
+    "إحياء الهياكل"
+  ],
+  "ability.army_of_the_dead": [
+    "Army of the Dead",
+    "جيش الموتى"
+  ],
+  "ability.frost_blast": [
+    "Frost Blast",
+    "انفجار الصقيع"
+  ],
+  "ability.blizzard": [
+    "Blizzard",
+    "العاصفة الثلجية"
+  ],
+  "ability.ice_prison": [
+    "Ice Prison",
+    "سجن الجليد"
+  ],
+  "ability.frost_armor": [
+    "Frost Armor",
+    "درع الصقيع"
+  ],
+  "ability.absolute_zero": [
+    "Absolute Zero",
+    "الصفر المطلق"
+  ],
+  "ability.magical_blast": [
+    "Magical Blast",
+    "الانفجار السحري"
+  ],
+  "ability.blue_inferno": [
+    "Blue Inferno",
+    "الجحيم الأزرق"
+  ],
+  "ability.flame_wave": [
+    "Flame Wave",
+    "موجة اللهب"
+  ],
+  "ability.arcane_surge": [
+    "Arcane Surge",
+    "الاندفاع السحري"
+  ],
+  "ability.azure_cataclysm": [
+    "Azure Cataclysm",
+    "الكارثة اللازوردية"
+  ],
+  "ability.executioners_chop": [
+    "Executioner's Chop",
+    "ضربة الجلاد"
+  ],
+  "ability.brutal_charge": [
+    "Brutal Charge",
+    "الهجوم الوحشي"
+  ],
+  "ability.blood_frenzy": [
+    "Blood Frenzy",
+    "هيجان الدم"
+  ],
+  "ability.decapitation": [
+    "Decapitation",
+    "قطع الرؤوس"
+  ],
+  "ability.dragon_breath": [
+    "Dragon Breath",
+    "نفث التنين"
+  ],
+  "ability.wing_dash": [
+    "Wing Dash",
+    "اندفاع الأجنحة"
+  ],
+  "ability.summon_whelps": [
+    "Summon Whelps",
+    "استدعاء صغار التنانين"
+  ],
+  "ability.dragonscale": [
+    "Dragonscale",
+    "حراشف التنين"
+  ],
+  "ability.call_of_the_wyrm": [
+    "Call of the Wyrm",
+    "نداء التنين الأعظم"
+  ],
+  "ability.earthquake": [
+    "Earthquake",
+    "الزلزال"
+  ],
+  "ability.boulder_throw": [
+    "Boulder Throw",
+    "رمي الصخرة"
+  ],
+  "ability.stone_skin": [
+    "Stone Skin",
+    "جلد الحجر"
+  ],
+  "ability.tectonic_rupture": [
+    "Tectonic Rupture",
+    "التصدع العظيم"
+  ],
+  "ability.umbral_blades": [
+    "Umbral Blades",
+    "شفرات الظلام"
+  ],
+  "ability.shadow_clones": [
+    "Shadow Clones",
+    "نسخ الظل"
+  ],
+  "ability.eclipse": [
+    "Eclipse",
+    "الكسوف"
+  ],
+  "ability.smoke_bomb": [
+    "Smoke Bomb",
+    "قنبلة الدخان"
+  ],
+  "ability.explosive_bolt": [
+    "Explosive Bolt",
+    "السهم المتفجر"
+  ],
+  "ability.mark_target": [
+    "Mark Target",
+    "تعليم الهدف"
+  ],
+  "ability.deadeye": [
+    "Deadeye",
+    "العين القاتلة"
+  ],
+  "ability.chain_lightning": [
+    "Chain Lightning",
+    "البرق المتسلسل"
+  ],
+  "ability.thunder_clap": [
+    "Thunder Clap",
+    "صفقة الرعد"
+  ],
+  "ability.storm_shield": [
+    "Storm Shield",
+    "درع العاصفة"
+  ],
+  "ability.tower_overcharge": [
+    "Tower Overcharge",
+    "شحن الأبراج"
+  ],
+  "ability.tempest": [
+    "Tempest",
+    "الإعصار"
+  ],
+  "abtype.melee_aoe": [
+    "Smash all nearby enemies",
+    "يسحق كل الأعداء القريبين"
+  ],
+  "abtype.dash": [
+    "Dash to a location, hitting enemies on the way",
+    "يندفع إلى موقع ويضرب الأعداء في الطريق"
+  ],
+  "abtype.blink_strike": [
+    "Blink between enemies with devastating strikes",
+    "ينتقل بين الأعداء بضربات مدمرة"
+  ],
+  "abtype.summon": [
+    "Summon allied warriors to fight",
+    "يستدعي محاربين حلفاء للقتال"
+  ],
+  "abtype.blast": [
+    "Explosion at the target area",
+    "انفجار في منطقة الهدف"
+  ],
+  "abtype.cloud": [
+    "Lingering damaging area",
+    "منطقة ضرر مستمرة"
+  ],
+  "abtype.nova": [
+    "Burst around the hero",
+    "انفجار حول البطل"
+  ],
+  "abtype.buff": [
+    "Empower the hero temporarily",
+    "يقوي البطل مؤقتاً"
+  ],
+  "abtype.chain": [
+    "Lightning jumps between enemies",
+    "برق يقفز بين الأعداء"
+  ],
+  "abtype.volley": [
+    "Rain of projectiles over an area",
+    "وابل من المقذوفات على منطقة"
+  ],
+  "abtype.line": [
+    "Hits all enemies in a line",
+    "يصيب كل الأعداء في خط"
+  ],
+  "abtype.taunt": [
+    "Force enemies to attack the hero",
+    "يجبر الأعداء على مهاجمة البطل"
+  ],
+  "abtype.execute": [
+    "Heavy single-target hit",
+    "ضربة قوية لهدف واحد"
+  ],
+  "abtype.tower_buff": [
+    "Empower nearby towers",
+    "يقوي الأبراج القريبة"
+  ],
+  "abtype.summon_dragon": [
+    "Summon a dragon to scorch the field",
+    "يستدعي تنيناً يحرق الساحة"
+  ],
+  "tower.archer": [
+    "Archer Tower",
+    "برج الرماة"
+  ],
+  "tower.mage": [
+    "Mage Tower",
+    "برج السحرة"
+  ],
+  "tower.artillery": [
+    "Artillery Tower",
+    "برج المدفعية"
+  ],
+  "tower.soldier": [
+    "Soldier Tower",
+    "برج الجنود"
+  ],
+  "tower.poison": [
+    "Poison Tower",
+    "برج السم"
+  ],
+  "tower.fire": [
+    "Fire Tower",
+    "برج النار"
+  ],
+  "tower.ice": [
+    "Ice Tower",
+    "برج الجليد"
+  ],
+  "tower.lightning": [
+    "Lightning Tower",
+    "برج البرق"
+  ],
+  "tower.shadow": [
+    "Shadow Tower",
+    "برج الظلال"
+  ],
+  "tower.light": [
+    "Light Tower",
+    "برج النور"
+  ],
+  "tower.earth": [
+    "Earth Tower",
+    "برج الأرض"
+  ],
+  "tower.wind": [
+    "Wind Tower",
+    "برج الرياح"
+  ],
+  "tower.crossbow": [
+    "Crossbow Tower",
+    "برج القوس والنشاب"
+  ],
+  "tower.trap": [
+    "Trap Tower",
+    "برج الفخاخ"
+  ],
+  "branch.marksman": [
+    "Marksman Spire",
+    "برج القناصة"
+  ],
+  "branch.ranger": [
+    "Ranger Lodge",
+    "نُزل الجوّالين"
+  ],
+  "branch.fire_mage": [
+    "Fire Mage",
+    "ساحر النار"
+  ],
+  "branch.ice_mage": [
+    "Ice Mage",
+    "ساحر الجليد"
+  ],
+  "branch.hellfire_mortar": [
+    "Hellfire Mortar",
+    "هاون نار الجحيم"
+  ],
+  "branch.siege_cannon": [
+    "Siege Cannon",
+    "مدفع الحصار"
+  ],
+  "branch.black_guard": [
+    "Black Guard",
+    "الحرس الأسود"
+  ],
+  "branch.berserkers": [
+    "Berserker Hall",
+    "قاعة الهائجين"
+  ],
+  "branch.plague_spire": [
+    "Plague Spire",
+    "برج الطاعون"
+  ],
+  "branch.venom_spire": [
+    "Venom Spire",
+    "برج الزعاف"
+  ],
+  "branch.inferno": [
+    "Inferno Pillar",
+    "عمود الجحيم"
+  ],
+  "branch.phoenix": [
+    "Phoenix Roost",
+    "عش العنقاء"
+  ],
+  "branch.glacier": [
+    "Glacier Keep",
+    "حصن الجليد"
+  ],
+  "branch.frost_nova": [
+    "Frost Nova",
+    "نوفا الصقيع"
+  ],
+  "branch.tesla": [
+    "Tesla Coil",
+    "ملف تسلا"
+  ],
+  "branch.stormcaller": [
+    "Stormcaller",
+    "مستدعي العاصفة"
+  ],
+  "branch.void_spire": [
+    "Void Spire",
+    "برج الفراغ"
+  ],
+  "branch.nightmare_spire": [
+    "Nightmare Spire",
+    "برج الكوابيس"
+  ],
+  "branch.sanctum": [
+    "Holy Sanctum",
+    "المحراب المقدس"
+  ],
+  "branch.radiant_lance": [
+    "Radiant Lance",
+    "رمح النور"
+  ],
+  "branch.quake_forge": [
+    "Quake Forge",
+    "مسبك الزلازل"
+  ],
+  "branch.golem_pit": [
+    "Golem Pit",
+    "حفرة الغولم"
+  ],
+  "branch.tornado_spire": [
+    "Tornado Spire",
+    "برج الإعصار"
+  ],
+  "branch.gale_spire": [
+    "Gale Spire",
+    "برج العواصف"
+  ],
+  "branch.ballista": [
+    "Ballista",
+    "المنجنيق"
+  ],
+  "branch.repeater": [
+    "Repeater",
+    "القوس المتكرر"
+  ],
+  "branch.spike_pit": [
+    "Spike Pit",
+    "حفرة الأشواك"
+  ],
+  "branch.snare_pit": [
+    "Snare Pit",
+    "حفرة الأشراك"
+  ],
+  "enemy.skeleton_minion": [
+    "Skeleton Minion",
+    "هيكل عظمي تابع"
+  ],
+  "enemy.skeleton_warrior": [
+    "Skeleton Warrior",
+    "محارب هيكلي"
+  ],
+  "enemy.skeleton_archer": [
+    "Skeleton Archer",
+    "رامٍ هيكلي"
+  ],
+  "enemy.bone_mage": [
+    "Bone Mage",
+    "ساحر العظام"
+  ],
+  "enemy.dark_priest": [
+    "Dark Priest",
+    "الكاهن المظلم"
+  ],
+  "enemy.necromancer": [
+    "Necromancer",
+    "مستحضر الأرواح"
+  ],
+  "enemy.ash_brute": [
+    "Ash Brute",
+    "وحش الرماد"
+  ],
+  "enemy.cultist": [
+    "Cultist",
+    "المتعصب"
+  ],
+  "enemy.shadow_stalker": [
+    "Shadow Stalker",
+    "متربص الظل"
+  ],
+  "enemy.war_herald": [
+    "War Herald",
+    "بشير الحرب"
+  ],
+  "enemy.winged_fiend": [
+    "Winged Fiend",
+    "الشيطان المجنح"
+  ],
+  "enemy.death_knight": [
+    "Death Knight",
+    "فارس الموت"
+  ],
+  "boss.ashen_warlord": [
+    "Ashen Warlord",
+    "أمير الحرب الرمادي"
+  ],
+  "boss.shadow_reaper": [
+    "Shadow Reaper",
+    "حاصد الظلال"
+  ],
+  "boss.inferno_titan": [
+    "Inferno Titan",
+    "عملاق المحرقة"
+  ],
+  "boss.plague_colossus": [
+    "Plague Colossus",
+    "عملاق الطاعون"
+  ],
+  "boss.frost_lich": [
+    "Frost Lich",
+    "ليتش الصقيع"
+  ],
+  "boss.demon_lord": [
+    "Demon Lord",
+    "سيد الشياطين"
+  ],
+  "boss.bone_emperor": [
+    "Bone Emperor",
+    "إمبراطور العظام"
+  ],
+  "boss.gatekeeper": [
+    "The Gatekeeper",
+    "حارس البوابة"
+  ],
+  "rarity.common": [
+    "Common",
+    "عادي"
+  ],
+  "rarity.rare": [
+    "Rare",
+    "نادر"
+  ],
+  "rarity.epic": [
+    "Epic",
+    "ملحمي"
+  ],
+  "rarity.legendary": [
+    "Legendary",
+    "أسطوري"
+  ],
+  "rarity.mythic": [
+    "Mythic",
+    "خرافي"
+  ],
+  "slot.weapon": [
+    "Weapon",
+    "السلاح"
+  ],
+  "slot.armor": [
+    "Armor",
+    "الدرع"
+  ],
+  "slot.gloves": [
+    "Gauntlets",
+    "القفازات"
+  ],
+  "slot.boots": [
+    "Boots",
+    "الحذاء"
+  ],
+  "slot.ring": [
+    "Ring",
+    "الخاتم"
+  ],
+  "slot.necklace": [
+    "Necklace",
+    "القلادة"
+  ],
+  "slot.gem": [
+    "Gem",
+    "جوهرة"
+  ],
+  "slot.rune": [
+    "Rune",
+    "رون"
+  ],
+  "slot.material": [
+    "Material",
+    "مادة"
+  ],
+  "slot.chest": [
+    "Chest",
+    "صندوق"
+  ],
+  "stat.health": [
+    "Health",
+    "الصحة"
+  ],
+  "stat.damage": [
+    "Damage",
+    "الهجوم"
+  ],
+  "stat.defense": [
+    "Defense",
+    "الدفاع"
+  ],
+  "stat.attack_speed": [
+    "Attack Speed",
+    "سرعة الهجوم"
+  ],
+  "stat.move_speed": [
+    "Move Speed",
+    "سرعة الحركة"
+  ],
+  "stat.energy": [
+    "Energy",
+    "الطاقة"
+  ],
+  "stat.crit": [
+    "Critical Chance",
+    "فرصة الضربة الحرجة"
+  ],
+  "stat.crit_dmg": [
+    "Critical Damage",
+    "ضرر الضربة الحرجة"
+  ],
+  "stat.energy_regen": [
+    "Energy Regen",
+    "تجدد الطاقة"
+  ],
+  "stat.cdr": [
+    "Cooldown Reduction",
+    "تقليل التهدئة"
+  ],
+  "stat.lifesteal": [
+    "Lifesteal",
+    "سرقة الحياة"
+  ],
+  "stat.range": [
+    "Range",
+    "المدى"
+  ],
+  "stat.power": [
+    "Power",
+    "القوة"
+  ],
+  "item.w_greatsword": [
+    "Greatsword",
+    "سيف عظيم"
+  ],
+  "item.w_axe": [
+    "War Axe",
+    "فأس حرب"
+  ],
+  "item.w_staff": [
+    "Staff",
+    "عصا سحرية"
+  ],
+  "item.w_crossbow": [
+    "Crossbow",
+    "قوس ونشاب"
+  ],
+  "item.w_blade": [
+    "Blade",
+    "نصل"
+  ],
+  "item.a_plate": [
+    "Plate Armor",
+    "درع صفائح"
+  ],
+  "item.a_robe": [
+    "Robe",
+    "رداء"
+  ],
+  "item.a_mail": [
+    "Chainmail",
+    "درع زرد"
+  ],
+  "item.g_gauntlets": [
+    "Gauntlets",
+    "قفازات حديدية"
+  ],
+  "item.g_claws": [
+    "Claws",
+    "مخالب"
+  ],
+  "item.b_greaves": [
+    "Greaves",
+    "واقيات الساق"
+  ],
+  "item.b_treads": [
+    "Treads",
+    "أحذية"
+  ],
+  "item.r_band": [
+    "Band",
+    "خاتم"
+  ],
+  "item.r_seal": [
+    "Seal",
+    "خاتم ختم"
+  ],
+  "item.n_amulet": [
+    "Amulet",
+    "تميمة"
+  ],
+  "item.n_talisman": [
+    "Talisman",
+    "طلسم"
+  ],
+  "item.gem_ruby": [
+    "Ruby",
+    "ياقوت أحمر"
+  ],
+  "item.gem_sapphire": [
+    "Sapphire",
+    "ياقوت أزرق"
+  ],
+  "item.gem_emerald": [
+    "Emerald",
+    "زمرد"
+  ],
+  "item.gem_topaz": [
+    "Topaz",
+    "توباز"
+  ],
+  "item.gem_amethyst": [
+    "Amethyst",
+    "جمشت"
+  ],
+  "item.rune_fury": [
+    "Rune of Fury",
+    "رون الغضب"
+  ],
+  "item.rune_haste": [
+    "Rune of Haste",
+    "رون العجلة"
+  ],
+  "item.rune_vigor": [
+    "Rune of Vigor",
+    "رون الحيوية"
+  ],
+  "item.rune_blood": [
+    "Rune of Blood",
+    "رون الدم"
+  ],
+  "item.iron_ore": [
+    "Iron Ore",
+    "خام الحديد"
+  ],
+  "item.soul_shard": [
+    "Soul Shard",
+    "شظية الروح"
+  ],
+  "item.dragon_scale": [
+    "Dragon Scale",
+    "حرشفة التنين"
+  ],
+  "item.void_essence": [
+    "Void Essence",
+    "جوهر الفراغ"
+  ],
+  "item.chest_common": [
+    "Iron Chest",
+    "صندوق حديدي"
+  ],
+  "item.chest_epic": [
+    "Epic Chest",
+    "صندوق ملحمي"
+  ],
+  "item.chest_legendary": [
+    "Legendary Chest",
+    "صندوق أسطوري"
+  ],
+  "prefix.infernal": [
+    "Infernal",
+    "الجهنمي"
+  ],
+  "prefix.cursed": [
+    "Cursed",
+    "الملعون"
+  ],
+  "prefix.shadow": [
+    "Shadow",
+    "الظلي"
+  ],
+  "prefix.frozen": [
+    "Frozen",
+    "المتجمد"
+  ],
+  "prefix.venomous": [
+    "Venomous",
+    "السام"
+  ],
+  "prefix.ancient": [
+    "Ancient",
+    "العتيق"
+  ],
+  "prefix.bloodforged": [
+    "Bloodforged",
+    "المصهور بالدم"
+  ],
+  "prefix.stormbound": [
+    "Stormbound",
+    "المقيد بالعاصفة"
+  ],
+  "prefix.grim": [
+    "Grim",
+    "القاتم"
+  ],
+  "prefix.eternal": [
+    "Eternal",
+    "الأبدي"
+  ],
+  "suffix.of_ruin": [
+    "of Ruin",
+    "للخراب"
+  ],
+  "suffix.of_the_abyss": [
+    "of the Abyss",
+    "من الهاوية"
+  ],
+  "suffix.of_kings": [
+    "of Kings",
+    "للملوك"
+  ],
+  "suffix.of_flame": [
+    "of Flame",
+    "اللهب"
+  ],
+  "suffix.of_frost": [
+    "of Frost",
+    "الصقيع"
+  ],
+  "suffix.of_the_crow": [
+    "of the Crow",
+    "الغراب"
+  ],
+  "suffix.of_bones": [
+    "of Bones",
+    "العظام"
+  ],
+  "suffix.of_storms": [
+    "of Storms",
+    "العواصف"
+  ],
+  "suffix.of_the_void": [
+    "of the Void",
+    "الفراغ"
+  ],
+  "suffix.of_the_siege": [
+    "of the Siege",
+    "الحصار"
+  ],
+  "status.burn": [
+    "Burning",
+    "احتراق"
+  ],
+  "status.poison": [
+    "Poisoned",
+    "مسموم"
+  ],
+  "status.slow": [
+    "Slowed",
+    "مُبطأ"
+  ],
+  "status.freeze": [
+    "Frozen",
+    "متجمد"
+  ],
+  "status.stun": [
+    "Stunned",
+    "مصعوق"
+  ],
+  "skill.brutality": [
+    "Brutality",
+    "الوحشية"
+  ],
+  "skill.precision": [
+    "Precision",
+    "الدقة"
+  ],
+  "skill.fury": [
+    "Fury",
+    "الغضب"
+  ],
+  "skill.iron_skin": [
+    "Iron Skin",
+    "الجلد الحديدي"
+  ],
+  "skill.vitality": [
+    "Vitality",
+    "الحيوية"
+  ],
+  "skill.bulwark": [
+    "Bulwark",
+    "الحصن"
+  ],
+  "skill.focus": [
+    "Focus",
+    "التركيز"
+  ],
+  "skill.swiftness": [
+    "Swiftness",
+    "الرشاقة"
+  ],
+  "skill.mastery": [
+    "Ultimate Mastery",
+    "إتقان القدرة الخارقة"
+  ],
+  "skill.branch.offense": [
+    "Offense",
+    "الهجوم"
+  ],
+  "skill.branch.defense": [
+    "Defense",
+    "الدفاع"
+  ],
+  "skill.branch.mastery": [
+    "Mastery",
+    "الإتقان"
+  ],
+  "ach.slayer": [
+    "Slayer",
+    "السفّاح"
+  ],
+  "ach.boss_hunter": [
+    "Boss Hunter",
+    "صائد الزعماء"
+  ],
+  "ach.architect": [
+    "Architect",
+    "المعماري"
+  ],
+  "ach.evolution": [
+    "Evolution",
+    "التطور"
+  ],
+  "ach.star_collector": [
+    "Star Collector",
+    "جامع النجوم"
+  ],
+  "ach.treasure": [
+    "Treasure Hunter",
+    "صائد الكنوز"
+  ],
+  "ach.legend": [
+    "Legend Seeker",
+    "باحث الأساطير"
+  ],
+  "ach.caster": [
+    "Spellweaver",
+    "حائك التعاويذ"
+  ],
+  "ach.victor": [
+    "Victor",
+    "المنتصر"
+  ],
+  "ach.flawless": [
+    "Flawless",
+    "بلا خدش"
+  ],
+  "ach.blacksmith": [
+    "Blacksmith",
+    "الحداد"
+  ],
+  "ach.dragon_rider": [
+    "Dragon Rider",
+    "راكب التنين"
+  ],
+  "stat_desc.kills": [
+    "Defeat enemies",
+    "اهزم الأعداء"
+  ],
+  "stat_desc.boss_kills": [
+    "Defeat bosses",
+    "اهزم الزعماء"
+  ],
+  "stat_desc.towers_built": [
+    "Build towers",
+    "ابنِ الأبراج"
+  ],
+  "stat_desc.tower_upgrades": [
+    "Upgrade towers",
+    "طوّر الأبراج"
+  ],
+  "stat_desc.stars": [
+    "Collect stars",
+    "اجمع النجوم"
+  ],
+  "stat_desc.stars_earned": [
+    "Earn stars",
+    "احصل على النجوم"
+  ],
+  "stat_desc.items_looted": [
+    "Loot items",
+    "اجمع الغنائم"
+  ],
+  "stat_desc.legendary_found": [
+    "Find legendary items",
+    "اعثر على عناصر أسطورية"
+  ],
+  "stat_desc.abilities_used": [
+    "Use hero abilities",
+    "استخدم قدرات البطل"
+  ],
+  "stat_desc.victories": [
+    "Win battles",
+    "انتصر في المعارك"
+  ],
+  "stat_desc.perfect_wins": [
+    "Win with 3 stars",
+    "انتصر بثلاث نجوم"
+  ],
+  "stat_desc.item_upgrades": [
+    "Upgrade items",
+    "طوّر العناصر"
+  ],
+  "stat_desc.dragons_summoned": [
+    "Summon the dragon",
+    "استدعِ التنين"
+  ],
+  "stat_desc.global_used": [
+    "Use global powers",
+    "استخدم القدرات العامة"
+  ],
+  "perk.perk_gold": [
+    "Treasury",
+    "الخزينة"
+  ],
+  "perk.perk_xp": [
+    "Wisdom",
+    "الحكمة"
+  ],
+  "perk.perk_tower": [
+    "Siegecraft",
+    "فن الحصار"
+  ],
+  "perk.perk_loot": [
+    "Fortune",
+    "الحظ"
+  ]
 }

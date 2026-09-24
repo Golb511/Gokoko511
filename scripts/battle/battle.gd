@@ -355,7 +355,7 @@ func _end(victory: bool) -> void:
 		var gems := 0
 		var gained_stars := Game.record_stage_result(stage_id, stars)
 		gems += gained_stars * 5
-		var hero_xp := xp_earned + 60 + gi * 15
+		var hero_xp := xp_earned / 2 + 60 + gi * 15
 		var player_xp := 40 + gi * 12 + stars * 10
 		Game.add_gold(reward_gold)
 		if gems > 0:
