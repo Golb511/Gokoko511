@@ -41,10 +41,10 @@ static func make_environment(theme: Dictionary) -> WorldEnvironment:
 	env.tonemap_exposure = 1.05
 	env.tonemap_white = 6.0
 	env.glow_enabled = true
-	env.glow_intensity = 0.9
-	env.glow_strength = 1.0
-	env.glow_bloom = 0.08
-	env.glow_hdr_threshold = 0.9
+	env.glow_intensity = 0.6
+	env.glow_strength = 0.9
+	env.glow_bloom = 0.02
+	env.glow_hdr_threshold = 1.2
 	env.glow_blend_mode = Environment.GLOW_BLEND_MODE_SOFTLIGHT
 	env.fog_enabled = true
 	env.fog_light_color = _c(theme.get("fog", [0.2, 0.08, 0.05]))

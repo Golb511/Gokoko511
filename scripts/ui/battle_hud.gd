@@ -39,19 +39,23 @@ func setup(b: BattleController) -> void:
 	root = Control.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.layout_direction = Control.LAYOUT_DIRECTION_LTR
 	add_child(root)
 	_build_top()
 	_build_hero_panel()
 	_build_right_panel()
 	hint_label = UITheme.label("", 22, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER)
-	hint_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	hint_label.position = Vector2(-300, -190)
-	hint_label.size = Vector2(600, 40)
+	hint_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
+	hint_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	hint_label.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	hint_label.custom_minimum_size = Vector2(700, 40)
+	hint_label.offset_bottom = -170
 	root.add_child(hint_label)
 	toast_box = UITheme.vbox(6)
-	toast_box.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	toast_box.position = Vector2(-300, 120)
-	toast_box.size = Vector2(600, 200)
+	toast_box.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	toast_box.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	toast_box.custom_minimum_size = Vector2(700, 0)
+	toast_box.offset_top = 120
 	toast_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(toast_box)
 	Events.battle_gold_changed.connect(func(g): gold_label.text = Loc.num(g))
@@ -83,9 +87,10 @@ func _build_top() -> void:
 	v.add_child(wave_btn)
 
 	var tr_ := UITheme.panel(Color(0.03, 0.02, 0.02, 0.8), UITheme.GOLD_DIM, 8)
-	tr_.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	tr_.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
 	tr_.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	tr_.position = Vector2(-16, 14)
+	tr_.offset_right = -16
+	tr_.offset_top = 14
 	root.add_child(tr_)
 	var hr := UITheme.hbox(10)
 	tr_.add_child(hr)
@@ -105,8 +110,9 @@ func _build_top() -> void:
 	hr.add_child(auto_btn)
 
 	boss_panel = UITheme.panel(Color(0.05, 0.01, 0.01, 0.85), Color(0.8, 0.2, 0.1), 8)
-	boss_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	boss_panel.position = Vector2(-320, 14)
+	boss_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	boss_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	boss_panel.offset_top = 14
 	boss_panel.custom_minimum_size = Vector2(640, 0)
 	boss_panel.visible = false
 	root.add_child(boss_panel)
@@ -133,9 +139,10 @@ func _icon_button(glyph: String, cb: Callable, sz := 56.0, tint := UITheme.GOLD)
 
 func _build_hero_panel() -> void:
 	var panel := UITheme.panel(Color(0.03, 0.02, 0.02, 0.82), UITheme.GOLD_DIM, 8)
-	panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
-	panel.position = Vector2(16, -16)
+	panel.offset_left = 16
+	panel.offset_bottom = -16
 	root.add_child(panel)
 	var h := UITheme.hbox(10)
 	panel.add_child(h)
@@ -185,34 +192,43 @@ func _ability_tooltip(id: String, ab: Dictionary) -> String:
 
 
 func _build_right_panel() -> void:
-	var panel := Control.new()
-	panel.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var panel := UITheme.panel(Color(0.03, 0.02, 0.02, 0.82), UITheme.GOLD_DIM, 8)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	panel.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	panel.offset_right = -16
+	panel.offset_bottom = -16
 	root.add_child(panel)
-	var ult_ab: Dictionary = battle.hero.ability_def(4)
-	var ult := AbilityButton.make(ult_ab.icon, VFX.color(ult_ab.element), 130, "R", "")
-	ult.position = Vector2(-150, -150)
-	ult.tooltip_text = _ability_tooltip(battle.hero.ability_ids[4], ult_ab)
-	ult.pressed.connect(func(): request_ability(4))
-	panel.add_child(ult)
-	ability_btns.append(ult)
-	ult_label = UITheme.label("0", 26, Color(1, 0.9, 0.6), true, HORIZONTAL_ALIGNMENT_CENTER)
-	ult_label.position = Vector2(-150, -40)
-	ult_label.size = Vector2(130, 30)
-	panel.add_child(ult_label)
+	var h := UITheme.hbox(12)
+	panel.add_child(h)
+	var grid := GridContainer.new()
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", 8)
+	grid.add_theme_constant_override("v_separation", 8)
+	h.add_child(grid)
 	var keys := {"meteor": "Z", "freeze": "X", "tower_buff": "C", "summon_dragon": "V"}
-	var y := -240.0
 	for id in battle.globals.order:
 		var d: Dictionary = DB.cfg.global_abilities[id]
-		var btn := AbilityButton.make(d.icon, VFX.color(d.get("element", "holy")), 76, keys[id])
-		btn.position = Vector2(-120, y)
+		var btn := AbilityButton.make(d.icon, VFX.color(d.get("element", "holy")), 66, keys[id])
 		btn.tooltip_text = "%s\n%s" % [tr("global." + id), tr("global." + id + ".desc")]
 		var gid: String = id
 		btn.pressed.connect(func(): request_global(gid))
-		btn.visible = battle.globals.is_unlocked(id)
-		panel.add_child(btn)
+		if not battle.globals.is_unlocked(id):
+			btn.disabled = true
+			btn.icon_ctrl.dim = 0.75
+			btn.tooltip_text += "\n" + tr("ui.locked")
+		grid.add_child(btn)
 		global_btns[id] = btn
-		y -= 86.0
+	var uv := UITheme.vbox(2)
+	h.add_child(uv)
+	var ult_ab: Dictionary = battle.hero.ability_def(4)
+	var ult := AbilityButton.make(ult_ab.icon, VFX.color(ult_ab.element), 124, "R", "")
+	ult.tooltip_text = _ability_tooltip(battle.hero.ability_ids[4], ult_ab)
+	ult.pressed.connect(func(): request_ability(4))
+	uv.add_child(ult)
+	ability_btns.append(ult)
+	ult_label = UITheme.label("0", 22, Color(1, 0.9, 0.6), true, HORIZONTAL_ALIGNMENT_CENTER)
+	uv.add_child(ult_label)
 
 
 func _get_input() -> BattleInput:
@@ -234,6 +250,8 @@ func _process(_delta: float) -> void:
 		var cd_max := float(ab.cooldown) * (1.0 - h.cdr)
 		ability_btns[i].set_state(h.cooldowns[i] / maxf(0.01, cd_max), h.can_cast(i))
 	for id in global_btns:
+		if not battle.globals.is_unlocked(id):
+			continue
 		var d: Dictionary = DB.cfg.global_abilities[id]
 		global_btns[id].set_state(float(battle.globals.cooldowns[id]) / float(d.cooldown), battle.globals.can_use(id))
 	if boss != null and is_instance_valid(boss):

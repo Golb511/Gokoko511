@@ -51,9 +51,9 @@ static func _smoke() -> StandardMaterial3D:
 
 static func _ramp(c: Color, end_alpha := 0.0) -> Gradient:
 	var g := Gradient.new()
-	g.set_color(0, Color(c.r * 1.6 + 0.2, c.g * 1.6 + 0.2, c.b * 1.6 + 0.2, 1.0))
+	g.set_color(0, Color(minf(1.0, c.r * 1.15 + 0.08), minf(1.0, c.g * 1.15 + 0.08), minf(1.0, c.b * 1.15 + 0.08), 0.85))
 	g.set_color(1, Color(c.r * 0.5, c.g * 0.3, c.b * 0.3, end_alpha))
-	g.add_point(0.35, Color(c.r, c.g, c.b, 0.9))
+	g.add_point(0.35, Color(c.r, c.g, c.b, 0.6))
 	return g
 
 
@@ -231,7 +231,7 @@ static func torch_flame(parent: Node, pos: Vector3, c: Color = Color(1.0, 0.45, 
 	var root := Node3D.new()
 	parent.add_child(root)
 	root.global_position = pos
-	particles(root, pos, {"amount": 18, "lifetime": 0.6, "one_shot": false, "speed": 0.9, "size": 0.35, "color": c, "radius": 0.06, "gravity": Vector3(0, 2.5, 0), "spread": 10.0})
+	particles(root, pos, {"amount": 16, "lifetime": 0.55, "one_shot": false, "speed": 0.7, "size": 0.28, "color": c, "radius": 0.05, "gravity": Vector3(0, 2.2, 0), "spread": 10.0})
 	if with_light and _quality > 0:
 		var l := OmniLight3D.new()
 		l.light_color = c

@@ -7,7 +7,7 @@ uniform sampler2D albedo_tex : source_color, filter_linear_mipmap, repeat_enable
 uniform sampler2D detail_tex : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D detail_normal : hint_normal, filter_linear_mipmap, repeat_enable;
 uniform vec3 tint : source_color = vec3(0.5);
-uniform float desaturate : hint_range(0.0, 1.0) = 0.65;
+uniform float desaturate : hint_range(0.0, 1.0) = 0.78;
 uniform float brightness = 1.0;
 uniform float detail_scale = 0.9;
 uniform vec3 accent : source_color = vec3(1.0, 0.4, 0.1);
@@ -37,7 +37,7 @@ void fragment() {
 	vec3 p = world_pos * detail_scale;
 	float n = triplanar(detail_tex, p, world_nrm).r;
 	float n2 = triplanar(detail_tex, p * 3.7, world_nrm).r;
-	vec3 col = mix(base, vec3(lum), desaturate) * tint * 2.0 * brightness;
+	vec3 col = mix(base, vec3(lum), max(desaturate, 0.72)) * tint * 1.8 * brightness;
 	col *= 0.65 + 0.55 * n * (0.7 + 0.6 * n2);
 	// Dirt/soot in crevices and near the ground.
 	col *= mix(0.55, 1.0, smoothstep(0.0, 1.6, world_pos.y));
@@ -51,7 +51,7 @@ void fragment() {
 	METALLIC = metal * smoothstep(0.35, 0.7, lum);
 	ROUGHNESS = clamp(0.75 + (n2 - 0.5) * 0.4 - snow * 0.3, 0.2, 1.0);
 	float fres = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), 3.0);
-	vec3 emit = accent * accent_strength * (fres * 0.6 + smoothstep(0.93, 0.99, 1.0 - abs(n * 2.0 - 1.0)) * 0.8);
+	vec3 emit = accent * accent_strength * fres * 0.35;
 	emit += vec3(1.0, 0.75, 0.3) * buffed * (0.3 + fres * 1.5);
 	emit += vec3(0.6, 0.1, 1.0) * disabled * fres * 1.5;
 	EMISSION = emit;

@@ -4,10 +4,10 @@ extends Node3D
 
 var camera: Camera3D
 var bounds := Rect2(-40, -32, 80, 62)
-var distance := 40.0
+var distance := 27.0
 var min_distance := 16.0
 var max_distance := 58.0
-var pitch := deg_to_rad(56.0)
+var pitch := deg_to_rad(48.0)
 var _target := Vector3.ZERO
 var _shake_t := 0.0
 var _shake_amp := 0.0

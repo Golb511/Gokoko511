@@ -1,34 +1,50 @@
 extends Node
-## Localization: builds Translation resources from data/i18n.json so the
-## standard tr() / auto-translate pipeline works for both English and Arabic.
+## Localization (English / Arabic) from data/i18n.json.
+##
+## The active language's messages are installed as the engine's translation so
+## tr() and auto-translate work everywhere. The engine locale itself stays
+## left-to-right: layouts are designed once, while Arabic strings are still
+## shaped and flow right-to-left because text direction is detected from the
+## content itself.
 
-const LOCALES := ["en", "ar"]
-var _translations: Array[Translation] = []
+const LANGS := ["en", "ar"]
+var language := "ar"
+var _data: Dictionary = {}
+var _active: Translation
 
 
 func _ready() -> void:
 	var f := FileAccess.open("res://data/i18n.json", FileAccess.READ)
-	var data: Dictionary = JSON.parse_string(f.get_as_text())
-	for i in LOCALES.size():
-		var t := Translation.new()
-		t.locale = LOCALES[i]
-		for key in data:
-			var pair: Array = data[key]
-			t.add_message(key, pair[min(i, pair.size() - 1)])
-		TranslationServer.add_translation(t)
-		_translations.append(t)
-	TranslationServer.set_locale("ar")
+	_data = JSON.parse_string(f.get_as_text())
+	TranslationServer.set_locale("en")
+	_install(language)
 
 
-func set_language(locale: String) -> void:
-	if locale not in LOCALES:
-		locale = "en"
-	TranslationServer.set_locale(locale)
-	Events.language_changed.emit(locale)
+func _install(lang: String) -> void:
+	if _active:
+		TranslationServer.remove_translation(_active)
+	var idx := LANGS.find(lang)
+	var t := Translation.new()
+	t.locale = "en"
+	for key in _data:
+		var pair: Array = _data[key]
+		t.add_message(key, pair[mini(idx, pair.size() - 1)])
+	TranslationServer.add_translation(t)
+	_active = t
+
+
+func set_language(lang: String) -> void:
+	if lang not in LANGS:
+		lang = "en"
+	var changed := lang != language
+	language = lang
+	_install(lang)
+	if changed:
+		Events.language_changed.emit(lang)
 
 
 func is_rtl() -> bool:
-	return TranslationServer.get_locale().begins_with("ar")
+	return language == "ar"
 
 
 func t(key: String) -> String:

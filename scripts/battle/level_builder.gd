@@ -84,7 +84,7 @@ func _road(r: PathRoute) -> void:
 		var l := p - side * w + Vector3(0, 0.03, 0)
 		var rr := p + side * w + Vector3(0, 0.03, 0)
 		if i > 0:
-			for v in [[prev_l, 0.0], [rr, 1.0], [l, 0.0], [prev_l, 0.0], [prev_r, 1.0], [rr, 1.0]]:
+			for v in [[l, 0.0], [rr, 1.0], [prev_l, 0.0], [rr, 1.0], [prev_r, 1.0], [prev_l, 0.0]]:
 				st.set_normal(Vector3.UP)
 				st.set_uv(Vector2(v[1], off))
 				st.add_vertex(v[0])
@@ -306,10 +306,11 @@ func _lava_pool(p: Vector3) -> void:
 	cyl.radial_segments = 20
 	mi.mesh = cyl
 	var m := StandardMaterial3D.new()
-	m.albedo_color = Color(1.0, 0.35, 0.05)
+	m.albedo_color = Color(0.25, 0.06, 0.02)
+	m.roughness = 0.3
 	m.emission_enabled = true
-	m.emission = Color(1.0, 0.3, 0.02)
-	m.emission_energy_multiplier = 3.0
+	m.emission = Color(1.0, 0.28, 0.02)
+	m.emission_energy_multiplier = 1.1
 	m.emission_texture = ModelLib.noise_tex("detail")
 	mi.material_override = m
 	mi.scale = Vector3(1, 1, rng.randf_range(0.5, 1.0))

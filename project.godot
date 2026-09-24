@@ -23,6 +23,7 @@ Game="*res://scripts/autoload/game_state.gd"
 Router="*res://scripts/autoload/router.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
 Portraits="*res://scripts/ui/portraits.gd"
+DevTools="*res://scripts/autoload/dev_tools.gd"
 
 [display]
 

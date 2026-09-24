@@ -18,7 +18,7 @@ static func display_name(item: Dictionary) -> String:
 	var p := TranslationServer.translate("prefix." + pre) if pre != "" else ""
 	var s := TranslationServer.translate("suffix." + suf) if suf != "" else ""
 	var name := ""
-	if TranslationServer.get_locale().begins_with("ar"):
+	if Loc.is_rtl():
 		name = " ".join(PackedStringArray([base, p, s].filter(func(x): return x != "")))
 	else:
 		name = " ".join(PackedStringArray([p, base, s].filter(func(x): return x != "")))

@@ -20,26 +20,27 @@ func setup(model_def: Dictionary, portrait := false) -> void:
 	e.ambient_light_energy = 0.8
 	e.tonemap_mode = Environment.TONE_MAPPER_ACES
 	e.glow_enabled = true
-	e.glow_intensity = 0.8
+	e.glow_intensity = 0.4
+	e.glow_hdr_threshold = 1.2
 	env.environment = e
 	add_child(env)
 	var key := DirectionalLight3D.new()
 	key.rotation_degrees = Vector3(-35, 35, 0)
-	key.light_energy = 1.4
+	key.light_energy = 1.8
 	key.light_color = Color(1.0, 0.85, 0.7)
 	key.shadow_enabled = true
 	add_child(key)
 	var glow_c := ModelLib._col(model_def.get("emission", [1, 0.4, 0.1]))
 	var rim := OmniLight3D.new()
-	rim.position = Vector3(-1.2, 2.2, -1.8)
+	rim.position = Vector3(-1.4, 2.4, -2.0)
 	rim.light_color = glow_c
-	rim.light_energy = 6.0
+	rim.light_energy = 2.6
 	rim.omni_range = 6.0
 	add_child(rim)
 	var rim2 := OmniLight3D.new()
 	rim2.position = Vector3(1.6, 1.0, -1.2)
 	rim2.light_color = glow_c.lerp(Color(1, 0.5, 0.2), 0.5)
-	rim2.light_energy = 3.0
+	rim2.light_energy = 1.4
 	rim2.omni_range = 5.0
 	add_child(rim2)
 	if not portrait:
@@ -49,7 +50,13 @@ func setup(model_def: Dictionary, portrait := false) -> void:
 		cyl.bottom_radius = 1.4
 		cyl.height = 0.12
 		_floor.mesh = cyl
-		_floor.material_override = ModelLib.env_material(null, Color(0.25, 0.22, 0.2))
+		var fm := StandardMaterial3D.new()
+		fm.albedo_color = Color(0.08, 0.07, 0.07)
+		fm.roughness = 0.6
+		fm.metallic = 0.4
+		fm.normal_enabled = true
+		fm.normal_texture = ModelLib.noise_tex("cell_normal")
+		_floor.material_override = fm
 		_floor.position.y = -0.06
 		add_child(_floor)
 		VFX.particles(self, Vector3(0, 0.5, 0), {"amount": 24, "lifetime": 3.0, "one_shot": false, "speed": 0.3, "size": 0.06, "color": glow_c, "box": Vector3(1.2, 0.5, 1.2), "gravity": Vector3(0, 0.4, 0), "explosiveness": 0.0})
@@ -71,15 +78,13 @@ func set_model(model_def: Dictionary) -> void:
 
 func frame_full() -> void:
 	var s := model.scale.y if model else 1.0
-	camera.position = Vector3(0, 1.1 * s, 4.6 * s)
-	camera.look_at(Vector3(0, 0.95 * s, 0))
+	camera.transform = Transform3D(Basis(), Vector3(0, 1.15 * s, 6.2 * s)).looking_at(Vector3(0, 0.85 * s, 0), Vector3.UP)
 
 
 func frame_portrait() -> void:
 	var s := model.scale.y if model else 1.0
-	camera.fov = 22.0
-	camera.position = Vector3(0.3, 1.55 * s, 2.3 * s)
-	camera.look_at(Vector3(0, 1.4 * s, 0))
+	camera.fov = 30.0
+	camera.transform = Transform3D(Basis(), Vector3(0.35, 1.45 * s, 3.1 * s)).looking_at(Vector3(0, 1.15 * s, 0), Vector3.UP)
 	model.rotation.y = deg_to_rad(15)
 
 

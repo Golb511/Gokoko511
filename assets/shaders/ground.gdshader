@@ -32,12 +32,13 @@ void fragment() {
 	col = mix(col, col * 1.7 + vec3(0.03), peb);
 	col = mix(col, vec3(0.1, 0.16, 0.06), moss * smoothstep(0.45, 0.7, mid));
 	col = mix(col, vec3(0.78, 0.82, 0.9), snow * smoothstep(0.3, 0.6, big + fine * 0.3));
-	float crack = smoothstep(0.93, 0.99, 1.0 - abs(mid * 2.0 - 1.0)) * smoothstep(0.4, 0.65, big);
-	col *= 1.0 - crack * 0.7;
+	float ridge = 1.0 - abs(mid * 2.0 - 1.0);
+	float crack = smoothstep(0.985, 0.998, ridge) * smoothstep(0.6, 0.8, big);
+	col *= 1.0 - smoothstep(0.94, 0.99, ridge) * 0.35;
 	ALBEDO = col;
 	NORMAL_MAP = texture(normal_tex, p * 0.25).rgb;
 	NORMAL_MAP_DEPTH = 1.5;
 	ROUGHNESS = 0.92 - snow * 0.25;
 	float pulse = 0.75 + 0.25 * sin(TIME * 1.7 + big * 20.0);
-	EMISSION = lava_color * crack * lava * 3.0 * pulse;
+	EMISSION = lava_color * crack * lava * 1.6 * pulse;
 }

@@ -35,19 +35,19 @@ void fragment() {
 	float n = texture(detail_tex, duv).r;
 	float n2 = texture(detail_tex, duv * 3.1 + vec2(0.37)).r;
 
-	vec3 col = mix(base, vec3(lum), desaturate) * tint * 2.4;
-	col *= 0.78 + 0.4 * n2;
+	vec3 col = mix(base, vec3(lum), desaturate) * tint * 1.75;
+	col *= 0.85 + 0.3 * n2;
 	float metallic_mask = smoothstep(0.28, 0.62, lum) * metal;
 
 	// Stone / lava-rock skin.
-	vec3 stone_col = vec3(0.22, 0.2, 0.19) * (0.6 + 0.8 * n) * tint * 2.4;
+	vec3 stone_col = vec3(0.22, 0.2, 0.19) * (0.6 + 0.8 * n) * tint * 2.0;
 	col = mix(col, stone_col, stone);
 	metallic_mask *= (1.0 - stone);
 
 	// Glowing veins (cracks) following the detail noise.
 	float ridge = 1.0 - abs(n * 2.0 - 1.0);
-	float vein = smoothstep(0.90 - vein_amount * 0.25 - stone * 0.08, 0.985, ridge);
-	vein *= (0.35 + stone + vein_amount * 2.0);
+	float mask = smoothstep(0.5, 0.72, texture(detail_tex, obj_pos.xz * 0.31 + vec2(0.61, 0.13)).r);
+	float vein = smoothstep(0.975 - stone * 0.02, 0.996, ridge) * mask * (stone + vein_amount * 1.5);
 
 	float fres = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), 3.0);
 

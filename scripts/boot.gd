@@ -16,4 +16,8 @@ func _ready() -> void:
 	elif "--map" in OS.get_cmdline_user_args():
 		Router.goto("world_map")
 	else:
-		Router.goto("main_menu")
+		var target := "main_menu"
+		for a in OS.get_cmdline_user_args():
+			if a.begins_with("--screen="):
+				target = a.substr(9)
+		Router.goto(target)
