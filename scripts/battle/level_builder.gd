@@ -214,15 +214,15 @@ func _mountains() -> void:
 	while t < per:
 		var p := _perimeter(t)
 		var outward := (p - Vector3(bounds.get_center().x, 0, bounds.get_center().y)).normalized()
-		p += outward * rng.randf_range(5.0, 12.0)
+		p += outward * rng.randf_range(11.0, 18.0)
 		# keep the camera-facing (south) edge low so it never blocks the view
 		var south := p.z > bounds.end.y - 2.0
 		var key: String = ["env/mountain_A", "env/mountain_B", "env/mountain_C"][rng.randi() % 3]
 		if south:
 			key = ["env/rock_single_A", "env/rock_single_B", "env/hill_single_A"][rng.randi() % 3]
-		var sc := rng.randf_range(6.0, 11.0) * (0.45 if south else 1.0)
+		var sc := rng.randf_range(5.5, 9.0) * (0.45 if south else 1.0)
 		var n := _place(key, p, sc, -1.0, Color(tint.r, tint.g, tint.b) * (1.4 if snow else 1.0))
-		n.scale.y *= rng.randf_range(0.8, 1.4) * (0.6 if south else 1.0)
+		n.scale.y *= rng.randf_range(0.55, 1.0) * (0.6 if south else 1.0)
 		t += step * rng.randf_range(0.7, 1.3)
 
 

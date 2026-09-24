@@ -63,8 +63,8 @@ func _process(delta: float) -> void:
 		follow = null
 	if follow != null and is_instance_valid(follow):
 		_target = _target.lerp(follow.global_position, clampf(delta * 3.0, 0, 1))
-	_target.x = clampf(_target.x, bounds.position.x + 6, bounds.end.x - 6)
-	_target.z = clampf(_target.z, bounds.position.y + 2, bounds.end.y - 2)
+	_target.x = clampf(_target.x, bounds.position.x + 10, bounds.end.x - 10)
+	_target.z = clampf(_target.z, bounds.position.y + 6, bounds.end.y - 2)
 	global_position = global_position.lerp(_target, clampf(delta * 8.0, 0.0, 1.0))
 	_apply()
 	if _shake_t > 0.0:

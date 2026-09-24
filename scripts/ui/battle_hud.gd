@@ -60,7 +60,10 @@ func setup(b: BattleController) -> void:
 	root.add_child(toast_box)
 	Events.battle_gold_changed.connect(func(g): gold_label.text = Loc.num(g))
 	Events.battle_lives_changed.connect(_on_lives)
-	Events.wave_started.connect(func(i, n): wave_label.text = "%s %d/%d" % [tr("battle.wave"), i + 1, n])
+	Events.wave_started.connect(func(i, n):
+		wave_label.text = "%s %d/%d" % [tr("battle.wave"), i + 1, n]
+		if i == 0:
+			show_hint(""))
 	Events.boss_spawned.connect(_on_boss)
 	Events.toast.connect(toast)
 	Events.battle_ended.connect(_on_end)
