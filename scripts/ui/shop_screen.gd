@@ -42,7 +42,7 @@ func _mark_bought(key: String) -> void:
 func build() -> void:
 	_ensure_day()
 	var v := UITheme.vbox(10)
-	v.set_anchors_preset(Control.PRESET_FULL_RECT)
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_child(v)
 	var tabs := HFlowContainer.new()
 	tabs.add_theme_constant_override("h_separation", 6)

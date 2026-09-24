@@ -5,10 +5,10 @@ var _lang_btn: Button
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var vpc := SubViewportContainer.new()
 	vpc.stretch = true
-	vpc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	vpc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	vpc.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(vpc)
 	var vp := SubViewport.new()
@@ -25,7 +25,7 @@ func _ready() -> void:
 	gt.fill_from = Vector2(0.5, 0.4)
 	gt.fill_to = Vector2(1.15, 1.1)
 	vignette.texture = gt
-	vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
+	vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	vignette.stretch_mode = TextureRect.STRETCH_SCALE
 	vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(vignette)
@@ -43,7 +43,7 @@ func _rebuild() -> void:
 func _build_ui() -> void:
 	var ui := Control.new()
 	ui.name = "UI"
-	ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(ui)
 	var top := UITheme.vbox(0)

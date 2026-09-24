@@ -10,11 +10,11 @@ var ui: Control
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	layout_direction = Control.LAYOUT_DIRECTION_LTR
 	vpc = SubViewportContainer.new()
 	vpc.stretch = true
-	vpc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	vpc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(vpc)
 	var vp := SubViewport.new()
 	vp.msaa_3d = Viewport.MSAA_2X if GraphicsSettings.quality() >= 2 else Viewport.MSAA_DISABLED
@@ -32,7 +32,7 @@ func _ready() -> void:
 
 func _build_ui() -> void:
 	ui = Control.new()
-	ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(ui)
 	ui.add_child(TopBar.make())
@@ -64,7 +64,7 @@ func _nav_button(glyph: String, key: String, cb: Callable, tint: Color, w: float
 	b.add_theme_stylebox_override("hover", UITheme.box(Color(0.15, 0.1, 0.05, 0.6), UITheme.GOLD_DARK, 1, 6, 0, 4))
 	b.add_theme_stylebox_override("pressed", UITheme.box(Color(0.1, 0.07, 0.04, 0.8), UITheme.GOLD, 1, 6, 0, 4))
 	var v := UITheme.vbox(0)
-	v.set_anchors_preset(Control.PRESET_FULL_RECT)
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	b.add_child(v)
@@ -215,10 +215,10 @@ func _preview_waves(stage_id: String) -> Array:
 func _daily_popup() -> void:
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.7)
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ui.add_child(dim)
 	var cc := CenterContainer.new()
-	cc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	cc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.add_child(cc)
 	var p := UITheme.panel(Color(0.04, 0.03, 0.02, 0.98), UITheme.GOLD, 24)
 	cc.add_child(p)

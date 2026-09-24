@@ -16,7 +16,7 @@ static func make(glyph: String, tint: Color, size: float, key_hint: String, cost
 	for st in ["normal", "hover", "pressed", "disabled"]:
 		b.add_theme_stylebox_override(st, StyleBoxEmpty.new())
 	b.icon_ctrl = Icon.make(glyph, tint, size)
-	b.icon_ctrl.set_anchors_preset(Control.PRESET_FULL_RECT)
+	b.icon_ctrl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	b.add_child(b.icon_ctrl)
 	b.key_label = UITheme.label(key_hint, int(size * 0.22), UITheme.GOLD, true)
 	b.key_label.position = Vector2(size * 0.02, -size * 0.04)

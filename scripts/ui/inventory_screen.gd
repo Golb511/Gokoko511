@@ -19,7 +19,7 @@ func build() -> void:
 	if hero_id == "":
 		hero_id = Game.profile.selected_hero
 	var h := UITheme.hbox(14)
-	h.set_anchors_preset(Control.PRESET_FULL_RECT)
+	h.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_child(h)
 	# Paper doll
 	var doll := UITheme.panel(Color(0.03, 0.02, 0.02, 0.9), UITheme.GOLD_DIM, 10)

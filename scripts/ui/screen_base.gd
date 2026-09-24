@@ -10,7 +10,7 @@ var _title_key := ""
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	layout_direction = Control.LAYOUT_DIRECTION_LTR
 	_backdrop()
 	top_bar = TopBar.make()
@@ -72,7 +72,7 @@ func _backdrop() -> void:
 	gt.fill_from = Vector2(0.5, 0.35)
 	gt.fill_to = Vector2(1.1, 1.1)
 	bg.texture = gt
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.stretch_mode = TextureRect.STRETCH_SCALE
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
@@ -98,11 +98,11 @@ func modal(min_w := 520.0) -> VBoxContainer:
 	var dim := ColorRect.new()
 	dim.name = "Modal"
 	dim.color = Color(0, 0, 0, 0.7)
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(dim)
 	var cc := CenterContainer.new()
-	cc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	cc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.add_child(cc)
 	var p := UITheme.panel(Color(0.04, 0.03, 0.025, 0.98), UITheme.GOLD, 22)
 	p.custom_minimum_size = Vector2(min_w, 0)

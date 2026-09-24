@@ -8,7 +8,7 @@ func _init() -> void:
 func build() -> void:
 	Game.ensure_daily_quests()
 	var h := UITheme.hbox(16)
-	h.set_anchors_preset(Control.PRESET_FULL_RECT)
+	h.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_child(h)
 	var left := UITheme.panel(Color(0.03, 0.02, 0.02, 0.9), UITheme.GOLD_DIM, 14)
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL

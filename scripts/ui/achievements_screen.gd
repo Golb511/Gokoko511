@@ -11,7 +11,7 @@ func build() -> void:
 	grid.add_theme_constant_override("h_separation", 14)
 	grid.add_theme_constant_override("v_separation", 12)
 	var sc := ScreenBase.scroll(grid)
-	sc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	sc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_child(sc)
 	for a in DB.meta.achievements:
 		grid.add_child(_row(a))

@@ -15,7 +15,7 @@ func build() -> void:
 	if selected == "":
 		selected = Game.profile.selected_hero
 	var h := UITheme.hbox(16)
-	h.set_anchors_preset(Control.PRESET_FULL_RECT)
+	h.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_child(h)
 	# Roster
 	var left := UITheme.panel(Color(0.03, 0.02, 0.02, 0.85), UITheme.GOLD_DARK, 10)

@@ -37,7 +37,7 @@ func setup(b: BattleController) -> void:
 	battle = b
 	layer = 10
 	root = Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.layout_direction = Control.LAYOUT_DIRECTION_LTR
 	add_child(root)
@@ -167,11 +167,11 @@ func _build_hero_panel() -> void:
 			tr_.texture = tex
 			tr_.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			tr_.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-			tr_.set_anchors_preset(Control.PRESET_FULL_RECT)
+			tr_.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 			tr_.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hero_portrait.add_child(tr_))
 	hero_respawn = UITheme.label("", 30, Color(1, 0.4, 0.3), true, HORIZONTAL_ALIGNMENT_CENTER)
-	hero_respawn.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hero_respawn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hero_portrait.add_child(hero_respawn)
 	hero_hp = UITheme.bar(1, 1, Color(0.75, 0.15, 0.1), 12)
 	hv.add_child(hero_hp)
@@ -415,7 +415,7 @@ func open_build_menu(slot: BuildSlot) -> void:
 		b.custom_minimum_size = Vector2(118, 124)
 		b.focus_mode = Control.FOCUS_NONE
 		var bv := UITheme.vbox(2)
-		bv.set_anchors_preset(Control.PRESET_FULL_RECT)
+		bv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		bv.alignment = BoxContainer.ALIGNMENT_CENTER
 		bv.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		b.add_child(bv)
@@ -489,7 +489,7 @@ func open_tower_menu(t: Tower) -> void:
 			b.custom_minimum_size = Vector2(160, 150)
 			b.focus_mode = Control.FOCUS_NONE
 			var bv := UITheme.vbox(2)
-			bv.set_anchors_preset(Control.PRESET_FULL_RECT)
+			bv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 			bv.alignment = BoxContainer.ALIGNMENT_CENTER
 			bv.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			b.add_child(bv)
@@ -554,11 +554,11 @@ func finish_rally(p: Vector3) -> void:
 func _modal() -> Control:
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.6)
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	root.add_child(dim)
 	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.add_child(center)
 	var p := UITheme.panel(Color(0.03, 0.02, 0.02, 0.97), UITheme.GOLD, 24)
 	center.add_child(p)
