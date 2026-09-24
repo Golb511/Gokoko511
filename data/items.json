@@ -1,0 +1,46 @@
+{
+  "slots": ["weapon", "armor", "gloves", "boots", "ring", "necklace"],
+  "bases": {
+    "weapon":   [{"id": "w_greatsword", "dmg": 14, "def": 0, "icon": "sword"}, {"id": "w_axe", "dmg": 16, "def": 0, "icon": "axe"}, {"id": "w_staff", "dmg": 12, "def": 0, "icon": "staff"}, {"id": "w_crossbow", "dmg": 13, "def": 0, "icon": "crossbow"}, {"id": "w_blade", "dmg": 12, "def": 0, "icon": "sword"}],
+    "armor":    [{"id": "a_plate", "dmg": 0, "def": 16, "icon": "armor"}, {"id": "a_robe", "dmg": 2, "def": 10, "icon": "robe"}, {"id": "a_mail", "dmg": 0, "def": 13, "icon": "armor"}],
+    "gloves":   [{"id": "g_gauntlets", "dmg": 3, "def": 6, "icon": "gloves"}, {"id": "g_claws", "dmg": 5, "def": 3, "icon": "gloves"}],
+    "boots":    [{"id": "b_greaves", "dmg": 0, "def": 7, "icon": "boots"}, {"id": "b_treads", "dmg": 1, "def": 5, "icon": "boots"}],
+    "ring":     [{"id": "r_band", "dmg": 3, "def": 1, "icon": "ring"}, {"id": "r_seal", "dmg": 2, "def": 2, "icon": "ring"}],
+    "necklace": [{"id": "n_amulet", "dmg": 2, "def": 3, "icon": "necklace"}, {"id": "n_talisman", "dmg": 3, "def": 2, "icon": "necklace"}]
+  },
+  "affixes": [
+    {"stat": "health",       "min": 30,   "max": 70,   "scale": 0.1,  "slots": ["armor", "boots", "necklace", "gloves"]},
+    {"stat": "damage",       "min": 3,    "max": 8,    "scale": 0.1,  "slots": ["weapon", "ring", "gloves", "necklace"]},
+    {"stat": "defense",      "min": 2,    "max": 6,    "scale": 0.1,  "slots": ["armor", "boots", "gloves", "ring"]},
+    {"stat": "attack_speed", "min": 0.03, "max": 0.07, "scale": 0.0,  "slots": ["weapon", "gloves", "ring"]},
+    {"stat": "move_speed",   "min": 0.03, "max": 0.08, "scale": 0.0,  "slots": ["boots"]},
+    {"stat": "crit",         "min": 0.02, "max": 0.05, "scale": 0.0,  "slots": ["weapon", "ring", "necklace", "gloves"]},
+    {"stat": "crit_dmg",     "min": 0.08, "max": 0.2,  "scale": 0.0,  "slots": ["weapon", "necklace"]},
+    {"stat": "energy_regen", "min": 0.3,  "max": 0.8,  "scale": 0.0,  "slots": ["necklace", "ring"]},
+    {"stat": "cdr",          "min": 0.02, "max": 0.05, "scale": 0.0,  "slots": ["necklace", "ring", "armor"]},
+    {"stat": "lifesteal",    "min": 0.02, "max": 0.05, "scale": 0.0,  "slots": ["weapon", "ring"]}
+  ],
+  "affix_caps": {"attack_speed": 0.5, "move_speed": 0.35, "crit": 0.6, "cdr": 0.4, "lifesteal": 0.3},
+  "gems": [
+    {"id": "gem_ruby",     "stat": "damage",       "value": 10, "color": [1.0, 0.15, 0.15]},
+    {"id": "gem_sapphire", "stat": "defense",      "value": 8,  "color": [0.2, 0.4, 1.0]},
+    {"id": "gem_emerald",  "stat": "health",       "value": 90, "color": [0.2, 1.0, 0.35]},
+    {"id": "gem_topaz",    "stat": "crit",         "value": 0.04, "color": [1.0, 0.8, 0.2]},
+    {"id": "gem_amethyst", "stat": "cdr",          "value": 0.03, "color": [0.7, 0.3, 1.0]}
+  ],
+  "runes": [
+    {"id": "rune_fury",   "stat": "attack_speed", "value": 0.06, "color": [1.0, 0.4, 0.1]},
+    {"id": "rune_haste",  "stat": "move_speed",   "value": 0.06, "color": [0.4, 1.0, 0.8]},
+    {"id": "rune_vigor",  "stat": "energy_regen", "value": 0.6,  "color": [0.3, 0.7, 1.0]},
+    {"id": "rune_blood",  "stat": "lifesteal",    "value": 0.04, "color": [0.8, 0.05, 0.1]}
+  ],
+  "materials": [
+    {"id": "iron_ore",      "value": 8,   "weight": 60, "color": [0.6, 0.6, 0.62]},
+    {"id": "soul_shard",    "value": 30,  "weight": 28, "color": [0.4, 0.9, 1.0]},
+    {"id": "dragon_scale",  "value": 90,  "weight": 9,  "color": [1.0, 0.4, 0.1]},
+    {"id": "void_essence",  "value": 220, "weight": 3,  "color": [0.7, 0.2, 1.0]}
+  ],
+  "prefixes": ["infernal", "cursed", "shadow", "frozen", "venomous", "ancient", "bloodforged", "stormbound", "grim", "eternal"],
+  "suffixes": ["of_ruin", "of_the_abyss", "of_kings", "of_flame", "of_frost", "of_the_crow", "of_bones", "of_storms", "of_the_void", "of_the_siege"],
+  "drop_weights": {"equipment": 60, "gem": 12, "rune": 8, "material": 20}
+}

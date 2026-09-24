@@ -1,0 +1,110 @@
+{
+  "hell_knight": {
+    "role": "attacker", "element": "fire", "style": "hero.style.bruiser",
+    "model": {"base": "Knight", "show": ["2H_Sword", "Knight_Helmet", "Knight_Cape"], "tint": [0.32, 0.16, 0.12], "emission": [1.0, 0.32, 0.04], "emission_strength": 2.2, "metal": 0.85, "scale": 1.0, "anim": "2h"},
+    "stats": {"health": 950, "damage": 58, "defense": 30, "attack_speed": 0.85, "move_speed": 4.6, "energy": 100, "range": 1.9, "crit": 0.08},
+    "attack": {"type": "melee", "dmg_type": "fire", "splash": 1.4},
+    "abilities": ["heavy_strike", "infernal_dash", "shadow_attack", "summon_hellspawn"],
+    "ultimate": "hellfire_blast",
+    "unlock": {"type": "start"}
+  },
+  "poison_sorcerer": {
+    "role": "mage", "element": "poison", "style": "hero.style.dot",
+    "model": {"base": "Mage", "show": ["2H_Staff", "Mage_Hat", "Mage_Cape"], "tint": [0.16, 0.28, 0.14], "emission": [0.35, 1.0, 0.2], "emission_strength": 2.0, "metal": 0.2, "scale": 1.0, "anim": "staff"},
+    "stats": {"health": 620, "damage": 44, "defense": 14, "attack_speed": 0.8, "move_speed": 4.2, "energy": 120, "range": 8.0, "crit": 0.05},
+    "attack": {"type": "ranged", "dmg_type": "poison", "projectile": "poison_bolt", "status": {"id": "poison", "duration": 3.0, "power": 0.25}},
+    "abilities": ["toxic_blast", "plague_cloud", "venom_nova", "summon_plaguelings"],
+    "ultimate": "pestilence",
+    "unlock": {"type": "stage", "stage": "r1s2"}
+  },
+  "raven_archer": {
+    "role": "ranged", "element": "shadow", "style": "hero.style.marksman",
+    "model": {"base": "Rogue_Hooded", "show": ["2H_Crossbow", "Rogue_Cape", "Knife_Offhand"], "tint": [0.14, 0.12, 0.2], "emission": [0.62, 0.25, 1.0], "emission_strength": 1.6, "metal": 0.4, "scale": 1.0, "anim": "ranged_2h"},
+    "stats": {"health": 640, "damage": 52, "defense": 16, "attack_speed": 1.2, "move_speed": 5.2, "energy": 100, "range": 10.0, "crit": 0.2},
+    "attack": {"type": "ranged", "dmg_type": "physical", "projectile": "shadow_arrow"},
+    "abilities": ["raven_volley", "shadow_step", "piercing_shot", "summon_ravens"],
+    "ultimate": "murder_of_crows",
+    "unlock": {"type": "stage", "stage": "r1s3"}
+  },
+  "bone_king": {
+    "role": "tank", "element": "shadow", "style": "hero.style.necro_tank",
+    "model": {"base": "Skeleton_Warrior", "show": ["Skeleton_Warrior_Helmet", "Skeleton_Warrior_Cloak"], "weapon_r": "Skeleton_Axe", "weapon_l": "Skeleton_Shield_Large_A", "tint": [0.55, 0.5, 0.42], "emission": [0.3, 1.0, 0.55], "emission_strength": 2.5, "metal": 0.3, "scale": 1.15, "anim": "1h"},
+    "stats": {"health": 1250, "damage": 42, "defense": 42, "attack_speed": 0.8, "move_speed": 3.9, "energy": 100, "range": 1.8, "crit": 0.05},
+    "attack": {"type": "melee", "dmg_type": "physical", "splash": 0.0},
+    "abilities": ["bone_bash", "grave_taunt", "bone_armor", "raise_skeletons"],
+    "ultimate": "army_of_the_dead",
+    "unlock": {"type": "gems", "cost": 400}
+  },
+  "frost_mage": {
+    "role": "mage", "element": "ice", "style": "hero.style.control",
+    "model": {"base": "Mage", "show": ["2H_Staff", "Mage_Hat", "Mage_Cape"], "tint": [0.2, 0.26, 0.38], "emission": [0.35, 0.8, 1.0], "emission_strength": 2.0, "metal": 0.3, "scale": 1.0, "anim": "staff"},
+    "stats": {"health": 600, "damage": 40, "defense": 14, "attack_speed": 0.85, "move_speed": 4.2, "energy": 120, "range": 8.5, "crit": 0.06},
+    "attack": {"type": "ranged", "dmg_type": "ice", "projectile": "frost_bolt", "status": {"id": "slow", "duration": 1.5, "power": 0.3}},
+    "abilities": ["frost_blast", "blizzard", "ice_prison", "frost_armor"],
+    "ultimate": "absolute_zero",
+    "unlock": {"type": "stage", "stage": "r2s2"}
+  },
+  "blueflame_warlock": {
+    "role": "mage", "element": "fire", "style": "hero.style.burst",
+    "model": {"base": "Skeleton_Mage", "show": ["Skeleton_Mage_Hat"], "weapon_r": "Skeleton_Staff", "tint": [0.3, 0.32, 0.42], "emission": [0.2, 0.55, 1.0], "emission_strength": 3.0, "metal": 0.2, "scale": 1.05, "anim": "staff"},
+    "stats": {"health": 560, "damage": 60, "defense": 12, "attack_speed": 0.7, "move_speed": 4.1, "energy": 130, "range": 8.0, "crit": 0.1},
+    "attack": {"type": "ranged", "dmg_type": "fire", "projectile": "blue_fireball", "splash": 1.5},
+    "abilities": ["magical_blast", "blue_inferno", "flame_wave", "arcane_surge"],
+    "ultimate": "azure_cataclysm",
+    "unlock": {"type": "gems", "cost": 600}
+  },
+  "giant_executioner": {
+    "role": "attacker", "element": "physical", "style": "hero.style.executioner",
+    "model": {"base": "Barbarian", "show": ["2H_Axe", "Barbarian_Cape"], "tint": [0.3, 0.22, 0.2], "emission": [0.9, 0.1, 0.05], "emission_strength": 1.2, "metal": 0.6, "scale": 1.3, "anim": "2h"},
+    "stats": {"health": 1150, "damage": 80, "defense": 24, "attack_speed": 0.6, "move_speed": 3.8, "energy": 100, "range": 2.1, "crit": 0.12},
+    "attack": {"type": "melee", "dmg_type": "physical", "splash": 1.8},
+    "abilities": ["heavy_strike", "executioners_chop", "brutal_charge", "blood_frenzy"],
+    "ultimate": "decapitation",
+    "unlock": {"type": "stage", "stage": "r2s4"}
+  },
+  "dragon_lord": {
+    "role": "commander", "element": "fire", "style": "hero.style.summoner",
+    "model": {"base": "Knight", "show": ["1H_Sword", "Spike_Shield", "Knight_Helmet", "Knight_Cape"], "tint": [0.42, 0.18, 0.1], "emission": [1.0, 0.55, 0.1], "emission_strength": 1.8, "metal": 0.9, "scale": 1.05, "anim": "1h"},
+    "stats": {"health": 980, "damage": 52, "defense": 32, "attack_speed": 0.9, "move_speed": 4.4, "energy": 120, "range": 1.9, "crit": 0.08},
+    "attack": {"type": "melee", "dmg_type": "fire", "splash": 0.8},
+    "abilities": ["dragon_breath", "wing_dash", "summon_whelps", "dragonscale"],
+    "ultimate": "call_of_the_wyrm",
+    "unlock": {"type": "stage", "stage": "r3s4"}
+  },
+  "stone_beast": {
+    "role": "tank", "element": "earth", "style": "hero.style.juggernaut",
+    "model": {"base": "Barbarian", "show": [], "tint": [0.36, 0.34, 0.32], "emission": [1.0, 0.45, 0.1], "emission_strength": 1.4, "metal": 0.05, "scale": 1.55, "anim": "unarmed", "stone": true},
+    "stats": {"health": 1600, "damage": 46, "defense": 50, "attack_speed": 0.65, "move_speed": 3.4, "energy": 100, "range": 2.0, "crit": 0.03},
+    "attack": {"type": "melee", "dmg_type": "physical", "splash": 1.6},
+    "abilities": ["earthquake", "boulder_throw", "stone_skin", "grave_taunt"],
+    "ultimate": "tectonic_rupture",
+    "unlock": {"type": "gems", "cost": 800}
+  },
+  "shadow_knight": {
+    "role": "trickster", "element": "shadow", "style": "hero.style.assassin",
+    "model": {"base": "Knight", "show": ["1H_Sword", "1H_Sword_Offhand", "Knight_Helmet", "Knight_Cape"], "tint": [0.12, 0.1, 0.16], "emission": [0.6, 0.2, 1.0], "emission_strength": 2.4, "metal": 0.9, "scale": 1.0, "anim": "dual"},
+    "stats": {"health": 820, "damage": 64, "defense": 22, "attack_speed": 1.15, "move_speed": 5.4, "energy": 100, "range": 1.8, "crit": 0.18},
+    "attack": {"type": "melee", "dmg_type": "shadow", "splash": 0.0},
+    "abilities": ["shadow_attack", "dash", "umbral_blades", "shadow_clones"],
+    "ultimate": "eclipse",
+    "unlock": {"type": "stage", "stage": "r4s4"}
+  },
+  "night_sniper": {
+    "role": "ranged", "element": "physical", "style": "hero.style.sniper",
+    "model": {"base": "Rogue", "show": ["2H_Crossbow", "Rogue_Cape"], "tint": [0.16, 0.16, 0.18], "emission": [0.9, 0.85, 0.5], "emission_strength": 1.0, "metal": 0.5, "scale": 1.0, "anim": "ranged_2h"},
+    "stats": {"health": 580, "damage": 90, "defense": 14, "attack_speed": 0.5, "move_speed": 4.8, "energy": 100, "range": 14.0, "crit": 0.3},
+    "attack": {"type": "ranged", "dmg_type": "physical", "projectile": "bolt"},
+    "abilities": ["piercing_shot", "smoke_bomb", "explosive_bolt", "mark_target"],
+    "ultimate": "deadeye",
+    "unlock": {"type": "gems", "cost": 700}
+  },
+  "storm_warden": {
+    "role": "support", "element": "lightning", "style": "hero.style.storm",
+    "model": {"base": "Barbarian", "show": ["1H_Axe", "Barbarian_Round_Shield", "Barbarian_Hat", "Barbarian_Cape"], "tint": [0.22, 0.24, 0.3], "emission": [0.45, 0.75, 1.0], "emission_strength": 2.2, "metal": 0.7, "scale": 1.15, "anim": "1h"},
+    "stats": {"health": 1000, "damage": 50, "defense": 30, "attack_speed": 0.95, "move_speed": 4.3, "energy": 120, "range": 2.0, "crit": 0.08},
+    "attack": {"type": "melee", "dmg_type": "lightning", "splash": 0.0, "chain": 2},
+    "abilities": ["chain_lightning", "thunder_clap", "storm_shield", "tower_overcharge"],
+    "ultimate": "tempest",
+    "unlock": {"type": "stage", "stage": "r5s4"}
+  }
+}

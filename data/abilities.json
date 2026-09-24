@@ -1,0 +1,69 @@
+{
+  "heavy_strike":      {"type": "melee_aoe", "element": "physical", "icon": "sword", "cooldown": 8, "energy": 20, "target": "self", "radius": 2.8, "dmg": 2.6, "status": {"id": "stun", "duration": 1.2, "power": 1}},
+  "infernal_dash":     {"type": "dash", "element": "fire", "icon": "dash", "cooldown": 10, "energy": 25, "target": "point", "range": 9, "radius": 1.6, "dmg": 1.6, "status": {"id": "burn", "duration": 3, "power": 0.2}},
+  "dash":              {"type": "dash", "element": "shadow", "icon": "dash", "cooldown": 7, "energy": 15, "target": "point", "range": 8, "radius": 1.4, "dmg": 1.3},
+  "shadow_attack":     {"type": "blink_strike", "element": "shadow", "icon": "shadow", "cooldown": 12, "energy": 30, "target": "enemy", "range": 10, "dmg": 4.2, "hits": 3},
+  "summon_hellspawn":  {"type": "summon", "element": "fire", "icon": "summon", "cooldown": 22, "energy": 40, "target": "point", "range": 7, "count": 3, "unit": "hellspawn", "duration": 20},
+  "hellfire_blast":    {"type": "blast", "element": "fire", "icon": "meteor", "cooldown": 45, "energy": 100, "target": "point", "range": 12, "radius": 5.0, "dmg": 7.5, "status": {"id": "burn", "duration": 4, "power": 0.35}, "ultimate": true},
+
+  "toxic_blast":       {"type": "blast", "element": "poison", "icon": "poison", "cooldown": 7, "energy": 20, "target": "point", "range": 10, "radius": 2.6, "dmg": 1.8, "status": {"id": "poison", "duration": 4, "power": 0.35}},
+  "plague_cloud":      {"type": "cloud", "element": "poison", "icon": "cloud", "cooldown": 14, "energy": 35, "target": "point", "range": 10, "radius": 3.2, "dmg": 0.55, "duration": 6, "status": {"id": "slow", "duration": 1, "power": 0.25}},
+  "venom_nova":        {"type": "nova", "element": "poison", "icon": "nova", "cooldown": 11, "energy": 25, "target": "self", "radius": 4.0, "dmg": 1.4, "status": {"id": "armor_break", "duration": 5, "power": 0.4}},
+  "summon_plaguelings":{"type": "summon", "element": "poison", "icon": "summon", "cooldown": 24, "energy": 40, "target": "point", "range": 8, "count": 3, "unit": "plagueling", "duration": 18},
+  "pestilence":        {"type": "cloud", "element": "poison", "icon": "skull", "cooldown": 50, "energy": 120, "target": "point", "range": 12, "radius": 6.0, "dmg": 1.6, "duration": 8, "status": {"id": "poison", "duration": 2, "power": 0.5}, "ultimate": true},
+
+  "raven_volley":      {"type": "volley", "element": "physical", "icon": "arrows", "cooldown": 9, "energy": 25, "target": "point", "range": 12, "radius": 3.0, "dmg": 0.7, "count": 10, "duration": 1.5},
+  "shadow_step":       {"type": "dash", "element": "shadow", "icon": "dash", "cooldown": 8, "energy": 15, "target": "point", "range": 8, "radius": 0.0, "dmg": 0.0, "buff": {"stat": "attack_speed", "mult": 1.5, "duration": 4}},
+  "piercing_shot":     {"type": "line", "element": "physical", "icon": "arrow", "cooldown": 10, "energy": 25, "target": "point", "range": 16, "radius": 1.0, "dmg": 3.0},
+  "summon_ravens":     {"type": "summon", "element": "shadow", "icon": "raven", "cooldown": 22, "energy": 35, "target": "self", "count": 4, "unit": "raven", "duration": 14},
+  "murder_of_crows":   {"type": "volley", "element": "shadow", "icon": "raven", "cooldown": 50, "energy": 100, "target": "point", "range": 14, "radius": 5.5, "dmg": 1.1, "count": 30, "duration": 4, "status": {"id": "weaken", "duration": 5, "power": 0.3}, "ultimate": true},
+
+  "bone_bash":         {"type": "melee_aoe", "element": "physical", "icon": "shield", "cooldown": 7, "energy": 15, "target": "self", "radius": 2.4, "dmg": 1.9, "status": {"id": "stun", "duration": 1.5, "power": 1}},
+  "grave_taunt":       {"type": "taunt", "element": "shadow", "icon": "taunt", "cooldown": 14, "energy": 25, "target": "self", "radius": 5.0, "duration": 4, "buff": {"stat": "defense", "mult": 1.6, "duration": 5}},
+  "bone_armor":        {"type": "buff", "element": "shadow", "icon": "armor", "cooldown": 18, "energy": 30, "target": "self", "buff": {"stat": "defense", "mult": 2.0, "duration": 8}, "heal": 0.2},
+  "raise_skeletons":   {"type": "summon", "element": "shadow", "icon": "skull", "cooldown": 20, "energy": 40, "target": "point", "range": 7, "count": 4, "unit": "risen_skeleton", "duration": 20},
+  "army_of_the_dead":  {"type": "summon", "element": "shadow", "icon": "skull", "cooldown": 55, "energy": 100, "target": "point", "range": 9, "count": 10, "unit": "risen_skeleton", "duration": 25, "ultimate": true},
+
+  "frost_blast":       {"type": "blast", "element": "ice", "icon": "ice", "cooldown": 7, "energy": 20, "target": "point", "range": 10, "radius": 2.6, "dmg": 1.7, "status": {"id": "slow", "duration": 3, "power": 0.5}},
+  "blizzard":          {"type": "cloud", "element": "ice", "icon": "snow", "cooldown": 15, "energy": 35, "target": "point", "range": 10, "radius": 3.6, "dmg": 0.45, "duration": 6, "status": {"id": "slow", "duration": 1, "power": 0.55}},
+  "ice_prison":        {"type": "blast", "element": "ice", "icon": "ice", "cooldown": 13, "energy": 30, "target": "point", "range": 10, "radius": 2.0, "dmg": 1.0, "status": {"id": "freeze", "duration": 3, "power": 1}},
+  "frost_armor":       {"type": "buff", "element": "ice", "icon": "armor", "cooldown": 18, "energy": 25, "target": "self", "buff": {"stat": "defense", "mult": 1.8, "duration": 8}, "heal": 0.15},
+  "absolute_zero":     {"type": "nova", "element": "ice", "icon": "snow", "cooldown": 50, "energy": 120, "target": "self", "radius": 9.0, "dmg": 3.0, "status": {"id": "freeze", "duration": 4, "power": 1}, "ultimate": true},
+
+  "magical_blast":     {"type": "blast", "element": "arcane", "icon": "blast", "cooldown": 6, "energy": 20, "target": "point", "range": 10, "radius": 2.8, "dmg": 2.2},
+  "blue_inferno":      {"type": "cloud", "element": "fire", "icon": "fire", "cooldown": 14, "energy": 35, "target": "point", "range": 10, "radius": 3.0, "dmg": 0.8, "duration": 5, "status": {"id": "burn", "duration": 2, "power": 0.3}},
+  "flame_wave":        {"type": "line", "element": "fire", "icon": "fire", "cooldown": 10, "energy": 30, "target": "point", "range": 12, "radius": 2.0, "dmg": 2.4, "status": {"id": "burn", "duration": 3, "power": 0.25}},
+  "arcane_surge":      {"type": "buff", "element": "arcane", "icon": "surge", "cooldown": 20, "energy": 30, "target": "self", "buff": {"stat": "damage", "mult": 1.6, "duration": 7}},
+  "azure_cataclysm":   {"type": "blast", "element": "fire", "icon": "meteor", "cooldown": 50, "energy": 130, "target": "point", "range": 13, "radius": 6.0, "dmg": 8.5, "status": {"id": "burn", "duration": 5, "power": 0.4}, "ultimate": true},
+
+  "executioners_chop": {"type": "execute", "element": "physical", "icon": "axe", "cooldown": 9, "energy": 25, "target": "enemy", "range": 3.0, "dmg": 3.0, "execute": 0.25},
+  "brutal_charge":     {"type": "dash", "element": "physical", "icon": "dash", "cooldown": 11, "energy": 25, "target": "point", "range": 8, "radius": 1.8, "dmg": 1.8, "status": {"id": "stun", "duration": 1.0, "power": 1}},
+  "blood_frenzy":      {"type": "buff", "element": "physical", "icon": "blood", "cooldown": 20, "energy": 30, "target": "self", "buff": {"stat": "attack_speed", "mult": 1.8, "duration": 7}, "lifesteal": 0.25},
+  "decapitation":      {"type": "melee_aoe", "element": "physical", "icon": "axe", "cooldown": 45, "energy": 100, "target": "self", "radius": 4.5, "dmg": 7.0, "execute": 0.3, "ultimate": true},
+
+  "dragon_breath":     {"type": "line", "element": "fire", "icon": "fire", "cooldown": 8, "energy": 25, "target": "point", "range": 8, "radius": 2.2, "dmg": 2.0, "status": {"id": "burn", "duration": 3, "power": 0.3}},
+  "wing_dash":         {"type": "dash", "element": "fire", "icon": "dash", "cooldown": 10, "energy": 20, "target": "point", "range": 9, "radius": 1.6, "dmg": 1.4},
+  "summon_whelps":     {"type": "summon", "element": "fire", "icon": "dragon", "cooldown": 22, "energy": 40, "target": "self", "count": 2, "unit": "dragon_whelp", "duration": 18},
+  "dragonscale":       {"type": "buff", "element": "fire", "icon": "armor", "cooldown": 18, "energy": 25, "target": "self", "buff": {"stat": "defense", "mult": 1.8, "duration": 8}, "heal": 0.15},
+  "call_of_the_wyrm":  {"type": "summon_dragon", "element": "fire", "icon": "dragon", "cooldown": 55, "energy": 120, "target": "self", "dmg": 2.5, "duration": 6, "ultimate": true},
+
+  "earthquake":        {"type": "nova", "element": "earth", "icon": "quake", "cooldown": 10, "energy": 25, "target": "self", "radius": 4.5, "dmg": 1.6, "status": {"id": "stun", "duration": 1.3, "power": 1}},
+  "boulder_throw":     {"type": "blast", "element": "earth", "icon": "rock", "cooldown": 8, "energy": 20, "target": "point", "range": 10, "radius": 2.2, "dmg": 2.2, "status": {"id": "stun", "duration": 0.8, "power": 1}},
+  "stone_skin":        {"type": "buff", "element": "earth", "icon": "armor", "cooldown": 18, "energy": 30, "target": "self", "buff": {"stat": "defense", "mult": 2.4, "duration": 8}},
+  "tectonic_rupture":  {"type": "line", "element": "earth", "icon": "quake", "cooldown": 50, "energy": 100, "target": "point", "range": 14, "radius": 3.0, "dmg": 6.0, "status": {"id": "stun", "duration": 2.5, "power": 1}, "ultimate": true},
+
+  "umbral_blades":     {"type": "nova", "element": "shadow", "icon": "blades", "cooldown": 8, "energy": 20, "target": "self", "radius": 3.2, "dmg": 2.0, "status": {"id": "weaken", "duration": 4, "power": 0.25}},
+  "shadow_clones":     {"type": "summon", "element": "shadow", "icon": "summon", "cooldown": 22, "energy": 35, "target": "self", "count": 2, "unit": "shadow_clone", "duration": 15},
+  "eclipse":           {"type": "blink_strike", "element": "shadow", "icon": "eclipse", "cooldown": 45, "energy": 100, "target": "enemy", "range": 14, "dmg": 3.0, "hits": 8, "ultimate": true},
+
+  "smoke_bomb":        {"type": "blast", "element": "shadow", "icon": "cloud", "cooldown": 12, "energy": 20, "target": "point", "range": 10, "radius": 3.0, "dmg": 0.3, "status": {"id": "blind", "duration": 4, "power": 0.6}},
+  "explosive_bolt":    {"type": "blast", "element": "fire", "icon": "blast", "cooldown": 9, "energy": 25, "target": "point", "range": 14, "radius": 2.4, "dmg": 2.2},
+  "mark_target":       {"type": "execute", "element": "physical", "icon": "mark", "cooldown": 12, "energy": 20, "target": "enemy", "range": 14, "dmg": 1.0, "status": {"id": "armor_break", "duration": 8, "power": 0.5}},
+  "deadeye":           {"type": "blink_strike", "element": "physical", "icon": "mark", "cooldown": 45, "energy": 100, "target": "enemy", "range": 18, "dmg": 6.0, "hits": 5, "ranged": true, "ultimate": true},
+
+  "chain_lightning":   {"type": "chain", "element": "lightning", "icon": "bolt", "cooldown": 7, "energy": 20, "target": "enemy", "range": 10, "dmg": 2.0, "count": 6},
+  "thunder_clap":      {"type": "nova", "element": "lightning", "icon": "bolt", "cooldown": 10, "energy": 25, "target": "self", "radius": 4.0, "dmg": 1.6, "status": {"id": "stun", "duration": 1.0, "power": 1}},
+  "storm_shield":      {"type": "buff", "element": "lightning", "icon": "armor", "cooldown": 18, "energy": 25, "target": "self", "buff": {"stat": "defense", "mult": 1.8, "duration": 8}, "heal": 0.2},
+  "tower_overcharge":  {"type": "tower_buff", "element": "lightning", "icon": "tower", "cooldown": 25, "energy": 40, "target": "self", "radius": 10, "buff": {"stat": "tower_rate", "mult": 1.5, "duration": 8}},
+  "tempest":           {"type": "volley", "element": "lightning", "icon": "storm", "cooldown": 50, "energy": 120, "target": "point", "range": 14, "radius": 6.0, "dmg": 1.8, "count": 20, "duration": 4, "status": {"id": "stun", "duration": 0.5, "power": 1}, "ultimate": true}
+}

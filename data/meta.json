@@ -1,0 +1,69 @@
+{
+  "achievements": [
+    {"id": "slayer",       "stat": "kills",         "tiers": [100, 1000, 5000],  "reward": [{"gems": 20}, {"gems": 60}, {"gems": 150}]},
+    {"id": "boss_hunter",  "stat": "boss_kills",    "tiers": [1, 5, 15],         "reward": [{"gems": 40}, {"gems": 100}, {"gems": 250}]},
+    {"id": "architect",    "stat": "towers_built",  "tiers": [20, 150, 600],     "reward": [{"gold": 500}, {"gold": 2500}, {"gems": 100}]},
+    {"id": "evolution",    "stat": "tower_upgrades","tiers": [20, 100, 400],     "reward": [{"gold": 500}, {"gold": 2000}, {"gems": 80}]},
+    {"id": "star_collector","stat": "stars",        "tiers": [9, 45, 96],        "reward": [{"gems": 30}, {"gems": 120}, {"gems": 300}]},
+    {"id": "treasure",     "stat": "items_looted",  "tiers": [10, 100, 500],     "reward": [{"gold": 800}, {"gems": 50}, {"gems": 200}]},
+    {"id": "legend",       "stat": "legendary_found","tiers": [1, 5, 20],        "reward": [{"gems": 50}, {"gems": 150}, {"gems": 400}]},
+    {"id": "caster",       "stat": "abilities_used","tiers": [50, 500, 2500],    "reward": [{"gold": 600}, {"gold": 3000}, {"gems": 120}]},
+    {"id": "victor",       "stat": "victories",     "tiers": [3, 20, 60],        "reward": [{"gems": 30}, {"gems": 90}, {"gems": 250}]},
+    {"id": "flawless",     "stat": "perfect_wins",  "tiers": [1, 10, 30],        "reward": [{"gems": 40}, {"gems": 120}, {"gems": 300}]},
+    {"id": "blacksmith",   "stat": "item_upgrades", "tiers": [5, 50, 200],       "reward": [{"gold": 1000}, {"gems": 60}, {"gems": 200}]},
+    {"id": "dragon_rider", "stat": "dragons_summoned","tiers": [1, 20, 100],     "reward": [{"gems": 20}, {"gems": 80}, {"gems": 200}]}
+  ],
+  "quests": [
+    {"id": "q_kill",      "stat": "kills",          "target": 150, "reward": {"gold": 400, "xp": 60}},
+    {"id": "q_build",     "stat": "towers_built",   "target": 12,  "reward": {"gold": 300, "xp": 40}},
+    {"id": "q_upgrade",   "stat": "tower_upgrades", "target": 10,  "reward": {"gold": 300, "xp": 40}},
+    {"id": "q_win",       "stat": "victories",      "target": 2,   "reward": {"gems": 15, "xp": 80}},
+    {"id": "q_abilities", "stat": "abilities_used", "target": 15,  "reward": {"gold": 350, "xp": 50}},
+    {"id": "q_loot",      "stat": "items_looted",   "target": 4,   "reward": {"gold": 350, "xp": 50}},
+    {"id": "q_stars",     "stat": "stars_earned",   "target": 6,   "reward": {"gems": 20, "xp": 80}},
+    {"id": "q_boss",      "stat": "boss_kills",     "target": 1,   "reward": {"gems": 25, "xp": 100}},
+    {"id": "q_global",    "stat": "global_used",    "target": 5,   "reward": {"gold": 300, "xp": 40}}
+  ],
+  "daily_rewards": [
+    {"gold": 500}, {"gems": 20}, {"material": "soul_shard", "count": 3}, {"gold": 1500},
+    {"gems": 40}, {"chest": "chest_epic"}, {"gems": 100, "chest": "chest_legendary"}
+  ],
+  "shop": {
+    "chests": [
+      {"id": "chest_common",    "cost": {"gold": 800},  "items": 2, "min_rarity": 0, "luck": 1.0},
+      {"id": "chest_epic",      "cost": {"gems": 120},  "items": 3, "min_rarity": 2, "luck": 1.6},
+      {"id": "chest_legendary", "cost": {"gems": 380},  "items": 4, "min_rarity": 3, "luck": 2.4}
+    ],
+    "gold_packs": [
+      {"id": "gold_s", "gold": 2000,  "cost": {"gems": 40}},
+      {"id": "gold_m", "gold": 6000,  "cost": {"gems": 110}},
+      {"id": "gold_l", "gold": 15000, "cost": {"gems": 250}}
+    ],
+    "gem_packs": [
+      {"id": "gems_s", "gems": 100,  "price": "$0.99"},
+      {"id": "gems_m", "gems": 550,  "price": "$4.99"},
+      {"id": "gems_l", "gems": 1200, "price": "$9.99"}
+    ],
+    "materials": [
+      {"id": "iron_ore", "count": 10, "cost": {"gold": 400}},
+      {"id": "soul_shard", "count": 5, "cost": {"gold": 900}},
+      {"id": "dragon_scale", "count": 2, "cost": {"gems": 30}},
+      {"id": "void_essence", "count": 1, "cost": {"gems": 45}}
+    ],
+    "energy_refill": {"cost": {"gems": 30}}
+  },
+  "guild": {
+    "perks": [
+      {"id": "perk_gold",   "stat": "gold_bonus", "per_level": 0.03, "cost": 1000},
+      {"id": "perk_xp",     "stat": "xp_bonus",   "per_level": 0.03, "cost": 1000},
+      {"id": "perk_tower",  "stat": "tower_dmg",  "per_level": 0.02, "cost": 1500},
+      {"id": "perk_loot",   "stat": "loot_bonus", "per_level": 0.04, "cost": 2000}
+    ],
+    "bots": [
+      {"name": "Malakar",  "ai": "commander", "level": 38}, {"name": "Seraphine", "ai": "support",   "level": 31},
+      {"name": "Grimvald", "ai": "tank",      "level": 44}, {"name": "Nyx",       "ai": "trickster", "level": 27},
+      {"name": "Vorath",   "ai": "attacker",  "level": 35}, {"name": "Elyndra",   "ai": "mage",      "level": 29},
+      {"name": "Kael",     "ai": "ranged",    "level": 33}
+    ]
+  }
+}

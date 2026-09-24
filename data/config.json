@@ -1,0 +1,34 @@
+{
+  "start_lives": 20,
+  "stars_thresholds": [18, 10],
+  "energy_max": 120,
+  "energy_regen_seconds": 180,
+  "stage_energy_cost": 6,
+  "start_gold": 2000,
+  "start_gems": 150,
+  "hero_max_level": 60,
+  "player_max_level": 100,
+  "hero_xp_base": 120,
+  "hero_xp_growth": 1.18,
+  "player_xp_base": 200,
+  "player_xp_growth": 1.15,
+  "hero_growth": {"health": 0.075, "damage": 0.065, "defense": 0.06},
+  "hero_respawn": 14,
+  "early_wave_bonus_per_sec": 1.5,
+  "sell_refund": 0.6,
+  "inventory_capacity": 120,
+  "rarities": [
+    {"id": "common",    "weight": 60,  "mult": 1.0, "affixes": 1, "sockets": [0, 1], "color": [0.78, 0.78, 0.78]},
+    {"id": "rare",      "weight": 26,  "mult": 1.3, "affixes": 2, "sockets": [0, 1], "color": [0.3, 0.6, 1.0]},
+    {"id": "epic",      "weight": 10,  "mult": 1.7, "affixes": 3, "sockets": [1, 2], "color": [0.72, 0.35, 1.0]},
+    {"id": "legendary", "weight": 3.2, "mult": 2.3, "affixes": 4, "sockets": [2, 3], "color": [1.0, 0.62, 0.12]},
+    {"id": "mythic",    "weight": 0.8, "mult": 3.1, "affixes": 5, "sockets": [3, 4], "color": [1.0, 0.18, 0.22]}
+  ],
+  "global_abilities": {
+    "meteor":        {"icon": "meteor", "cooldown": 55, "target": "point", "radius": 4.5, "damage": 420, "element": "fire", "status": {"id": "burn", "duration": 3, "power": 12}, "unlock_stage": ""},
+    "freeze":        {"icon": "snow", "cooldown": 70, "target": "point", "radius": 6.0, "damage": 60, "element": "ice", "status": {"id": "freeze", "duration": 3.5, "power": 1}, "unlock_stage": ""},
+    "tower_buff":    {"icon": "tower", "cooldown": 60, "target": "self", "duration": 10, "mult": 1.5, "unlock_stage": "r1s2"},
+    "summon_dragon": {"icon": "dragon", "cooldown": 110, "target": "self", "damage": 90, "duration": 7, "element": "fire", "unlock_stage": "r1s3"}
+  },
+  "upgrade": {"max": 15, "gold_base": 150, "gold_growth": 1.35, "stat_per_level": 0.08, "material": "iron_ore"}
+}

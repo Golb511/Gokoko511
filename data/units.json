@@ -1,0 +1,1469 @@
+{
+  "enemies": {
+    "skeleton_minion": {
+      "ai": "attacker",
+      "hp": 70,
+      "armor": 0.0,
+      "mres": 0.0,
+      "speed": 2.1,
+      "damage": [
+        4,
+        7
+      ],
+      "attack_rate": 1.0,
+      "range": 1.3,
+      "gold": 7,
+      "xp": 4,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "ground"
+      ],
+      "loot": 0.035,
+      "model": {
+        "base": "Skeleton_Minion",
+        "weapon_r": "Skeleton_Blade",
+        "tint": [
+          0.62,
+          0.58,
+          0.5
+        ],
+        "emission": [
+          0.9,
+          0.3,
+          0.1
+        ],
+        "emission_strength": 2.0,
+        "scale": 0.9,
+        "anim": "1h"
+      }
+    },
+    "skeleton_warrior": {
+      "ai": "tank",
+      "hp": 260,
+      "armor": 0.45,
+      "mres": 0.0,
+      "speed": 1.6,
+      "damage": [
+        10,
+        16
+      ],
+      "attack_rate": 0.8,
+      "range": 1.4,
+      "gold": 18,
+      "xp": 10,
+      "lives": 2,
+      "tags": [
+        "undead",
+        "ground",
+        "armored"
+      ],
+      "loot": 0.07,
+      "model": {
+        "base": "Skeleton_Warrior",
+        "show": [
+          "Skeleton_Warrior_Helmet",
+          "Skeleton_Warrior_Cloak"
+        ],
+        "weapon_r": "Skeleton_Axe",
+        "weapon_l": "Skeleton_Shield_Large_A",
+        "tint": [
+          0.5,
+          0.46,
+          0.42
+        ],
+        "emission": [
+          1.0,
+          0.25,
+          0.05
+        ],
+        "emission_strength": 2.5,
+        "scale": 1.05,
+        "anim": "1h"
+      }
+    },
+    "skeleton_archer": {
+      "ai": "ranged",
+      "hp": 90,
+      "armor": 0.0,
+      "mres": 0.15,
+      "speed": 2.0,
+      "damage": [
+        7,
+        11
+      ],
+      "attack_rate": 0.8,
+      "range": 7.0,
+      "gold": 10,
+      "xp": 6,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "ground"
+      ],
+      "loot": 0.05,
+      "projectile": "bolt",
+      "model": {
+        "base": "Skeleton_Rogue",
+        "show": [
+          "Skeleton_Rogue_Hood",
+          "Skeleton_Rogue_Cape"
+        ],
+        "weapon_r": "Skeleton_Crossbow",
+        "tint": [
+          0.42,
+          0.4,
+          0.38
+        ],
+        "emission": [
+          1.0,
+          0.2,
+          0.1
+        ],
+        "emission_strength": 2.2,
+        "scale": 0.95,
+        "anim": "ranged_1h"
+      }
+    },
+    "bone_mage": {
+      "ai": "mage",
+      "hp": 110,
+      "armor": 0.0,
+      "mres": 0.5,
+      "speed": 1.9,
+      "damage": [
+        12,
+        18
+      ],
+      "attack_rate": 0.6,
+      "range": 6.5,
+      "gold": 12,
+      "xp": 9,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "ground",
+        "caster"
+      ],
+      "loot": 0.06,
+      "projectile": "shadow_orb",
+      "skills": {
+        "weaken_tower": {
+          "range": 7.5,
+          "duration": 5,
+          "power": 0.4,
+          "cooldown": 9
+        }
+      },
+      "model": {
+        "base": "Skeleton_Mage",
+        "show": [
+          "Skeleton_Mage_Hat"
+        ],
+        "weapon_r": "Skeleton_Staff",
+        "tint": [
+          0.35,
+          0.3,
+          0.45
+        ],
+        "emission": [
+          0.7,
+          0.2,
+          1.0
+        ],
+        "emission_strength": 2.5,
+        "scale": 0.95,
+        "anim": "staff"
+      }
+    },
+    "dark_priest": {
+      "ai": "support",
+      "hp": 120,
+      "armor": 0.1,
+      "mres": 0.4,
+      "speed": 1.9,
+      "damage": [
+        5,
+        8
+      ],
+      "attack_rate": 0.7,
+      "range": 5.0,
+      "gold": 14,
+      "xp": 10,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "ground",
+        "caster"
+      ],
+      "loot": 0.06,
+      "projectile": "poison_bolt",
+      "skills": {
+        "heal": {
+          "amount": 60,
+          "radius": 5.0,
+          "cooldown": 6
+        }
+      },
+      "model": {
+        "base": "Skeleton_Mage",
+        "show": [
+          "Skeleton_Mage_Hat"
+        ],
+        "weapon_r": "Skeleton_Staff",
+        "tint": [
+          0.3,
+          0.42,
+          0.3
+        ],
+        "emission": [
+          0.3,
+          1.0,
+          0.4
+        ],
+        "emission_strength": 2.5,
+        "scale": 0.95,
+        "anim": "staff"
+      }
+    },
+    "necromancer": {
+      "ai": "summoner",
+      "hp": 180,
+      "armor": 0.05,
+      "mres": 0.45,
+      "speed": 1.7,
+      "damage": [
+        8,
+        12
+      ],
+      "attack_rate": 0.6,
+      "range": 6.0,
+      "gold": 20,
+      "xp": 14,
+      "lives": 2,
+      "tags": [
+        "undead",
+        "ground",
+        "caster"
+      ],
+      "loot": 0.08,
+      "projectile": "shadow_orb",
+      "skills": {
+        "summon": {
+          "unit": "skeleton_minion",
+          "count": 2,
+          "cooldown": 8
+        }
+      },
+      "model": {
+        "base": "Skeleton_Mage",
+        "show": [
+          "Skeleton_Mage_Hat"
+        ],
+        "weapon_r": "Skeleton_Staff",
+        "tint": [
+          0.22,
+          0.18,
+          0.28
+        ],
+        "emission": [
+          0.6,
+          0.1,
+          1.0
+        ],
+        "emission_strength": 3.0,
+        "scale": 1.1,
+        "anim": "staff"
+      }
+    },
+    "ash_brute": {
+      "ai": "siege",
+      "hp": 520,
+      "armor": 0.2,
+      "mres": 0.1,
+      "speed": 1.5,
+      "damage": [
+        22,
+        32
+      ],
+      "attack_rate": 0.6,
+      "range": 1.8,
+      "gold": 26,
+      "xp": 18,
+      "lives": 2,
+      "tags": [
+        "demon",
+        "ground"
+      ],
+      "loot": 0.1,
+      "skills": {
+        "attack_tower": {
+          "range": 3.5,
+          "damage": 40,
+          "cooldown": 4,
+          "disable": 3
+        }
+      },
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "2H_Axe"
+        ],
+        "tint": [
+          0.35,
+          0.16,
+          0.12
+        ],
+        "emission": [
+          1.0,
+          0.3,
+          0.02
+        ],
+        "emission_strength": 2.0,
+        "scale": 1.45,
+        "anim": "2h",
+        "stone": true
+      }
+    },
+    "cultist": {
+      "ai": "attacker",
+      "hp": 110,
+      "armor": 0.1,
+      "mres": 0.1,
+      "speed": 2.4,
+      "damage": [
+        6,
+        10
+      ],
+      "attack_rate": 1.1,
+      "range": 1.3,
+      "gold": 7,
+      "xp": 5,
+      "lives": 1,
+      "tags": [
+        "human",
+        "ground"
+      ],
+      "loot": 0.04,
+      "model": {
+        "base": "Rogue_Hooded",
+        "show": [
+          "Knife",
+          "Rogue_Cape"
+        ],
+        "tint": [
+          0.22,
+          0.12,
+          0.12
+        ],
+        "emission": [
+          1.0,
+          0.15,
+          0.1
+        ],
+        "emission_strength": 1.0,
+        "scale": 0.95,
+        "anim": "1h"
+      }
+    },
+    "shadow_stalker": {
+      "ai": "trickster",
+      "hp": 150,
+      "armor": 0.1,
+      "mres": 0.3,
+      "speed": 2.8,
+      "damage": [
+        10,
+        16
+      ],
+      "attack_rate": 1.2,
+      "range": 1.3,
+      "gold": 16,
+      "xp": 12,
+      "lives": 1,
+      "tags": [
+        "human",
+        "ground"
+      ],
+      "loot": 0.07,
+      "skills": {
+        "blink": {
+          "distance": 6.0,
+          "cooldown": 7
+        },
+        "stealth": {
+          "duration": 2.5,
+          "cooldown": 10
+        }
+      },
+      "model": {
+        "base": "Rogue",
+        "show": [
+          "Knife",
+          "Knife_Offhand",
+          "Rogue_Cape"
+        ],
+        "tint": [
+          0.12,
+          0.1,
+          0.18
+        ],
+        "emission": [
+          0.6,
+          0.2,
+          1.0
+        ],
+        "emission_strength": 2.2,
+        "scale": 1.0,
+        "anim": "dual"
+      }
+    },
+    "war_herald": {
+      "ai": "commander",
+      "hp": 380,
+      "armor": 0.35,
+      "mres": 0.2,
+      "speed": 1.8,
+      "damage": [
+        12,
+        18
+      ],
+      "attack_rate": 0.9,
+      "range": 1.5,
+      "gold": 24,
+      "xp": 16,
+      "lives": 2,
+      "tags": [
+        "human",
+        "ground",
+        "armored"
+      ],
+      "loot": 0.09,
+      "skills": {
+        "haste_aura": {
+          "radius": 6.0,
+          "mult": 1.35
+        },
+        "rally": {
+          "radius": 6.0,
+          "armor": 0.15,
+          "cooldown": 12,
+          "duration": 5
+        }
+      },
+      "model": {
+        "base": "Knight",
+        "show": [
+          "1H_Sword",
+          "Badge_Shield",
+          "Knight_Helmet",
+          "Knight_Cape"
+        ],
+        "tint": [
+          0.3,
+          0.1,
+          0.1
+        ],
+        "emission": [
+          1.0,
+          0.6,
+          0.1
+        ],
+        "emission_strength": 1.2,
+        "scale": 1.05,
+        "anim": "1h"
+      }
+    },
+    "winged_fiend": {
+      "ai": "flyer",
+      "hp": 120,
+      "armor": 0.0,
+      "mres": 0.1,
+      "speed": 2.8,
+      "damage": [
+        0,
+        0
+      ],
+      "attack_rate": 0.0,
+      "range": 0.0,
+      "gold": 12,
+      "xp": 8,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "flying"
+      ],
+      "loot": 0.05,
+      "flying": true,
+      "model": {
+        "base": "Skeleton_Rogue",
+        "show": [
+          "Skeleton_Rogue_Hood"
+        ],
+        "tint": [
+          0.3,
+          0.26,
+          0.3
+        ],
+        "emission": [
+          1.0,
+          0.2,
+          0.4
+        ],
+        "emission_strength": 2.5,
+        "scale": 0.85,
+        "anim": "fly",
+        "wings": true
+      }
+    },
+    "death_knight": {
+      "ai": "elite",
+      "hp": 1100,
+      "armor": 0.5,
+      "mres": 0.4,
+      "speed": 1.7,
+      "damage": [
+        26,
+        38
+      ],
+      "attack_rate": 0.8,
+      "range": 1.6,
+      "gold": 60,
+      "xp": 40,
+      "lives": 3,
+      "tags": [
+        "undead",
+        "ground",
+        "armored",
+        "elite"
+      ],
+      "loot": 0.3,
+      "skills": {
+        "cleave": {
+          "radius": 2.5,
+          "cooldown": 6
+        },
+        "unstoppable": {
+          "cc_resist": 0.5
+        }
+      },
+      "model": {
+        "base": "Knight",
+        "show": [
+          "2H_Sword",
+          "Knight_Helmet",
+          "Knight_Cape"
+        ],
+        "tint": [
+          0.1,
+          0.1,
+          0.12
+        ],
+        "emission": [
+          0.3,
+          0.9,
+          1.0
+        ],
+        "emission_strength": 3.0,
+        "scale": 1.25,
+        "anim": "2h"
+      }
+    }
+  },
+  "bosses": {
+    "ashen_warlord": {
+      "ai": "boss",
+      "hp": 2700,
+      "armor": 0.3,
+      "mres": 0.25,
+      "speed": 1.15,
+      "damage": [
+        45,
+        65
+      ],
+      "attack_rate": 0.55,
+      "range": 2.8,
+      "gold": 300,
+      "xp": 250,
+      "lives": 10,
+      "tags": [
+        "demon",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 2,
+        "min_rarity": 2
+      },
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "2H_Axe",
+          "Barbarian_Hat",
+          "Barbarian_Cape"
+        ],
+        "tint": [
+          0.22,
+          0.12,
+          0.1
+        ],
+        "emission": [
+          1.0,
+          0.28,
+          0.02
+        ],
+        "emission_strength": 3.5,
+        "scale": 3.2,
+        "anim": "2h",
+        "stone": true
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.66,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash"
+          ],
+          "speed_mult": 1.1
+        },
+        {
+          "hp": 0.33,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.3,
+          "enrage": true
+        }
+      ]
+    },
+    "shadow_reaper": {
+      "ai": "boss",
+      "hp": 5200,
+      "armor": 0.3,
+      "mres": 0.45,
+      "speed": 1.3,
+      "damage": [
+        55,
+        75
+      ],
+      "attack_rate": 0.6,
+      "range": 2.6,
+      "gold": 400,
+      "xp": 320,
+      "lives": 10,
+      "tags": [
+        "undead",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 2,
+        "min_rarity": 2
+      },
+      "model": {
+        "base": "Skeleton_Rogue",
+        "show": [
+          "Skeleton_Rogue_Hood",
+          "Skeleton_Rogue_Cape"
+        ],
+        "weapon_r": "Skeleton_Blade",
+        "tint": [
+          0.15,
+          0.12,
+          0.2
+        ],
+        "emission": [
+          0.6,
+          0.15,
+          1.0
+        ],
+        "emission_strength": 4.0,
+        "scale": 3.0,
+        "anim": "1h"
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.6,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash"
+          ],
+          "speed_mult": 1.2
+        },
+        {
+          "hp": 0.3,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.4,
+          "enrage": true
+        }
+      ]
+    },
+    "inferno_titan": {
+      "ai": "boss",
+      "hp": 7000,
+      "armor": 0.4,
+      "mres": 0.3,
+      "speed": 1.0,
+      "damage": [
+        70,
+        95
+      ],
+      "attack_rate": 0.5,
+      "range": 3.0,
+      "gold": 500,
+      "xp": 400,
+      "lives": 12,
+      "tags": [
+        "demon",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 3,
+        "min_rarity": 2
+      },
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "2H_Axe",
+          "Barbarian_Cape"
+        ],
+        "tint": [
+          0.25,
+          0.08,
+          0.04
+        ],
+        "emission": [
+          1.0,
+          0.45,
+          0.05
+        ],
+        "emission_strength": 5.0,
+        "scale": 3.6,
+        "anim": "2h",
+        "stone": true
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam",
+            "fire_rain"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.6,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.1
+        },
+        {
+          "hp": 0.3,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.35,
+          "enrage": true
+        }
+      ]
+    },
+    "plague_colossus": {
+      "ai": "boss",
+      "hp": 8600,
+      "armor": 0.3,
+      "mres": 0.3,
+      "speed": 1.0,
+      "damage": [
+        70,
+        100
+      ],
+      "attack_rate": 0.5,
+      "range": 3.0,
+      "gold": 560,
+      "xp": 460,
+      "lives": 12,
+      "tags": [
+        "demon",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 3,
+        "min_rarity": 2
+      },
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "2H_Axe",
+          "Barbarian_Hat"
+        ],
+        "tint": [
+          0.2,
+          0.3,
+          0.14
+        ],
+        "emission": [
+          0.4,
+          1.0,
+          0.1
+        ],
+        "emission_strength": 4.0,
+        "scale": 3.6,
+        "anim": "2h",
+        "stone": true
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.66,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash"
+          ],
+          "speed_mult": 1.1
+        },
+        {
+          "hp": 0.33,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.3,
+          "enrage": true
+        }
+      ]
+    },
+    "frost_lich": {
+      "ai": "boss",
+      "hp": 10000,
+      "armor": 0.25,
+      "mres": 0.55,
+      "speed": 1.1,
+      "damage": [
+        80,
+        110
+      ],
+      "attack_rate": 0.55,
+      "range": 3.0,
+      "gold": 620,
+      "xp": 520,
+      "lives": 12,
+      "tags": [
+        "undead",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 3,
+        "min_rarity": 3
+      },
+      "model": {
+        "base": "Skeleton_Mage",
+        "show": [
+          "Skeleton_Mage_Hat"
+        ],
+        "weapon_r": "Skeleton_Staff",
+        "tint": [
+          0.3,
+          0.4,
+          0.55
+        ],
+        "emission": [
+          0.3,
+          0.8,
+          1.0
+        ],
+        "emission_strength": 4.0,
+        "scale": 3.3,
+        "anim": "staff"
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam",
+            "summon_horde"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.6,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash"
+          ],
+          "speed_mult": 1.1
+        },
+        {
+          "hp": 0.3,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.3,
+          "enrage": true
+        }
+      ]
+    },
+    "demon_lord": {
+      "ai": "boss",
+      "hp": 12500,
+      "armor": 0.45,
+      "mres": 0.4,
+      "speed": 1.05,
+      "damage": [
+        95,
+        130
+      ],
+      "attack_rate": 0.55,
+      "range": 3.2,
+      "gold": 700,
+      "xp": 600,
+      "lives": 15,
+      "tags": [
+        "demon",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 3,
+        "min_rarity": 3
+      },
+      "model": {
+        "base": "Knight",
+        "show": [
+          "2H_Sword",
+          "Knight_Helmet",
+          "Knight_Cape"
+        ],
+        "tint": [
+          0.14,
+          0.08,
+          0.18
+        ],
+        "emission": [
+          0.8,
+          0.2,
+          1.0
+        ],
+        "emission_strength": 4.0,
+        "scale": 3.4,
+        "anim": "2h"
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam",
+            "fire_rain"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.6,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.15
+        },
+        {
+          "hp": 0.3,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.35,
+          "enrage": true
+        }
+      ]
+    },
+    "bone_emperor": {
+      "ai": "boss",
+      "hp": 15000,
+      "armor": 0.5,
+      "mres": 0.35,
+      "speed": 1.0,
+      "damage": [
+        110,
+        150
+      ],
+      "attack_rate": 0.5,
+      "range": 3.2,
+      "gold": 800,
+      "xp": 700,
+      "lives": 15,
+      "tags": [
+        "undead",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 4,
+        "min_rarity": 3
+      },
+      "model": {
+        "base": "Skeleton_Warrior",
+        "show": [
+          "Skeleton_Warrior_Helmet",
+          "Skeleton_Warrior_Cloak"
+        ],
+        "weapon_r": "Skeleton_Axe",
+        "weapon_l": "Skeleton_Shield_Large_A",
+        "tint": [
+          0.55,
+          0.5,
+          0.42
+        ],
+        "emission": [
+          0.2,
+          1.0,
+          0.5
+        ],
+        "emission_strength": 4.0,
+        "scale": 3.6,
+        "anim": "1h"
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam",
+            "summon_horde"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.6,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash"
+          ],
+          "speed_mult": 1.1
+        },
+        {
+          "hp": 0.3,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.3,
+          "enrage": true
+        }
+      ]
+    },
+    "gatekeeper": {
+      "ai": "boss",
+      "hp": 20000,
+      "armor": 0.5,
+      "mres": 0.5,
+      "speed": 1.0,
+      "damage": [
+        130,
+        170
+      ],
+      "attack_rate": 0.55,
+      "range": 3.4,
+      "gold": 1000,
+      "xp": 900,
+      "lives": 20,
+      "tags": [
+        "demon",
+        "ground",
+        "boss"
+      ],
+      "loot": 1.0,
+      "loot_table": {
+        "count": 5,
+        "min_rarity": 3
+      },
+      "model": {
+        "base": "Knight",
+        "show": [
+          "2H_Sword",
+          "Knight_Helmet",
+          "Knight_Cape"
+        ],
+        "tint": [
+          0.08,
+          0.06,
+          0.08
+        ],
+        "emission": [
+          1.0,
+          0.15,
+          0.1
+        ],
+        "emission_strength": 5.0,
+        "scale": 4.0,
+        "anim": "2h"
+      },
+      "phases": [
+        {
+          "hp": 1.0,
+          "skills": [
+            "ground_slam",
+            "fire_rain"
+          ],
+          "speed_mult": 1.0
+        },
+        {
+          "hp": 0.66,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.15
+        },
+        {
+          "hp": 0.33,
+          "skills": [
+            "ground_slam",
+            "summon_horde",
+            "tower_smash",
+            "fire_rain"
+          ],
+          "speed_mult": 1.4,
+          "enrage": true
+        }
+      ]
+    }
+  },
+  "allies": {
+    "footman": {
+      "hp": 140,
+      "armor": 0.1,
+      "damage": [
+        3,
+        5
+      ],
+      "attack_rate": 1.0,
+      "range": 1.3,
+      "speed": 3.2,
+      "model": {
+        "base": "Knight",
+        "show": [
+          "1H_Sword",
+          "Round_Shield",
+          "Knight_Helmet"
+        ],
+        "tint": [
+          0.35,
+          0.33,
+          0.3
+        ],
+        "emission": [
+          1.0,
+          0.8,
+          0.4
+        ],
+        "emission_strength": 0.4,
+        "scale": 0.85,
+        "anim": "1h"
+      }
+    },
+    "black_guard": {
+      "hp": 600,
+      "armor": 0.5,
+      "damage": [
+        14,
+        22
+      ],
+      "attack_rate": 0.9,
+      "range": 1.3,
+      "speed": 3.0,
+      "model": {
+        "base": "Knight",
+        "show": [
+          "1H_Sword",
+          "Rectangle_Shield",
+          "Knight_Helmet",
+          "Knight_Cape"
+        ],
+        "tint": [
+          0.14,
+          0.14,
+          0.18
+        ],
+        "emission": [
+          0.5,
+          0.7,
+          1.0
+        ],
+        "emission_strength": 1.2,
+        "scale": 0.95,
+        "anim": "1h"
+      }
+    },
+    "berserker": {
+      "hp": 420,
+      "armor": 0.2,
+      "damage": [
+        26,
+        38
+      ],
+      "attack_rate": 1.2,
+      "range": 1.3,
+      "speed": 3.6,
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "1H_Axe",
+          "1H_Axe_Offhand"
+        ],
+        "tint": [
+          0.38,
+          0.18,
+          0.14
+        ],
+        "emission": [
+          1.0,
+          0.2,
+          0.1
+        ],
+        "emission_strength": 1.0,
+        "scale": 0.95,
+        "anim": "dual"
+      }
+    },
+    "stone_golem": {
+      "hp": 1800,
+      "armor": 0.5,
+      "damage": [
+        40,
+        60
+      ],
+      "attack_rate": 0.6,
+      "range": 1.8,
+      "speed": 2.2,
+      "model": {
+        "base": "Barbarian",
+        "show": [],
+        "tint": [
+          0.34,
+          0.32,
+          0.3
+        ],
+        "emission": [
+          1.0,
+          0.5,
+          0.15
+        ],
+        "emission_strength": 1.5,
+        "scale": 1.5,
+        "anim": "unarmed",
+        "stone": true
+      }
+    },
+    "hellspawn": {
+      "hp": 320,
+      "armor": 0.25,
+      "damage": [
+        14,
+        20
+      ],
+      "attack_rate": 1.0,
+      "range": 1.3,
+      "speed": 3.6,
+      "model": {
+        "base": "Skeleton_Warrior",
+        "show": [
+          "Skeleton_Warrior_Helmet"
+        ],
+        "weapon_r": "Skeleton_Blade",
+        "tint": [
+          0.3,
+          0.14,
+          0.1
+        ],
+        "emission": [
+          1.0,
+          0.35,
+          0.05
+        ],
+        "emission_strength": 3.0,
+        "scale": 0.9,
+        "anim": "1h"
+      }
+    },
+    "plagueling": {
+      "hp": 220,
+      "armor": 0.1,
+      "damage": [
+        10,
+        14
+      ],
+      "attack_rate": 1.1,
+      "range": 1.3,
+      "speed": 3.8,
+      "model": {
+        "base": "Skeleton_Minion",
+        "weapon_r": "Skeleton_Blade",
+        "tint": [
+          0.24,
+          0.34,
+          0.18
+        ],
+        "emission": [
+          0.4,
+          1.0,
+          0.2
+        ],
+        "emission_strength": 3.0,
+        "scale": 0.8,
+        "anim": "1h"
+      }
+    },
+    "risen_skeleton": {
+      "hp": 240,
+      "armor": 0.2,
+      "damage": [
+        10,
+        16
+      ],
+      "attack_rate": 1.0,
+      "range": 1.3,
+      "speed": 3.4,
+      "model": {
+        "base": "Skeleton_Minion",
+        "weapon_r": "Skeleton_Axe",
+        "tint": [
+          0.6,
+          0.56,
+          0.48
+        ],
+        "emission": [
+          0.3,
+          1.0,
+          0.55
+        ],
+        "emission_strength": 3.0,
+        "scale": 0.9,
+        "anim": "1h"
+      }
+    },
+    "shadow_clone": {
+      "hp": 300,
+      "armor": 0.2,
+      "damage": [
+        30,
+        44
+      ],
+      "attack_rate": 1.2,
+      "range": 1.3,
+      "speed": 5.0,
+      "model": {
+        "base": "Knight",
+        "show": [
+          "1H_Sword",
+          "1H_Sword_Offhand"
+        ],
+        "tint": [
+          0.06,
+          0.04,
+          0.1
+        ],
+        "emission": [
+          0.6,
+          0.2,
+          1.0
+        ],
+        "emission_strength": 3.5,
+        "scale": 1.0,
+        "anim": "dual"
+      }
+    },
+    "raven": {
+      "hp": 90,
+      "armor": 0.0,
+      "damage": [
+        12,
+        18
+      ],
+      "attack_rate": 1.5,
+      "range": 1.3,
+      "speed": 7.0,
+      "flying": true,
+      "model": {
+        "base": "raven"
+      }
+    },
+    "dragon_whelp": {
+      "hp": 400,
+      "armor": 0.2,
+      "damage": [
+        20,
+        30
+      ],
+      "attack_rate": 0.9,
+      "range": 5.0,
+      "speed": 5.0,
+      "flying": true,
+      "projectile": "fireball",
+      "model": {
+        "base": "dragon",
+        "scale": 0.35
+      }
+    }
+  }
+}
