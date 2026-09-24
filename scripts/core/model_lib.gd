@@ -198,6 +198,11 @@ static func character(def: Dictionary) -> Node3D:
 			mesh_inst.set_surface_override_material(si, mat_by_tex[key])
 		mesh_inst.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	model.materials = mats
+	if float(def.get("scale", 1.0)) >= 2.0:
+		# Giants: keep the ember glow in the cracks, not smeared over the silhouette.
+		for m in mats:
+			m.set_shader_parameter("rim_strength", 0.22)
+			m.set_shader_parameter("glow_strength", minf(2.2, float(def.get("emission_strength", 1.0))))
 	var skel: Skeleton3D = inst.find_child("Skeleton3D", true, false)
 	model.skeleton = skel
 	if skel:

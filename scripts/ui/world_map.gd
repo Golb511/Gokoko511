@@ -102,9 +102,8 @@ func _side_panel() -> VBoxContainer:
 	ui.add_child(panel)
 	var v := UITheme.vbox(10)
 	panel.add_child(v)
-	panel.position.x += 40
 	panel.modulate.a = 0.0
-	var tw := panel.create_tween().set_parallel(true)
+	var tw := panel.create_tween()
 	tw.tween_property(panel, "modulate:a", 1.0, 0.2)
 	return v
 

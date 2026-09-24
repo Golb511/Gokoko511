@@ -726,12 +726,14 @@ func _build_pips() -> void:
 	gold.albedo_color = Color(1, 0.8, 0.35)
 	gold.emission_enabled = true
 	gold.emission = Color(1, 0.7, 0.2)
-	gold.emission_energy_multiplier = 2.0
+	gold.emission_energy_multiplier = 0.6
+	gold.metallic = 0.9
+	gold.roughness = 0.3
 	for i in level:
 		var pip := MeshInstance3D.new()
 		var sm := SphereMesh.new()
-		sm.radius = 0.1
-		sm.height = 0.2
+		sm.radius = 0.07
+		sm.height = 0.14
 		pip.mesh = sm
 		pip.material_override = gold
 		pip.position = Vector3(-0.35 * (level - 1) * 0.5 + i * 0.35, 0.45, 1.5)

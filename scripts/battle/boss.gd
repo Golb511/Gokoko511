@@ -21,9 +21,9 @@ func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, s
 	hp_bar.set_meta("always", false)
 	var light := OmniLight3D.new()
 	light.light_color = ModelLib._col(def.model.get("emission", [1, 0.3, 0.05]))
-	light.light_energy = 2.5
-	light.omni_range = 8.0
-	light.position = Vector3(0, 3.5, 0)
+	light.light_energy = 1.4
+	light.omni_range = 7.0
+	light.position = Vector3(0, 5.5, -1.5)
 	add_child(light)
 	VFX.particles(self, global_position + Vector3(0, 2, 0), {"amount": 30, "lifetime": 1.4, "one_shot": false, "local": true, "speed": 0.8, "size": 0.35, "color": light.light_color, "radius": 1.2, "gravity": Vector3(0, 1.5, 0)})
 
