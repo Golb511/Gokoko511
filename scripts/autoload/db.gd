@@ -75,6 +75,21 @@ func stage_info(stage_id: String) -> Dictionary:
 	return _stage_index.get(stage_id, {})
 
 
+## Normalised battlefield map for a stage: a hand-authored "map" block on the
+## stage wins; otherwise the shared layout it references. Paths are returned as
+## [{"points": [...], "air": bool}].
+func stage_map(stage_id: String) -> Dictionary:
+	var info := stage_info(stage_id)
+	var data: Dictionary = info.get("data", {})
+	if data.has("map"):
+		return data.map
+	var lay: Dictionary = layouts.get(data.get("layout", "serpent"), layouts.serpent)
+	var paths: Array = []
+	for p in lay.paths:
+		paths.append({"points": p, "air": false})
+	return {"paths": paths, "castle": lay.castle, "bounds": lay.bounds}
+
+
 func stage_label(stage_id: String) -> String:
 	if stage_id == ENDLESS:
 		return "∞"

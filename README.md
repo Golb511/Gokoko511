@@ -5,6 +5,18 @@ Heroes, branching towers, enemy AI, multi-phase bosses, loot, inventory, shop an
 progression. Menus are in Arabic and English, and the controls work with mouse,
 keyboard or touch.
 
+> **New in 0.3 — Region 2, the Shadow Lands, fully hand-designed:** four
+> stages, each with its own authored map (roads, flyer air-routes, curated
+> tower slots, landmarks), its own waves and its own atmosphere:
+> 2-1 *Moonlit Marsh* (blue moonlight, marsh pools, ground mist, fireflies),
+> 2-2 *Road of Crypts* (two roads, graveyard rows, purple candle-lit road),
+> 2-3 *Raven Spire* (stormy slate sky, lightning, circling ravens, a flyer
+> route that cuts across the map) and 2-4 *Throne of Shadows* (three routes,
+> a distant gothic castle, soul-fire storm and the Shadow Reaper boss).
+> Graphics: torch-lined roads, animated water shader, cinematic vignette and
+> worn-metal detail normals on every character. Map-design helper:
+> `python3 tools/design/map_tool.py <stage> [--propose N]`.
+>
 > **New in 0.2:** hand-designed stages 1-2 to 1-4 and 4 new map layouts
 > (labyrinth, crossroads, horseshoe, gauntlet), an interactive first-battle
 > tutorial, **Endless Siege** through the Gate (unlocks after stage 1-4; a boss
@@ -84,7 +96,9 @@ data/                 All game design as JSON (moddable, no code changes)
   abilities.json      56 abilities built from 15 ability types
   towers.json         14 towers x 3 levels + 2 branches x 2 levels
   units.json          enemies (AI role, skills), bosses (phases), allied soldiers/summons
-  regions.json        4 path layouts, 8 regions x 4 stages, hand-made waves for 1-1
+  regions.json        shared layouts + per-stage authored maps ("map": paths/air
+                      routes, slots, landmarks, water, theme), hand-made waves
+                      for regions 1-2
   items.json          item bases, affixes, gems, runes, materials, drop weights
   meta.json           achievements, daily quests, daily rewards, shop, guild
   config.json         economy, XP curves, rarities, global powers, upgrade costs
@@ -161,7 +175,7 @@ real-time shadows.
 
 ## Roadmap
 
-- Hand-authored waves for regions 2-8 (region 1 is hand-designed; the rest are generated)
+- Hand-authored stages for regions 3-8 (regions 1-2 are hand-designed; the rest still use generated waves)
 - Bespoke creature models (dragon, monsters) to replace procedural assemblies
 - Store plugins (Google Play Billing / StoreKit) for real gem purchases (currently a test stub)
 - Online guild features (the current guild is offline, with AI companions)

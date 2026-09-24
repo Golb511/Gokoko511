@@ -138,6 +138,8 @@ func nearest_path_point(p: Vector3, max_dist := 6.0) -> Vector3:
 	var best := Vector3.INF
 	var bd := INF
 	for r in routes:
+		if r.air:
+			continue
 		var c := r.curve.get_closest_point(p)
 		var d := c.distance_to(p)
 		if d < bd:
@@ -151,6 +153,8 @@ func nearest_path_point(p: Vector3, max_dist := 6.0) -> Vector3:
 func random_path_point_near(p: Vector3, r: float) -> Vector3:
 	var cands: Array[Vector3] = []
 	for rt in routes:
+		if rt.air:
+			continue
 		for i in range(0, rt.points.size(), 3):
 			if rt.points[i].distance_to(p) <= r:
 				cands.append(rt.points[i])

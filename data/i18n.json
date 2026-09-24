@@ -1922,5 +1922,21 @@
  "skill.ability_desc": [
   "+12% damage, -5% cooldown / rank",
   "+12% ضرر، -5% تهدئة / رتبة"
+ ],
+ "stage.r2s1": [
+  "Moonlit Marsh",
+  "مستنقع القمر"
+ ],
+ "stage.r2s2": [
+  "Road of Crypts",
+  "طريق المدافن"
+ ],
+ "stage.r2s3": [
+  "Raven Spire",
+  "برج الغربان"
+ ],
+ "stage.r2s4": [
+  "Throne of Shadows",
+  "عرش الظلال"
  ]
 }

@@ -109,6 +109,7 @@ static func char_material(albedo: Texture2D, def: Dictionary) -> ShaderMaterial:
 	m.shader = _char_shader
 	m.set_shader_parameter("albedo_tex", albedo)
 	m.set_shader_parameter("detail_tex", noise_tex("detail"))
+	m.set_shader_parameter("detail_normal", noise_tex("normal"))
 	m.set_shader_parameter("tint", _col(def.get("tint", [0.4, 0.4, 0.4])))
 	m.set_shader_parameter("metal", float(def.get("metal", 0.55)))
 	m.set_shader_parameter("glow_color", _col(def.get("emission", [1, 0.3, 0.05])))

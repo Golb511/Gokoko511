@@ -7,6 +7,8 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 
 uniform sampler2D albedo_tex : source_color, filter_linear_mipmap, repeat_enable;
 uniform sampler2D detail_tex : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform sampler2D detail_normal : hint_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_depth = 0.45;
 uniform vec3 tint : source_color = vec3(0.4);
 uniform float desaturate : hint_range(0.0, 1.0) = 0.6;
 uniform float metal : hint_range(0.0, 1.0) = 0.6;
@@ -67,6 +69,9 @@ void fragment() {
 		emit += glow_color * 6.0 * (1.0 - smoothstep(0.0, 0.06, d - dissolve));
 	}
 
+	// Hammered / worn surface detail so flat low-poly panels catch light like forged metal.
+	NORMAL_MAP = texture(detail_normal, duv * 2.3).rgb;
+	NORMAL_MAP_DEPTH = normal_depth * (0.5 + metallic_mask + stone);
 	ALBEDO = col;
 	METALLIC = metallic_mask;
 	ROUGHNESS = clamp(base_roughness + (n2 - 0.5) * 0.35 + stone * 0.4 - metallic_mask * 0.15, 0.08, 1.0);

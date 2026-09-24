@@ -7,7 +7,7 @@ config_version=5
 
 config/name="Shadow Crown: Eternal Siege"
 config/description="Dark fantasy 3D tower defense RPG"
-config/version="0.2.0"
+config/version="0.3.0"
 run/main_scene="res://scenes/boot.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.02, 0.015, 0.02, 1)

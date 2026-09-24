@@ -19,28 +19,110 @@ func build(b: Node, parent: Node3D, stage_id: String) -> void:
 	battle = b
 	root = parent
 	var info := DB.stage_info(stage_id)
-	theme = info.region.theme
-	layout = DB.layouts[info.data.layout]
+	layout = DB.stage_map(stage_id)
+	# Stage atmosphere overrides the region's base theme key by key.
+	theme = info.region.theme.duplicate(true)
+	theme.merge(layout.get("theme", {}), true)
 	rng.seed = hash(stage_id)
 	var bb: Array = layout.bounds
 	bounds = Rect2(float(bb[0]), float(bb[1]), float(bb[2]) - float(bb[0]), float(bb[3]) - float(bb[1]))
 	for p in layout.paths:
 		var r := PathRoute.new()
-		r.build(p)
+		r.air = bool(p.get("air", false))
+		r.build(p.points)
 		routes.append(r)
 	castle_pos = Vector3(float(layout.castle[0]), 0, float(layout.castle[1]))
 	root.add_child(GraphicsSettings.make_environment(theme))
 	root.add_child(GraphicsSettings.make_sun(theme))
 	_ground()
-	for r in routes:
+	for r in ground_routes():
 		_road(r)
 	_castle()
 	for r in routes:
-		_portal(r)
-	_slots()
+		if r.air:
+			Atmosphere.air_portal(root, r)
+			_occupied.append([r.sample(0.0), 4.0])
+		else:
+			_portal(r)
+	_landmarks()
+	_water()
+	if layout.has("slots"):
+		_authored_slots()
+	else:
+		_slots()
+	Atmosphere.build(self, theme)
+	_graveyard_rows()
+	_crystal_spots()
 	_mountains()
 	_decor()
 	VFX.ambient(root, theme.get("particles", "embers"), Vector3(bounds.get_center().x, 3, bounds.get_center().y), Vector3(bounds.size.x * 0.5, 3, bounds.size.y * 0.5))
+
+
+func ground_routes() -> Array[PathRoute]:
+	var out: Array[PathRoute] = []
+	for r in routes:
+		if not r.air:
+			out.append(r)
+	return out
+
+
+func _authored_slots() -> void:
+	var i := 0
+	for s in layout.slots:
+		var p := Vector3(float(s[0]), 0, float(s[1]))
+		var slot := BuildSlot.new()
+		slot.name = "Slot%d" % i
+		root.add_child(slot)
+		slot.setup(battle, p)
+		slots.append(slot)
+		_occupied.append([p, 3.0])
+		i += 1
+
+
+func _landmarks() -> void:
+	for lm in layout.get("landmarks", []):
+		var p := Vector3(float(lm.pos[0]), 0, float(lm.pos[1]))
+		var tint := ModelLib._col(lm.get("tint", [0.35, 0.33, 0.32]))
+		var acc := ModelLib._col(lm.get("accent", [1, 0.4, 0.1]))
+		var n := _place(lm.model, p, float(lm.get("scale", 1.0)), float(lm.get("rot", 0.0)), tint, acc, float(lm.get("accent_s", 0.0)))
+		n.name = "Landmark"
+		if lm.has("light") and GraphicsSettings.quality() >= 1:
+			var lc: Array = lm.light
+			var l := OmniLight3D.new()
+			l.light_color = Color(lc[0], lc[1], lc[2])
+			l.light_energy = float(lc[3]) if lc.size() > 3 else 2.5
+			l.omni_range = 9.0
+			root.add_child(l)
+			l.global_position = p + Vector3(0, 3.5, 0)
+		_occupied.append([p, float(lm.get("clear", 3.0))])
+
+
+func _water() -> void:
+	for w in layout.get("water", []):
+		var p := Vector3(float(w[0]), 0, float(w[1]))
+		Atmosphere.water_pool(root, p, float(w[2]), rng)
+		_occupied.append([p, float(w[2])])
+
+
+func _graveyard_rows() -> void:
+	for g in layout.get("graveyard_rows", []):
+		for cx in int(g[2]):
+			for cz in int(g[3]):
+				var p := Vector3(float(g[0]) + cx * 2.4 - g[2] * 1.2, 0, float(g[1]) + cz * 2.6 - g[3] * 1.3)
+				if not _free(p, 0.8):
+					continue
+				var key: String = ["graveyard/grave_A", "graveyard/grave_B", "graveyard/gravestone"][rng.randi() % 3]
+				_place(key, p, rng.randf_range(1.4, 1.8), PI + rng.randf_range(-0.25, 0.25), Color(0.34, 0.34, 0.33))
+				_occupied.append([p, 1.0])
+				if rng.randf() < 0.18:
+					VFX.torch_flame(root, p + Vector3(0.6, 0.2, 0.3), ModelLib._col(theme.get("road_torches", {}).get("color", [0.75, 0.35, 1.0])), false)
+
+
+func _crystal_spots() -> void:
+	for c in layout.get("crystals", []):
+		var p := Vector3(float(c[0]), 0, float(c[1]))
+		_crystals(p, Color(0.65, 0.2, 1.0))
+		_occupied.append([p, 2.0])
 
 
 func _c(key: String, def := [0.2, 0.2, 0.2]) -> Color:
@@ -117,7 +199,7 @@ func _place(path_key: String, pos: Vector3, scale: float, rot := -1.0, tint := C
 
 
 func _castle() -> void:
-	var r := routes[0]
+	var r := ground_routes()[0]
 	var end := r.sample(r.length)
 	var dir := r.direction(r.length - 1.0)
 	var face := atan2(-dir.x, -dir.z)
@@ -156,7 +238,7 @@ func _portal(r: PathRoute) -> void:
 
 func _slots() -> void:
 	var cands: Array[Vector3] = []
-	for r in routes:
+	for r in ground_routes():
 		var off := 7.0
 		while off < r.length - 6.0:
 			var p := r.sample(off)
@@ -174,7 +256,7 @@ func _slots() -> void:
 		if not _in_bounds(c, 3.0):
 			continue
 		var ok := true
-		for r in routes:
+		for r in ground_routes():
 			if r.distance_to(c) < 3.6:
 				ok = false
 		for p in placed:
@@ -331,7 +413,7 @@ func _crystals(p: Vector3, c: Color, mushrooms := false) -> void:
 	m.albedo_color = c.darkened(0.3)
 	m.emission_enabled = true
 	m.emission = c
-	m.emission_energy_multiplier = 2.5
+	m.emission_energy_multiplier = 1.1
 	m.metallic = 0.3
 	m.roughness = 0.15
 	for k in rng.randi_range(3, 6):

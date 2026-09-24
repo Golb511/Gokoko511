@@ -27,7 +27,7 @@ func setup(b: Node, stage_id: String) -> void:
 	var info := DB.stage_info(stage_id)
 	_stage_info = info
 	var gi := DB.stage_order.find(stage_id)
-	hp_mult = 1.0 + gi * 0.08
+	hp_mult = 1.0 + gi * 0.1
 	if stage_id == DB.ENDLESS:
 		endless = true
 		hp_mult = 1.0
@@ -57,10 +57,10 @@ func _generate(info: Dictionary, gi: int) -> Array:
 	var basic: Array = pool.filter(func(id): return not DB.enemy(id).get("flying", false) and float(DB.enemy(id).hp) <= 160.0)
 	if basic.is_empty():
 		basic = ["skeleton_minion", "cultist"]
-	var paths: int = DB.layouts[stage.layout].paths.size()
+	var paths: int = DB.stage_map(stage.id).paths.filter(func(p): return not p.get("air", false)).size()
 	var is_boss: bool = stage.get("boss", false)
 	var n := 5 + mini(2, info.region_idx / 2) + (1 if is_boss else 0)
-	var mult := 1.0 + gi * 0.08
+	var mult := 1.0 + gi * 0.1
 	var base := 520.0 + 70.0 * gi
 	var out: Array = []
 	for w in n:

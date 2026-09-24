@@ -3,6 +3,7 @@ extends RefCounted
 ## A walkable route for enemies (baked Curve3D + helpers).
 
 var curve := Curve3D.new()
+var air := false       # flyer-only route: no road, not walkable by ground units
 var length := 0.0
 var points: PackedVector3Array
 

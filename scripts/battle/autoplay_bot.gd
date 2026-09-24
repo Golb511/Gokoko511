@@ -41,20 +41,22 @@ func _physics_process(delta: float) -> void:
 		battle.waves.start_next_wave(true)
 
 
-func _slot_value(s: BuildSlot) -> float:
-	# Prefer slots covering the most road.
+func _slot_value(s: BuildSlot, tower_id: String) -> float:
+	# Prefer slots covering the most road; air-capable towers also value air routes.
+	var hits_air: bool = DB.towers[tower_id].get("air", true)
 	var v := 0.0
 	for r in battle.routes:
+		if r.air and not hits_air:
+			continue
+		var w := 3.0 if r.air else 1.0
 		for i in range(0, r.points.size(), 4):
 			if r.points[i].distance_to(s.global_position) < 9.0:
-				v += 1.0
+				v += w
 	return v
 
 
 func _build() -> void:
 	var avail := battle.available_towers()
-	var free := battle.slots.filter(func(s): return s.is_free())
-	free.sort_custom(func(a, b): return _slot_value(a) > _slot_value(b))
 	if battle.towers.size() >= 7 and battle.towers.any(func(t): return t.can_upgrade() or t.needs_branch_choice()):
 		return
 	# Rotate through a sensible core (air-capable damage + blockers) first.
@@ -63,12 +65,16 @@ func _build() -> void:
 	for t in avail:
 		if not t in prefs:
 			prefs.append(t)
-	for s in free:
+	while true:
+		var free := battle.slots.filter(func(s): return s.is_free())
+		if free.is_empty():
+			return
 		var id: String = prefs[battle.towers.size() % prefs.size()]
 		var cost := int(DB.towers[id].levels[0].cost)
-		if battle.gold >= cost + 20:
-			battle.build_tower(s, id)
-		else:
+		if battle.gold < cost + 20:
+			return
+		free.sort_custom(func(a, b): return _slot_value(a, id) > _slot_value(b, id))
+		if battle.build_tower(free[0], id) == null:
 			return
 
 

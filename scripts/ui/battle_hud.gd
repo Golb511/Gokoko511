@@ -41,6 +41,7 @@ func setup(b: BattleController) -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.layout_direction = Control.LAYOUT_DIRECTION_LTR
 	add_child(root)
+	_vignette()
 	_build_top()
 	_build_hero_panel()
 	_build_right_panel()
@@ -73,6 +74,27 @@ func setup(b: BattleController) -> void:
 
 
 # ---------------------------------------------------------------- layout
+## Cinematic edge darkening that frames the battlefield (no gameplay effect).
+func _vignette() -> void:
+	var v := TextureRect.new()
+	var g := Gradient.new()
+	g.set_color(0, Color(0, 0, 0, 0))
+	g.add_point(0.62, Color(0, 0, 0, 0.0))
+	g.set_color(g.get_point_count() - 1, Color(0.0, 0.0, 0.02, 0.62))
+	var gt := GradientTexture2D.new()
+	gt.gradient = g
+	gt.fill = GradientTexture2D.FILL_RADIAL
+	gt.fill_from = Vector2(0.5, 0.45)
+	gt.fill_to = Vector2(1.05, 1.05)
+	gt.width = 256
+	gt.height = 256
+	v.texture = gt
+	v.stretch_mode = TextureRect.STRETCH_SCALE
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(v)
+
+
 func _build_top() -> void:
 	var tl := UITheme.panel(Color(0.03, 0.02, 0.02, 0.8), UITheme.GOLD_DIM, 8)
 	tl.position = Vector2(16, 14)
@@ -84,7 +106,8 @@ func _build_top() -> void:
 	h.add_child(Icon.make("skull", Color(0.9, 0.3, 0.2), 34))
 	wave_label = UITheme.label("", 24, UITheme.GOLD, true)
 	h.add_child(wave_label)
-	var stage_name := tr("mode.endless") if battle.stage_id == DB.ENDLESS else tr("region." + str(DB.stage_info(battle.stage_id).region.id)) + "  " + DB.stage_label(battle.stage_id)
+	var sdata: Dictionary = DB.stage_info(battle.stage_id).get("data", {})
+	var stage_name := tr("mode.endless") if battle.stage_id == DB.ENDLESS else (tr(sdata.name) if sdata.has("name") else tr("region." + str(DB.stage_info(battle.stage_id).region.id))) + "  " + DB.stage_label(battle.stage_id)
 	var stage_lbl := UITheme.label("  " + stage_name, 16, UITheme.TEXT_DIM)
 	h.add_child(stage_lbl)
 	wave_btn = UITheme.primary_button(tr("battle.start"), call_next_wave, 20, 230, 50)

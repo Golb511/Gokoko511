@@ -182,7 +182,7 @@ func _role_skills() -> void:
 		# Only summon when it perceives a threat (defenders in sight).
 		if not battle.allies_near(global_position, SIGHT).is_empty() or not battle.towers_near(global_position, SIGHT).is_empty():
 			for i in int(sk.count):
-				battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, progress - 1.0 - i * 0.6), true)
+				battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, minf(progress - 1.0, route.length * 0.6) - i * 0.6), true)
 			VFX.shadow_burst(battle.fx_root, global_position, 1.5)
 			_cast_anim("summon")
 			skill_cd.summon = float(sk.cooldown)
@@ -221,7 +221,7 @@ func _role_skills() -> void:
 		global_position = _path_pos()
 		VFX.shadow_burst(battle.fx_root, global_position)
 		skill_cd.blink = float(sk.cooldown)
-	if skills.has("stealth") and _skill_ready("stealth") and hp_ratio() < 0.65:
+	if skills.has("stealth") and _skill_ready("stealth") and hp_ratio() < 0.5:
 		var sk: Dictionary = skills.stealth
 		stealthed = true
 		model.set_param("shadow_form", 1.0)

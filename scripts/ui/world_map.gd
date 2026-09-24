@@ -159,7 +159,8 @@ func _stage_row(s: Dictionary) -> Control:
 	var v := UITheme.vbox(0)
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(v)
-	v.add_child(UITheme.label("%s %s%s" % [tr("ui.stage"), DB.stage_label(s.id), ("  — " + tr("ui.boss_stage")) if s.get("boss", false) else ""], 18, UITheme.TEXT, true))
+	var sname: String = ("  " + tr(s.name)) if s.has("name") else ""
+	v.add_child(UITheme.label("%s%s%s" % [DB.stage_label(s.id), sname, ("  — " + tr("ui.boss_stage")) if s.get("boss", false) else ""], 18, UITheme.TEXT, true))
 	v.add_child(StarRow.make(Game.stage_stars(s.id), 3, 20))
 	if unlocked:
 		var sid: String = s.id
@@ -182,7 +183,9 @@ func _open_stage(stage_id: String) -> void:
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(t)
 	head.add_child(UITheme.button("✕", _close_panel, 18, 44, 44))
-	v.add_child(UITheme.label(tr("region." + str(info.region.id)), 20, UITheme.TEXT_DIM, true, HORIZONTAL_ALIGNMENT_CENTER))
+	if info.data.has("name"):
+		v.add_child(UITheme.label(tr(info.data.name), 24, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
+	v.add_child(UITheme.label(tr("region." + str(info.region.id)), 18, UITheme.TEXT_DIM, true, HORIZONTAL_ALIGNMENT_CENTER))
 	var sr := StarRow.make(Game.stage_stars(stage_id), 3, 40)
 	sr.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(sr)

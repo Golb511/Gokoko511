@@ -43,9 +43,20 @@ func _physics_process(delta: float) -> void:
 		_pierce_flight(delta)
 		return
 	t += delta
-	if target != null and is_instance_valid(target) and target.alive and arc == 0.0:
-		target_pos = target.global_position + Vector3(0, 1.0 if not target.flying else 0.4, 0)
-		flight = maxf(t + 0.001, t + global_position.distance_to(target_pos) / speed)
+	if arc == 0.0:
+		# Homing: steer straight at the (moving) target at constant speed.
+		if target != null and is_instance_valid(target) and target.alive:
+			target_pos = target.global_position + Vector3(0, 1.0 if not target.flying else 0.4, 0)
+		var to := target_pos - global_position
+		var step := speed * delta
+		if to.length() <= maxf(step, 0.25) or t > 4.0:
+			global_position = target_pos
+			_impact()
+			return
+		var dir := to.normalized()
+		global_position += dir * step
+		_visual.look_at(global_position + dir, Vector3.UP if absf(dir.y) < 0.99 else Vector3.RIGHT)
+		return
 	var k := clampf(t / flight, 0.0, 1.0)
 	var pos := start.lerp(target_pos, k)
 	if arc > 0.0:
