@@ -1938,5 +1938,33 @@
  "stage.r2s4": [
   "Throne of Shadows",
   "عرش الظلال"
+ ],
+ "enemy.magma_imp": [
+  "Magma Imp",
+  "عفريت الحمم"
+ ],
+ "enemy.obsidian_golem": [
+  "Obsidian Golem",
+  "غولم السبج"
+ ],
+ "enemy.flame_caller": [
+  "Flame Caller",
+  "مستدعي اللهب"
+ ],
+ "stage.r3s1": [
+  "Ashen Causeway",
+  "جسر الرماد"
+ ],
+ "stage.r3s2": [
+  "Forge of Chains",
+  "مسبك السلاسل"
+ ],
+ "stage.r3s3": [
+  "Caldera Ascent",
+  "صعود الفوهة"
+ ],
+ "stage.r3s4": [
+  "Summit of the Inferno Tower",
+  "قمة برج الجحيم"
  ]
 }

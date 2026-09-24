@@ -134,6 +134,20 @@ func towers_near(p: Vector3, r: float) -> Array:
 	return out
 
 
+## Where a unit standing at p should step to get clear of an erupting vent or
+## an incoming volcanic bomb, or Vector3.INF when p is safe.
+func hazard_escape(p: Vector3) -> Vector3:
+	for h in level.hazards:
+		if is_instance_valid(h) and h.is_threat(p):
+			var c: Vector3 = h.threat_center(p)
+			var away := p - c
+			away.y = 0.0
+			if away.length() < 0.2:
+				away = Vector3(1, 0, 0.3)
+			return clamp_to_bounds(c + away.normalized() * (h.threat_radius() + 1.8))
+	return Vector3.INF
+
+
 func nearest_path_point(p: Vector3, max_dist := 6.0) -> Vector3:
 	var best := Vector3.INF
 	var bd := INF

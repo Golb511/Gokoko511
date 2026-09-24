@@ -105,6 +105,11 @@ static func road_torches(lb: LevelBuilder, cfg: Dictionary) -> void:
 			off += spacing
 			if not lb._free(pos, 0.6):
 				continue
+			if cfg.get("style", "") == "brazier":
+				Inferno.brazier(lb, pos, col, lights < max_lights)
+				lights += 1
+				lb._occupied.append([pos, 0.9])
+				continue
 			var post := lb._place("graveyard/lantern_standing", pos, 1.35, atan2(-n.x, -n.z), Color(0.28, 0.26, 0.26))
 			post.name = "RoadTorch"
 			var with_light := lights < max_lights

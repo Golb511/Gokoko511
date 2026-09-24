@@ -568,6 +568,155 @@
         "scale": 1.25,
         "anim": "2h"
       }
+    },
+    "magma_imp": {
+      "ai": "attacker",
+      "hp": 75,
+      "armor": 0.0,
+      "mres": 0.2,
+      "speed": 2.6,
+      "damage": [
+        6,
+        9
+      ],
+      "attack_rate": 1.3,
+      "range": 1.2,
+      "gold": 6,
+      "xp": 5,
+      "lives": 1,
+      "tags": [
+        "demon",
+        "ground"
+      ],
+      "loot": 0.03,
+      "skills": {
+        "death_burst": {
+          "radius": 2.2,
+          "damage": 26
+        }
+      },
+      "model": {
+        "base": "Skeleton_Minion",
+        "weapon_r": "Skeleton_Blade",
+        "tint": [
+          0.3,
+          0.1,
+          0.05
+        ],
+        "emission": [
+          1.0,
+          0.4,
+          0.05
+        ],
+        "emission_strength": 3.5,
+        "scale": 0.72,
+        "anim": "1h",
+        "stone": true
+      }
+    },
+    "obsidian_golem": {
+      "ai": "tank",
+      "hp": 760,
+      "armor": 0.62,
+      "mres": 0.0,
+      "speed": 1.25,
+      "damage": [
+        26,
+        38
+      ],
+      "attack_rate": 0.55,
+      "range": 1.8,
+      "gold": 34,
+      "xp": 26,
+      "lives": 2,
+      "tags": [
+        "demon",
+        "ground"
+      ],
+      "loot": 0.12,
+      "skills": {
+        "split": {
+          "unit": "magma_imp",
+          "count": 2
+        },
+        "unstoppable": {
+          "cc_resist": 0.3
+        }
+      },
+      "model": {
+        "base": "Skeleton_Warrior",
+        "show": [
+          "Skeleton_Warrior_Helmet"
+        ],
+        "weapon_r": "Skeleton_Axe",
+        "tint": [
+          0.07,
+          0.06,
+          0.07
+        ],
+        "emission": [
+          1.0,
+          0.35,
+          0.04
+        ],
+        "emission_strength": 3.0,
+        "scale": 1.6,
+        "anim": "1h",
+        "stone": true
+      }
+    },
+    "flame_caller": {
+      "ai": "mage",
+      "hp": 150,
+      "armor": 0.05,
+      "mres": 0.35,
+      "speed": 1.9,
+      "damage": [
+        14,
+        20
+      ],
+      "attack_rate": 0.7,
+      "range": 6.5,
+      "gold": 16,
+      "xp": 12,
+      "lives": 1,
+      "tags": [
+        "human",
+        "ground"
+      ],
+      "loot": 0.06,
+      "projectile": "fireball",
+      "dmg_type": "fire",
+      "skills": {
+        "weaken_tower": {
+          "range": 7.0,
+          "duration": 4,
+          "power": 0.35,
+          "cooldown": 10,
+          "fx": "fire"
+        }
+      },
+      "model": {
+        "base": "Mage",
+        "show": [
+          "2H_Staff",
+          "Mage_Hat",
+          "Mage_Cape"
+        ],
+        "tint": [
+          0.28,
+          0.07,
+          0.04
+        ],
+        "emission": [
+          1.0,
+          0.45,
+          0.08
+        ],
+        "emission_strength": 2.2,
+        "scale": 1.0,
+        "anim": "staff"
+      }
     }
   },
   "bosses": {
@@ -800,7 +949,9 @@
           "speed_mult": 1.35,
           "enrage": true
         }
-      ]
+      ],
+      "horde_unit": "magma_imp",
+      "horde_elite": "flame_caller"
     },
     "plague_colossus": {
       "ai": "boss",

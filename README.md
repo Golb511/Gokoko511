@@ -5,6 +5,23 @@ Heroes, branching towers, enemy AI, multi-phase bosses, loot, inventory, shop an
 progression. Menus are in Arabic and English, and the controls work with mouse,
 keyboard or touch.
 
+> **New in 0.4 — Region 3, the Inferno Tower, fully hand-designed:** four
+> stages, each with its own map, obstacles, enemies and atmosphere:
+> 3-1 *Ashen Causeway* (two roads crossing a flowing lava river on stone
+> bridges, lava pools, basalt fields, falling ash), 3-2 *Forge of Chains* (a
+> long switchback through a forge, lava channels that split the build space,
+> and **fire vents** on the road that erupt and burn anything standing on them),
+> 3-3 *Caldera Ascent* (a road that spirals round an erupting **volcano** which
+> lobs telegraphed lava bombs onto the road, and a flyer route over the crater),
+> 3-4 *Summit of the Inferno Tower* (three roads, three bridges over a lava
+> moat, vents at the junctions, the Inferno Tower on the horizon and the
+> Inferno Titan boss, whose horde is made of magma imps and flame callers).
+> New enemies: **Magma Imp** (fast; bursts into flame when slain, hurting
+> nearby defenders), **Obsidian Golem** (heavily armoured tank that splits into
+> two imps) and **Flame Caller** (fire mage that scorches towers). The AUTO hero
+> steps out of erupting vents and incoming bomb zones. Graphics: animated lava
+> shader, iron braziers along the roads, glowing basalt columns, volcano shader.
+>
 > **New in 0.3 — Region 2, the Shadow Lands, fully hand-designed:** four
 > stages, each with its own authored map (roads, flyer air-routes, curated
 > tower slots, landmarks), its own waves and its own atmosphere:
@@ -97,8 +114,8 @@ data/                 All game design as JSON (moddable, no code changes)
   towers.json         14 towers x 3 levels + 2 branches x 2 levels
   units.json          enemies (AI role, skills), bosses (phases), allied soldiers/summons
   regions.json        shared layouts + per-stage authored maps ("map": paths/air
-                      routes, slots, landmarks, water, theme), hand-made waves
-                      for regions 1-2
+                      routes, slots, landmarks, water, lava rivers/pools, basalt,
+                      vents, volcano, theme), hand-made waves for regions 1-3
   items.json          item bases, affixes, gems, runes, materials, drop weights
   meta.json           achievements, daily quests, daily rewards, shop, guild
   config.json         economy, XP curves, rarities, global powers, upgrade costs
@@ -175,7 +192,7 @@ real-time shadows.
 
 ## Roadmap
 
-- Hand-authored stages for regions 3-8 (regions 1-2 are hand-designed; the rest still use generated waves)
+- Hand-authored stages for regions 4-8 (regions 1-3 are hand-designed; the rest still use generated waves)
 - Bespoke creature models (dragon, monsters) to replace procedural assemblies
 - Store plugins (Google Play Billing / StoreKit) for real gem purchases (currently a test stub)
 - Online guild features (the current guild is offline, with AI companions)

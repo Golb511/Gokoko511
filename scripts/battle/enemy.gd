@@ -194,7 +194,12 @@ func _role_skills() -> void:
 				best = t
 		if best != null:
 			best.apply_weaken(float(sk.duration), float(sk.power))
-			VFX.lightning(battle.fx_root, global_position + Vector3(0, 1.5, 0), best.global_position + Vector3(0, 3, 0), Color(0.7, 0.2, 1.0), 0.1, 0.4)
+			if sk.get("fx", "") == "fire":
+				# Flame callers scorch the tower instead of draining it.
+				VFX.lightning(battle.fx_root, global_position + Vector3(0, 1.5, 0), best.global_position + Vector3(0, 3, 0), Color(1.0, 0.45, 0.08), 0.14, 0.4)
+				VFX.explosion(battle.fx_root, best.global_position + Vector3(0, 2.5, 0), 1.2, "fire")
+			else:
+				VFX.lightning(battle.fx_root, global_position + Vector3(0, 1.5, 0), best.global_position + Vector3(0, 3, 0), Color(0.7, 0.2, 1.0), 0.1, 0.4)
 			_cast_anim("cast")
 			skill_cd.weaken_tower = float(sk.cooldown)
 	if skills.has("attack_tower") and _skill_ready("attack_tower"):
@@ -325,7 +330,7 @@ func _melee_hit(ref: WeakRef) -> void:
 func _ranged_shot(ref: WeakRef) -> void:
 	var tgt: Unit = ref.get_ref()
 	if alive and tgt != null and tgt.alive:
-		battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": "physical" if projectile_type == "bolt" else "shadow", "speed": 14.0, "team": Team.ENEMY, "source": self})
+		battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": def.get("dmg_type", "physical" if projectile_type == "bolt" else "shadow"), "speed": 14.0, "team": Team.ENEMY, "source": self})
 
 
 func _retreat(delta: float) -> void:
@@ -341,4 +346,19 @@ func _retreat(delta: float) -> void:
 func _on_death() -> void:
 	if blocker != null and is_instance_valid(blocker) and blocker.has_method("on_target_lost"):
 		blocker.on_target_lost(self)
+	if skills.has("death_burst"):
+		# Magma imps burst when slain, scorching the defenders around them.
+		var sk: Dictionary = skills.death_burst
+		var pos := global_position
+		VFX.explosion(battle.fx_root, pos, float(sk.radius), "fire")
+		for a in battle.allies_near(pos, float(sk.radius)):
+			a.take_damage(float(sk.damage), "fire", null)
+	if skills.has("split") and not battle.ended:
+		# Obsidian golems crack apart into molten imps.
+		var sk: Dictionary = skills.split
+		VFX.particles(battle.fx_root, global_position + Vector3(0, 1.0, 0), {"amount": 22, "lifetime": 0.9, "speed": 5.0, "size": 0.35, "color": Color(1, 0.4, 0.05), "gravity": Vector3(0, -8, 0)})
+		for i in int(sk.count):
+			var imp: Enemy = battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, progress - 0.6 - i * 0.9), true)
+			if imp:
+				imp.lateral = clampf(lateral + (i - 0.5) * 1.2, -1.0, 1.0)
 	super._on_death()

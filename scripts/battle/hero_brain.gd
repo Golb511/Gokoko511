@@ -16,6 +16,10 @@ func update(delta: float) -> void:
 		return
 	_t = 0.5
 	var b = hero.battle
+	var escape: Vector3 = b.hazard_escape(hero.global_position)
+	if escape != Vector3.INF:
+		hero.command_move(escape)
+		return
 	if hero.hp_ratio() < 0.28:
 		retreating = true
 	elif hero.hp_ratio() > 0.7:

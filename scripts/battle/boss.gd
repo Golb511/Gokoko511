@@ -108,7 +108,7 @@ func _skill_summon_horde() -> bool:
 	model.play_action("summon", 1.0)
 	VFX.shadow_burst(battle.fx_root, global_position, 3.0)
 	for i in n:
-		var kind := "skeleton_warrior" if (gi >= 3 and i % 3 == 2) else "skeleton_minion"
+		var kind: String = def.get("horde_elite", "skeleton_warrior") if (gi >= 3 and i % 3 == 2) else def.get("horde_unit", "skeleton_minion")
 		# Reinforcements pour out on the enemy half of the road, never at the gate.
 		var at := minf(progress - 2.0 - i * 0.5, route.length * 0.5 - i * 0.6)
 		battle.spawn_enemy(kind, route_idx, maxf(0.0, at), true)

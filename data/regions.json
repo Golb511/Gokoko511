@@ -2170,12 +2170,15 @@
     "ash_brute",
     "skeleton_warrior",
     "war_herald",
-    "winged_fiend"
+    "winged_fiend",
+    "magma_imp",
+    "obsidian_golem",
+    "flame_caller"
    ],
    "stages": [
     {
      "id": "r3s1",
-     "layout": "twin",
+     "name": "stage.r3s1",
      "towers": [
       "archer",
       "mage",
@@ -2188,12 +2191,393 @@
       "fire"
      ],
      "new": [
-      "war_herald"
-     ]
+      "magma_imp"
+     ],
+     "map": {
+      "castle": [
+       0,
+       26
+      ],
+      "bounds": [
+       -40,
+       -32,
+       40,
+       30
+      ],
+      "paths": [
+       {
+        "points": [
+         [
+          -34,
+          -30
+         ],
+         [
+          -32,
+          -18
+         ],
+         [
+          -22,
+          -15
+         ],
+         [
+          -14,
+          -10
+         ],
+         [
+          -10,
+          -1
+         ],
+         [
+          0,
+          4
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          4,
+          20
+         ],
+         [
+          0,
+          30
+         ]
+        ]
+       },
+       {
+        "points": [
+         [
+          34,
+          -30
+         ],
+         [
+          31,
+          -19
+         ],
+         [
+          22,
+          -15
+         ],
+         [
+          14,
+          -11
+         ],
+         [
+          10,
+          -1
+         ],
+         [
+          0,
+          4
+         ],
+         [
+          8,
+          12
+         ],
+         [
+          4,
+          20
+         ],
+         [
+          0,
+          30
+         ]
+        ]
+       }
+      ],
+      "lava_rivers": [
+       {
+        "points": [
+         [
+          -46,
+          -8
+         ],
+         [
+          -30,
+          -3
+         ],
+         [
+          -18,
+          -8
+         ],
+         [
+          -6,
+          -4
+         ],
+         [
+          6,
+          -9
+         ],
+         [
+          18,
+          -4
+         ],
+         [
+          30,
+          -8
+         ],
+         [
+          46,
+          -4
+         ]
+        ],
+        "width": 3.6
+       }
+      ],
+      "lava": [
+       [
+        -26,
+        10,
+        2.6
+       ],
+       [
+        26,
+        12,
+        2.8
+       ],
+       [
+        0,
+        -24,
+        2.4
+       ]
+      ],
+      "basalt": [
+       [
+        -12,
+        -24,
+        2.2
+       ],
+       [
+        14,
+        -25,
+        2.0
+       ],
+       [
+        -30,
+        20,
+        2.4
+       ],
+       [
+        30,
+        22,
+        2.0
+       ]
+      ],
+      "landmarks": [
+       {
+        "model": "env/building_destroyed",
+        "pos": [
+         -22,
+         -26
+        ],
+        "scale": 2.6,
+        "rot": 0.6,
+        "clear": 4,
+        "tint": [
+         0.2,
+         0.15,
+         0.13
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.08
+        ],
+        "accent_s": 0.8,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         2.5
+        ]
+       },
+       {
+        "model": "env/building_tower_catapult_red",
+        "pos": [
+         22,
+         -26
+        ],
+        "scale": 2.2,
+        "rot": -0.5,
+        "clear": 4,
+        "tint": [
+         0.2,
+         0.15,
+         0.13
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.08
+        ],
+        "accent_s": 0.6
+       },
+       {
+        "model": "env/wall_straight",
+        "pos": [
+         -14,
+         16
+        ],
+        "scale": 2.4,
+        "rot": 0.3,
+        "clear": 2.5,
+        "tint": [
+         0.24,
+         0.19,
+         0.17
+        ]
+       },
+       {
+        "model": "env/building_destroyed",
+        "pos": [
+         18,
+         16
+        ],
+        "scale": 2.2,
+        "rot": 2.2,
+        "clear": 3.5,
+        "tint": [
+         0.2,
+         0.15,
+         0.13
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.08
+        ],
+        "accent_s": 0.6
+       }
+      ],
+      "theme": {
+       "ground": [
+        0.075,
+        0.062,
+        0.058
+       ],
+       "ground2": [
+        0.13,
+        0.055,
+        0.03
+       ],
+       "path": [
+        0.34,
+        0.27,
+        0.23
+       ],
+       "fog": [
+        0.16,
+        0.09,
+        0.07
+       ],
+       "sky_top": [
+        0.06,
+        0.015,
+        0.01
+       ],
+       "sky_horizon": [
+        0.55,
+        0.2,
+        0.07
+       ],
+       "sun": [
+        1.0,
+        0.72,
+        0.5
+       ],
+       "sun_energy": 1.35,
+       "ambient": [
+        0.25,
+        0.19,
+        0.17
+       ],
+       "particles": "embers",
+       "props": [
+        "rocks",
+        "ruins",
+        "rocks",
+        "dead_trees"
+       ],
+       "ground_lava": true,
+       "ash": true,
+       "road_torches": {
+        "color": [
+         1.0,
+         0.5,
+         0.15
+        ],
+        "spacing": 11,
+        "style": "brazier"
+       }
+      },
+      "slots": [
+       [
+        0.7,
+        11.3
+       ],
+       [
+        7.1,
+        5.6
+       ],
+       [
+        8.3,
+        21.7
+       ],
+       [
+        -3.3,
+        7.3
+       ],
+       [
+        2.9,
+        -2.6
+       ],
+       [
+        12.1,
+        14.1
+       ],
+       [
+        -25.7,
+        -20.9
+       ],
+       [
+        -24.4,
+        -11.1
+       ],
+       [
+        28.1,
+        -25.7
+       ],
+       [
+        -19.6,
+        -18.9
+       ],
+       [
+        24.1,
+        -10.9
+       ],
+       [
+        -9.8,
+        -11.9
+       ],
+       [
+        19.9,
+        -19.1
+       ],
+       [
+        -33.3,
+        -13.6
+       ],
+       [
+        -8,
+        17
+       ]
+      ]
+     }
     },
     {
      "id": "r3s2",
-     "layout": "labyrinth",
+     "name": "stage.r3s2",
      "towers": [
       "archer",
       "mage",
@@ -2204,27 +2588,398 @@
       "trap",
       "wind",
       "fire"
-     ]
+     ],
+     "new": [
+      "obsidian_golem"
+     ],
+     "map": {
+      "castle": [
+       -8,
+       26
+      ],
+      "bounds": [
+       -40,
+       -32,
+       40,
+       30
+      ],
+      "paths": [
+       {
+        "points": [
+         [
+          -34,
+          -30
+         ],
+         [
+          -27,
+          -24
+         ],
+         [
+          24,
+          -24
+         ],
+         [
+          30,
+          -18
+         ],
+         [
+          24,
+          -12
+         ],
+         [
+          -24,
+          -12
+         ],
+         [
+          -30,
+          -6
+         ],
+         [
+          -24,
+          0
+         ],
+         [
+          24,
+          0
+         ],
+         [
+          30,
+          6
+         ],
+         [
+          24,
+          12
+         ],
+         [
+          -6,
+          12
+         ],
+         [
+          -11,
+          18
+         ],
+         [
+          -8,
+          24
+         ],
+         [
+          -8,
+          30
+         ]
+        ]
+       }
+      ],
+      "lava_rivers": [
+       {
+        "points": [
+         [
+          -16,
+          -18
+         ],
+         [
+          18,
+          -18
+         ]
+        ],
+        "width": 2.4
+       },
+       {
+        "points": [
+         [
+          -4,
+          6
+         ],
+         [
+          18,
+          6
+         ]
+        ],
+        "width": 2.4
+       }
+      ],
+      "vents": [
+       {
+        "pos": [
+         4,
+         -24
+        ],
+        "period": 9,
+        "offset": 2,
+        "damage": 60
+       },
+       {
+        "pos": [
+         -6,
+         -12
+        ],
+        "period": 10,
+        "offset": 6,
+        "damage": 60
+       },
+       {
+        "pos": [
+         6,
+         0
+        ],
+        "period": 9,
+        "offset": 4,
+        "damage": 60
+       },
+       {
+        "pos": [
+         10,
+         12
+        ],
+        "period": 8,
+        "offset": 1,
+        "damage": 60
+       }
+      ],
+      "landmarks": [
+       {
+        "model": "env/building_blacksmith_red",
+        "pos": [
+         -33,
+         -17
+        ],
+        "scale": 2.4,
+        "rot": 1.5,
+        "clear": 3.5,
+        "tint": [
+         0.18,
+         0.15,
+         0.14
+        ],
+        "accent": [
+         1,
+         0.45,
+         0.1
+        ],
+        "accent_s": 1.4,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         3.0
+        ]
+       },
+       {
+        "model": "env/building_mine_red",
+        "pos": [
+         34,
+         -2
+        ],
+        "scale": 2.4,
+        "rot": -1.6,
+        "clear": 3.5,
+        "tint": [
+         0.18,
+         0.15,
+         0.14
+        ],
+        "accent": [
+         1,
+         0.45,
+         0.1
+        ],
+        "accent_s": 1.2,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         3.0
+        ]
+       },
+       {
+        "model": "env/building_blacksmith_red",
+        "pos": [
+         33,
+         19
+        ],
+        "scale": 2.2,
+        "rot": -2.2,
+        "clear": 3.5,
+        "tint": [
+         0.18,
+         0.15,
+         0.14
+        ],
+        "accent": [
+         1,
+         0.45,
+         0.1
+        ],
+        "accent_s": 1.4
+       },
+       {
+        "model": "env/building_scaffolding",
+        "pos": [
+         -34,
+         6
+        ],
+        "scale": 2.4,
+        "rot": 1.2,
+        "clear": 3,
+        "tint": [
+         0.2,
+         0.17,
+         0.15
+        ]
+       },
+       {
+        "model": "env/barrel",
+        "pos": [
+         -20,
+         -6
+        ],
+        "scale": 2.0,
+        "rot": 0.4,
+        "clear": 1.5,
+        "tint": [
+         0.2,
+         0.15,
+         0.12
+        ]
+       },
+       {
+        "model": "env/crate_A_big",
+        "pos": [
+         20,
+         -6
+        ],
+        "scale": 1.8,
+        "rot": 0.9,
+        "clear": 1.5,
+        "tint": [
+         0.2,
+         0.16,
+         0.13
+        ]
+       }
+      ],
+      "theme": {
+       "ground": [
+        0.07,
+        0.066,
+        0.066
+       ],
+       "ground2": [
+        0.1,
+        0.05,
+        0.035
+       ],
+       "path": [
+        0.3,
+        0.28,
+        0.27
+       ],
+       "fog": [
+        0.1,
+        0.075,
+        0.065
+       ],
+       "sky_top": [
+        0.03,
+        0.012,
+        0.01
+       ],
+       "sky_horizon": [
+        0.36,
+        0.14,
+        0.06
+       ],
+       "sun": [
+        1.0,
+        0.7,
+        0.5
+       ],
+       "sun_energy": 1.15,
+       "ambient": [
+        0.24,
+        0.2,
+        0.19
+       ],
+       "particles": "embers",
+       "props": [
+        "ruins",
+        "rocks",
+        "torches",
+        "rocks"
+       ],
+       "ground_lava": true,
+       "road_torches": {
+        "color": [
+         1.0,
+         0.45,
+         0.1
+        ],
+        "spacing": 8,
+        "style": "brazier"
+       }
+      },
+      "slots": [
+       [
+        -11.7,
+        -28.6
+       ],
+       [
+        8.7,
+        -28.6
+       ],
+       [
+        -21.9,
+        -18.5
+       ],
+       [
+        22.5,
+        -18
+       ],
+       [
+        -14,
+        -6
+       ],
+       [
+        -5,
+        -6
+       ],
+       [
+        4,
+        -6
+       ],
+       [
+        13,
+        -6
+       ],
+       [
+        -10,
+        5.5
+       ],
+       [
+        22.5,
+        6
+       ],
+       [
+        -1,
+        17.5
+       ],
+       [
+        8,
+        18
+       ],
+       [
+        17,
+        18
+       ],
+       [
+        -21,
+        18
+       ]
+      ]
+     }
     },
     {
      "id": "r3s3",
-     "layout": "zigzag",
-     "towers": [
-      "archer",
-      "mage",
-      "artillery",
-      "soldier",
-      "crossbow",
-      "shadow",
-      "trap",
-      "wind",
-      "fire",
-      "earth"
-     ]
-    },
-    {
-     "id": "r3s4",
-     "layout": "horseshoe",
+     "name": "stage.r3s3",
      "towers": [
       "archer",
       "mage",
@@ -2237,7 +2992,768 @@
       "fire",
       "earth"
      ],
-     "boss": true
+     "new": [
+      "flame_caller"
+     ],
+     "map": {
+      "castle": [
+       4,
+       26
+      ],
+      "bounds": [
+       -40,
+       -32,
+       40,
+       30
+      ],
+      "paths": [
+       {
+        "points": [
+         [
+          -36,
+          -28
+         ],
+         [
+          -26,
+          -21
+         ],
+         [
+          -13,
+          -21
+         ],
+         [
+          0,
+          -21
+         ],
+         [
+          12,
+          -18
+         ],
+         [
+          17,
+          -8
+         ],
+         [
+          15,
+          4
+         ],
+         [
+          4,
+          10
+         ],
+         [
+          -8,
+          8
+         ],
+         [
+          -17,
+          1
+         ],
+         [
+          -21,
+          12
+         ],
+         [
+          -12,
+          19
+         ],
+         [
+          4,
+          21
+         ],
+         [
+          4,
+          30
+         ]
+        ]
+       },
+       {
+        "air": true,
+        "points": [
+         [
+          38,
+          -26
+         ],
+         [
+          26,
+          -16
+         ],
+         [
+          10,
+          -8
+         ],
+         [
+          -2,
+          -6
+         ],
+         [
+          -8,
+          4
+         ],
+         [
+          -4,
+          14
+         ],
+         [
+          4,
+          30
+         ]
+        ]
+       }
+      ],
+      "volcano": {
+       "pos": [
+        0,
+        -6
+       ],
+       "radius": 7.5,
+       "height": 10,
+       "bombs": {
+        "interval": 11,
+        "damage": 55,
+        "radius": 2.3
+       }
+      },
+      "basalt": [
+       [
+        -32,
+        -6,
+        2.6
+       ],
+       [
+        32,
+        6,
+        2.6
+       ],
+       [
+        26,
+        -26,
+        2.2
+       ],
+       [
+        -30,
+        24,
+        2.2
+       ]
+      ],
+      "lava": [
+       [
+        30,
+        20,
+        2.4
+       ],
+       [
+        -34,
+        -18,
+        2.0
+       ]
+      ],
+      "crystals": [
+       [
+        -8,
+        -26
+       ],
+       [
+        22,
+        -24
+       ],
+       [
+        26,
+        14
+       ],
+       [
+        -26,
+        -12
+       ]
+      ],
+      "crystal_color": [
+       1.0,
+       0.4,
+       0.06
+      ],
+      "landmarks": [
+       {
+        "model": "env/building_tower_B_red",
+        "pos": [
+         -26,
+         4
+        ],
+        "scale": 2.2,
+        "rot": 0.4,
+        "clear": 3.5,
+        "tint": [
+         0.17,
+         0.13,
+         0.12
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.06
+        ],
+        "accent_s": 1.2,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         3.0
+        ]
+       },
+       {
+        "model": "env/building_destroyed",
+        "pos": [
+         22,
+         24
+        ],
+        "scale": 2.2,
+        "rot": 1.0,
+        "clear": 3.5,
+        "tint": [
+         0.18,
+         0.14,
+         0.12
+        ]
+       }
+      ],
+      "theme": {
+       "ground": [
+        0.065,
+        0.055,
+        0.052
+       ],
+       "ground2": [
+        0.15,
+        0.05,
+        0.025
+       ],
+       "path": [
+        0.3,
+        0.24,
+        0.2
+       ],
+       "fog": [
+        0.18,
+        0.09,
+        0.06
+       ],
+       "sky_top": [
+        0.08,
+        0.02,
+        0.01
+       ],
+       "sky_horizon": [
+        0.62,
+        0.22,
+        0.06
+       ],
+       "sun": [
+        1.0,
+        0.66,
+        0.44
+       ],
+       "sun_energy": 1.25,
+       "ambient": [
+        0.24,
+        0.18,
+        0.16
+       ],
+       "particles": "embers",
+       "props": [
+        "rocks",
+        "rocks",
+        "ruins"
+       ],
+       "ground_lava": true,
+       "ash": true,
+       "lightning": true,
+       "road_torches": {
+        "color": [
+         1.0,
+         0.55,
+         0.2
+        ],
+        "spacing": 13,
+        "style": "brazier"
+       }
+      },
+      "slots": [
+       [
+        -14.7,
+        8.1
+       ],
+       [
+        -2.8,
+        13.5
+       ],
+       [
+        -11.4,
+        14.4
+       ],
+       [
+        3.2,
+        14.5
+       ],
+       [
+        11.5,
+        -2.8
+       ],
+       [
+        7.3,
+        3.0
+       ],
+       [
+        10.4,
+        -10.9
+       ],
+       [
+        -5.2,
+        4.4
+       ],
+       [
+        -9.7,
+        0.9
+       ],
+       [
+        4.9,
+        -15.0
+       ],
+       [
+        -19.5,
+        -25.6
+       ],
+       [
+        -1.1,
+        -16.5
+       ],
+       [
+        -19.5,
+        -16.4
+       ],
+       [
+        -6.5,
+        -25.6
+       ],
+       [
+        20.5,
+        -1.2
+       ],
+       [
+        22,
+        -12
+       ]
+      ]
+     }
+    },
+    {
+     "id": "r3s4",
+     "name": "stage.r3s4",
+     "towers": [
+      "archer",
+      "mage",
+      "artillery",
+      "soldier",
+      "crossbow",
+      "shadow",
+      "trap",
+      "wind",
+      "fire",
+      "earth"
+     ],
+     "boss": true,
+     "map": {
+      "castle": [
+       0,
+       26
+      ],
+      "bounds": [
+       -40,
+       -32,
+       40,
+       30
+      ],
+      "paths": [
+       {
+        "points": [
+         [
+          0,
+          -32
+         ],
+         [
+          2,
+          -24
+         ],
+         [
+          -2,
+          -12
+         ],
+         [
+          -7,
+          -4
+         ],
+         [
+          0,
+          4
+         ],
+         [
+          0,
+          14
+         ],
+         [
+          0,
+          30
+         ]
+        ]
+       },
+       {
+        "points": [
+         [
+          -38,
+          -24
+         ],
+         [
+          -28,
+          -18
+         ],
+         [
+          -24,
+          -6
+         ],
+         [
+          -18,
+          4
+         ],
+         [
+          -8,
+          8
+         ],
+         [
+          0,
+          14
+         ],
+         [
+          0,
+          30
+         ]
+        ]
+       },
+       {
+        "points": [
+         [
+          38,
+          -24
+         ],
+         [
+          28,
+          -18
+         ],
+         [
+          24,
+          -6
+         ],
+         [
+          18,
+          4
+         ],
+         [
+          8,
+          8
+         ],
+         [
+          0,
+          14
+         ],
+         [
+          0,
+          30
+         ]
+        ]
+       }
+      ],
+      "lava_rivers": [
+       {
+        "points": [
+         [
+          -46,
+          -2
+         ],
+         [
+          -30,
+          -8
+         ],
+         [
+          -16,
+          -16
+         ],
+         [
+          0,
+          -18
+         ],
+         [
+          16,
+          -16
+         ],
+         [
+          30,
+          -8
+         ],
+         [
+          46,
+          -2
+         ]
+        ],
+        "width": 3.8
+       }
+      ],
+      "vents": [
+       {
+        "pos": [
+         -7,
+         -4
+        ],
+        "period": 10,
+        "offset": 3,
+        "damage": 70
+       },
+       {
+        "pos": [
+         -18,
+         4
+        ],
+        "period": 11,
+        "offset": 7,
+        "damage": 70
+       },
+       {
+        "pos": [
+         18,
+         4
+        ],
+        "period": 11,
+        "offset": 1,
+        "damage": 70
+       }
+      ],
+      "basalt": [
+       [
+        -14,
+        -26,
+        2.4
+       ],
+       [
+        14,
+        -26,
+        2.4
+       ],
+       [
+        -32,
+        14,
+        2.4
+       ],
+       [
+        32,
+        14,
+        2.4
+       ]
+      ],
+      "lava": [
+       [
+        -26,
+        -28,
+        2.2
+       ],
+       [
+        26,
+        -28,
+        2.2
+       ]
+      ],
+      "landmarks": [
+       {
+        "model": "env/building_tower_A_red",
+        "pos": [
+         -12,
+         18
+        ],
+        "scale": 2.4,
+        "rot": 0.0,
+        "clear": 3.5,
+        "tint": [
+         0.16,
+         0.12,
+         0.11
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.06
+        ],
+        "accent_s": 1.4,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         3.0
+        ]
+       },
+       {
+        "model": "env/building_tower_A_red",
+        "pos": [
+         12,
+         18
+        ],
+        "scale": 2.4,
+        "rot": 0.0,
+        "clear": 3.5,
+        "tint": [
+         0.16,
+         0.12,
+         0.11
+        ],
+        "accent": [
+         1,
+         0.4,
+         0.06
+        ],
+        "accent_s": 1.4,
+        "light": [
+         1,
+         0.45,
+         0.1,
+         3.0
+        ]
+       }
+      ],
+      "theme": {
+       "ground": [
+        0.07,
+        0.055,
+        0.052
+       ],
+       "ground2": [
+        0.16,
+        0.045,
+        0.02
+       ],
+       "path": [
+        0.33,
+        0.25,
+        0.21
+       ],
+       "fog": [
+        0.2,
+        0.08,
+        0.05
+       ],
+       "sky_top": [
+        0.1,
+        0.015,
+        0.005
+       ],
+       "sky_horizon": [
+        0.7,
+        0.2,
+        0.05
+       ],
+       "sun": [
+        1.0,
+        0.62,
+        0.4
+       ],
+       "sun_energy": 1.3,
+       "ambient": [
+        0.25,
+        0.17,
+        0.15
+       ],
+       "particles": "embers",
+       "props": [
+        "rocks",
+        "ruins",
+        "rocks",
+        "torches"
+       ],
+       "ground_lava": true,
+       "ash": true,
+       "lightning": true,
+       "backdrop_tower": {
+        "pos": [
+         0,
+         -66
+        ]
+       },
+       "road_torches": {
+        "color": [
+         1.0,
+         0.4,
+         0.1
+        ],
+        "spacing": 9,
+        "style": "brazier"
+       }
+      },
+      "slots": [
+       [
+        6.8,
+        14.7
+       ],
+       [
+        -6.8,
+        14.7
+       ],
+       [
+        -5.2,
+        4.3
+       ],
+       [
+        5.2,
+        4.3
+       ],
+       [
+        -11.3,
+        1.7
+       ],
+       [
+        0.0,
+        -3.0
+       ],
+       [
+        -17.1,
+        -3.4
+       ],
+       [
+        17.1,
+        -3.4
+       ],
+       [
+        11.3,
+        1.7
+       ],
+       [
+        20.1,
+        -8.4
+       ],
+       [
+        -2.4,
+        -25.5
+       ],
+       [
+        -20.1,
+        -8.4
+       ],
+       [
+        35.4,
+        -17.1
+       ],
+       [
+        -35.4,
+        -17.1
+       ],
+       [
+        6,
+        -12
+       ]
+      ]
+     }
     }
    ]
   },
@@ -4256,6 +5772,826 @@
        "interval": 1.6,
        "delay": 16,
        "path": 2
+      }
+     ]
+    }
+   ]
+  },
+  "r3s1": {
+   "start_gold": 780,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 4,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 6,
+       "interval": 1.0,
+       "delay": 2,
+       "path": 1
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 6,
+       "interval": 0.8,
+       "delay": 8,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 3,
+       "interval": 2.4,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.6,
+       "delay": 2,
+       "path": 1
+      },
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.9,
+       "delay": 8,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 5,
+       "path": 1
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.6,
+       "delay": 8,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.9,
+       "delay": 10,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 2,
+       "path": 0
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 8,
+       "path": 1
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 10,
+       "interval": 0.6,
+       "delay": 10,
+       "path": 1
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 5,
+       "interval": 2.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.0,
+       "delay": 4,
+       "path": 1
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 12,
+       "interval": 0.5,
+       "delay": 10,
+       "path": 0
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 12,
+       "path": 1
+      },
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.8,
+       "delay": 14,
+       "path": 1
+      }
+     ]
+    }
+   ]
+  },
+  "r3s2": {
+   "start_gold": 660,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 12,
+       "interval": 1.0,
+       "delay": 0,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 6,
+       "interval": 2.2,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 12,
+       "interval": 0.7,
+       "delay": 6,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 14,
+       "interval": 0.9,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 4,
+       "path": 0,
+       "hp": 1.15
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "magma_imp",
+       "count": 19,
+       "interval": 0.5,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 7,
+       "interval": 2.0,
+       "delay": 8,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 14,
+       "path": 0,
+       "hp": 1.15
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 4,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 4,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "cultist",
+       "count": 17,
+       "interval": 0.7,
+       "delay": 6,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 14,
+       "path": 0,
+       "hp": 1.15
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "obsidian_golem",
+       "count": 5,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.0
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 6,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 22,
+       "interval": 0.5,
+       "delay": 8,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 4,
+       "interval": 3.0,
+       "delay": 16,
+       "path": 0,
+       "hp": 1.15
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 7,
+       "interval": 1.8,
+       "delay": 20,
+       "path": 0,
+       "hp": 1.15
+      }
+     ]
+    }
+   ]
+  },
+  "r3s3": {
+   "start_gold": 820,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 10,
+       "interval": 1.0,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "winged_fiend",
+       "count": 3,
+       "interval": 2.0,
+       "delay": 6,
+       "path": 1,
+       "hp": 0.85
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 10,
+       "interval": 0.9,
+       "delay": 0,
+       "path": 0
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 4,
+       "interval": 2.2,
+       "delay": 4,
+       "path": 0
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.7,
+       "delay": 10,
+       "path": 0
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "flame_caller",
+       "count": 5,
+       "interval": 2.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 5,
+       "interval": 2.2,
+       "delay": 2,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "winged_fiend",
+       "count": 4,
+       "interval": 1.8,
+       "delay": 8,
+       "path": 1,
+       "hp": 0.85
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 12,
+       "interval": 0.6,
+       "delay": 4,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 5,
+       "interval": 1.8,
+       "delay": 10,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "winged_fiend",
+       "count": 5,
+       "interval": 1.6,
+       "delay": 12,
+       "path": 1,
+       "hp": 0.85
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.0,
+       "delay": 3,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "cultist",
+       "count": 12,
+       "interval": 0.8,
+       "delay": 6,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "winged_fiend",
+       "count": 6,
+       "interval": 1.6,
+       "delay": 10,
+       "path": 1,
+       "hp": 0.85
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 5,
+       "interval": 1.8,
+       "delay": 14,
+       "path": 0,
+       "hp": 1.05
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "obsidian_golem",
+       "count": 3,
+       "interval": 3.5,
+       "delay": 0,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 6,
+       "interval": 1.6,
+       "delay": 4,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 8,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 16,
+       "interval": 0.5,
+       "delay": 10,
+       "path": 0,
+       "hp": 1.05
+      },
+      {
+       "enemy": "winged_fiend",
+       "count": 6,
+       "interval": 1.6,
+       "delay": 12,
+       "path": 1,
+       "hp": 0.85
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 3,
+       "interval": 3.0,
+       "delay": 18,
+       "path": 0,
+       "hp": 1.05
+      }
+     ]
+    }
+   ]
+  },
+  "r3s4": {
+   "start_gold": 1200,
+   "waves": [
+    {
+     "groups": [
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 0,
+       "path": 1,
+       "hp": 0.5
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 1.0,
+       "delay": 3,
+       "path": 2,
+       "hp": 0.5
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 6,
+       "path": 0,
+       "hp": 0.5
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.4,
+       "delay": 0,
+       "path": 0,
+       "hp": 0.5
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 4,
+       "interval": 2.2,
+       "delay": 3,
+       "path": 1,
+       "hp": 0.5
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 10,
+       "interval": 0.7,
+       "delay": 6,
+       "path": 2,
+       "hp": 0.5
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 0,
+       "path": 0,
+       "hp": 0.52
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.9,
+       "delay": 2,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.9,
+       "delay": 6,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 3,
+       "interval": 2.2,
+       "delay": 10,
+       "path": 0,
+       "hp": 0.62
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "ash_brute",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 4,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 6,
+       "path": 0,
+       "hp": 0.62
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 8,
+       "interval": 0.6,
+       "delay": 8,
+       "path": 0,
+       "hp": 0.62
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 0,
+       "path": 1,
+       "hp": 0.52
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 3,
+       "interval": 1.8,
+       "delay": 4,
+       "path": 0,
+       "hp": 0.62
+      },
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 6,
+       "path": 2,
+       "hp": 0.52
+      },
+      {
+       "enemy": "cultist",
+       "count": 8,
+       "interval": 0.8,
+       "delay": 10,
+       "path": 0,
+       "hp": 0.62
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 0,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.0,
+       "delay": 2,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "war_herald",
+       "count": 2,
+       "interval": 3.0,
+       "delay": 6,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "skeleton_warrior",
+       "count": 4,
+       "interval": 2.0,
+       "delay": 8,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 9,
+       "interval": 0.5,
+       "delay": 10,
+       "path": 0,
+       "hp": 0.62
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 3,
+       "interval": 2.0,
+       "delay": 14,
+       "path": 0,
+       "hp": 0.62
+      }
+     ]
+    },
+    {
+     "groups": [
+      {
+       "enemy": "magma_imp",
+       "count": 7,
+       "interval": 0.6,
+       "delay": 0,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "magma_imp",
+       "count": 7,
+       "interval": 0.6,
+       "delay": 2,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "obsidian_golem",
+       "count": 2,
+       "interval": 4.0,
+       "delay": 6,
+       "path": 0,
+       "hp": 0.52
+      },
+      {
+       "enemy": "cultist",
+       "count": 7,
+       "interval": 0.8,
+       "delay": 16,
+       "path": 1,
+       "hp": 0.62
+      },
+      {
+       "enemy": "flame_caller",
+       "count": 3,
+       "interval": 2.0,
+       "delay": 18,
+       "path": 2,
+       "hp": 0.62
+      },
+      {
+       "enemy": "inferno_titan",
+       "count": 1,
+       "interval": 1,
+       "delay": 22,
+       "path": 0,
+       "hp": 0.26
       }
      ]
     }

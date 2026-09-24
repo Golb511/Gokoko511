@@ -52,6 +52,21 @@ def main():
         print(f"path {gi}: self-separation {worst:.1f}")
     castle = m["castle"]
     slots = m.get("slots", [])
+    # Region 3 obstacles: lava rivers, lava pools, basalt fields, vents, volcano.
+    def blocked(c):
+        for lr in m.get("lava_rivers", []):
+            if dist_to_path(c, lr["points"]) < lr.get("width", 3.2) * 0.5 + 2.4: return True
+        for o in m.get("lava", []) + m.get("basalt", []):
+            if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] + 2.4: return True
+        for v in m.get("vents", []):
+            if math.hypot(c[0] - v["pos"][0], c[1] - v["pos"][1]) < v.get("radius", 1.9) + 2.8: return True
+        if "volcano" in m:
+            vp = m["volcano"]["pos"]
+            if math.hypot(c[0] - vp[0], c[1] - vp[1]) < m["volcano"].get("radius", 7) + 2.2: return True
+        return False
+    for vv in m.get("vents", []):
+        d = min(dist_to_path(vv["pos"], p) for p in ground)
+        print(f"vent {vv['pos']} distance to road {d:.1f}")
     if "--propose" in sys.argv:
         cands = []
         for path in ground:
@@ -72,6 +87,7 @@ def main():
                 if math.hypot(c[0] - w[0], c[1] - w[1]) < w[2] + 2.2: return False
             for lm in m.get("landmarks", []):
                 if math.hypot(c[0] - lm["pos"][0], c[1] - lm["pos"][1]) < lm.get("clear", 3.0) + 2.0: return False
+            if blocked(c): return False
             return True
         def cover(c):
             return sum(1 for path in ground for (x, z, _) in densify(path) if math.hypot(x - c[0], z - c[1]) < 9)
@@ -88,6 +104,7 @@ def main():
     for sl in slots:
         d = min(dist_to_path(sl, p) for p in ground)
         if d < 3.6: print("  SLOT TOO CLOSE TO ROAD", sl, round(d, 1))
+        if blocked(sl): print("  SLOT ON OBSTACLE", sl)
     for a in range(len(slots)):
         for b in range(a + 1, len(slots)):
             if math.hypot(slots[a][0] - slots[b][0], slots[a][1] - slots[b][1]) < 5.0:
@@ -101,6 +118,17 @@ def main():
     for p in m["paths"]:
         for (x, z, _) in densify(p["points"], 0.8):
             put(x, z, "~" if p.get("air") else "#")
+    for lr in m.get("lava_rivers", []):
+        for (x, z, _) in densify(lr["points"], 0.8): put(x, z, "=")
+    for o in m.get("lava", []): put(o[0], o[1], "@")
+    for o in m.get("basalt", []): put(o[0], o[1], "B")
+    for v in m.get("vents", []): put(v["pos"][0], v["pos"][1], "V")
+    if "volcano" in m: put(m["volcano"]["pos"][0], m["volcano"]["pos"][1], "^")
+    for p in m["paths"]:
+        if not p.get("air"):
+            for (x, z, _) in densify(p["points"], 0.8):
+                for lr in m.get("lava_rivers", []):
+                    if dist_to_path((x, z), lr["points"]) < lr.get("width", 3.2) * 0.5: put(x, z, "H")
     for lm in m.get("landmarks", []): put(lm["pos"][0], lm["pos"][1], "L")
     for sl in slots: put(sl[0], sl[1], "o")
     put(castle[0], castle[1], "C")

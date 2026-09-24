@@ -13,6 +13,8 @@ var bounds := Rect2()
 var castle_pos := Vector3.ZERO
 var rng := RandomNumberGenerator.new()
 var _occupied: Array = []      # [Vector3, radius]
+var hazards: Array = []        # FireVent / VolcanoBombs nodes (environmental dangers)
+var crater_pos := Vector3.INF
 
 
 func build(b: Node, parent: Node3D, stage_id: String) -> void:
@@ -46,11 +48,13 @@ func build(b: Node, parent: Node3D, stage_id: String) -> void:
 			_portal(r)
 	_landmarks()
 	_water()
+	_inferno_terrain()
 	if layout.has("slots"):
 		_authored_slots()
 	else:
 		_slots()
 	Atmosphere.build(self, theme)
+	_hazards()
 	_graveyard_rows()
 	_crystal_spots()
 	_mountains()
@@ -104,6 +108,40 @@ func _water() -> void:
 		_occupied.append([p, float(w[2])])
 
 
+## Region 3 terrain: lava rivers (with bridges), lava pools, basalt fields,
+## the volcano and the Inferno Tower skyline.
+func _inferno_terrain() -> void:
+	for lr in layout.get("lava_rivers", []):
+		Inferno.lava_river(self, lr)
+	for lp in layout.get("lava", []):
+		Inferno.lava_pool(self, Vector3(float(lp[0]), 0, float(lp[1])), float(lp[2]))
+	for bs in layout.get("basalt", []):
+		Inferno.basalt(self, Vector3(float(bs[0]), 0, float(bs[1])), float(bs[2]))
+	if layout.has("volcano"):
+		crater_pos = Inferno.volcano(self, layout.volcano)
+	if theme.has("backdrop_tower"):
+		Inferno.backdrop_tower(root, theme.backdrop_tower)
+	if theme.get("ash", false):
+		Inferno.ash_fall(root, Vector3(bounds.get_center().x, 0, bounds.get_center().y), bounds)
+
+
+func _hazards() -> void:
+	for v in layout.get("vents", []):
+		var vent := FireVent.new()
+		vent.name = "FireVent"
+		root.add_child(vent)
+		vent.global_position = Vector3(float(v.pos[0]), 0, float(v.pos[1]))
+		vent.setup(battle, v)
+		hazards.append(vent)
+		_occupied.append([vent.global_position, float(v.get("radius", 1.9)) + 0.6])
+	if layout.has("volcano") and layout.volcano.has("bombs"):
+		var vb := VolcanoBombs.new()
+		vb.name = "VolcanoBombs"
+		root.add_child(vb)
+		vb.setup(battle, self, crater_pos, layout.volcano.bombs)
+		hazards.append(vb)
+
+
 func _graveyard_rows() -> void:
 	for g in layout.get("graveyard_rows", []):
 		for cx in int(g[2]):
@@ -121,7 +159,7 @@ func _graveyard_rows() -> void:
 func _crystal_spots() -> void:
 	for c in layout.get("crystals", []):
 		var p := Vector3(float(c[0]), 0, float(c[1]))
-		_crystals(p, Color(0.65, 0.2, 1.0))
+		_crystals(p, ModelLib._col(layout.get("crystal_color", [0.65, 0.2, 1.0])))
 		_occupied.append([p, 2.0])
 
 
@@ -143,7 +181,7 @@ func _ground() -> void:
 	m.set_shader_parameter("color_a", _c("ground"))
 	m.set_shader_parameter("color_b", _c("ground2"))
 	var props: Array = theme.get("props", [])
-	m.set_shader_parameter("lava", 1.0 if "lava" in props else 0.0)
+	m.set_shader_parameter("lava", 1.0 if ("lava" in props or theme.get("ground_lava", false)) else 0.0)
 	m.set_shader_parameter("snow", 1.0 if theme.get("particles", "") == "snow" else 0.0)
 	m.set_shader_parameter("moss", 1.0 if theme.get("particles", "") == "spores" else 0.0)
 	mi.material_override = m
@@ -334,6 +372,7 @@ func _decor() -> void:
 	var tries := 0
 	var placed := 0
 	var lights := 0
+	var lava_pools := 0
 	while placed < count and tries < count * 12:
 		tries += 1
 		var p := _random_point()
@@ -370,7 +409,9 @@ func _decor() -> void:
 					_place("graveyard/lantern_standing", p, 1.5, -1.0, Color(0.3, 0.28, 0.26))
 					VFX.torch_flame(root, p + Vector3(0, 1.55, 0), Color(1, 0.5, 0.15), true)
 			"lava":
-				_lava_pool(p)
+				if lava_pools < 4:
+					lava_pools += 1
+					_lava_pool(p)
 			"crystals_purple":
 				_crystals(p, Color(0.65, 0.2, 1.0))
 			"crystals_ice":
@@ -380,29 +421,7 @@ func _decor() -> void:
 
 
 func _lava_pool(p: Vector3) -> void:
-	var mi := MeshInstance3D.new()
-	var cyl := CylinderMesh.new()
-	cyl.top_radius = rng.randf_range(1.0, 2.2)
-	cyl.bottom_radius = cyl.top_radius
-	cyl.height = 0.05
-	cyl.radial_segments = 20
-	mi.mesh = cyl
-	var m := StandardMaterial3D.new()
-	m.albedo_color = Color(0.25, 0.06, 0.02)
-	m.roughness = 0.3
-	m.emission_enabled = true
-	m.emission = Color(1.0, 0.28, 0.02)
-	m.emission_energy_multiplier = 1.1
-	m.emission_texture = ModelLib.noise_tex("detail")
-	m.emission_operator = BaseMaterial3D.EMISSION_OP_MULTIPLY
-	mi.material_override = m
-	mi.scale = Vector3(1, 1, rng.randf_range(0.5, 1.0))
-	root.add_child(mi)
-	mi.global_position = p + Vector3(0, 0.02, 0)
-	VFX.particles(root, p + Vector3(0, 0.2, 0), {"amount": 8, "lifetime": 1.5, "one_shot": false, "speed": 0.8, "size": 0.2, "color": Color(1, 0.5, 0.1), "radius": cyl.top_radius * 0.6, "gravity": Vector3(0, 1.2, 0), "explosiveness": 0.0})
-	for k in 3:
-		var rock_p := p + Vector3(rng.randf_range(-1, 1), 0, rng.randf_range(-1, 1)).normalized() * (cyl.top_radius + 0.3)
-		_place("env/rock_single_" + ["A", "B", "C"][k], rock_p, 1.2, -1.0, Color(0.2, 0.18, 0.17))
+	Inferno.lava_pool(self, p, rng.randf_range(1.0, 2.0))
 
 
 func _crystals(p: Vector3, c: Color, mushrooms := false) -> void:
