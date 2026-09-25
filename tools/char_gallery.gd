@@ -4,6 +4,8 @@ extends Node3D
 ## GAL_SHOT = output png; GAL_ANIM = logical animation (idle/attack/cast).
 
 func _ready() -> void:
+	if OS.get_environment("GAL_CLASSIC") == "1":
+		Game.profile.settings["classic_characters"] = true
 	var theme: Dictionary = DB.regions[int(OS.get_environment("GAL_REGION")) if OS.get_environment("GAL_REGION") != "" else 0].theme
 	add_child(GraphicsSettings.make_environment(theme))
 	add_child(GraphicsSettings.make_sun(theme))
@@ -56,16 +58,17 @@ func _ready() -> void:
 			c.call_deferred("play_loop", OS.get_environment("GAL_ANIM"))
 		var l := OmniLight3D.new()
 		l.light_color = Color(1, 0.8, 0.6)
-		l.light_energy = 0.6
-		l.omni_range = 4.0
-		l.position = c.position + Vector3(1.2, 2.2, 2.0)
+		l.light_energy = 1.6
+		l.omni_range = 7.0
+		l.position = c.position + Vector3(1.4, 3.0, 2.6)
 		add_child(l)
 	var cam := Camera3D.new()
 	add_child(cam)
 	cam.fov = 40
 	if ids.size() == 1:
-		cam.position = Vector3(0, 1.8, 4.2)
-		cam.look_at(Vector3(0, 1.0, 0))
+		var fy := float(OS.get_environment("GAL_FOCUS")) if OS.get_environment("GAL_FOCUS") != "" else 1.0
+		cam.position = Vector3(0, fy + 0.8, 3.2 + fy * 1.2)
+		cam.look_at(Vector3(0, fy, 0))
 	else:
 		cam.position = Vector3(0, 3.2, 9.0 + ids.size() * 0.6)
 		cam.look_at(Vector3(0, 0.9, 0))

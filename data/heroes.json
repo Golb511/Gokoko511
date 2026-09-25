@@ -33,11 +33,16 @@
       ],
       "shape": "heroic",
       "cloth": [
-        0.28,
-        0.04,
-        0.03
+        0.12,
+        0.02,
+        0.015
       ],
-      "face_shade": 0.9
+      "face_shade": 0.9,
+      "forge": "hell_knight",
+      "forge_gear": [
+        "cape"
+      ],
+      "portrait_focus": 1.72
     },
     "stats": {
       "health": 950,

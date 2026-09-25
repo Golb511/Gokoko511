@@ -168,6 +168,13 @@ static func character(def: Dictionary) -> Node3D:
 	var inst: Node3D = ps.instantiate()
 	model.add_child(inst)
 	model.rig = inst
+	# Forged high-detail heroes (ArmorForge) hide every source mesh and ride the rig.
+	var forged: bool = def.has("forge") and ArmorForge.has_design(str(def.forge)) and not bool(Game.setting("classic_characters", false))
+	if forged:
+		def = def.duplicate()
+		def["gear"] = def.get("forge_gear", [])
+		def.erase("weapon_r")
+		def.erase("weapon_l")
 	var show: Array = def.get("show", []).duplicate()
 	if "cape" in def.get("gear", []):
 		# The sculpted tattered cape replaces the source rig's stiff cape.
@@ -181,7 +188,7 @@ static func character(def: Dictionary) -> Node3D:
 		for part in BODY_PARTS:
 			if nm.ends_with(part):
 				is_body = true
-		if not is_body and nm not in show:
+		if forged or (not is_body and nm not in show):
 			mesh_inst.visible = false
 			continue
 		for si in mesh_inst.mesh.get_surface_count():
@@ -211,7 +218,10 @@ static func character(def: Dictionary) -> Node3D:
 	var skel: Skeleton3D = inst.find_child("Skeleton3D", true, false)
 	model.skeleton = skel
 	if skel:
-		_reshape(skel, inst, def)
+		if forged:
+			ArmorForge.build(model, skel, inst, def)
+		else:
+			_reshape(skel, inst, def)
 		if def.has("weapon_r"):
 			_attach(skel, "handslot.r", WEAPON_DIR % def.weapon_r, def, model)
 		if def.has("weapon_l"):

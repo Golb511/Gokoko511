@@ -68,7 +68,11 @@ func setup(model_def: Dictionary, portrait := false) -> void:
 	set_model(model_def)
 
 
+var _focus := 1.15      # head height used by the portrait framing
+
+
 func set_model(model_def: Dictionary) -> void:
+	_focus = float(model_def.get("portrait_focus", 1.15)) if model_def.has("forge") and not bool(Game.setting("classic_characters", false)) else 1.15
 	if model:
 		model.queue_free()
 	model = ModelLib.character(model_def)
@@ -86,7 +90,7 @@ func frame_full() -> void:
 func frame_portrait() -> void:
 	var s := model.scale.y if model else 1.0
 	camera.fov = 30.0
-	camera.transform = Transform3D(Basis(), Vector3(0.35, 1.45 * s, 3.1 * s)).looking_at(Vector3(0, 1.15 * s, 0), Vector3.UP)
+	camera.transform = Transform3D(Basis(), Vector3(0.35, (_focus + 0.3) * s, 3.1 * s)).looking_at(Vector3(0, _focus * s, 0), Vector3.UP)
 	model.rotation.y = deg_to_rad(15)
 
 

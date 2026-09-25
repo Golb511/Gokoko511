@@ -4402,5 +4402,9 @@
  "ui.classic_towers": [
   "Classic buildings (old look)",
   "المباني الكلاسيكية (الشكل القديم)"
+ ],
+ "ui.classic_characters": [
+  "Classic characters (old models)",
+  "الشخصيات الكلاسيكية (المجسمات القديمة)"
  ]
 }

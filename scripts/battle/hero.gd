@@ -101,6 +101,13 @@ func setup(b: Node, id: String, pos: Vector3) -> void:
 	l.light_energy = 1.2
 	l.omni_range = 4.0
 	l.position = Vector3(0, 1.6, 0)
+	if hdef.model.has("forge") and not bool(Game.setting("classic_characters", false)):
+		# Forged armour: a near-white key light above and in front, so the steel
+		# reads as black metal instead of being tinted by a light inside the chest.
+		l.light_color = Color(1, 1, 1).lerp(l.light_color, 0.25)
+		l.light_energy = 1.0
+		l.omni_range = 5.0
+		l.position = Vector3(0, 3.0, 1.6)
 	add_child(l)
 	_gear_aura()
 	_mastery_look()

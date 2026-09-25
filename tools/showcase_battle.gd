@@ -49,6 +49,8 @@ func _ready() -> void:
 		rig.focus_on(b.level.castle_pos + Vector3(0, 0, 0))
 		rig.distance = float(OS.get_environment("SC_DIST")) if OS.get_environment("SC_DIST") != "" else 20.0
 	elif cam == "hero":
+		if OS.get_environment("SC_PITCH") != "":
+			rig.pitch = deg_to_rad(float(OS.get_environment("SC_PITCH")))
 		rig.follow = b.hero
 		rig.distance = float(OS.get_environment("SC_DIST")) if OS.get_environment("SC_DIST") != "" else 10.0
 	elif cam != "":
@@ -57,7 +59,33 @@ func _ready() -> void:
 		rig.focus_on(Vector3(float(p[0]), 0, float(p[1])))
 		if p.size() > 2:
 			rig.distance = float(p[2])
-	await get_tree().create_timer(float(OS.get_environment("SC_WAIT")) if OS.get_environment("SC_WAIT") != "" else 3.0).timeout
+	var wait := float(OS.get_environment("SC_WAIT")) if OS.get_environment("SC_WAIT") != "" else 3.0
+	var face_cam := OS.get_environment("SC_FACE") == "1"
+	var t := 0.0
+	while t < wait:
+		await get_tree().process_frame
+		t += get_process_delta_time()
+		if face_cam and b.hero:
+			# Keep the camera in front of the hero (rig yaw follows the hero's facing).
+			var m: Node3D = b.hero.model
+			if m:
+				rig.rotation.y = lerp_angle(rig.rotation.y, m.global_rotation.y, 0.08)
+	var shots := int(OS.get_environment("SC_SHOTS")) if OS.get_environment("SC_SHOTS") != "" else 1
+	for i in shots:
+		await RenderingServer.frame_post_draw
+		var path := OS.get_environment("SC_SHOT")
+		if shots > 1:
+			path = path.replace(".png", "_%d.png" % i)
+		get_viewport().get_texture().get_image().save_png(path)
+		var t2 := 0.0
+		while t2 < float(OS.get_environment("SC_GAP")) if OS.get_environment("SC_GAP") != "" else 1.0:
+			await get_tree().process_frame
+			t2 += get_process_delta_time()
+			if face_cam and b.hero and b.hero.model:
+				rig.rotation.y = lerp_angle(rig.rotation.y, b.hero.model.global_rotation.y, 0.08)
+	print("SC_SHOT saved towers=", built.size())
+	get_tree().quit()
+	return
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png(OS.get_environment("SC_SHOT"))
 	print("SC_SHOT saved towers=", built.size())
