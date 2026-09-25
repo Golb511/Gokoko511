@@ -28,6 +28,7 @@ var _think := 0.0
 var _busy := 0.0        # action lock (attack / cast wind-up)
 var _moving := false
 var summoned := false
+var taunt_time := 0.0     # while > 0 the enemy keeps chasing its taunting blocker
 
 
 func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, start_progress := 0.0) -> void:
@@ -89,6 +90,7 @@ func _physics_process(delta: float) -> void:
 	_busy -= delta
 	for k in skill_cd:
 		skill_cd[k] = float(skill_cd[k]) - delta
+	taunt_time -= delta
 	_think -= delta
 	if _think <= 0.0:
 		_think = randf_range(0.25, 0.4)
@@ -114,10 +116,14 @@ func _physics_process(delta: float) -> void:
 
 # ---------------------------------------------------------------- decision making
 func think() -> void:
-	if blocker != null and (not is_instance_valid(blocker) or not blocker.alive or blocker.global_position.distance_to(global_position) > 3.0):
+	var leash := 3.0 if taunt_time <= 0.0 else 8.0
+	if blocker != null and (not is_instance_valid(blocker) or not blocker.alive or blocker.global_position.distance_to(global_position) > leash):
 		blocker = null
 	if statuses.has("fear"):
 		state = "fear"
+		return
+	# Stunned or frozen enemies can't act, and that includes their skills.
+	if is_disabled():
 		return
 	# Passive / periodic role skills.
 	_role_skills()
@@ -249,6 +255,15 @@ func _role_skills() -> void:
 		skill_cd.cleave = float(sk.cooldown)
 
 
+## Forced to fight `by` for `duration` seconds (taunt abilities).
+func taunt(by: Unit, duration: float) -> void:
+	if flying or not alive:
+		return
+	blocker = by
+	taunt_time = duration * (1.0 - cc_resist) * (0.35 if tags.has("boss") else 1.0)
+	state = "fight"
+
+
 func _skill_ready(skill: String) -> bool:
 	return float(skill_cd.get(skill, 0.0)) <= 0.0
 
@@ -361,4 +376,6 @@ func _on_death() -> void:
 			var imp: Enemy = battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, progress - 0.6 - i * 0.9), true)
 			if imp:
 				imp.lateral = clampf(lateral + (i - 0.5) * 1.2, -1.0, 1.0)
+				# They crawl out of the rubble for a moment before running on.
+				imp.apply_status("stun", 1.0, 1.0)
 	super._on_death()

@@ -166,8 +166,7 @@ static func execute(hero: Hero, id: String, ab: Dictionary, point: Vector3, targ
 		"taunt":
 			_anim(hero, "cheer", 0.5)
 			for e in b.enemies_near(hero.global_position, float(ab.radius)):
-				if not e.flying:
-					e.blocker = hero
+				e.taunt(hero, float(ab.get("duration", 4.0)))
 			_apply_buff(hero, ab)
 			VFX.nova(b.fx_root, hero.global_position, float(ab.radius), elem)
 			Sfx.play("boss", -10.0)

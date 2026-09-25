@@ -152,9 +152,15 @@ tools/                dev scenes (model gallery, smoke tests)
 - **Bosses**: phase changes by HP threshold, with telegraphed ground slams,
   summoned hordes, tower smashing, fire rain and an enrage phase. They drop
   guaranteed rare loot.
-- **Hero AUTO bot** (`hero_brain.gd`): holds the front closest to the citadel,
-  keeps ranged heroes behind the front, retreats when hurt, and casts abilities
-  when enough enemies are clustered or a boss is near.
+- **Hero AUTO bot** (`hero_brain.gd`): intercepts enemies ahead of them on the
+  road instead of chasing from behind, stops to fight anything that comes into
+  reach, commits to a fight and only breaks off for an unblocked enemy about to
+  leak, holds enemies inside the towers' kill zone, waits at the choke point
+  where the roads merge, and focuses slippery (blink/stealth) enemies. Energy
+  is budgeted: summons and the ultimate come first, self-buffs only when they
+  help, and summoner heroes keep energy for their next summon. It retreats to
+  a fixed safe spot to recover, heals itself first, and steps out of hazards.
+  `tools/hero_telemetry.gd` prints how the bot spent the battle.
 - **Towers**: attack styles include projectile, artillery (with target
   prediction), chain lightning, ramping beam, pulse, storm, lance, barracks
   (soldiers with a rally point) and traps. Each tower branches at level 3 into
