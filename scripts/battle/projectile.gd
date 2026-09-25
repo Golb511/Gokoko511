@@ -135,8 +135,17 @@ func _damage(v: Unit, mult: float) -> void:
 		v.take_damage(v.hp + 1.0, "true", p.get("source"), true)
 		VFX.shadow_burst(battle.fx_root, v.global_position, 1.2)
 		return
+	var bs: Dictionary = p.get("bonus_status", {})
+	if not bs.is_empty() and v.statuses.has(bs.id):
+		dmg *= float(bs.mult)
 	var src = p.get("source")
 	var dealt := v.take_damage(dmg, p.get("dmg_type", "physical"), src if is_instance_valid(src) else null, bool(p.get("crit", false)))
+	var ex := float(p.get("execute", 0.0))
+	if ex > 0.0 and v.alive and not v.tags.has("boss") and v.hp_ratio() <= ex:
+		# Tower Mastery execute: finishes off wounded non-boss enemies.
+		v.take_damage(v.hp + 1.0, "true", src if is_instance_valid(src) else null, true)
+		VFX.shadow_burst(battle.fx_root, v.global_position, 1.0)
+		return
 	if float(p.get("lifesteal", 0.0)) > 0.0 and is_instance_valid(src) and src is Unit:
 		src.heal(dealt * float(p.lifesteal))
 	var st: Dictionary = p.get("status", {})
@@ -146,3 +155,7 @@ func _damage(v: Unit, mult: float) -> void:
 		v.apply_status("freeze", 1.5, 1.0)
 	if randf() < float(p.get("stun_chance", 0.0)):
 		v.apply_status("stun", 1.0, 1.0)
+	for xs in p.get("extra_status", []):
+		v.apply_status(xs.id, float(xs.duration), float(xs.power), src)
+	if randf() < float(p.get("fear_chance", 0.0)) and not v.tags.has("boss"):
+		v.apply_status("fear", 1.5, 1.0)

@@ -4,6 +4,8 @@ extends Node3D
 
 var battle: Node
 var damage := 50.0
+var splash := 0.0            # Tower Mastery: blast radius (0 = default 1.6 m)
+var armor_pen := 0.0
 var status: Dictionary = {}
 var armed := true
 var _spikes: MeshInstance3D
@@ -68,13 +70,15 @@ func _trigger() -> void:
 	var spikes: Node3D = get_meta("spikes")
 	var tw := create_tween()
 	tw.tween_property(spikes, "position:y", 0.2, 0.08)
-	for e in battle.enemies_near(global_position, 1.6):
+	for e in battle.enemies_near(global_position, maxf(1.6, splash)):
 		if e.flying:
 			continue
 		e.take_damage(damage, "physical", self)
 		if not status.is_empty():
 			e.apply_status(status.id, float(status.duration), float(status.power))
 	VFX.hit(battle.fx_root, global_position + Vector3(0, 0.4, 0), "physical")
+	if splash > 1.6:
+		VFX.explosion(battle.fx_root, global_position, splash, "fire")
 	VFX.particles(battle.fx_root, global_position, {"amount": 14, "lifetime": 0.5, "speed": 3.0, "size": 0.2, "color": Color(0.7, 0.1, 0.05), "gravity": Vector3(0, -8, 0)})
 	Sfx.play("slash", -6.0)
 	tw.tween_interval(0.6)

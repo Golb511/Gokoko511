@@ -1,0 +1,3213 @@
+{
+ "version": 1,
+ "respec": {
+  "gold_per_point": 40,
+  "min_gold": 100
+ },
+ "shape": {
+  "layout": {
+   "core_dmg": [
+    0.5,
+    0.04
+   ],
+   "core_rate": [
+    0.36,
+    0.2
+   ],
+   "core_range": [
+    0.64,
+    0.2
+   ],
+   "core_cost": [
+    0.17,
+    0.36
+   ],
+   "core_spec": [
+    0.83,
+    0.36
+   ],
+   "a1": [
+    0.3,
+    0.52
+   ],
+   "b1": [
+    0.7,
+    0.52
+   ],
+   "a2": [
+    0.15,
+    0.7
+   ],
+   "a2b": [
+    0.4,
+    0.7
+   ],
+   "b2": [
+    0.6,
+    0.7
+   ],
+   "b2b": [
+    0.85,
+    0.7
+   ],
+   "a3": [
+    0.27,
+    0.9
+   ],
+   "b3": [
+    0.73,
+    0.9
+   ]
+  },
+  "req": {
+   "core_dmg": [],
+   "core_rate": [
+    "core_dmg"
+   ],
+   "core_range": [
+    "core_dmg"
+   ],
+   "core_cost": [
+    "core_rate"
+   ],
+   "core_spec": [
+    "core_range"
+   ],
+   "a1": [
+    "core_rate",
+    "core_range"
+   ],
+   "b1": [
+    "core_rate",
+    "core_range"
+   ],
+   "a2": [
+    "a1"
+   ],
+   "a2b": [
+    "a1"
+   ],
+   "b2": [
+    "b1"
+   ],
+   "b2b": [
+    "b1"
+   ],
+   "a3": [
+    "a2",
+    "a2b"
+   ],
+   "b3": [
+    "b2",
+    "b2b"
+   ]
+  },
+  "exclusive": {
+   "a1": "path",
+   "b1": "path",
+   "a2": "a_mid",
+   "a2b": "a_mid",
+   "b2": "b_mid",
+   "b2b": "b_mid"
+  },
+  "cost": {
+   "core_dmg": 1,
+   "core_rate": 1,
+   "core_range": 1,
+   "core_cost": 2,
+   "core_spec": 2,
+   "a1": 3,
+   "b1": 3,
+   "a2": 4,
+   "a2b": 4,
+   "b2": 4,
+   "b2b": 4,
+   "a3": 6,
+   "b3": 6
+  },
+  "level": {
+   "core_dmg": 1,
+   "core_rate": 1,
+   "core_range": 2,
+   "core_cost": 3,
+   "core_spec": 3,
+   "a1": 4,
+   "b1": 4,
+   "a2": 6,
+   "a2b": 6,
+   "b2": 6,
+   "b2b": 6,
+   "a3": 9,
+   "b3": 9
+  }
+ },
+ "towers": {
+  "archer": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "range": 0.09,
+      "dmg": 0.06
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.072
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit": 0.09,
+      "crit_mult": 0.3
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "multishot": 1,
+      "dmg": -0.12
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "splash": 0.6
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "dmg": 0.06,
+      "mark": {
+       "power": 0.09,
+       "duration": 4
+      },
+      "execute": 0.06
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "volley",
+       "every": 9,
+       "count": 4,
+       "dmg_mult": 0.35,
+       "proj": "raven"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "mage": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "pen": 0.2
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.048,
+      "status": {
+       "id": "slow",
+       "duration": 2.0,
+       "power": 0.25
+      }
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit": 0.072,
+      "crit_mult": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "splash": 0.72
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "freeze": 0.036
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "multishot": 1,
+      "dmg": -0.12
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "dmg": 0.06,
+      "special": {
+       "type": "empowered",
+       "every": 7,
+       "dmg_mult": 1.4,
+       "splash": 2.5
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 8,
+       "dmg_mult": 0.35,
+       "status": {
+        "id": "slow",
+        "duration": 2.0,
+        "power": 0.5
+       },
+       "element": "arcane"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "artillery": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "splash": 0.6
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.072
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "stun": 0.06
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "pen": 0.18
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "status": {
+       "id": "burn",
+       "duration": 3.0,
+       "power_mult": 0.2
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "splash": 0.48
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "empowered",
+       "every": 7,
+       "dmg_mult": 1.26,
+       "splash": 1.0,
+       "stun": 1.0
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "barrage",
+       "every": 7,
+       "count": 3,
+       "dmg_mult": 0.42
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "soldier": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "respawn": 0.2
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "soldier_hp": 0.12,
+      "armor": 6.0
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.12
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "soldiers": 1
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "soldier_hp": 0.09,
+      "armor": 9.0
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "lifesteal": 0.072
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "soldiers": 1
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "unit": "black_guard",
+      "soldier_hp": 0.18,
+      "respawn": 0.18,
+      "dmg": 0.09
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "unit": "berserker",
+      "dmg": 0.18,
+      "lifesteal": 0.09
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "poison": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "status_power": 0.2
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "splash": 0.6
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "status_duration": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "splash": 0.48,
+      "dmg": 0.048
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "empowered",
+       "every": 6,
+       "dmg_mult": 0.84,
+       "splash": 2.5,
+       "status_mult": 1.8
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "execute": 0.072,
+      "status_power": 0.21
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "fire": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "ramp": 0.25
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ramp": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "status": {
+       "id": "burn",
+       "duration": 3.0,
+       "power_mult": 0.25
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "multishot": 1,
+      "dmg": -0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 7,
+       "dmg_mult": 0.63,
+       "radius_mult": 0.6,
+       "status": {
+        "id": "burn",
+        "duration": 3.0,
+        "power_mult": 0.25
+       },
+       "element": "fire"
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "volley",
+       "every": 8,
+       "count": 4,
+       "dmg_mult": 0.42,
+       "proj": "fireball"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "ice": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "status_power": 0.25
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "freeze": 0.036
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.06,
+      "rate": 0.048
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "status_duration": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "bonus_status": {
+       "id": "slow",
+       "mult": 1.3
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 8,
+       "dmg_mult": 0.28,
+       "status": {
+        "id": "freeze",
+        "duration": 1.0,
+        "power": 1.0
+       },
+       "element": "ice"
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "volley",
+       "every": 7,
+       "count": 4,
+       "dmg_mult": 0.42,
+       "proj": "frost_bolt"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "lightning": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "chain": 1
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.072
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "chain": 1
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "stun": 0.036
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "crit": 0.072
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 8,
+       "dmg_mult": 0.49,
+       "status": {
+        "id": "stun",
+        "duration": 0.4,
+        "power": 1.0
+       },
+       "element": "lightning"
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "barrage",
+       "every": 7,
+       "count": 3,
+       "dmg_mult": 0.49,
+       "bolt": true
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "shadow": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "pen": 0.2
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "status_power": 0.18
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "execute": 0.048
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit": 0.09
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "fear": 0.036
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "multishot": 1,
+      "dmg": -0.12
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "mark": {
+       "power": 0.12,
+       "duration": 5
+      },
+      "execute": 0.036
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 8,
+       "dmg_mult": 0.28,
+       "status": {
+        "id": "fear",
+        "duration": 1.2,
+        "power": 1.0
+       },
+       "element": "shadow"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "light": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "heal_allies": 3.6
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ramp": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "dmg": 0.072
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "status": {
+       "id": "slow",
+       "duration": 1.5,
+       "power": 0.2
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 7,
+       "dmg_mult": 0.84,
+       "radius_mult": 0.6,
+       "element": "holy"
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "heal_allies": 3.0,
+      "special": {
+       "type": "nova",
+       "every": 8,
+       "dmg_mult": 0.49,
+       "heal_pct": 0.08,
+       "element": "holy"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "earth": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "stun": 0.05
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "knockback": 0.36
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "stun": 0.036
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "empowered",
+       "every": 7,
+       "dmg_mult": 1.05,
+       "stun": 1.0
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "barrage",
+       "every": 8,
+       "count": 2,
+       "dmg_mult": 0.56
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "wind": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "air_bonus": 0.4
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "knockback": 0.36
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "air_bonus": 0.48
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "status": {
+       "id": "slow",
+       "duration": 1.5,
+       "power": 0.25
+      }
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "nova",
+       "every": 7,
+       "dmg_mult": 0.7,
+       "knockback": 2.5,
+       "element": "wind"
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "volley",
+       "every": 7,
+       "count": 4,
+       "dmg_mult": 0.56,
+       "proj": "arcane_orb"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "crossbow": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "pen": 0.15
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.09
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "rate": 0.06
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "pierce": 1
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit": 0.072,
+      "crit_mult": 0.24
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "multishot": 1,
+      "dmg": -0.18
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "range": 0.072
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "empowered",
+       "every": 7,
+       "dmg_mult": 1.26,
+       "pierce": 3
+      }
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "volley",
+       "every": 9,
+       "count": 4,
+       "dmg_mult": 0.35,
+       "proj": "bolt"
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  },
+  "trap": {
+   "nodes": [
+    {
+     "id": "core_dmg",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [],
+     "effects": {
+      "dmg": 0.06
+     },
+     "glyph": "sword"
+    },
+    {
+     "id": "core_rate",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 1,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "rate": 0.05
+     },
+     "glyph": "speed"
+    },
+    {
+     "id": "core_range",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [
+      "core_dmg"
+     ],
+     "effects": {
+      "range": 0.06
+     },
+     "glyph": "mark"
+    },
+    {
+     "id": "core_cost",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_rate"
+     ],
+     "effects": {
+      "cost": 0.1
+     },
+     "glyph": "coin"
+    },
+    {
+     "id": "core_spec",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 3,
+     "requires_any": [
+      "core_range"
+     ],
+     "effects": {
+      "traps": 1
+     },
+     "glyph": "rune"
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "dmg": 0.12
+     },
+     "exclusive": "path",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 3,
+     "level": 4,
+     "requires_any": [
+      "core_rate",
+      "core_range"
+     ],
+     "effects": {
+      "status": {
+       "id": "root",
+       "duration": 1.2,
+       "power": 1.0
+      }
+     },
+     "exclusive": "path",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "pen": 0.21
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "traps": 1
+     },
+     "exclusive": "a_mid",
+     "path": "a",
+     "glyph": ""
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "rate": 0.09
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 4,
+     "level": 6,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "status": {
+       "id": "slow",
+       "duration": 3.0,
+       "power": 0.4
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b",
+     "glyph": ""
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "dmg": 0.09,
+      "trap_splash": 1.32
+     },
+     "path": "a",
+     "capstone": true,
+     "glyph": ""
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 6,
+     "level": 9,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "dmg": 0.09,
+      "trap_splash": 0.9,
+      "status": {
+       "id": "root",
+       "duration": 2.0,
+       "power": 1.0
+      }
+     },
+     "path": "b",
+     "capstone": true,
+     "glyph": ""
+    }
+   ]
+  }
+ }
+}

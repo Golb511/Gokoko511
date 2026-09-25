@@ -73,9 +73,15 @@ func mitigation(dmg_type: String) -> float:
 func take_damage(amount: float, dmg_type: String = "physical", source: Node = null, crit := false) -> float:
 	if not alive:
 		return 0.0
-	var dealt := amount * (1.0 - mitigation(dmg_type))
+	var mit := mitigation(dmg_type)
+	# Tower Mastery: armour-piercing towers ignore part of the mitigation.
+	if source != null and "armor_pen" in source:
+		mit *= 1.0 - clampf(float(source.armor_pen), 0.0, 0.9)
+	var dealt := amount * (1.0 - mit)
 	if statuses.has("freeze") and dmg_type == "physical":
 		dealt *= 1.2
+	if statuses.has("marked"):
+		dealt *= 1.0 + float(statuses.marked.p)
 	hp -= dealt
 	damaged.emit(self, dealt)
 	if battle and team == Team.ENEMY:

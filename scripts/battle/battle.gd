@@ -257,7 +257,7 @@ func available_towers() -> Array:
 func build_tower(slot: BuildSlot, tower_id: String) -> Tower:
 	if not slot.is_free():
 		return null
-	var cost := int(DB.towers[tower_id].levels[0].cost)
+	var cost := TowerTree.build_cost(tower_id)
 	if not try_spend(cost):
 		return null
 	var t := Tower.new()
@@ -379,6 +379,9 @@ func _end(victory: bool) -> void:
 		var prev_best := Game.endless_best()
 		var best := maxi(prev_best, w)
 		Game.profile["endless_best"] = best
+		var endless_sigils := best / TowerTree.EARN_ENDLESS_PER - prev_best / TowerTree.EARN_ENDLESS_PER
+		TowerTree.award(endless_sigils)
+		result["sigils"] = endless_sigils
 		var reward_gold := 80 * w + gold_earned / 2
 		var gems := (w / 5) * 5 + (10 if w > prev_best else 0)
 		Game.add_gold(reward_gold)
@@ -401,6 +404,12 @@ func _end(victory: bool) -> void:
 		var gems := 0
 		var gained_stars := Game.record_stage_result(stage_id, stars)
 		gems += gained_stars * 5
+		# Crown Sigils for Tower Mastery: first clear, every new star, first boss kill.
+		var sigils := gained_stars * TowerTree.EARN_PER_STAR
+		if first:
+			sigils += TowerTree.EARN_FIRST_CLEAR + (TowerTree.EARN_BOSS if DB.stage_info(stage_id).data.get("boss", false) else 0)
+		TowerTree.award(sigils)
+		result["sigils"] = sigils
 		var hero_xp := xp_earned / 2 + 60 + gi * 15
 		var player_xp := 40 + gi * 12 + stars * 10
 		Game.add_gold(reward_gold)

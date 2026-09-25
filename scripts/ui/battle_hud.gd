@@ -437,7 +437,7 @@ func open_build_menu(slot: BuildSlot) -> void:
 	v.add_child(grid)
 	for id in battle.available_towers():
 		var td: Dictionary = DB.towers[id]
-		var cost := int(td.levels[0].cost)
+		var cost := TowerTree.build_cost(id)
 		var b := Button.new()
 		b.custom_minimum_size = Vector2(118, 124)
 		b.focus_mode = Control.FOCUS_NONE
@@ -504,6 +504,18 @@ func open_tower_menu(t: Tower) -> void:
 	hv.add_child(UITheme.label(t.display_name(), 22, UITheme.GOLD, true))
 	hv.add_child(UITheme.label("%s %d / %d" % [tr("ui.level"), t.level, t.max_level()], 16, UITheme.TEXT_DIM))
 	v.add_child(UITheme.label("%s: %s   %s: %.1f" % [tr("ui.damage"), _dmg_text(t.data), tr("battle.range"), t.range_()], 16))
+	var tier := TowerTree.mastery_tier(t.tower_id)
+	if tier > 0:
+		# Tower Mastery summary: chosen path and the capstone behaviour.
+		var path := TowerTree.chosen_path(t.tower_id)
+		var txt := tr("battle.mastery") + ": " + (tr("tt.%s.path_%s" % [t.tower_id, path]) if path != "" else "%d/13" % TowerTree.owned(t.tower_id).size())
+		v.add_child(UITheme.label("✦ " + txt, 15, Color(1.0, 0.8, 0.35), true))
+		var sp: Dictionary = t.data.get("special", {})
+		if not sp.is_empty():
+			var sl := UITheme.label(" ".join(TowerTree.describe_special(sp)), 13, UITheme.TEXT_DIM)
+			sl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			sl.custom_minimum_size = Vector2(320, 0)
+			v.add_child(sl)
 	var btns: Array = []
 	if t.needs_branch_choice():
 		v.add_child(UITheme.label(tr("battle.choose_path"), 18, UITheme.GOLD, true, HORIZONTAL_ALIGNMENT_CENTER))
@@ -511,7 +523,7 @@ func open_tower_menu(t: Tower) -> void:
 		v.add_child(bh)
 		for bi in t.tdef.branches.size():
 			var br: Dictionary = t.tdef.branches[bi]
-			var cost := int(br.levels[0].cost)
+			var cost := t.upgrade_cost(bi)
 			var b := Button.new()
 			b.custom_minimum_size = Vector2(160, 150)
 			b.focus_mode = Control.FOCUS_NONE

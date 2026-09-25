@@ -70,7 +70,7 @@ func _build() -> void:
 		if free.is_empty():
 			return
 		var id: String = prefs[battle.towers.size() % prefs.size()]
-		var cost := int(DB.towers[id].levels[0].cost)
+		var cost := TowerTree.build_cost(id)
 		if battle.gold < cost + 20:
 			return
 		free.sort_custom(func(a, b): return _slot_value(a, id) > _slot_value(b, id))

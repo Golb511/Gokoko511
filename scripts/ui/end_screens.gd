@@ -45,6 +45,8 @@ func setup(result: Dictionary) -> void:
 	_reward(rw, "coin", "+" + Loc.num(result.get("gold", 0)), Color.GOLD)
 	if int(result.get("gems", 0)) > 0:
 		_reward(rw, "diamond", "+" + str(result.gems), Color(0.5, 0.8, 1))
+	if int(result.get("sigils", 0)) > 0:
+		_reward(rw, "rune", TowerTree.tr_fmt("tt.sigils_gained", [int(result.sigils)]), Color(1.0, 0.84, 0.42))
 	_reward(rw, "hero", "+%d %s" % [int(result.get("hero_xp", 0)), tr("ui.xp")], Color(1, 0.7, 0.3))
 	_reward(rw, "star", "+%d %s" % [int(result.get("player_xp", 0)), tr("ui.xp")], Color(1, 0.85, 0.4))
 	var loot: Array = result.get("loot", [])

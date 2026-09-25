@@ -1998,5 +1998,1257 @@
  "stage.r4s4": [
   "Heart of the Blight",
   "قلب اللعنة"
+ ],
+ "tt.archer.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.archer.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.archer.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.archer.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.archer.core_spec": [
+  "Barbed Heads",
+  "رؤوس شائكة"
+ ],
+ "tt.archer.a1": [
+  "Eagle Eye",
+  "عين النسر"
+ ],
+ "tt.archer.b1": [
+  "Quick Draw",
+  "السحب الخاطف"
+ ],
+ "tt.archer.a2": [
+  "Heartseeker",
+  "باحث القلوب"
+ ],
+ "tt.archer.a2b": [
+  "Armor Breaker",
+  "كاسر الدروع"
+ ],
+ "tt.archer.b2": [
+  "Split Shot",
+  "السهم المنشطر"
+ ],
+ "tt.archer.b2b": [
+  "Barbed Rain",
+  "مطر الأشواك"
+ ],
+ "tt.archer.a3": [
+  "Death Mark",
+  "علامة الموت"
+ ],
+ "tt.archer.b3": [
+  "Storm of Ravens",
+  "عاصفة الغربان"
+ ],
+ "tt.archer.path_a": [
+  "Shadow Sniper",
+  "قناص الظلال"
+ ],
+ "tt.archer.path_b": [
+  "Raven Volley",
+  "وابل الغربان"
+ ],
+ "tt.archer.path_a_desc": [
+  "Massive single-target damage, long range, armour piercing and crits.",
+  "ضرر هائل لهدف واحد، مدى بعيد، اختراق للدروع وضربات حرجة."
+ ],
+ "tt.archer.path_b_desc": [
+  "High attack speed and several arrows at once to shred groups.",
+  "سرعة هجوم عالية وعدة سهام معًا لتمزيق المجموعات."
+ ],
+ "tt.mage.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.mage.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.mage.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.mage.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.mage.core_spec": [
+  "Spell Pierce",
+  "خارق التعاويذ"
+ ],
+ "tt.mage.a1": [
+  "Ruinous Power",
+  "قوة الخراب"
+ ],
+ "tt.mage.b1": [
+  "Slowing Hex",
+  "لعنة البطء"
+ ],
+ "tt.mage.a2": [
+  "Overcharge",
+  "الشحنة الزائدة"
+ ],
+ "tt.mage.a2b": [
+  "Unstable Orbs",
+  "كرات غير مستقرة"
+ ],
+ "tt.mage.b2": [
+  "Time Lock",
+  "قفل الزمن"
+ ],
+ "tt.mage.b2b": [
+  "Twin Orbs",
+  "الكرتان التوأم"
+ ],
+ "tt.mage.a3": [
+  "Cataclysm",
+  "الكارثة"
+ ],
+ "tt.mage.b3": [
+  "Temporal Rift",
+  "صدع الزمن"
+ ],
+ "tt.mage.path_a": [
+  "Archmage of Ruin",
+  "كبير سحرة الخراب"
+ ],
+ "tt.mage.path_b": [
+  "Chrono Weaver",
+  "حائك الزمن"
+ ],
+ "tt.mage.path_a_desc": [
+  "Raw arcane destruction and huge explosive blasts.",
+  "دمار سحري خالص وانفجارات هائلة."
+ ],
+ "tt.mage.path_b_desc": [
+  "Slows, freezes and bends time around the enemy lines.",
+  "إبطاء وتجميد وثني للزمن حول صفوف العدو."
+ ],
+ "tt.artillery.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.artillery.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.artillery.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.artillery.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.artillery.core_spec": [
+  "Heavy Shells",
+  "القذائف الثقيلة"
+ ],
+ "tt.artillery.a1": [
+  "Black Powder",
+  "البارود الأسود"
+ ],
+ "tt.artillery.b1": [
+  "Rapid Loader",
+  "التذخير السريع"
+ ],
+ "tt.artillery.a2": [
+  "Concussion",
+  "الارتجاج"
+ ],
+ "tt.artillery.a2b": [
+  "Bunker Buster",
+  "مخترق التحصينات"
+ ],
+ "tt.artillery.b2": [
+  "Incendiary",
+  "القذائف الحارقة"
+ ],
+ "tt.artillery.b2b": [
+  "Cluster Shells",
+  "القذائف العنقودية"
+ ],
+ "tt.artillery.a3": [
+  "Earthshatter",
+  "محطم الأرض"
+ ],
+ "tt.artillery.b3": [
+  "Rain of Fire",
+  "مطر النار"
+ ],
+ "tt.artillery.path_a": [
+  "Siege Master",
+  "سيد الحصار"
+ ],
+ "tt.artillery.path_b": [
+  "Hellfire Battery",
+  "بطارية نار الجحيم"
+ ],
+ "tt.artillery.path_a_desc": [
+  "Crushing shells that stun and break armour.",
+  "قذائف ساحقة تشلّ وتكسر الدروع."
+ ],
+ "tt.artillery.path_b_desc": [
+  "Fast fire, burning ground and a rain of shells.",
+  "إطلاق سريع وأرض مشتعلة ومطر من القذائف."
+ ],
+ "tt.soldier.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.soldier.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.soldier.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.soldier.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.soldier.core_spec": [
+  "Drill Sergeant",
+  "رقيب التدريب"
+ ],
+ "tt.soldier.a1": [
+  "Tower Shields",
+  "دروع البرج"
+ ],
+ "tt.soldier.b1": [
+  "Bloodlust",
+  "شهوة الدم"
+ ],
+ "tt.soldier.a2": [
+  "Shield Wall",
+  "جدار الدروع"
+ ],
+ "tt.soldier.a2b": [
+  "Tempered Plate",
+  "الدروع المسقاة"
+ ],
+ "tt.soldier.b2": [
+  "Life Drinker",
+  "شارب الحياة"
+ ],
+ "tt.soldier.b2b": [
+  "Warband",
+  "العصبة"
+ ],
+ "tt.soldier.a3": [
+  "Undying Legion",
+  "الفيلق الخالد"
+ ],
+ "tt.soldier.b3": [
+  "Warlord's Fury",
+  "غضب أمير الحرب"
+ ],
+ "tt.soldier.path_a": [
+  "Iron Wall",
+  "الجدار الحديدي"
+ ],
+ "tt.soldier.path_b": [
+  "Blood Berserkers",
+  "هائجو الدم"
+ ],
+ "tt.soldier.path_a_desc": [
+  "Tough, armoured defenders that never break.",
+  "مدافعون أشداء مدرعون لا ينكسرون."
+ ],
+ "tt.soldier.path_b_desc": [
+  "Savage fighters that heal by drawing blood.",
+  "مقاتلون شرسون يشفون أنفسهم بسفك الدماء."
+ ],
+ "tt.poison.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.poison.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.poison.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.poison.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.poison.core_spec": [
+  "Potent Toxins",
+  "السموم الفتاكة"
+ ],
+ "tt.poison.a1": [
+  "Miasma",
+  "الوباء"
+ ],
+ "tt.poison.b1": [
+  "Concentrated Venom",
+  "السم المركّز"
+ ],
+ "tt.poison.a2": [
+  "Lingering Rot",
+  "العفن الدائم"
+ ],
+ "tt.poison.a2b": [
+  "Contagion",
+  "العدوى"
+ ],
+ "tt.poison.b2": [
+  "Corrosion",
+  "التآكل"
+ ],
+ "tt.poison.b2b": [
+  "Rapid Spit",
+  "البصق السريع"
+ ],
+ "tt.poison.a3": [
+  "Pandemic",
+  "الجائحة"
+ ],
+ "tt.poison.b3": [
+  "Liquefy",
+  "الإذابة"
+ ],
+ "tt.poison.path_a": [
+  "Plague Doctor",
+  "طبيب الطاعون"
+ ],
+ "tt.poison.path_b": [
+  "Venom Specialist",
+  "خبير السموم"
+ ],
+ "tt.poison.path_a_desc": [
+  "Spreading clouds of plague over whole groups.",
+  "سحب طاعون تنتشر فوق مجموعات كاملة."
+ ],
+ "tt.poison.path_b_desc": [
+  "Concentrated venom that melts single targets.",
+  "سم مركّز يذيب الأهداف الفردية."
+ ],
+ "tt.fire.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.fire.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.fire.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.fire.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.fire.core_spec": [
+  "Kindling",
+  "الإشعال"
+ ],
+ "tt.fire.a1": [
+  "White Heat",
+  "الحرارة البيضاء"
+ ],
+ "tt.fire.b1": [
+  "Fan the Flames",
+  "تأجيج اللهب"
+ ],
+ "tt.fire.a2": [
+  "Stoked Fury",
+  "الغضب المتأجج"
+ ],
+ "tt.fire.a2b": [
+  "Long Flame",
+  "اللهب الطويل"
+ ],
+ "tt.fire.b2": [
+  "Searing Touch",
+  "اللمسة الحارقة"
+ ],
+ "tt.fire.b2b": [
+  "Twin Flames",
+  "اللهبان التوأم"
+ ],
+ "tt.fire.a3": [
+  "Sunfire",
+  "نار الشمس"
+ ],
+ "tt.fire.b3": [
+  "Phoenix Flight",
+  "تحليق العنقاء"
+ ],
+ "tt.fire.path_a": [
+  "Inferno Lord",
+  "سيد الجحيم"
+ ],
+ "tt.fire.path_b": [
+  "Flame Dancer",
+  "راقص اللهب"
+ ],
+ "tt.fire.path_a_desc": [
+  "A beam that burns hotter the longer it holds.",
+  "شعاع يزداد حرارة كلما طال تركيزه."
+ ],
+ "tt.fire.path_b_desc": [
+  "Burning strikes and flights of fireballs.",
+  "ضربات حارقة وأسراب من كرات النار."
+ ],
+ "tt.ice.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.ice.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.ice.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.ice.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.ice.core_spec": [
+  "Deep Chill",
+  "البرد القارس"
+ ],
+ "tt.ice.a1": [
+  "Rime",
+  "الصقيع"
+ ],
+ "tt.ice.b1": [
+  "Ice Needles",
+  "إبر الجليد"
+ ],
+ "tt.ice.a2": [
+  "Frostbite",
+  "عضة الصقيع"
+ ],
+ "tt.ice.a2b": [
+  "Permafrost",
+  "الجليد الدائم"
+ ],
+ "tt.ice.b2": [
+  "Brittle",
+  "الهشاشة"
+ ],
+ "tt.ice.b2b": [
+  "Ice Pick",
+  "معول الجليد"
+ ],
+ "tt.ice.a3": [
+  "Absolute Zero",
+  "الصفر المطلق"
+ ],
+ "tt.ice.b3": [
+  "Ice Lances",
+  "رماح الجليد"
+ ],
+ "tt.ice.path_a": [
+  "Glacial Warden",
+  "حارس الجليد"
+ ],
+ "tt.ice.path_b": [
+  "Shatter",
+  "التحطيم"
+ ],
+ "tt.ice.path_a_desc": [
+  "Freezes whole waves in their tracks.",
+  "يجمّد موجات كاملة في مكانها."
+ ],
+ "tt.ice.path_b_desc": [
+  "Shatters slowed enemies with lances of ice.",
+  "يحطم الأعداء المبطئين برماح الجليد."
+ ],
+ "tt.lightning.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.lightning.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.lightning.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.lightning.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.lightning.core_spec": [
+  "Conductive",
+  "الموصلية"
+ ],
+ "tt.lightning.a1": [
+  "High Voltage",
+  "الجهد العالي"
+ ],
+ "tt.lightning.b1": [
+  "Static Rush",
+  "الاندفاع الساكن"
+ ],
+ "tt.lightning.a2": [
+  "Arc Web",
+  "شبكة الأقواس"
+ ],
+ "tt.lightning.a2b": [
+  "Paralysis",
+  "الشلل"
+ ],
+ "tt.lightning.b2": [
+  "Sky Reach",
+  "مدى السماء"
+ ],
+ "tt.lightning.b2b": [
+  "Ionized",
+  "التأين"
+ ],
+ "tt.lightning.a3": [
+  "Overload",
+  "الحمل الزائد"
+ ],
+ "tt.lightning.b3": [
+  "Thunderstorm",
+  "العاصفة الرعدية"
+ ],
+ "tt.lightning.path_a": [
+  "Tesla Master",
+  "سيد تسلا"
+ ],
+ "tt.lightning.path_b": [
+  "Storm Herald",
+  "بشير العاصفة"
+ ],
+ "tt.lightning.path_a_desc": [
+  "Longer chains and overloads that stun everything.",
+  "سلاسل أطول وحمل زائد يشلّ الجميع."
+ ],
+ "tt.lightning.path_b_desc": [
+  "Fast strikes and storms calling bolts from the sky.",
+  "ضربات سريعة وعواصف تستدعي الصواعق."
+ ],
+ "tt.shadow.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.shadow.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.shadow.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.shadow.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.shadow.core_spec": [
+  "Dread",
+  "الرهبة"
+ ],
+ "tt.shadow.a1": [
+  "Umbral Edge",
+  "الحد الظلي"
+ ],
+ "tt.shadow.b1": [
+  "Deepening Dark",
+  "الظلام المتعمق"
+ ],
+ "tt.shadow.a2": [
+  "Soul Harvest",
+  "حصاد الأرواح"
+ ],
+ "tt.shadow.a2b": [
+  "Void Strike",
+  "ضربة الفراغ"
+ ],
+ "tt.shadow.b2": [
+  "Terror",
+  "الرعب"
+ ],
+ "tt.shadow.b2b": [
+  "Twin Shades",
+  "الظلان التوأم"
+ ],
+ "tt.shadow.a3": [
+  "Oblivion",
+  "العدم"
+ ],
+ "tt.shadow.b3": [
+  "Mass Hysteria",
+  "الهستيريا الجماعية"
+ ],
+ "tt.shadow.path_a": [
+  "Void Reaper",
+  "حاصد الفراغ"
+ ],
+ "tt.shadow.path_b": [
+  "Nightmare Weaver",
+  "حائك الكوابيس"
+ ],
+ "tt.shadow.path_a_desc": [
+  "Marks and executes the enemy's champions.",
+  "يَسِم أبطال العدو ثم يعدمهم."
+ ],
+ "tt.shadow.path_b_desc": [
+  "Curses and terror that send enemies fleeing.",
+  "لعنات ورعب يجعل الأعداء يفرّون."
+ ],
+ "tt.light.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.light.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.light.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.light.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.light.core_spec": [
+  "Consecration",
+  "التكريس"
+ ],
+ "tt.light.a1": [
+  "Blinding Light",
+  "النور المُعمي"
+ ],
+ "tt.light.b1": [
+  "Mending Light",
+  "النور الشافي"
+ ],
+ "tt.light.a2": [
+  "Focused Beam",
+  "الشعاع المركّز"
+ ],
+ "tt.light.a2b": [
+  "Dawn Reach",
+  "مدى الفجر"
+ ],
+ "tt.light.b2": [
+  "Zeal",
+  "الحماسة"
+ ],
+ "tt.light.b2b": [
+  "Holy Chains",
+  "السلاسل المقدسة"
+ ],
+ "tt.light.a3": [
+  "Judgment",
+  "الحُكم"
+ ],
+ "tt.light.b3": [
+  "Sanctuary",
+  "الملاذ"
+ ],
+ "tt.light.path_a": [
+  "Radiant Judge",
+  "القاضي المتوهج"
+ ],
+ "tt.light.path_b": [
+  "Sanctifier",
+  "المُطهّر"
+ ],
+ "tt.light.path_a_desc": [
+  "Searing judgment on everything in range.",
+  "حُكم حارق على كل من في المدى."
+ ],
+ "tt.light.path_b_desc": [
+  "Heals your hero and soldiers while it fights.",
+  "يشفي بطلك وجنودك وهو يقاتل."
+ ],
+ "tt.earth.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.earth.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.earth.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.earth.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.earth.core_spec": [
+  "Aftershock",
+  "الهزة الارتدادية"
+ ],
+ "tt.earth.a1": [
+  "Tremor",
+  "الرجفة"
+ ],
+ "tt.earth.b1": [
+  "Rockslide",
+  "الانهيار الصخري"
+ ],
+ "tt.earth.a2": [
+  "Fault Line",
+  "خط الصدع"
+ ],
+ "tt.earth.a2b": [
+  "Seismic Lock",
+  "القفل الزلزالي"
+ ],
+ "tt.earth.b2": [
+  "Crushing Weight",
+  "الثقل الساحق"
+ ],
+ "tt.earth.b2b": [
+  "Restless Earth",
+  "الأرض القلقة"
+ ],
+ "tt.earth.a3": [
+  "Tectonic Rift",
+  "الصدع التكتوني"
+ ],
+ "tt.earth.b3": [
+  "Mountain's Wrath",
+  "غضب الجبل"
+ ],
+ "tt.earth.path_a": [
+  "Quake Titan",
+  "عملاق الزلازل"
+ ],
+ "tt.earth.path_b": [
+  "Stone Warden",
+  "حارس الحجر"
+ ],
+ "tt.earth.path_a_desc": [
+  "Stuns and splits the ground under the enemy.",
+  "يشلّ ويشق الأرض تحت العدو."
+ ],
+ "tt.earth.path_b_desc": [
+  "Pushes enemies back and drops boulders.",
+  "يدفع الأعداء للخلف ويسقط الصخور."
+ ],
+ "tt.wind.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.wind.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.wind.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.wind.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.wind.core_spec": [
+  "Updraft",
+  "التيار الصاعد"
+ ],
+ "tt.wind.a1": [
+  "Gale Force",
+  "قوة العاصفة"
+ ],
+ "tt.wind.b1": [
+  "Talon Winds",
+  "رياح المخالب"
+ ],
+ "tt.wind.a2": [
+  "Wide Winds",
+  "الرياح الواسعة"
+ ],
+ "tt.wind.a2b": [
+  "Headwind",
+  "الريح المعاكسة"
+ ],
+ "tt.wind.b2": [
+  "Razor Gusts",
+  "هبات الشفرات"
+ ],
+ "tt.wind.b2b": [
+  "Swift Currents",
+  "التيارات السريعة"
+ ],
+ "tt.wind.a3": [
+  "Cyclone",
+  "الزوبعة"
+ ],
+ "tt.wind.b3": [
+  "Downburst",
+  "الانقضاض الهوائي"
+ ],
+ "tt.wind.path_a": [
+  "Tempest",
+  "الإعصار"
+ ],
+ "tt.wind.path_b": [
+  "Sky Hunter",
+  "صياد السماء"
+ ],
+ "tt.wind.path_a_desc": [
+  "Hurls whole groups back down the road.",
+  "يقذف مجموعات كاملة إلى الخلف."
+ ],
+ "tt.wind.path_b_desc": [
+  "Tears flyers out of the sky.",
+  "يمزق الطائرين من السماء."
+ ],
+ "tt.crossbow.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.crossbow.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.crossbow.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.crossbow.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.crossbow.core_spec": [
+  "Steel Bolts",
+  "المسامير الفولاذية"
+ ],
+ "tt.crossbow.a1": [
+  "Heavy Draw",
+  "الشد الثقيل"
+ ],
+ "tt.crossbow.b1": [
+  "Rapid Crank",
+  "التدوير السريع"
+ ],
+ "tt.crossbow.a2": [
+  "Impaler",
+  "الخازوق"
+ ],
+ "tt.crossbow.a2b": [
+  "Weak Spot",
+  "نقطة الضعف"
+ ],
+ "tt.crossbow.b2": [
+  "Double Load",
+  "التذخير المزدوج"
+ ],
+ "tt.crossbow.b2b": [
+  "Long Stock",
+  "المقبض الطويل"
+ ],
+ "tt.crossbow.a3": [
+  "Skewer",
+  "السيخ"
+ ],
+ "tt.crossbow.b3": [
+  "Bolt Storm",
+  "عاصفة المسامير"
+ ],
+ "tt.crossbow.path_a": [
+  "Ballista Master",
+  "سيد المنجنيق"
+ ],
+ "tt.crossbow.path_b": [
+  "Repeater",
+  "الرشاش"
+ ],
+ "tt.crossbow.path_a_desc": [
+  "Huge bolts that skewer lines of enemies.",
+  "مسامير ضخمة تخترق صفوف الأعداء."
+ ],
+ "tt.crossbow.path_b_desc": [
+  "A relentless hail of bolts.",
+  "وابل لا يتوقف من المسامير."
+ ],
+ "tt.trap.core_dmg": [
+  "Empowered Core",
+  "النواة المُمكّنة"
+ ],
+ "tt.trap.core_rate": [
+  "Quickened Gears",
+  "التروس المتسارعة"
+ ],
+ "tt.trap.core_range": [
+  "Far Watch",
+  "المراقبة البعيدة"
+ ],
+ "tt.trap.core_cost": [
+  "Guild Contracts",
+  "عقود النقابة"
+ ],
+ "tt.trap.core_spec": [
+  "Hidden Mechanisms",
+  "الآليات الخفية"
+ ],
+ "tt.trap.a1": [
+  "Sharpened Spikes",
+  "الأشواك المسنونة"
+ ],
+ "tt.trap.b1": [
+  "Snare Coils",
+  "لفائف الشرك"
+ ],
+ "tt.trap.a2": [
+  "Armor Piercers",
+  "خارقات الدروع"
+ ],
+ "tt.trap.a2b": [
+  "Minefield",
+  "حقل الألغام"
+ ],
+ "tt.trap.b2": [
+  "Quick Reset",
+  "الإعادة السريعة"
+ ],
+ "tt.trap.b2b": [
+  "Tar Pits",
+  "حفر القار"
+ ],
+ "tt.trap.a3": [
+  "Blade Field",
+  "حقل الشفرات"
+ ],
+ "tt.trap.b3": [
+  "Grasping Earth",
+  "الأرض القابضة"
+ ],
+ "tt.trap.path_a": [
+  "Spike Lord",
+  "سيد الأشواك"
+ ],
+ "tt.trap.path_b": [
+  "Snare Master",
+  "سيد الأفخاخ"
+ ],
+ "tt.trap.path_a_desc": [
+  "Deadly blade fields that shred groups.",
+  "حقول شفرات قاتلة تمزق المجموعات."
+ ],
+ "tt.trap.path_b_desc": [
+  "Snares and tar that hold enemies in place.",
+  "أفخاخ وقار تثبت الأعداء في مكانهم."
+ ],
+ "nav.tower_tree": [
+  "Tower Mastery",
+  "إتقان الأبراج"
+ ],
+ "tt.title": [
+  "Tower Mastery",
+  "إتقان الأبراج"
+ ],
+ "tt.sigils": [
+  "Crown Sigils",
+  "أختام التاج"
+ ],
+ "tt.sigils_desc": [
+  "Earn Crown Sigils by clearing stages, earning stars, defeating bosses and claiming achievements.",
+  "اكسب أختام التاج بإنهاء المراحل وجمع النجوم وهزيمة الزعماء واستلام الإنجازات."
+ ],
+ "tt.unlocked": [
+  "Unlocked",
+  "مفتوحة"
+ ],
+ "tt.available": [
+  "Available",
+  "متاحة"
+ ],
+ "tt.locked": [
+  "Locked",
+  "مقفلة"
+ ],
+ "tt.blocked": [
+  "Path closed",
+  "المسار مغلق"
+ ],
+ "tt.req_level": [
+  "Requires player level %d",
+  "تتطلب مستوى اللاعب %d"
+ ],
+ "tt.req_nodes": [
+  "Requires: %s",
+  "تتطلب: %s"
+ ],
+ "tt.excl": [
+  "Excludes: %s",
+  "تستبعد: %s"
+ ],
+ "tt.cost": [
+  "Cost: %d sigils",
+  "التكلفة: %d ختم"
+ ],
+ "tt.buy": [
+  "Unlock",
+  "افتح"
+ ],
+ "tt.not_enough": [
+  "Not enough sigils",
+  "أختام غير كافية"
+ ],
+ "tt.reset_tower": [
+  "Reset this tower",
+  "إعادة ضبط هذا البرج"
+ ],
+ "tt.reset_all": [
+  "Reset all towers",
+  "إعادة ضبط كل الأبراج"
+ ],
+ "tt.reset_confirm": [
+  "Refund %d sigils for %d gold?",
+  "استرجاع %d ختم مقابل %d ذهب؟"
+ ],
+ "tt.spent": [
+  "Invested: %d",
+  "المستثمر: %d"
+ ],
+ "tt.capstone": [
+  "Capstone",
+  "الترقية النهائية"
+ ],
+ "tt.choose_path": [
+  "Choose a path — the other closes until you reset.",
+  "اختر مسارًا — يُغلق الآخر حتى تعيد الضبط."
+ ],
+ "tt.or": [
+  "or",
+  "أو"
+ ],
+ "tt.new_unlock": [
+  "Mastery unlocked!",
+  "تم فتح الإتقان!"
+ ],
+ "tt.tower_locked": [
+  "Tower not yet discovered in the campaign",
+  "لم يُكتشف هذا البرج في الحملة بعد"
+ ],
+ "tt.sigils_gained": [
+  "+%d Crown Sigils",
+  "+%d من أختام التاج"
+ ],
+ "tt.fx.dmg": [
+  "+%d%% damage",
+  "+%d%% ضرر"
+ ],
+ "tt.fx.rate": [
+  "+%d%% attack speed",
+  "+%d%% سرعة هجوم"
+ ],
+ "tt.fx.range": [
+  "+%d%% range",
+  "+%d%% مدى"
+ ],
+ "tt.fx.cost": [
+  "-%d%% build and upgrade cost",
+  "-%d%% تكلفة البناء والتطوير"
+ ],
+ "tt.fx.pen": [
+  "Ignores %d%% of enemy armour",
+  "يتجاهل %d%% من دروع العدو"
+ ],
+ "tt.fx.crit": [
+  "+%d%% critical hit chance",
+  "+%d%% فرصة ضربة حرجة"
+ ],
+ "tt.fx.crit_mult": [
+  "+%d%% critical damage",
+  "+%d%% ضرر الضربة الحرجة"
+ ],
+ "tt.fx.multishot": [
+  "Fires %d extra projectile(s)",
+  "يطلق %d مقذوف إضافي"
+ ],
+ "tt.fx.splash": [
+  "+%.1f m area damage",
+  "+%.1f م ضرر منطقة"
+ ],
+ "tt.fx.pierce": [
+  "Bolts pierce %d more enemies",
+  "المسامير تخترق %d أعداء إضافيين"
+ ],
+ "tt.fx.chain": [
+  "Lightning jumps to %d more enemies",
+  "البرق يقفز إلى %d أعداء إضافيين"
+ ],
+ "tt.fx.stun": [
+  "+%d%% stun chance",
+  "+%d%% فرصة شلّ"
+ ],
+ "tt.fx.freeze": [
+  "+%d%% freeze chance",
+  "+%d%% فرصة تجميد"
+ ],
+ "tt.fx.fear": [
+  "+%d%% chance to terrify",
+  "+%d%% فرصة إرعاب"
+ ],
+ "tt.fx.knockback": [
+  "+%.1f m knockback",
+  "+%.1f م دفع للخلف"
+ ],
+ "tt.fx.ramp": [
+  "Beam heats up %d%% faster",
+  "الشعاع يسخن أسرع بـ %d%%"
+ ],
+ "tt.fx.soldiers": [
+  "+%d soldier(s)",
+  "+%d جندي"
+ ],
+ "tt.fx.soldier_hp": [
+  "+%d%% soldier health",
+  "+%d%% صحة الجنود"
+ ],
+ "tt.fx.armor": [
+  "+%d soldier armour",
+  "+%d درع الجنود"
+ ],
+ "tt.fx.respawn": [
+  "Soldiers return %d%% faster",
+  "الجنود يعودون أسرع بـ %d%%"
+ ],
+ "tt.fx.lifesteal": [
+  "Soldiers steal %d%% of damage as health",
+  "الجنود يسرقون %d%% من الضرر كصحة"
+ ],
+ "tt.fx.traps": [
+  "+%d trap(s) on the road",
+  "+%d فخ على الطريق"
+ ],
+ "tt.fx.trap_splash": [
+  "Traps blast everything within %.1f m",
+  "الأفخاخ تنفجر في كل من ضمن %.1f م"
+ ],
+ "tt.fx.status_power": [
+  "+%d%% effect strength",
+  "+%d%% قوة التأثير"
+ ],
+ "tt.fx.status_duration": [
+  "+%d%% effect duration",
+  "+%d%% مدة التأثير"
+ ],
+ "tt.fx.air_bonus": [
+  "+%d%% damage to flyers",
+  "+%d%% ضرر ضد الطائرين"
+ ],
+ "tt.fx.heal_allies": [
+  "Heals nearby allies %d HP/s",
+  "يشفي الحلفاء القريبين %d صحة/ث"
+ ],
+ "tt.fx.execute": [
+  "Instantly slays non-boss enemies below %d%% health",
+  "يقتل فورًا الأعداء (غير الزعماء) تحت %d%% صحة"
+ ],
+ "tt.fx.mark": [
+  "Hits mark enemies: +%d%% damage taken for %ds",
+  "الإصابات تَسِم العدو: +%d%% ضرر مُتلقّى لمدة %d ث"
+ ],
+ "tt.fx.bonus_status": [
+  "+%d%% damage to slowed enemies",
+  "+%d%% ضرر ضد الأعداء المبطئين"
+ ],
+ "tt.fx.unit": [
+  "Soldiers become %s",
+  "يتحول الجنود إلى %s"
+ ],
+ "tt.fx.status.slow": [
+  "Hits slow by %d%%",
+  "الإصابات تبطئ بنسبة %d%%"
+ ],
+ "tt.fx.status.burn": [
+  "Hits set enemies on fire",
+  "الإصابات تشعل الأعداء"
+ ],
+ "tt.fx.status.root": [
+  "Snares enemies for %.1fs",
+  "يثبّت الأعداء %.1f ث"
+ ],
+ "tt.fx.status.other": [
+  "Hits apply %s",
+  "الإصابات تطبق %s"
+ ],
+ "tt.sp.volley": [
+  "Every %d attacks: a volley of %d projectiles at nearby enemies",
+  "كل %d هجمات: وابل من %d مقذوفات على الأعداء القريبين"
+ ],
+ "tt.sp.empowered": [
+  "Every %d attacks: an empowered strike for %d%% damage",
+  "كل %d هجمات: ضربة معززة بـ %d%% ضرر"
+ ],
+ "tt.sp.nova": [
+  "Every %d attacks: a blast hits every enemy in range",
+  "كل %d هجمات: انفجار يصيب كل الأعداء في المدى"
+ ],
+ "tt.sp.barrage": [
+  "Every %d attacks: %d extra strikes rain on random enemies",
+  "كل %d هجمات: %d ضربات إضافية تنهمر على أعداء عشوائيين"
+ ],
+ "tt.sp.nova_freeze": [
+  "…freezing them",
+  "…ويجمّدهم"
+ ],
+ "tt.sp.nova_fear": [
+  "…terrifying them",
+  "…ويرعبهم"
+ ],
+ "tt.sp.nova_slow": [
+  "…slowing them heavily",
+  "…ويبطئهم بشدة"
+ ],
+ "tt.sp.nova_stun": [
+  "…stunning them",
+  "…ويشلّهم"
+ ],
+ "tt.sp.nova_heal": [
+  "…and heals allies %d%%",
+  "…ويشفي الحلفاء %d%%"
+ ],
+ "tt.sp.nova_burn": [
+  "…setting them ablaze",
+  "…ويشعلهم"
+ ],
+ "tt.sp.nova_knock": [
+  "…hurling them back",
+  "…ويقذفهم للخلف"
+ ],
+ "ally.black_guard": [
+  "Black Guards",
+  "الحرس الأسود"
+ ],
+ "ally.berserker": [
+  "Berserkers",
+  "الهائجين"
+ ],
+ "battle.mastery": [
+  "Mastery",
+  "الإتقان"
+ ],
+ "ui.not_enough_gold": [
+  "Not enough gold",
+  "ذهب غير كافٍ"
+ ],
+ "tt.fx.dmg_neg": [
+  "-%d%% damage per projectile",
+  "-%d%% ضرر لكل مقذوف"
  ]
 }

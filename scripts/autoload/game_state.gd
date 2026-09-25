@@ -36,6 +36,7 @@ func _ready() -> void:
 	var loaded := {} if no_save else Save.load_profile()
 	profile = Save.merge_defaults(loaded, _default_profile()) if not loaded.is_empty() else _default_profile()
 	Events.stat_tracked.connect(_on_stat)
+	TowerTree.state()      # grants retroactive Crown Sigils to saves from older versions
 	ensure_daily_quests()
 	apply_settings()
 
@@ -67,6 +68,7 @@ func save_now() -> void:
 func reset_profile() -> void:
 	Save.delete_save()
 	profile = _default_profile()
+	TowerTree.state()
 	ensure_daily_quests()
 	save_now()
 	Events.profile_changed.emit()
@@ -94,6 +96,7 @@ func _default_profile() -> Dictionary:
 		"daily": {"last": "", "streak": 0},
 		"shop": {"date": "", "bought": []},
 		"guild": {"level": 1, "xp": 0, "perks": {}},
+		"tower_tree": {"earned": 0, "nodes": {}, "respecs": 0},
 		"settings": {"lang": "ar", "music": 0.7, "sfx": 0.8, "quality": 2, "shadows": true, "fog": true, "camera_speed": 1.0, "show_fps": false, "tutorial_done": false},
 	}
 
@@ -577,6 +580,7 @@ func claim_achievement(id: String) -> bool:
 		return false
 	grant_reward(a.reward[int(st.claimed)])
 	st.claimed = int(st.claimed) + 1
+	TowerTree.award(TowerTree.EARN_ACHIEVEMENT)
 	mark_dirty()
 	return true
 

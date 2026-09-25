@@ -31,6 +31,12 @@ var _orb_light: OmniLight3D
 var _top_height := 3.0
 var _pips: Node3D
 var range_ring: MeshInstance3D
+var armor_pen := 0.0          # Tower Mastery: fraction of enemy armour ignored
+var _attacks := 0             # attack counter for mastery specials
+var _last_crit := false
+var _heal_t := 0.0
+var _beam_tick := 0.0
+var special_count := 0        # how many mastery specials fired (telemetry / tests)
 
 
 func setup(b: Node, s: Node, id: String) -> void:
@@ -39,8 +45,9 @@ func setup(b: Node, s: Node, id: String) -> void:
 	tower_id = id
 	tdef = DB.towers[id]
 	level = 1
-	data = DB.tower_level_data(id, 1, -1)
-	invested = int(data.cost)
+	data = TowerTree.level_data(id, 1, -1)
+	armor_pen = float(data.get("pen", 0.0))
+	invested = TowerTree.build_cost(id)
 	global_position = s.global_position
 	rally_point = battle.nearest_path_point(global_position, 4.5)
 	_build_visual()
@@ -95,11 +102,12 @@ func needs_branch_choice() -> bool:
 
 
 func upgrade_cost(branch_idx: int = -1) -> int:
+	var m := TowerTree.cost_mult(tower_id)
 	if needs_branch_choice():
-		return int(tdef.branches[branch_idx if branch_idx >= 0 else 0].levels[0].cost)
+		return int(round(float(tdef.branches[branch_idx if branch_idx >= 0 else 0].levels[0].cost) * m))
 	if not can_upgrade():
 		return 0
-	return int(DB.tower_level_data(tower_id, level + 1, branch).cost)
+	return int(round(float(DB.tower_level_data(tower_id, level + 1, branch).cost) * m))
 
 
 func sell_value() -> int:
@@ -124,7 +132,8 @@ func upgrade(branch_idx: int = -1) -> void:
 		branch = maxi(0, branch_idx)
 	level += 1
 	invested += cost
-	data = DB.tower_level_data(tower_id, level, branch)
+	data = TowerTree.level_data(tower_id, level, branch)
+	armor_pen = float(data.get("pen", 0.0))
 	_build_visual()
 	_visual.scale = Vector3(0.85, 0.7, 0.85)
 	_visual.create_tween().tween_property(_visual, "scale", Vector3.ONE, 0.4).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
@@ -226,6 +235,12 @@ func _physics_process(delta: float) -> void:
 	if _orb:
 		_orb.rotation.y += delta * 1.5
 		_orb.position.y = _top_height + 0.5 + sin(Time.get_ticks_msec() / 500.0) * 0.12
+	if data.has("heal_allies") and attack_type() != "beam":
+		_heal_t -= delta
+		if _heal_t <= 0.0:
+			_heal_t = 1.0
+			for a in battle.allies_near(global_position, range_()):
+				a.heal(float(data.heal_allies))
 	var rate_mult := _mult() if buffs.size() > 0 else 1.0
 	cooldown -= delta * rate_mult
 	match attack_type():
@@ -268,11 +283,26 @@ func _targets() -> Array:
 
 func _roll() -> float:
 	var d: Array = data.get("dmg", [1, 1])
-	return randf_range(float(d[0]), float(d[1])) * _mult()
+	var v := randf_range(float(d[0]), float(d[1])) * _mult()
+	_last_crit = randf() < float(data.get("crit", 0.0))
+	if _last_crit:
+		v *= float(data.get("crit_mult", 2.0))
+	return v
 
 
 func _reset_cd() -> void:
 	cooldown = 1.0 / maxf(0.05, float(data.get("rate", 1.0)))
+	_count_attack()
+
+
+## Tower Mastery capstones fire a special every N attacks.
+func _count_attack() -> void:
+	var sp: Dictionary = data.get("special", {})
+	if sp.is_empty():
+		return
+	_attacks += 1
+	if _attacks % maxi(1, int(sp.get("every", 5))) == 0:
+		call_deferred("_do_special", sp)
 
 
 func _muzzle() -> Vector3:
@@ -283,7 +313,9 @@ func _base_params() -> Dictionary:
 	return {"dmg_type": dmg_type(), "team": Unit.Team.PLAYER, "source": self, "status": data.get("status", {}),
 		"splash": float(data.get("splash", 0.0)), "freeze_chance": float(data.get("freeze_chance", 0.0)),
 		"stun_chance": float(data.get("stun_chance", 0.0)), "instakill": float(data.get("instakill", 0.0)),
-		"bonus_vs": data.get("bonus_vs", ""), "pierce": int(data.get("pierce", 0))}
+		"bonus_vs": data.get("bonus_vs", ""), "pierce": int(data.get("pierce", 0)),
+		"execute": float(data.get("execute", 0.0)), "extra_status": data.get("extra_status", []),
+		"bonus_status": data.get("bonus_status", {}), "fear_chance": float(data.get("fear_chance", 0.0))}
 
 
 func _attack_projectile() -> void:
@@ -296,8 +328,8 @@ func _attack_projectile() -> void:
 	for i in mini(shots, ts.size()):
 		var t: Enemy = ts[i]
 		var prm := _base_params()
-		var crit := randf() < float(data.get("crit", 0.0))
-		prm.merge({"type": ptype, "damage": _roll() * (2.0 if crit else 1.0), "speed": 24.0 if ptype in ["arrow", "bolt"] else 16.0, "crit": crit})
+		var dmg := _roll()
+		prm.merge({"type": ptype, "damage": dmg, "speed": 24.0 if ptype in ["arrow", "bolt"] else 16.0, "crit": _last_crit})
 		battle.spawn_projectile(_muzzle(), t, prm)
 	Sfx.play("arrow" if ptype in ["arrow", "bolt"] else "magic", -12.0)
 
@@ -363,6 +395,8 @@ func _attack_pulse() -> void:
 		var st: Dictionary = data.get("status", {})
 		if not st.is_empty():
 			e.apply_status(st.id, float(st.duration), float(st.power))
+		for xs in data.get("extra_status", []):
+			e.apply_status(xs.id, float(xs.duration), float(xs.power))
 		if randf() < float(data.get("stun_chance", 0.0)) and not e.flying:
 			e.apply_status("stun", 1.0, 1.0)
 		if kb > 0.0 and not e.tags.has("boss"):
@@ -418,6 +452,10 @@ func _tick_beam(delta: float) -> void:
 		beam_target = ts[0]
 		beam_time = 0.0
 	beam_time += delta
+	_beam_tick += delta
+	if _beam_tick >= 1.0 / maxf(0.2, float(data.get("rate", 1.0))):
+		_beam_tick = 0.0
+		_count_attack()
 	var ramp := 1.0 + float(data.get("ramp", 0.5)) * minf(beam_time, 4.0)
 	var dps := float(data.dmg[0]) * _mult() * ramp
 	var dmg := dps * delta
@@ -542,6 +580,8 @@ func _place_trap() -> void:
 	var trap := Trap.new()
 	battle.fx_root.add_child(trap)
 	trap.setup(battle, p, _roll(), data.get("status", {}), accent())
+	trap.splash = float(data.get("trap_splash", 0.0))
+	trap.armor_pen = armor_pen
 	traps.append(trap)
 	VFX.build_dust(battle.fx_root, p)
 
@@ -572,6 +612,7 @@ func _build_visual() -> void:
 	_build_top(m.get("top", "none"))
 	_build_pips()
 	_build_level_decor()
+	_build_mastery_decor()
 
 
 func _aabb_of(n: Node3D) -> AABB:
@@ -768,3 +809,184 @@ func show_range(v: bool) -> void:
 	range_ring.visible = v
 	range_ring.scale = Vector3(range_(), 0.02, range_())
 	range_ring.position.y = 0.1
+
+
+# ---------------------------------------------------------------- mastery specials
+## Capstone behaviours from the Tower Mastery tree (see TowerTree / tower_tree.json).
+func _do_special(sp: Dictionary) -> void:
+	if not is_inside_tree() or battle == null or battle.ended or is_disabled():
+		return
+	var ts := _targets()
+	if ts.is_empty():
+		return
+	var mult := float(sp.get("dmg_mult", 1.0))
+	var col := accent()
+	special_count += 1
+	match str(sp.type):
+		"volley":
+			var ptype: String = sp.get("proj", DB.tower_attr(tower_id, branch, "projectile", "arrow"))
+			for i in int(sp.get("count", 6)):
+				var t: Enemy = ts[i % ts.size()] if i < ts.size() else ts.pick_random()
+				var prm := _base_params()
+				prm.merge({"type": ptype, "damage": _roll() * mult, "speed": 20.0, "crit": _last_crit})
+				var from := _muzzle() + Vector3(randf_range(-0.8, 0.8), randf_range(0.0, 0.8), randf_range(-0.8, 0.8))
+				battle.spawn_projectile(from, t, prm)
+			VFX.nova(battle.fx_root, _muzzle(), 1.4, element() if element() != "physical" else "holy")
+			Sfx.play("arrow", -6.0)
+		"empowered":
+			var t: Enemy = ts[0]
+			var prm := _base_params()
+			prm.splash = float(prm.get("splash", 0.0)) + float(sp.get("splash", 0.0))
+			prm.pierce = int(prm.get("pierce", 0)) + int(sp.get("pierce", 0))
+			if sp.has("status_mult") and not (prm.status as Dictionary).is_empty():
+				var st: Dictionary = (prm.status as Dictionary).duplicate()
+				st.power = float(st.power) * float(sp.status_mult)
+				prm.status = st
+			if sp.has("stun"):
+				prm.stun_chance = 1.0
+			var at := attack_type()
+			if at == "artillery":
+				prm.merge({"type": "bomb", "damage": _roll() * mult, "target_pos": t.global_position, "speed": global_position.distance_to(t.global_position) / 0.9, "arc": 6.0, "ground_only": true})
+				battle.spawn_projectile(_muzzle(), null, prm)
+			elif at == "pulse":
+				for e in ts:
+					e.take_damage(_roll() * mult, dmg_type(), self, true)
+					if sp.has("stun") and not e.flying:
+						e.apply_status("stun", float(sp.stun), 1.0)
+				VFX.nova(battle.fx_root, global_position, range_(), "earth")
+				battle.shake(0.3, 0.3)
+			else:
+				var ptype: String = DB.tower_attr(tower_id, branch, "projectile", "arcane_orb")
+				prm.merge({"type": ptype, "damage": _roll() * mult, "speed": 26.0, "crit": true})
+				battle.spawn_projectile(_muzzle(), t, prm)
+			VFX.flash_light(battle.fx_root, _muzzle(), col, 6.0, 7.0, 0.3)
+			VFX.ground_ring(battle.fx_root, global_position, 2.2, col, 0.5)
+			Sfx.play("explosion", -8.0)
+		"nova":
+			var r := range_() * float(sp.get("radius_mult", 1.0))
+			var st: Dictionary = sp.get("status", {})
+			if st.has("power_mult"):
+				var d: Array = data.get("dmg", [1, 1])
+				st = {"id": st.id, "duration": st.duration, "power": (float(d[0]) + float(d[1])) * 0.5 * float(st.power_mult)}
+			for e in battle.enemies_near(global_position, r):
+				if not e.is_valid_target() or (e.flying and not hits_air()):
+					continue
+				e.take_damage(_roll() * mult, dmg_type(), self)
+				if not st.is_empty() and not (st.id == "fear" and e.tags.has("boss")):
+					e.apply_status(st.id, float(st.duration), float(st.power))
+				if sp.has("knockback") and not e.tags.has("boss"):
+					e.progress = maxf(0.0, e.progress - float(sp.knockback) * (0.5 if e.tags.has("elite") else 1.0))
+			if sp.has("heal_pct"):
+				for a in battle.allies_near(global_position, r):
+					a.heal(a.max_hp * float(sp.heal_pct))
+					VFX.heal(battle.fx_root, a.global_position)
+			VFX.nova(battle.fx_root, global_position, r, str(sp.get("element", element())))
+			VFX.ground_ring(battle.fx_root, global_position, r, col, 0.7)
+			battle.shake(0.15, 0.2)
+			Sfx.play("explosion", -8.0)
+		"barrage":
+			for i in int(sp.get("count", 3)):
+				var t: Enemy = ts.pick_random()
+				var pos := t.route.sample(t.progress + t.base_speed * t.speed_mult() * 0.9 * (0.0 if t.blocker != null else 1.0)) if not t.flying else t.global_position
+				if sp.get("bolt", false):
+					var tt := t
+					get_tree().create_timer(0.12 * i, false).timeout.connect(func():
+						if not is_instance_valid(tt) or not tt.alive: return
+						var p := tt.global_position
+						VFX.lightning(battle.fx_root, p + Vector3(randf_range(-1, 1), 12, randf_range(-1, 1)), p, col, 0.2, 0.25)
+						for e in battle.enemies_near(p, 1.8):
+							e.take_damage(_roll() * mult, "lightning", self))
+				else:
+					var prm := _base_params()
+					prm.merge({"type": "bomb", "damage": _roll() * mult, "target_pos": pos, "speed": global_position.distance_to(pos) / 1.1, "arc": 7.0, "ground_only": true})
+					prm.splash = maxf(1.6, float(prm.get("splash", 0.0)))
+					battle.spawn_projectile(_muzzle() + Vector3(0, 0.3 * i, 0), null, prm)
+			Sfx.play("explosion", -8.0)
+
+
+## Tower Mastery look: a gold rune circle once a path is chosen, and for a
+## capstone a crown of orbiting gold shards, a light column and embers.
+func _build_mastery_decor() -> void:
+	var tier := TowerTree.mastery_tier(tower_id) if not Game.profile.is_empty() else 0
+	if tier < 2:
+		return
+	var gold := Color(1.0, 0.78, 0.3)
+	var gm := StandardMaterial3D.new()
+	gm.albedo_color = gold
+	gm.emission_enabled = true
+	gm.emission = gold
+	gm.emission_energy_multiplier = 2.2 if tier == 2 else 3.5
+	gm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	var sigil := MeshInstance3D.new()
+	var tm := TorusMesh.new()
+	tm.inner_radius = 1.62
+	tm.outer_radius = 1.7
+	tm.rings = 64
+	tm.ring_segments = 4
+	sigil.mesh = tm
+	sigil.material_override = gm
+	sigil.position.y = 0.06
+	sigil.scale.y = 0.2
+	sigil.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_visual.add_child(sigil)
+	for k in 8:
+		var rune := MeshInstance3D.new()
+		var bm := BoxMesh.new()
+		bm.size = Vector3(0.22, 0.02, 0.1)
+		rune.mesh = bm
+		rune.material_override = gm
+		var a := TAU * k / 8.0
+		rune.position = Vector3(cos(a) * 1.66, 0.0, sin(a) * 1.66)
+		rune.rotation.y = -a
+		sigil.add_child(rune)
+	var spin := sigil.create_tween().set_loops()
+	spin.tween_property(sigil, "rotation:y", -TAU, 12.0).from(0.0)
+	if tier < 3:
+		return
+	# Capstone: floating crown and a column of light.
+	var crown := Node3D.new()
+	crown.position.y = _top_height + 1.3
+	_visual.add_child(crown)
+	for k in 3:
+		var shard := MeshInstance3D.new()
+		var pm := PrismMesh.new()
+		pm.size = Vector3(0.2, 0.6, 0.2)
+		shard.mesh = pm
+		shard.material_override = gm
+		var a := TAU * k / 3.0
+		shard.position = Vector3(cos(a) * 0.55, 0, sin(a) * 0.55)
+		crown.add_child(shard)
+	var cspin := crown.create_tween().set_loops()
+	cspin.tween_property(crown, "rotation:y", TAU, 3.0).from(0.0)
+	var col := MeshInstance3D.new()
+	var cm := CylinderMesh.new()
+	cm.top_radius = 0.05
+	cm.bottom_radius = 0.5
+	cm.height = 5.0
+	col.mesh = cm
+	var bm2 := StandardMaterial3D.new()
+	bm2.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	bm2.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	bm2.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	bm2.albedo_color = Color(gold.r, gold.g, gold.b, 0.12)
+	bm2.cull_mode = BaseMaterial3D.CULL_DISABLED
+	col.material_override = bm2
+	col.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	col.position.y = _top_height + 1.0 + 2.5
+	_visual.add_child(col)
+	var e := CPUParticles3D.new()
+	e.amount = 16
+	e.lifetime = 1.6
+	e.mesh = QuadMesh.new()
+	e.material_override = VFX._additive()
+	e.emission_shape = CPUParticles3D.EMISSION_SHAPE_RING
+	e.emission_ring_radius = 1.5
+	e.emission_ring_inner_radius = 1.3
+	e.emission_ring_height = 0.1
+	e.emission_ring_axis = Vector3.UP
+	e.gravity = Vector3(0, 1.2, 0)
+	e.scale_amount_min = 0.06
+	e.scale_amount_max = 0.14
+	e.color_ramp = VFX._ramp(gold)
+	e.position.y = 0.1
+	_visual.add_child(e)

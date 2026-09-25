@@ -21,6 +21,13 @@ func _ready() -> void:
 		elif a.begins_with("--hero-level="):
 			for h in Game.profile.heroes.values():
 				h.level = int(a.substr(13))
+		elif a.begins_with("--player-level="):
+			Game.profile.player_level = int(a.substr(15))
+		elif a.begins_with("--sigils="):
+			TowerTree.state().earned = TowerTree.earned() + int(a.substr(9))
+		elif a.begins_with("--tower-tree="):
+			# Dev/balance: grant mastery setups, e.g. "a", "b", "trunk", "archer:a,mage:b"
+			TowerTree.dev_grant(a.substr(13))
 	if "--battle" in OS.get_cmdline_user_args():
 		Game.current_stage = stage
 		Router.goto("battle")

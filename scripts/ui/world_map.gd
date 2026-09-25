@@ -48,7 +48,7 @@ func _build_ui() -> void:
 	var portal := _nav_button("portal", "nav.portal", _open_portal, Color(0.6, 0.35, 1.0), 96)
 	h.add_child(portal)
 	h.add_child(UITheme.spacer())
-	for it in [["hero", "nav.heroes", "heroes"], ["missions", "nav.missions", "missions"], ["shop", "nav.shop", "shop"], ["crossed", "nav.arsenal", "inventory"], ["trophy", "nav.achievements", "achievements"], ["guild", "nav.guild", "guild"], ["more", "nav.more", "settings"]]:
+	for it in [["hero", "nav.heroes", "heroes"], ["tower", "nav.tower_tree", "tower_tree"], ["missions", "nav.missions", "missions"], ["shop", "nav.shop", "shop"], ["crossed", "nav.arsenal", "inventory"], ["trophy", "nav.achievements", "achievements"], ["guild", "nav.guild", "guild"], ["more", "nav.more", "settings"]]:
 		var target: String = it[2]
 		h.add_child(_nav_button(it[0], it[1], func(): Router.goto(target), UITheme.GOLD, 84))
 	h.add_child(UITheme.spacer())

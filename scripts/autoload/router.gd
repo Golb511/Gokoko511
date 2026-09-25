@@ -12,6 +12,7 @@ const SCENES := {
 	"achievements": "res://scenes/ui/achievements_screen.tscn",
 	"guild": "res://scenes/ui/guild_screen.tscn",
 	"settings": "res://scenes/ui/settings_screen.tscn",
+	"tower_tree": "res://scenes/ui/tower_tree_screen.tscn",
 }
 
 var current: String = ""
