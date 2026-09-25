@@ -59,6 +59,7 @@ func _ready() -> void:
 	for s in [-1.0, 1.0]:
 		VFX.fire_pillar(self, Vector3(9.5 * s, 11, -30), 5.0, true)
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = Color(1, 0.45, 0.1)
 		l.light_energy = 8.0
 		l.omni_range = 26.0
@@ -76,6 +77,7 @@ func _ready() -> void:
 		c.scale *= 1.25 if i == 2 else 1.0
 		c.play_loop("idle", 0.8 + randf() * 0.3)
 		var rim := OmniLight3D.new()
+		rim.light_volumetric_fog_energy = 0.2
 		rim.light_color = ModelLib._col(def.emission)
 		rim.light_energy = 3.0
 		rim.omni_range = 3.5

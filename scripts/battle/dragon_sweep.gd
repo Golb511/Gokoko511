@@ -24,6 +24,7 @@ func start(b: Node, r: PathRoute, damage_per_sec: float, dur: float) -> void:
 	dragon.global_position = route.sample(route.length) + Vector3(0, FLY_H + 6, 8)
 	flames = VFX.particles(self, dragon.global_position, {"amount": 90, "lifetime": 0.7, "one_shot": false, "speed": 9.0, "size": 1.1, "color": Color(1, 0.45, 0.08), "direction": Vector3(0, -1, 0.6), "spread": 14.0, "gravity": Vector3(0, -4, 0)})
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = Color(1, 0.5, 0.1)
 	l.light_energy = 4.0
 	l.omni_range = 14.0

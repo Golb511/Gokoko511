@@ -61,6 +61,7 @@ func _make_marker() -> Node3D:
 	mi.material_override = m
 	root.add_child(mi)
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = Color(1, 0.75, 0.3)
 	l.light_energy = 2.0
 	l.omni_range = 5.0

@@ -23,7 +23,21 @@
       "emission_strength": 2.2,
       "metal": 0.85,
       "scale": 1.0,
-      "anim": "2h"
+      "anim": "2h",
+      "gear": [
+        "spiked_pauldrons",
+        "helm_spikes",
+        "eyes_slit",
+        "cape",
+        "embers"
+      ],
+      "shape": "heroic",
+      "cloth": [
+        0.28,
+        0.04,
+        0.03
+      ],
+      "face_shade": 0.9
     },
     "stats": {
       "health": 950,
@@ -75,7 +89,20 @@
       "emission_strength": 2.0,
       "metal": 0.2,
       "scale": 1.0,
-      "anim": "staff"
+      "anim": "staff",
+      "gear": [
+        "cape",
+        "orbs",
+        "eyes",
+        "spores"
+      ],
+      "shape": "lean",
+      "cloth": [
+        0.06,
+        0.16,
+        0.05
+      ],
+      "face_shade": 0.75
     },
     "stats": {
       "health": 700,
@@ -134,7 +161,20 @@
       "emission_strength": 1.6,
       "metal": 0.4,
       "scale": 1.0,
-      "anim": "ranged_2h"
+      "anim": "ranged_2h",
+      "gear": [
+        "cape",
+        "raven",
+        "eyes",
+        "pauldrons"
+      ],
+      "shape": "lean",
+      "cloth": [
+        0.1,
+        0.06,
+        0.16
+      ],
+      "face_shade": 0.85
     },
     "stats": {
       "health": 700,
@@ -189,7 +229,20 @@
       "emission_strength": 2.5,
       "metal": 0.3,
       "scale": 1.15,
-      "anim": "1h"
+      "anim": "1h",
+      "gear": [
+        "crown",
+        "bone_pauldrons",
+        "eyes",
+        "cape",
+        "skull_belt"
+      ],
+      "shape": "heroic",
+      "cloth": [
+        0.05,
+        0.12,
+        0.07
+      ]
     },
     "stats": {
       "health": 1250,
@@ -242,7 +295,20 @@
       "emission_strength": 2.0,
       "metal": 0.3,
       "scale": 1.0,
-      "anim": "staff"
+      "anim": "staff",
+      "gear": [
+        "shard_halo",
+        "cape",
+        "eyes",
+        "frost_mist"
+      ],
+      "shape": "lean",
+      "cloth": [
+        0.08,
+        0.14,
+        0.28
+      ],
+      "face_shade": 0.7
     },
     "stats": {
       "health": 680,
@@ -300,7 +366,21 @@
       "emission_strength": 3.0,
       "metal": 0.2,
       "scale": 1.05,
-      "anim": "staff"
+      "anim": "staff",
+      "gear": [
+        "horns",
+        "eyes",
+        "cape",
+        "orbs"
+      ],
+      "shape": "lean",
+      "cloth": [
+        0.05,
+        0.08,
+        0.2
+      ],
+      "bone_horns": true,
+      "face_shade": 0.0
     },
     "stats": {
       "health": 640,
@@ -353,7 +433,20 @@
       "emission_strength": 1.2,
       "metal": 0.6,
       "scale": 1.3,
-      "anim": "2h"
+      "anim": "2h",
+      "gear": [
+        "spiked_pauldrons",
+        "cape",
+        "eyes_slit",
+        "skull_belt"
+      ],
+      "shape": "brute",
+      "cloth": [
+        0.22,
+        0.03,
+        0.03
+      ],
+      "face_shade": 0.8
     },
     "stats": {
       "health": 1150,
@@ -407,7 +500,21 @@
       "emission_strength": 1.8,
       "metal": 0.9,
       "scale": 1.05,
-      "anim": "1h"
+      "anim": "1h",
+      "gear": [
+        "big_horns",
+        "spiked_pauldrons",
+        "cape",
+        "eyes_slit",
+        "embers"
+      ],
+      "shape": "heroic",
+      "cloth": [
+        0.32,
+        0.08,
+        0.03
+      ],
+      "face_shade": 0.9
     },
     "stats": {
       "health": 980,
@@ -457,7 +564,13 @@
       "metal": 0.05,
       "scale": 1.55,
       "anim": "unarmed",
-      "stone": true
+      "stone": true,
+      "gear": [
+        "back_crystals",
+        "eyes",
+        "embers"
+      ],
+      "shape": "brute"
     },
     "stats": {
       "health": 1600,
@@ -511,7 +624,21 @@
       "emission_strength": 2.4,
       "metal": 0.9,
       "scale": 1.0,
-      "anim": "dual"
+      "anim": "dual",
+      "gear": [
+        "horns",
+        "spiked_pauldrons",
+        "eyes_slit",
+        "cape",
+        "smoke"
+      ],
+      "shape": "heroic",
+      "cloth": [
+        0.07,
+        0.03,
+        0.12
+      ],
+      "face_shade": 0.95
     },
     "stats": {
       "health": 820,
@@ -545,7 +672,7 @@
     "element": "physical",
     "style": "hero.style.sniper",
     "model": {
-      "base": "Rogue",
+      "base": "Rogue_Hooded",
       "show": [
         "2H_Crossbow",
         "Rogue_Cape"
@@ -563,7 +690,19 @@
       "emission_strength": 1.0,
       "metal": 0.5,
       "scale": 1.0,
-      "anim": "ranged_2h"
+      "anim": "ranged_2h",
+      "gear": [
+        "cape",
+        "pauldrons",
+        "eyes_slit"
+      ],
+      "shape": "lean",
+      "cloth": [
+        0.08,
+        0.08,
+        0.1
+      ],
+      "face_shade": 0.85
     },
     "stats": {
       "health": 660,
@@ -618,7 +757,21 @@
       "emission_strength": 2.2,
       "metal": 0.7,
       "scale": 1.15,
-      "anim": "1h"
+      "anim": "1h",
+      "gear": [
+        "spiked_pauldrons",
+        "cape",
+        "orbs",
+        "chest_rune",
+        "sparks"
+      ],
+      "shape": "heroic",
+      "cloth": [
+        0.08,
+        0.12,
+        0.24
+      ],
+      "face_shade": 0.7
     },
     "stats": {
       "health": 1000,

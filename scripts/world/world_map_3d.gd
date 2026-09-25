@@ -191,6 +191,7 @@ func _region(i: int) -> void:
 			for k in 4:
 				_lava(_around(c, 4, 7))
 			var l := OmniLight3D.new()
+			l.light_volumetric_fog_energy = 0.2
 			l.light_color = col
 			l.light_energy = 5.0
 			l.omni_range = 16.0
@@ -222,6 +223,7 @@ func _region(i: int) -> void:
 			g.rotation.y = 0.6
 			VFX.particles(self, c + Vector3(0, 3.5, 0), {"amount": 90, "lifetime": 1.8, "one_shot": false, "speed": 1.0, "size": 0.9, "color": col, "box": Vector3(2.5, 2.5, 0.4), "explosiveness": 0.0})
 			var l := OmniLight3D.new()
+			l.light_volumetric_fog_energy = 0.2
 			l.light_color = col
 			l.light_energy = 6.0
 			l.omni_range = 14.0
@@ -277,6 +279,7 @@ func _stage_marker(stage_id: String, pos: Vector3, col: Color, boss: bool) -> vo
 	if unlocked and stars == 0:
 		VFX.particles(root, pos + Vector3(0, 1.4, 0), {"amount": 16, "lifetime": 1.2, "one_shot": false, "speed": 0.5, "size": 0.2, "color": gc, "radius": 0.5, "gravity": Vector3(0, 1.2, 0), "explosiveness": 0.0})
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = gc
 		l.light_energy = 2.0
 		l.omni_range = 4.0
@@ -340,6 +343,7 @@ func _crystal_cluster(p: Vector3, c: Color, mush := false) -> void:
 		mi.material_override = m
 		add_child(mi)
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = c
 	l.light_energy = 2.5
 	l.omni_range = 7.0

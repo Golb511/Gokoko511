@@ -5,6 +5,35 @@ Heroes, branching towers, enemy AI, multi-phase bosses, loot, inventory, shop an
 progression. Menus are in Arabic and English, and the controls work with mouse,
 keyboard or touch.
 
+> **New in 0.8 — Visual overhaul (real 3D models, not flat art):**
+> - **Towers:** all 14 are rebuilt as hand-designed gothic architecture
+>   (`scripts/core/gothic_kit.gd`): a watch spire with a lookout and banner, an
+>   arcane spire with a floating crystal, a siege bastion with an iron mortar,
+>   a barracks keep, a plague cauldron, a brazier tower, a frost-crystal
+>   obelisk, a storm spire with copper coils, a void obelisk in a stone ring, a
+>   cathedral shrine with a rose window, a stepped rock bastion, an aeolian
+>   tower with turning vanes, a ballista platform and a trap workshop.
+>   - They are carved stone with mortar and soot, slate spires, gold trim and
+>     windows that glow in the element colour (`gothic_stone.gdshader`).
+>   - They grow taller with every level and gain a crown of pinnacles and
+>     shards once a branch is chosen.
+> - **Citadel and walls:** the player's citadel, its wall towers and walls
+>   (and the backdrop castles) use the same kit.
+> - **Heroes and enemies:**
+>   - Heroic proportions instead of big heads: a bone modifier applied after
+>     the animation (`proportion_modifier.gd`).
+>   - A material split in the character shader: blued steel with glowing
+>     engraved trims, dyed cloth and pale skin.
+>   - Sculpted gear per unit (`character_gear.gd`): spiked pauldrons, curved
+>     horns, crowns, tattered capes that sway in the wind, glowing eyes,
+>     orbiting orbs, shard halos, back crystals, a shoulder raven, skull belts
+>     and element auras.
+> - **Lighting:** a cool moonlight rim, retuned bloom, exposure and contrast,
+>   much lighter volumetric fog, softer AoE decals, and ambient motes kept
+>   near the ground.
+> - **Classic look:** Settings → "Classic buildings" brings back the old
+>   buildings. Gameplay, stats and saves are unchanged.
+>
 > **New in 0.7 — Hero Mastery:** a permanent, hand-designed skill tree for
 > each of the 12 heroes (World Map → Hero Mastery). Every tree has a trunk of
 > hero-specific stats (damage, health, defence, speed, range, crits, energy)
@@ -206,6 +235,14 @@ tools/                dev scenes (model gallery, smoke tests)
   and `tools/tower_tree_oldsave_test.gd` (save/load and old saves). Dev flags:
   `--sigils=N`, `--player-level=N`, `--tower-tree=a|b|trunk|archer:a,...`.
 
+- **Visuals** (`scripts/core/gothic_kit.gd`, `character_gear.gd`,
+  `proportion_modifier.gd`, shaders `gothic_stone`, `cape`, `character`):
+  towers and the citadel are built procedurally. Every part of one tower is
+  baked into a single mesh, and the vertex colour says which material each
+  part uses. Units read `gear`, `shape` (`heroic`/`brute`/`lean`/`chibi`),
+  `cloth` and `face_shade` from their model definition in `data/*.json`.
+  Screenshot tools: `tools/char_gallery.tscn` (`GAL=heroes|enemies|towers|<id>`)
+  and `tools/showcase_battle.gd` (`SC_TOWERS`, `SC_CAM`, `SC_SHOT`).
 - **Hero Mastery** (`scripts/core/hero_tree.gd`, `scripts/ui/hero_tree_screen.gd`):
   per-hero trees in `data/hero_tree.json` (13 nodes each: 5 trunk, 2 paths of
   3 with an either/or middle tier and a capstone). `Game.hero_stats()` adds

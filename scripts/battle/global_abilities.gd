@@ -73,6 +73,7 @@ func _meteor(point: Vector3, d: Dictionary) -> void:
 	rock.add_child(mi)
 	VFX.particles(rock, from, {"amount": 60, "lifetime": 0.6, "one_shot": false, "speed": 1.0, "size": 1.4, "color": Color(1, 0.4, 0.05), "radius": 0.8, "gravity": Vector3(0, 2, 0)})
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = Color(1, 0.5, 0.1)
 	l.light_energy = 5.0
 	l.omni_range = 12.0

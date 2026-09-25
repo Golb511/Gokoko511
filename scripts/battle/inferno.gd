@@ -83,6 +83,7 @@ static func lava_river(lb: LevelBuilder, cfg: Dictionary) -> void:
 		if k % 4 == 0 and lights < 8 and GraphicsSettings.quality() >= 1:
 			lights += 1
 			var l := OmniLight3D.new()
+			l.light_volumetric_fog_energy = 0.2
 			l.light_color = Color(1.0, 0.38, 0.06)
 			l.light_energy = 2.2
 			l.omni_range = w * 2.6
@@ -168,6 +169,7 @@ static func _bridge(lb: LevelBuilder, r: PathRoute, a: float, b: float) -> void:
 			holder.add_child(post)
 		# Glowing underside where lava licks the stone.
 	var under := OmniLight3D.new()
+	under.light_volumetric_fog_energy = 0.2
 	under.light_color = Color(1.0, 0.4, 0.08)
 	under.light_energy = 1.2
 	under.omni_range = 4.0
@@ -204,6 +206,7 @@ static func lava_pool(lb: LevelBuilder, p: Vector3, radius: float) -> void:
 		"size_end": 1.6, "color": Color(0.22, 0.14, 0.1), "additive": false, "radius": radius * 0.5, "gravity": Vector3(0.2, 0.6, 0), "explosiveness": 0.0})
 	if GraphicsSettings.quality() >= 1:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = Color(1.0, 0.4, 0.07)
 		l.light_energy = 2.5
 		l.omni_range = radius * 2.8
@@ -373,6 +376,7 @@ void fragment() {
 	smoke.preprocess = 6.0
 	VFX.fire_pillar(lb.root, crater, 2.4, true)
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = Color(1.0, 0.4, 0.07)
 	l.light_energy = 6.0
 	l.omni_range = r * 3.0
@@ -426,6 +430,7 @@ static func backdrop_tower(root: Node3D, cfg: Dictionary) -> void:
 		fall.rotation.y = a
 	for k in 7:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = acc
 		l.light_energy = 5.0
 		l.omni_range = 16.0

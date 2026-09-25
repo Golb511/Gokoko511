@@ -116,6 +116,7 @@ static func char_material(albedo: Texture2D, def: Dictionary) -> ShaderMaterial:
 	m.set_shader_parameter("glow_strength", float(def.get("emission_strength", 1.0)))
 	m.set_shader_parameter("stone", 1.0 if def.get("stone", false) else 0.0)
 	m.set_shader_parameter("vein_amount", 0.25 if def.get("stone", false) else 0.1)
+	m.set_shader_parameter("face_shade", float(def.get("face_shade", 0.0)))
 	return m
 
 
@@ -167,7 +168,10 @@ static func character(def: Dictionary) -> Node3D:
 	var inst: Node3D = ps.instantiate()
 	model.add_child(inst)
 	model.rig = inst
-	var show: Array = def.get("show", [])
+	var show: Array = def.get("show", []).duplicate()
+	if "cape" in def.get("gear", []):
+		# The sculpted tattered cape replaces the source rig's stiff cape.
+		show = show.filter(func(n): return not ("Cape" in str(n) or "Cloak" in str(n)))
 	var mats: Array[ShaderMaterial] = []
 	var mat_by_tex: Dictionary = {}
 	for mi in inst.find_children("*", "MeshInstance3D", true, false):
@@ -207,6 +211,7 @@ static func character(def: Dictionary) -> Node3D:
 	var skel: Skeleton3D = inst.find_child("Skeleton3D", true, false)
 	model.skeleton = skel
 	if skel:
+		_reshape(skel, inst, def)
 		if def.has("weapon_r"):
 			_attach(skel, "handslot.r", WEAPON_DIR % def.weapon_r, def, model)
 		if def.has("weapon_l"):
@@ -218,10 +223,43 @@ static func character(def: Dictionary) -> Node3D:
 			var wings := ProceduralCreatures.bat_wings(_col(def.get("emission", [1, 0.2, 0.3])))
 			att.add_child(wings)
 			model.wings = wings
+		CharacterGear.apply(model, skel, def)
 	model.setup_animations(inst.find_child("AnimationPlayer", true, false), def.get("anim", "1h"))
 	var s := float(def.get("scale", 1.0))
 	model.scale = Vector3.ONE * s * 0.78
 	return model
+
+
+## Heroic proportions for the big-headed source rigs ("shape": "heroic" by
+## default, "brute" for giants, "lean" for casters/rogues, "chibi" to opt out).
+static func _reshape(skel: Skeleton3D, inst: Node3D, def: Dictionary) -> void:
+	var shape := str(def.get("shape", "heroic"))
+	if shape == "chibi":
+		return
+	var pm := ProportionModifier.new()
+	match shape:
+		"brute":
+			pm.head = 0.4
+			pm.chest = Vector3(1.28, 1.12, 1.2)
+			pm.legs = 1.14
+			pm.arms = 1.2
+		"lean":
+			pm.head = 0.46
+			pm.chest = Vector3(1.06, 1.1, 1.04)
+			pm.legs = 1.26
+	skel.add_child(pm)
+	# Longer legs push the feet into the ground: lift the rig by the extra length.
+	var ul := skel.find_bone("upperleg.l")
+	var ll := skel.find_bone("lowerleg.l")
+	var ft := skel.find_bone("foot.l")
+	if ul >= 0 and ll >= 0 and ft >= 0:
+		var t := skel.transform
+		var p := skel.get_parent()
+		while p != null and p != inst and p is Node3D:
+			t = (p as Node3D).transform * t
+			p = p.get_parent()
+		var seg: Vector3 = skel.get_bone_global_rest(ft).origin - skel.get_bone_global_rest(ul).origin
+		inst.position.y += (t.basis * seg).length() * (pm.legs - 1.0)
 
 
 static func _attach(skel: Skeleton3D, bone: String, path: String, def: Dictionary, model: CharacterModel) -> void:
@@ -244,6 +282,10 @@ static func _attach(skel: Skeleton3D, bone: String, path: String, def: Dictionar
 # ---------------------------------------------------------------- props
 ## Instantiates an environment model ("env/name" or "graveyard/name") with the gothic material.
 static func prop(path_key: String, tint := Color(0.5, 0.48, 0.46), accent := Color(1, 0.4, 0.1), accent_strength := 0.0, snow := 0.0, desat := 0.65, brightness := 1.0) -> Node3D:
+	# Red-roofed source buildings are swapped for gothic architecture
+	# (setting "classic_towers" brings the originals back).
+	if GothicKit.replaces(path_key) and not bool(Game.setting("classic_towers", false)):
+		return GothicKit.replacement(path_key, tint, accent, accent_strength, snow)
 	var ps := scene("res://assets/models/%s.gltf" % path_key)
 	if ps == null:
 		return Node3D.new()

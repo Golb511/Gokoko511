@@ -27,6 +27,7 @@ static func spawn(parent: Node, pos: Vector3, c: Color, cam: CameraRig) -> void:
 	mi.material_override = m
 	o.add_child(mi)
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = c
 	l.light_energy = 2.0
 	l.omni_range = 3.0

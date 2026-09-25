@@ -23,6 +23,10 @@ uniform float frozen = 0.0;
 uniform float poisoned = 0.0;
 uniform float dissolve = 0.0;
 uniform float shadow_form = 0.0;
+uniform float legacy_look = 0.0;
+uniform float gold_mode = 0.0;
+uniform float face_shade = 0.0;
+uniform float trim_glow = 0.6;
 
 varying vec3 obj_pos;
 
@@ -37,9 +41,28 @@ void fragment() {
 	float n = texture(detail_tex, duv).r;
 	float n2 = texture(detail_tex, duv * 3.1 + vec2(0.37)).r;
 
-	vec3 col = mix(base, vec3(lum), desaturate) * tint * 1.75;
+	// Split the flat-colour source atlas into materials: saturated texels are
+	// cloth/leather (take the hero tint), grey texels are forged metal (dark
+	// blued steel with bright highlights), very dark texels stay leather.
+	float sat = max(base.r, max(base.g, base.b)) - min(base.r, min(base.g, base.b));
+	// Skin: warm, moderately saturated, bright texels (faces, hands) stay pale.
+	float skin = smoothstep(0.04, 0.12, base.r - base.g) * smoothstep(0.0, 0.06, base.g - base.b) * smoothstep(0.4, 0.6, lum) * (1.0 - stone);
+	float cloth = smoothstep(0.1, 0.28, sat) * (1.0 - stone) * (1.0 - skin);
+	float metal_mask_src = (1.0 - cloth) * (1.0 - skin) * smoothstep(0.18, 0.5, lum);
+	vec3 steel = mix(vec3(0.06, 0.06, 0.07), vec3(0.22, 0.21, 0.22), smoothstep(0.3, 0.9, lum)) * mix(vec3(1.0), tint * 2.2, 0.3);
+	vec3 tn = tint / max(0.05, max(tint.r, max(tint.g, tint.b)));
+	vec3 fabric = tn * (0.07 + 0.3 * lum) * mix(vec3(1.0), base / max(0.05, lum) , 0.25);
+	vec3 leather = vec3(0.07, 0.055, 0.05) * (0.7 + lum);
+	vec3 col = mix(mix(leather, steel, metal_mask_src / max(0.001, 1.0 - cloth)), fabric, cloth);
+	col = mix(col, mix(base, vec3(lum), 0.55) * vec3(0.62, 0.58, 0.56) * (1.0 - face_shade * 0.8), skin);
+	col = mix(col, mix(base, vec3(lum), desaturate) * tint * 1.75, legacy_look);
 	col *= 0.85 + 0.3 * n2;
-	float metallic_mask = smoothstep(0.28, 0.62, lum) * metal;
+	float metallic_mask = mix(metal_mask_src, smoothstep(0.28, 0.62, lum), legacy_look) * metal;
+	// Gold / bronze parts (crowns, trims).
+	col = mix(col, vec3(0.62, 0.42, 0.14) * (0.55 + 0.9 * lum) * (0.85 + 0.3 * n), gold_mode);
+	metallic_mask = mix(metallic_mask, 1.0, gold_mode);
+	// Engraved trims: thin bright bands on metal pick up the element glow.
+	float trim = smoothstep(0.93, 0.985, lum) * (1.0 - cloth) * (1.0 - skin);
 
 	// Stone / lava-rock skin.
 	vec3 stone_col = vec3(0.22, 0.2, 0.19) * (0.6 + 0.8 * n) * tint * 2.0;
@@ -53,7 +76,7 @@ void fragment() {
 
 	float fres = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), 3.0);
 
-	vec3 emit = glow_color * glow_strength * (vein * 1.4 + fres * rim_strength);
+	vec3 emit = glow_color * glow_strength * (vein * 1.4 + fres * rim_strength * 0.55 + trim * trim_glow);
 	emit += vec3(1.0, 0.95, 0.9) * hit_flash * 1.8;
 
 	col = mix(col, vec3(0.55, 0.8, 1.0), frozen * 0.65);
@@ -74,7 +97,7 @@ void fragment() {
 	NORMAL_MAP_DEPTH = normal_depth * (0.5 + metallic_mask + stone);
 	ALBEDO = col;
 	METALLIC = metallic_mask;
-	ROUGHNESS = clamp(base_roughness + (n2 - 0.5) * 0.35 + stone * 0.4 - metallic_mask * 0.15, 0.08, 1.0);
+	ROUGHNESS = clamp(base_roughness + (n2 - 0.5) * 0.35 + stone * 0.4 - metallic_mask * 0.2 + cloth * 0.4, 0.08, 1.0);
 	SPECULAR = 0.5;
 	EMISSION = emit;
 	RIM = 0.25;

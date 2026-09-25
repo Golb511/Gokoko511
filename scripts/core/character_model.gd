@@ -123,5 +123,12 @@ func face_instant(target: Vector3) -> void:
 
 
 func dissolve_out(duration: float = 1.2) -> void:
+	# Glowing gear (eyes, orbs, halos) fades with the body.
+	if skeleton:
+		for a in skeleton.get_children():
+			if a is BoneAttachment3D and a.has_meta("gear"):
+				for g in a.get_children():
+					if g is Node3D and not (g is MeshInstance3D and g.material_override is ShaderMaterial):
+						g.create_tween().tween_property(g, "scale", Vector3.ONE * 0.01, duration * 0.6)
 	var tw := create_tween()
 	tw.tween_method(func(v): set_param("dissolve", v), 0.0, 1.0, duration)

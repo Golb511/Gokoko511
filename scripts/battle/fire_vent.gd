@@ -58,6 +58,7 @@ func setup(b: Node, cfg: Dictionary) -> void:
 	_smoke.position = Vector3(0, 0.3, 0)
 	if GraphicsSettings.quality() >= 1:
 		_light = OmniLight3D.new()
+		_light.light_volumetric_fog_energy = 0.2
 		_light.light_color = Color(1.0, 0.4, 0.08)
 		_light.light_energy = 0.4
 		_light.omni_range = 6.0

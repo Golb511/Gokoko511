@@ -96,6 +96,7 @@ func setup(b: Node, id: String, pos: Vector3) -> void:
 	brain.hero = self
 	# Aura light so the hero reads clearly in dark scenes.
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = ModelLib._col(hdef.model.get("emission", [1, 0.5, 0.2]))
 	l.light_energy = 1.2
 	l.omni_range = 4.0
@@ -624,6 +625,7 @@ func _start_avatar(cfg: Dictionary) -> void:
 		VFX.particles(_avatar_fx, global_position + Vector3(0, 1.0, 0), {"amount": 40, "lifetime": 0.8, "one_shot": false, "local": true,
 			"speed": 1.2, "size": 0.45, "color": col, "radius": 0.8, "gravity": Vector3(0, 3.0, 0), "explosiveness": 0.0})
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = col
 		l.light_energy = 4.0
 		l.omni_range = 7.0

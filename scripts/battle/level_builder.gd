@@ -61,7 +61,8 @@ func build(b: Node, parent: Node3D, stage_id: String) -> void:
 	_crystal_spots()
 	_mountains()
 	_decor()
-	VFX.ambient(root, theme.get("particles", "embers"), Vector3(bounds.get_center().x, 3, bounds.get_center().y), Vector3(bounds.size.x * 0.5, 3, bounds.size.y * 0.5))
+	# Kept close to the ground so drifting motes never fill the camera.
+	VFX.ambient(root, theme.get("particles", "embers"), Vector3(bounds.get_center().x, 1.6, bounds.get_center().y), Vector3(bounds.size.x * 0.5, 1.5, bounds.size.y * 0.5))
 
 
 func ground_routes() -> Array[PathRoute]:
@@ -95,6 +96,7 @@ func _landmarks() -> void:
 		if lm.has("light") and GraphicsSettings.quality() >= 1:
 			var lc: Array = lm.light
 			var l := OmniLight3D.new()
+			l.light_volumetric_fog_energy = 0.2
 			l.light_color = Color(lc[0], lc[1], lc[2])
 			l.light_energy = float(lc[3]) if lc.size() > 3 else 2.5
 			l.omni_range = 9.0
@@ -330,6 +332,7 @@ func _portal(r: PathRoute) -> void:
 	var col := Color(0.75, 0.2, 1.0) if theme.get("particles", "") != "embers" else Color(1.0, 0.3, 0.1)
 	VFX.particles(root, start + dir * 1.0 + Vector3(0, 2.2, 0), {"amount": 70, "lifetime": 1.6, "one_shot": false, "speed": 1.0, "size": 0.7, "color": col, "box": Vector3(1.8, 1.8, 0.3), "gravity": Vector3(0, 0.3, 0), "explosiveness": 0.0})
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = col
 	l.light_energy = 4.0
 	l.omni_range = 10.0
@@ -529,6 +532,7 @@ func _crystals(p: Vector3, c: Color, mushrooms := false) -> void:
 		holder.add_child(mi)
 	if rng.randf() < 0.4 and GraphicsSettings.quality() >= 2:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = c
 		l.light_energy = 1.5
 		l.omni_range = 5.0

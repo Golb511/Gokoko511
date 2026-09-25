@@ -4398,5 +4398,9 @@
  "battle.hero_mastery": [
   "Hero mastery",
   "إتقان البطل"
+ ],
+ "ui.classic_towers": [
+  "Classic buildings (old look)",
+  "المباني الكلاسيكية (الشكل القديم)"
  ]
 }

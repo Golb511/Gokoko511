@@ -38,6 +38,7 @@ func build() -> void:
 		q.add_child(b)
 	_toggle(v, "ui.shadows", "shadows")
 	_toggle(v, "ui.fog", "fog")
+	_toggle(v, "ui.classic_towers", "classic_towers")
 	_toggle(v, "ui.show_fps", "show_fps")
 	var cs := _row(v, "ui.camera_speed")
 	var sl := HSlider.new()

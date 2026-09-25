@@ -20,6 +20,7 @@ func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, s
 	hp_bar.visible = false
 	hp_bar.set_meta("always", false)
 	var light := OmniLight3D.new()
+	light.light_volumetric_fog_energy = 0.2
 	light.light_color = ModelLib._col(def.model.get("emission", [1, 0.3, 0.05]))
 	light.light_energy = 1.4
 	light.omni_range = 7.0

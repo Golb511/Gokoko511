@@ -45,6 +45,7 @@ static func toxic_pool(lb: LevelBuilder, p: Vector3, radius: float) -> void:
 		"size_end": 1.5, "color": Color(0.22, 0.35, 0.1), "additive": false, "radius": radius * 0.5, "gravity": Vector3(0.1, 0.35, 0), "explosiveness": 0.0})
 	if GraphicsSettings.quality() >= 1:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = GREEN
 		l.light_energy = 1.8
 		l.omni_range = radius * 2.6
@@ -319,6 +320,7 @@ static func blight_heart(root: Node3D, cfg: Dictionary) -> void:
 	tw.tween_property(heart, "scale", Vector3.ONE * 1.12, 0.45).set_trans(Tween.TRANS_SINE)
 	tw.tween_property(heart, "scale", Vector3.ONE, 0.75).set_trans(Tween.TRANS_SINE)
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = GREEN
 	l.light_energy = 8.0
 	l.omni_range = 30.0

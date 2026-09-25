@@ -38,13 +38,14 @@ static func make_environment(theme: Dictionary) -> WorldEnvironment:
 	env.ambient_light_color = _c(theme.get("ambient", [0.3, 0.22, 0.2]))
 	env.ambient_light_energy = 0.9
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
-	env.tonemap_exposure = 1.05
-	env.tonemap_white = 6.0
+	env.tonemap_exposure = float(theme.get("exposure", 1.2))
+	env.tonemap_white = 5.0
 	env.glow_enabled = true
-	env.glow_intensity = 0.6
-	env.glow_strength = 0.9
-	env.glow_bloom = 0.02
-	env.glow_hdr_threshold = 1.2
+	env.glow_intensity = 0.45
+	env.glow_strength = 0.85
+	env.glow_bloom = 0.0
+	env.glow_hdr_threshold = 1.5
+	env.glow_hdr_scale = 1.6
 	env.glow_blend_mode = Environment.GLOW_BLEND_MODE_SOFTLIGHT
 	env.fog_enabled = true
 	env.fog_light_color = _c(theme.get("fog", [0.2, 0.08, 0.05]))
@@ -54,8 +55,8 @@ static func make_environment(theme: Dictionary) -> WorldEnvironment:
 	env.fog_height = 1.5
 	env.fog_height_density = 0.12
 	env.adjustment_enabled = true
-	env.adjustment_contrast = 1.12
-	env.adjustment_saturation = 0.92
+	env.adjustment_contrast = 1.16
+	env.adjustment_saturation = 0.95
 	if not is_mobile_renderer() and q >= 2:
 		env.ssao_enabled = true
 		env.ssao_radius = 1.4
@@ -63,9 +64,9 @@ static func make_environment(theme: Dictionary) -> WorldEnvironment:
 		env.ssil_enabled = q >= 3
 		if Game.setting("fog", true):
 			env.volumetric_fog_enabled = true
-			env.volumetric_fog_density = 0.012
+			env.volumetric_fog_density = 0.0035
 			env.volumetric_fog_albedo = _c(theme.get("fog", [0.2, 0.08, 0.05])).lightened(0.3)
-			env.volumetric_fog_emission = _c(theme.get("fog", [0.2, 0.08, 0.05])) * 0.15
+			env.volumetric_fog_emission = _c(theme.get("fog", [0.2, 0.08, 0.05])) * 0.06
 			env.volumetric_fog_length = 80.0
 			env.volumetric_fog_anisotropy = 0.5
 	var we := WorldEnvironment.new()
@@ -84,6 +85,18 @@ static func make_sun(theme: Dictionary) -> DirectionalLight3D:
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS if quality() <= 1 else DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 	sun.directional_shadow_max_distance = 110.0
 	sun.light_angular_distance = 1.0
+	sun.light_volumetric_fog_energy = 0.6
+	# Cool moonlight from the opposite side: rim light that separates heroes,
+	# enemies and towers from the dark ground (child, so it follows the sun).
+	var moon := DirectionalLight3D.new()
+	moon.name = "Moon"
+	moon.light_color = _c(theme.get("moonlight_color", [0.45, 0.55, 0.95]))
+	moon.light_energy = float(theme.get("moonlight_energy", 0.2))
+	moon.rotation_degrees = Vector3(0, 180, 0)
+	moon.shadow_enabled = false
+	moon.light_volumetric_fog_energy = 0.0
+	moon.light_specular = 1.2
+	sun.add_child(moon)
 	return sun
 
 

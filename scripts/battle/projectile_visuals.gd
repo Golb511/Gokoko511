@@ -65,6 +65,7 @@ static func _orb(root: Node3D, c: Color, r: float, trail := true, light := true)
 		root.add_child(e)
 	if light and VFX._quality >= 2:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = c
 		l.light_energy = 1.5
 		l.omni_range = 3.5

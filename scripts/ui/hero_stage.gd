@@ -32,12 +32,14 @@ func setup(model_def: Dictionary, portrait := false) -> void:
 	add_child(key)
 	var glow_c := ModelLib._col(model_def.get("emission", [1, 0.4, 0.1]))
 	var rim := OmniLight3D.new()
+	rim.light_volumetric_fog_energy = 0.2
 	rim.position = Vector3(-1.4, 2.4, -2.0)
 	rim.light_color = glow_c
 	rim.light_energy = 2.6
 	rim.omni_range = 6.0
 	add_child(rim)
 	var rim2 := OmniLight3D.new()
+	rim2.light_volumetric_fog_energy = 0.2
 	rim2.position = Vector3(1.6, 1.0, -1.2)
 	rim2.light_color = glow_c.lerp(Color(1, 0.5, 0.2), 0.5)
 	rim2.light_energy = 1.4

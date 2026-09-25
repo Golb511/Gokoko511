@@ -593,6 +593,26 @@ func _build_visual() -> void:
 	_visual = Node3D.new()
 	add_child(_visual)
 	var m: Dictionary = tdef.model
+	if Game.setting("classic_towers", false):
+		_build_classic_body(m)
+	else:
+		# Hand-designed gothic architecture per tower type (GothicKit).
+		var g := GothicKit.tower(tower_id, accent(), level, branch, hash(slot.name))
+		var body: Node3D = g.node
+		body.rotation.y = PI * 0.5 * (hash(slot.name) % 4)
+		body.scale = Vector3.ONE * (1.0 + 0.05 * level)
+		_visual.add_child(body)
+		_top_height = float(g.top) * body.scale.y
+		_materials.clear()
+		_materials.append(g.material)
+	_build_top(m.get("top", "none"))
+	_build_pips()
+	_build_level_decor()
+	_build_mastery_decor()
+
+
+## The original prop-based tower bodies (kept as an option: setting "classic_towers").
+func _build_classic_body(m: Dictionary) -> void:
 	var tint := Color(0.42, 0.38, 0.36) if branch < 0 else Color(0.36, 0.33, 0.32)
 	var base_key: String = DB.tower_attr(tower_id, branch, "model_base", m.base)
 	var model := ModelLib.prop(base_key, tint, accent(), 0.6 + level * 0.15)
@@ -609,10 +629,6 @@ func _build_visual() -> void:
 	var plinth := ModelLib.prop("env/building_tower_base_red", Color(0.3, 0.28, 0.27))
 	plinth.scale = Vector3(1.55, 0.18, 1.55)
 	_visual.add_child(plinth)
-	_build_top(m.get("top", "none"))
-	_build_pips()
-	_build_level_decor()
-	_build_mastery_decor()
 
 
 func _aabb_of(n: Node3D) -> AABB:
@@ -641,7 +657,7 @@ func _build_top(kind: String) -> void:
 	glow.albedo_color = c
 	glow.emission_enabled = true
 	glow.emission = c
-	glow.emission_energy_multiplier = 3.0 + level
+	glow.emission_energy_multiplier = (3.0 + level) if Game.setting("classic_towers", false) else (1.3 + 0.25 * level)
 	var crystal := MeshInstance3D.new()
 	match kind:
 		"crystal", "ice", "void", "halo":
@@ -684,6 +700,12 @@ func _build_top(kind: String) -> void:
 			sm.radius = 0.15
 			sm.height = 0.3
 			crystal.mesh = sm
+		"banner", "none", "ballista", "spikes", "rocks":
+			if Game.setting("classic_towers", false):
+				var sm0 := SphereMesh.new()
+				sm0.radius = 0.16 + level * 0.02
+				sm0.height = sm0.radius * 2.0
+				crystal.mesh = sm0
 		_:
 			var sm := SphereMesh.new()
 			sm.radius = 0.16 + level * 0.02
@@ -706,9 +728,16 @@ func _build_top(kind: String) -> void:
 	e.color_ramp = VFX._ramp(c)
 	_orb.add_child(e)
 	_orb_light = OmniLight3D.new()
+	_orb_light.light_volumetric_fog_energy = 0.2
 	_orb_light.light_color = c
-	_orb_light.light_energy = 1.2 + level * 0.3
-	_orb_light.omni_range = 5.0 + level * 0.5
+	if Game.setting("classic_towers", false):
+		_orb_light.light_energy = 1.2 + level * 0.3
+		_orb_light.omni_range = 5.0 + level * 0.5
+	else:
+		# Gothic towers glow through their own windows; the light only rims the top.
+		_orb_light.light_energy = 0.35 + level * 0.1
+		_orb_light.omni_range = 3.2 + level * 0.3
+		_orb_light.omni_attenuation = 1.6
 	_orb.add_child(_orb_light)
 	if branch >= 0:
 		# Branch crown: ring of floating shards in the branch colour.

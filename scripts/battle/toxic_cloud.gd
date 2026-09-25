@@ -45,6 +45,7 @@ func setup(b: Node, cfg: Dictionary) -> void:
 		"size": 0.14, "color": col, "box": Vector3(radius * 0.8, 0.2, radius * 0.8), "gravity": Vector3(0, 1.0, 0), "explosiveness": 0.0})
 	if GraphicsSettings.quality() >= 1:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = col
 		l.light_energy = 1.4
 		l.omni_range = radius * 2.2

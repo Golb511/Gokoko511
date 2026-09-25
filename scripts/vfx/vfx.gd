@@ -16,6 +16,9 @@ static var _smoke_mat: StandardMaterial3D
 static var _quality := 2
 
 
+static var _disc: Texture2D
+
+
 static func set_quality(q: int) -> void:
 	_quality = q
 
@@ -117,6 +120,7 @@ static func flash_light(parent: Node, pos: Vector3, c: Color, energy: float = 4.
 	if _quality <= 0:
 		return
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = c
 	l.light_energy = energy
 	l.omni_range = range_
@@ -179,25 +183,39 @@ static func ground_ring(parent: Node, pos: Vector3, radius: float, c: Color, dur
 ## Persistent telegraph/aoe decal (caller frees it).
 static func area_disc(parent: Node, pos: Vector3, radius: float, c: Color) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
-	var cyl := CylinderMesh.new()
-	cyl.top_radius = 1.0
-	cyl.bottom_radius = 1.0
-	cyl.height = 0.02
-	cyl.radial_segments = 40
-	mi.mesh = cyl
+	var pm := PlaneMesh.new()
+	pm.size = Vector2(2.0, 2.0)
+	mi.mesh = pm
 	var m := StandardMaterial3D.new()
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-	m.albedo_texture = ModelLib.radial_tex()
-	m.albedo_color = Color(c.r, c.g, c.b, 0.55)
-	m.uv1_scale = Vector3(1, 1, 1)
+	m.albedo_texture = _disc_tex()
+	m.albedo_color = Color(c.r, c.g, c.b, 0.6)
+	m.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_DISABLED
 	mi.material_override = m
 	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	parent.add_child(mi)
 	mi.global_position = pos + Vector3(0, 0.06, 0)
 	mi.scale = Vector3(radius, 1, radius)
 	return mi
+
+
+## Soft AoE decal: faint fill with a brighter rim, fading to nothing at the edge.
+static func _disc_tex() -> Texture2D:
+	if _disc == null:
+		var g := Gradient.new()
+		g.offsets = PackedFloat32Array([0.0, 0.7, 0.88, 1.0])
+		g.colors = PackedColorArray([Color(1, 1, 1, 0.18), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.85), Color(1, 1, 1, 0.0)])
+		var t := GradientTexture2D.new()
+		t.gradient = g
+		t.fill = GradientTexture2D.FILL_RADIAL
+		t.fill_from = Vector2(0.5, 0.5)
+		t.fill_to = Vector2(0.5, 0.0)
+		t.width = 128
+		t.height = 128
+		_disc = t
+	return _disc
 
 
 static func cloud(parent: Node, pos: Vector3, radius: float, element: String, duration: float) -> Node3D:
@@ -213,6 +231,7 @@ static func cloud(parent: Node, pos: Vector3, radius: float, element: String, du
 	elif element == "fire":
 		particles(root, pos + Vector3(0, 0.2, 0), {"amount": 50, "lifetime": 0.9, "one_shot": false, "speed": 2.0, "size": 0.55, "color": c, "box": Vector3(radius * 0.8, 0.1, radius * 0.8), "gravity": Vector3(0, 3, 0), "spread": 15.0})
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = c
 	l.light_energy = 2.0
 	l.omni_range = radius * 2.2
@@ -231,13 +250,14 @@ static func torch_flame(parent: Node, pos: Vector3, c: Color = Color(1.0, 0.45, 
 	var root := Node3D.new()
 	parent.add_child(root)
 	root.global_position = pos
-	particles(root, pos, {"amount": 9, "lifetime": 0.5, "one_shot": false, "speed": 0.6, "size": 0.24, "color": c.darkened(0.15), "radius": 0.05, "gravity": Vector3(0, 2.0, 0), "spread": 10.0})
+	particles(root, pos, {"amount": 8, "lifetime": 0.5, "one_shot": false, "speed": 0.6, "size": 0.2, "color": c.darkened(0.4), "radius": 0.05, "gravity": Vector3(0, 2.0, 0), "spread": 10.0})
 	if with_light and _quality > 0:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = c
-		l.light_energy = 2.2
-		l.omni_range = 7.0
-		l.omni_attenuation = 1.4
+		l.light_energy = 1.3
+		l.omni_range = 6.0
+		l.omni_attenuation = 1.6
 		l.shadow_enabled = _quality >= 3
 		root.add_child(l)
 		l.position = Vector3(0, 0.4, 0)
@@ -310,7 +330,7 @@ static func build_dust(parent: Node, pos: Vector3) -> void:
 static func ambient(parent: Node, kind: String, center: Vector3, extents: Vector3) -> void:
 	match kind:
 		"embers":
-			particles(parent, center, {"amount": 160, "lifetime": 5.0, "one_shot": false, "speed": 0.6, "size": 0.09, "size_end": 0.6, "color": Color(1.0, 0.45, 0.1), "box": extents, "gravity": Vector3(0.3, 0.7, 0), "spread": 60.0, "explosiveness": 0.0})
+			particles(parent, center, {"amount": 110, "lifetime": 5.0, "one_shot": false, "speed": 0.6, "size": 0.045, "size_end": 0.5, "color": Color(0.75, 0.3, 0.06), "box": extents, "gravity": Vector3(0.3, 0.7, 0), "spread": 60.0, "explosiveness": 0.0})
 			particles(parent, center + Vector3(0, 1, 0), {"amount": 40, "lifetime": 8.0, "one_shot": false, "speed": 0.2, "size": 5.0, "size_end": 1.0, "color": Color(0.16, 0.1, 0.09), "additive": false, "box": extents, "gravity": Vector3(0.2, 0.05, 0), "end_alpha": 0.0, "explosiveness": 0.0})
 		"snow":
 			particles(parent, center + Vector3(0, 8, 0), {"amount": 300, "lifetime": 5.0, "one_shot": false, "speed": 0.5, "size": 0.1, "size_end": 1.0, "color": Color(0.9, 0.95, 1.0), "box": Vector3(extents.x, 1, extents.z), "gravity": Vector3(0.6, -1.8, 0), "direction": Vector3.DOWN, "spread": 20.0, "explosiveness": 0.0})

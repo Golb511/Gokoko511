@@ -171,6 +171,7 @@ static func air_portal(root: Node3D, r: PathRoute) -> void:
 	var e := VFX.particles(root, p, {"amount": 70, "lifetime": 1.6, "one_shot": false, "speed": 1.2, "size": 0.7, "color": col, "radius": 1.6, "gravity": Vector3(0, 0, 0), "explosiveness": 0.0})
 	e.flatness = 0.8
 	var l := OmniLight3D.new()
+	l.light_volumetric_fog_energy = 0.2
 	l.light_color = col
 	l.light_energy = 4.0
 	l.omni_range = 12.0
@@ -195,6 +196,7 @@ static func backdrop_castle(root: Node3D, cfg: Dictionary) -> void:
 	# Glowing windows / soul fire.
 	for k in 9:
 		var l := OmniLight3D.new()
+		l.light_volumetric_fog_energy = 0.2
 		l.light_color = acc
 		l.light_energy = 3.5
 		l.omni_range = 14.0
