@@ -2,7 +2,7 @@ extends Node
 ## Loads every screen in sequence to catch runtime errors (used headless).
 
 func _ready() -> void:
-	for key in ["main_menu", "world_map", "heroes", "inventory", "shop", "missions", "achievements", "guild", "settings", "tower_tree"]:
+	for key in ["main_menu", "world_map", "heroes", "inventory", "shop", "missions", "achievements", "guild", "settings", "tower_tree", "hero_tree"]:
 		print("SMOKE: ", key)
 		get_tree().change_scene_to_file(Router.SCENES[key])
 		for i in 20:

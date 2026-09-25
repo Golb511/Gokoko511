@@ -1,0 +1,3069 @@
+{
+ "version": 1,
+ "respec": {
+  "gold_per_point": 60,
+  "min_gold": 150
+ },
+ "points": {
+  "per_level": 1,
+  "bonus_every": 5
+ },
+ "heroes": {
+  "hell_knight": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "attack_speed": 0.06
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.2,
+        "radius": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "dmg": 0.2,
+        "cooldown": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "defense_pct": 0.15,
+      "health_pct": 0.1
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "dmg": 0.2,
+        "radius": 1.0
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "burn",
+        "duration": 3.0,
+        "power": 0.15
+       }
+      }
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "splash": 0.8,
+      "damage_pct": 0.08
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "aura": {
+       "radius": 2.8,
+       "dps": 0.25,
+       "element": "fire",
+       "status": {
+        "id": "burn",
+        "duration": 2.0,
+        "power": 0.1
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "count": 1,
+        "summon_hp": 0.3,
+        "summon_dmg": 0.3
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "thorns": 0.2,
+      "on_ult": {
+       "damage": 0.35,
+       "attack_speed": 0.3,
+       "dr": 0.3,
+       "duration": 8,
+       "scale": 1.3
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "periodic",
+       "every": 6.0,
+       "ab": {
+        "type": "nova",
+        "element": "fire",
+        "radius": 4.0,
+        "dmg": 1.2,
+        "status": {
+         "id": "burn",
+         "duration": 3.0,
+         "power": 0.25
+        }
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "poison_sorcerer": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "cdr": 0.05
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.2,
+        "radius": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "duration": 2.0,
+        "radius": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "poison",
+        "duration": 4.0,
+        "power": 0.35
+       }
+      }
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.3,
+        "radius": 0.6
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "on_kill": [
+       {
+        "type": "explode",
+        "radius": 3.0,
+        "dmg": 0.5,
+        "element": "poison",
+        "status": {
+         "id": "poison",
+         "duration": 4.0,
+         "power": 0.3
+        }
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "duration": 3.0,
+        "radius": 1.0
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "armor_break",
+        "duration": 4.0,
+        "power": 0.25
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "radius": 1.0,
+        "dmg": 0.3,
+        "cooldown": 0.2
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "aura": {
+       "radius": 4.5,
+       "dps": 0.15,
+       "element": "poison",
+       "status": {
+        "id": "poison",
+        "duration": 3.0,
+        "power": 0.2
+       }
+      },
+      "on_kill": [
+       {
+        "type": "explode",
+        "radius": 4.0,
+        "dmg": 0.8,
+        "element": "poison",
+        "status": {
+         "id": "poison",
+         "duration": 5.0,
+         "power": 0.4
+        }
+       }
+      ]
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 3,
+       "ab": {
+        "type": "blast",
+        "element": "poison",
+        "radius": 2.5,
+        "dmg": 1.0,
+        "status": {
+         "id": "armor_break",
+         "duration": 4.0,
+         "power": 0.3
+        }
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "raven_archer": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "range_add": 1.0
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "count": 3
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "dmg": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "range_add": 2.0,
+      "crit": 0.06
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "multishot": 1
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit_dmg": 0.5
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "pierce": 2,
+      "damage_pct": 0.08
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "count": 2,
+        "duration": 4.0
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "attack_speed": 0.12
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 5,
+       "ab": {
+        "type": "line",
+        "element": "physical",
+        "range": 18,
+        "radius": 1.2,
+        "dmg": 4.0,
+        "execute": 0.15
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "count": 10
+       }
+      ],
+      "special": {
+       "type": "periodic",
+       "every": 7.0,
+       "ab": {
+        "type": "summon",
+        "element": "shadow",
+        "target": "self",
+        "count": 2,
+        "unit": "raven",
+        "duration": 8
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "bone_king": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "health_pct": 0.1
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "defense_pct": 0.1
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "damage_pct": 0.06
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "radius": 0.4,
+        "cooldown": 0.15
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "count": 1
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "summon_hp": 0.25,
+        "summon_dmg": 0.25
+       },
+       {
+        "slot": 4,
+        "summon_hp": 0.25,
+        "summon_dmg": 0.25
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "lifesteal": 0.1
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "cooldown": 0.25,
+        "duration": 6.0
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "summon_hp": 0.5
+       },
+       {
+        "slot": 4,
+        "summon_hp": 0.4
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "weaken",
+        "duration": 3.0,
+        "power": 0.2
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "slow",
+        "duration": 2.0,
+        "power": 0.25
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "count": 4
+       }
+      ],
+      "on_kill": [
+       {
+        "type": "raise",
+        "chance": 0.35,
+        "unit": "risen_skeleton",
+        "duration": 12,
+        "max": 6
+       }
+      ]
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "revive": 0.5,
+      "aura": {
+       "radius": 4.0,
+       "dps": 0.3,
+       "element": "shadow",
+       "drain": 0.5,
+       "status": {
+        "id": "weaken",
+        "duration": 2.0,
+        "power": 0.15
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "frost_mage": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "cdr": 0.05
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "duration": 2.0
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "radius": 0.8,
+        "status": {
+         "id": "freeze",
+         "duration": 4.0,
+         "power": 1
+        }
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "multishot": 1
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "bonus_status": {
+       "id": "slow",
+       "mult": 1.3
+      }
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "radius": 1.0,
+        "status": {
+         "id": "slow",
+         "duration": 1.0,
+         "power": 0.7
+        }
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "crit": 0.08,
+      "crit_dmg": 0.3
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "armor_break",
+        "duration": 3.0,
+        "power": 0.2
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "radius": 2.0
+       }
+      ],
+      "special": {
+       "type": "periodic",
+       "every": 8.0,
+       "ab": {
+        "type": "nova",
+        "element": "ice",
+        "radius": 5.0,
+        "dmg": 0.6,
+        "status": {
+         "id": "freeze",
+         "duration": 1.5,
+         "power": 1
+        }
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 4,
+       "ab": {
+        "type": "blast",
+        "element": "ice",
+        "radius": 2.5,
+        "dmg": 1.5,
+        "status": {
+         "id": "freeze",
+         "duration": 0.6,
+         "power": 1
+        },
+        "ultimate": true
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "blueflame_warlock": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "cdr": 0.05
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "buff_duration": 3.0
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "burn",
+        "duration": 3.0,
+        "power": 0.2
+       }
+      }
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "energy_regen": 0.8
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "radius": 1.0,
+        "duration": 2.0
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "dmg": 0.4,
+        "radius": 0.6
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "cooldown": 0.3
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "crit": 0.1,
+      "crit_dmg": 0.25
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "on_kill": [
+       {
+        "type": "explode",
+        "radius": 3.0,
+        "dmg": 0.8,
+        "element": "fire",
+        "status": {
+         "id": "burn",
+         "duration": 3.0,
+         "power": 0.25
+        }
+       }
+      ],
+      "special": {
+       "type": "periodic",
+       "every": 7.0,
+       "ab": {
+        "type": "nova",
+        "element": "fire",
+        "radius": 4.0,
+        "dmg": 1.0,
+        "status": {
+         "id": "burn",
+         "duration": 3.0,
+         "power": 0.2
+        }
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "ult_echo": {
+       "delay": 1.5,
+       "mult": 0.6
+      },
+      "ab": [
+       {
+        "slot": 4,
+        "energy": -20
+       }
+      ]
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "giant_executioner": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "attack_speed": 0.06
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "dmg": 0.2,
+        "execute": 0.05
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "cooldown": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "crit": 0.08
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "lifesteal": 0.08
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "on_hit_execute": 0.1
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "splash": 0.8,
+      "damage_pct": 0.08
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "buff_duration": 3.0,
+        "lifesteal": 0.1
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "dr": 0.12
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "execute": 0.1
+       }
+      ],
+      "on_kill": [
+       {
+        "type": "reset_cd",
+        "slot": 1
+       },
+       {
+        "type": "energy",
+        "amount": 8
+       }
+      ]
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "on_kill": [
+       {
+        "type": "rampage",
+        "attack_speed": 0.08,
+        "damage": 0.05,
+        "duration": 6.0,
+        "max": 5
+       }
+      ]
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "dragon_lord": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.06,
+      "health_pct": 0.06
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "defense_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.25,
+        "radius": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "count": 1
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "defense_pct": 0.15
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "summon_hp": 0.3,
+        "summon_dmg": 0.3
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "dmg": 0.3,
+        "status": {
+         "id": "stun",
+         "duration": 1.0,
+         "power": 1
+        }
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "thorns": 0.2
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "cooldown": 0.25,
+        "duration": 6.0
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "dmg": 0.4
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "on_ult": {
+       "damage": 0.3,
+       "attack_speed": 0.2,
+       "dr": 0.35,
+       "duration": 10,
+       "scale": 1.35
+      },
+      "splash": 0.8
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "periodic",
+       "every": 10.0,
+       "ab": {
+        "type": "summon",
+        "element": "fire",
+        "target": "self",
+        "count": 1,
+        "unit": "dragon_whelp",
+        "duration": 12
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "stone_beast": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "health_pct": 0.1
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "defense_pct": 0.1
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "damage_pct": 0.06
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "radius": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "dmg": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "dr": 0.1
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "damage_pct": 0.12,
+      "splash": 0.6
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "thorns": 0.25
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "radius": 2.0,
+        "cooldown": 0.2
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "stun",
+        "duration": 0.8,
+        "power": 1
+       },
+       "chance": 0.12
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "cooldown": 0.3,
+        "radius": 0.6
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "revive": 0.6,
+      "dr": 0.1,
+      "ab": [
+       {
+        "slot": 2,
+        "buff_duration": 4.0
+       }
+      ]
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 4,
+       "ab": {
+        "type": "nova",
+        "element": "earth",
+        "radius": 3.5,
+        "dmg": 1.0,
+        "status": {
+         "id": "stun",
+         "duration": 0.8,
+         "power": 1
+        }
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "shadow_knight": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "move_speed": 0.06,
+      "crit": 0.04
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "hits": 1
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "radius": 0.5,
+        "dmg": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "crit": 0.08,
+      "crit_dmg": 0.3
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "count": 1
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "hits": 2,
+        "cooldown": 0.15
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "cooldown": 0.3,
+        "dmg": 0.5
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "summon_hp": 0.4,
+        "summon_dmg": 0.4
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "weaken",
+        "duration": 3.0,
+        "power": 0.15
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 4,
+       "ab": {
+        "type": "blink_strike",
+        "element": "shadow",
+        "range": 8,
+        "dmg": 1.2,
+        "hits": 3
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "hits": 3
+       }
+      ],
+      "special": {
+       "type": "periodic",
+       "every": 9.0,
+       "ab": {
+        "type": "summon",
+        "element": "shadow",
+        "target": "self",
+        "count": 1,
+        "unit": "shadow_clone",
+        "duration": 10
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "night_sniper": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.08
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "range_add": 1.0
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "status_power": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "crit": 0.08
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "radius": 0.8,
+        "dmg": 0.3
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "crit_dmg": 0.5
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "range_add": 2.5,
+      "damage_pct": 0.06
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "burn",
+        "duration": 3.0,
+        "power": 0.15
+       }
+      }
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 1,
+        "radius": 1.0,
+        "cooldown": 0.25
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 4,
+        "hits": 2
+       }
+      ],
+      "special": {
+       "type": "every_attacks",
+       "every": 4,
+       "ab": {
+        "type": "execute",
+        "element": "physical",
+        "range": 16,
+        "dmg": 3.0,
+        "status": {
+         "id": "armor_break",
+         "duration": 5.0,
+         "power": 0.4
+        }
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "every_attacks",
+       "every": 3,
+       "ab": {
+        "type": "blast",
+        "element": "fire",
+        "radius": 2.2,
+        "dmg": 0.9
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  },
+  "storm_warden": {
+   "nodes": [
+    {
+     "id": "core_1",
+     "x": 0.5,
+     "y": 0.04,
+     "cost": 1,
+     "level": 2,
+     "requires_any": [],
+     "effects": {
+      "damage_pct": 0.06,
+      "health_pct": 0.06
+     }
+    },
+    {
+     "id": "core_2",
+     "x": 0.36,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "energy_regen": 0.4
+     }
+    },
+    {
+     "id": "core_3",
+     "x": 0.64,
+     "y": 0.2,
+     "cost": 1,
+     "level": 3,
+     "requires_any": [
+      "core_1"
+     ],
+     "effects": {
+      "health_pct": 0.08
+     }
+    },
+    {
+     "id": "core_4",
+     "x": 0.17,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_2"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "count": 2
+       }
+      ]
+     }
+    },
+    {
+     "id": "core_5",
+     "x": 0.83,
+     "y": 0.36,
+     "cost": 2,
+     "level": 4,
+     "requires_any": [
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "radius": 2.0,
+        "buff_duration": 3.0
+       }
+      ]
+     }
+    },
+    {
+     "id": "a1",
+     "x": 0.3,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "chain": 1
+     },
+     "exclusive": "path",
+     "path": "a"
+    },
+    {
+     "id": "b1",
+     "x": 0.7,
+     "y": 0.52,
+     "cost": 2,
+     "level": 5,
+     "requires_any": [
+      "core_2",
+      "core_3"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "buff_mult": 0.2
+       }
+      ]
+     },
+     "exclusive": "path",
+     "path": "b"
+    },
+    {
+     "id": "a2",
+     "x": 0.15,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "on_hit": {
+       "status": {
+        "id": "stun",
+        "duration": 0.6,
+        "power": 1
+       },
+       "chance": 0.1
+      }
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "a2b",
+     "x": 0.4,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "a1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 0,
+        "dmg": 0.35
+       }
+      ]
+     },
+     "exclusive": "a_mid",
+     "path": "a"
+    },
+    {
+     "id": "b2",
+     "x": 0.6,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 2,
+        "buff_duration": 3.0
+       }
+      ],
+      "regen": 0.005
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "b2b",
+     "x": 0.85,
+     "y": 0.7,
+     "cost": 3,
+     "level": 8,
+     "requires_any": [
+      "b1"
+     ],
+     "effects": {
+      "ab": [
+       {
+        "slot": 3,
+        "cooldown": 0.3
+       }
+      ]
+     },
+     "exclusive": "b_mid",
+     "path": "b"
+    },
+    {
+     "id": "a3",
+     "x": 0.27,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "a2",
+      "a2b"
+     ],
+     "effects": {
+      "aura": {
+       "radius": 4.5,
+       "dps": 0.3,
+       "element": "lightning"
+      },
+      "special": {
+       "type": "periodic",
+       "every": 3.0,
+       "ab": {
+        "type": "chain",
+        "element": "lightning",
+        "range": 8,
+        "dmg": 0.8,
+        "count": 3
+       }
+      }
+     },
+     "path": "a",
+     "capstone": true
+    },
+    {
+     "id": "b3",
+     "x": 0.73,
+     "y": 0.9,
+     "cost": 5,
+     "level": 12,
+     "requires_any": [
+      "b2",
+      "b2b"
+     ],
+     "effects": {
+      "special": {
+       "type": "periodic",
+       "every": 8.0,
+       "ab": {
+        "type": "tower_buff",
+        "element": "lightning",
+        "radius": 9,
+        "buff": {
+         "stat": "tower_rate",
+         "mult": 1.3,
+         "duration": 4
+        },
+        "ally_heal": 0.08
+       }
+      }
+     },
+     "path": "b",
+     "capstone": true
+    }
+   ]
+  }
+ }
+}

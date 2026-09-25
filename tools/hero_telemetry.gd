@@ -63,3 +63,6 @@ func _dump() -> void:
 	for k in ["idle", "fight", "move", "retreat", "dead", "hp_low"]:
 		stats[k] = int(stats[k])
 	print("HERO_STATS ", JSON.stringify(stats))
+	var b = get_tree().current_scene if get_tree() else null
+	if b is BattleController and b.hero:
+		print("HERO_MASTERY ", JSON.stringify({"tree": HeroTree.owned(b.hero.hero_id), "procs": b.hero.mastery_log}))

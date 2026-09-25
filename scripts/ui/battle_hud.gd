@@ -197,6 +197,17 @@ func _build_hero_panel() -> void:
 			tr_.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 			tr_.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hero_portrait.add_child(tr_))
+	var htier := HeroTree.mastery_tier(battle.hero.hero_id)
+	if htier > 0:
+		var hpath := HeroTree.chosen_path(battle.hero.hero_id)
+		hero_portrait.tooltip_text = tr("battle.hero_mastery") + ": " + (tr("ht.%s.path_%s" % [battle.hero.hero_id, hpath]) if hpath != "" else "%d/13" % HeroTree.owned(battle.hero.hero_id).size())
+		var badge := UITheme.label("✦".repeat(htier), 16, Color(1.0, 0.84, 0.42), true, HORIZONTAL_ALIGNMENT_RIGHT)
+		badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+		badge.position += Vector2(-54, 2)
+		badge.size = Vector2(50, 20)
+		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		badge.z_index = 2
+		hero_portrait.add_child(badge)
 	hero_respawn = UITheme.label("", 30, Color(1, 0.4, 0.3), true, HORIZONTAL_ALIGNMENT_CENTER)
 	hero_respawn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hero_portrait.add_child(hero_respawn)

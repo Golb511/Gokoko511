@@ -25,6 +25,9 @@ func _ready() -> void:
 			Game.profile.player_level = int(a.substr(15))
 		elif a.begins_with("--sigils="):
 			TowerTree.state().earned = TowerTree.earned() + int(a.substr(9))
+		elif a.begins_with("--hero-tree="):
+			# Dev/balance: grant hero mastery setups, e.g. "a", "b", "hell_knight:a"
+			HeroTree.dev_grant(a.substr(12))
 		elif a.begins_with("--tower-tree="):
 			# Dev/balance: grant mastery setups, e.g. "a", "b", "trunk", "archer:a,mage:b"
 			TowerTree.dev_grant(a.substr(13))

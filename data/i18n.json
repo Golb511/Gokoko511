@@ -3250,5 +3250,1153 @@
  "tt.fx.dmg_neg": [
   "-%d%% damage per projectile",
   "-%d%% ضرر لكل مقذوف"
+ ],
+ "ht.hell_knight.core_1": [
+  "Infernal Might",
+  "قوة جهنمية"
+ ],
+ "ht.hell_knight.core_2": [
+  "Battle Rhythm",
+  "إيقاع المعركة"
+ ],
+ "ht.hell_knight.core_3": [
+  "Hellforged Body",
+  "جسد مصهور"
+ ],
+ "ht.hell_knight.core_4": [
+  "Crushing Strike",
+  "الضربة الساحقة"
+ ],
+ "ht.hell_knight.core_5": [
+  "Blazing Dash",
+  "الاندفاع المتوهج"
+ ],
+ "ht.hell_knight.a1": [
+  "Hellforged Plate",
+  "الدرع المصهور"
+ ],
+ "ht.hell_knight.b1": [
+  "Kindled Soul",
+  "الروح المتقدة"
+ ],
+ "ht.hell_knight.a2": [
+  "Searing Blade",
+  "النصل الحارق"
+ ],
+ "ht.hell_knight.a2b": [
+  "Brutal Cleave",
+  "الشق الوحشي"
+ ],
+ "ht.hell_knight.b2": [
+  "Aura of Cinders",
+  "هالة الرماد"
+ ],
+ "ht.hell_knight.b2b": [
+  "Hellspawn Pact",
+  "ميثاق الجحيم"
+ ],
+ "ht.hell_knight.a3": [
+  "Avatar of Wrath",
+  "تجسيد الغضب"
+ ],
+ "ht.hell_knight.b3": [
+  "Hellstorm",
+  "عاصفة الجحيم"
+ ],
+ "ht.hell_knight.path_a": [
+  "Infernal Juggernaut",
+  "العملاق الجهنمي"
+ ],
+ "ht.hell_knight.path_b": [
+  "Hellfire Herald",
+  "بشير نار الجحيم"
+ ],
+ "ht.hell_knight.path_a_desc": [
+  "Unstoppable melee: armour, cleaving blows and a burning blade.",
+  "قتال مباشر لا يُوقف: دروع وضربات قاطعة ونصل مشتعل."
+ ],
+ "ht.hell_knight.path_b_desc": [
+  "Hellfire everywhere: burning auras, fire storms and hellspawn.",
+  "نار الجحيم في كل مكان: هالات حارقة وعواصف نار ومخلوقات الجحيم."
+ ],
+ "ht.poison_sorcerer.core_1": [
+  "Toxic Mastery",
+  "إتقان السموم"
+ ],
+ "ht.poison_sorcerer.core_2": [
+  "Swift Incantation",
+  "التعويذة السريعة"
+ ],
+ "ht.poison_sorcerer.core_3": [
+  "Hardy Alchemist",
+  "الخيميائي الصلب"
+ ],
+ "ht.poison_sorcerer.core_4": [
+  "Potent Flask",
+  "القارورة الفتاكة"
+ ],
+ "ht.poison_sorcerer.core_5": [
+  "Thick Cloud",
+  "السحابة الكثيفة"
+ ],
+ "ht.poison_sorcerer.a1": [
+  "Virulence",
+  "الضراوة"
+ ],
+ "ht.poison_sorcerer.b1": [
+  "Volatile Flask",
+  "القارورة المتفجرة"
+ ],
+ "ht.poison_sorcerer.a2": [
+  "Contagion",
+  "العدوى"
+ ],
+ "ht.poison_sorcerer.a2b": [
+  "Lingering Miasma",
+  "الوباء الدائم"
+ ],
+ "ht.poison_sorcerer.b2": [
+  "Acid Burn",
+  "حرق الحمض"
+ ],
+ "ht.poison_sorcerer.b2b": [
+  "Venom Surge",
+  "فوران السم"
+ ],
+ "ht.poison_sorcerer.a3": [
+  "Pandemic",
+  "الجائحة"
+ ],
+ "ht.poison_sorcerer.b3": [
+  "Chain Reaction",
+  "التفاعل المتسلسل"
+ ],
+ "ht.poison_sorcerer.path_a": [
+  "Plaguebringer",
+  "جالب الطاعون"
+ ],
+ "ht.poison_sorcerer.path_b": [
+  "Corrosive Alchemist",
+  "الخيميائي الأكّال"
+ ],
+ "ht.poison_sorcerer.path_a_desc": [
+  "Lingering poison that spreads from enemy to enemy.",
+  "سم دائم ينتشر من عدو إلى آخر."
+ ],
+ "ht.poison_sorcerer.path_b_desc": [
+  "Toxic explosions that dissolve armour.",
+  "انفجارات سامة تذيب الدروع."
+ ],
+ "ht.raven_archer.core_1": [
+  "Sharpened Arrows",
+  "السهام المسنونة"
+ ],
+ "ht.raven_archer.core_2": [
+  "Eagle Sight",
+  "بصر النسر"
+ ],
+ "ht.raven_archer.core_3": [
+  "Light Armour",
+  "الدرع الخفيف"
+ ],
+ "ht.raven_archer.core_4": [
+  "Denser Volley",
+  "الوابل الكثيف"
+ ],
+ "ht.raven_archer.core_5": [
+  "Deeper Pierce",
+  "الاختراق العميق"
+ ],
+ "ht.raven_archer.a1": [
+  "Hawk's Reach",
+  "مدى الصقر"
+ ],
+ "ht.raven_archer.b1": [
+  "Twin Fletching",
+  "الريش المزدوج"
+ ],
+ "ht.raven_archer.a2": [
+  "Lethal Aim",
+  "التصويب القاتل"
+ ],
+ "ht.raven_archer.a2b": [
+  "Heartpiercer",
+  "مخترق القلوب"
+ ],
+ "ht.raven_archer.b2": [
+  "Raven Kin",
+  "أقارب الغربان"
+ ],
+ "ht.raven_archer.b2b": [
+  "Swift Wings",
+  "الأجنحة السريعة"
+ ],
+ "ht.raven_archer.a3": [
+  "Kill Shot",
+  "الطلقة القاتلة"
+ ],
+ "ht.raven_archer.b3": [
+  "Unkindness of Ravens",
+  "سرب الغربان الأسود"
+ ],
+ "ht.raven_archer.path_a": [
+  "Deadeye Sniper",
+  "القناص الفتاك"
+ ],
+ "ht.raven_archer.path_b": [
+  "Shadow Murder",
+  "سرب غربان الظل"
+ ],
+ "ht.raven_archer.path_a_desc": [
+  "Extreme range, critical hits and killing shots.",
+  "مدى هائل وضربات حرجة وطلقات قاتلة."
+ ],
+ "ht.raven_archer.path_b_desc": [
+  "Many arrows at once and flocks of shadow ravens.",
+  "سهام متعددة وأسراب من غربان الظل."
+ ],
+ "ht.bone_king.core_1": [
+  "Bone Fortress",
+  "حصن العظام"
+ ],
+ "ht.bone_king.core_2": [
+  "Calcified Hide",
+  "الجلد المتكلس"
+ ],
+ "ht.bone_king.core_3": [
+  "Grave Strength",
+  "قوة القبر"
+ ],
+ "ht.bone_king.core_4": [
+  "Skull Crusher",
+  "ساحق الجماجم"
+ ],
+ "ht.bone_king.core_5": [
+  "Grave Summons",
+  "استدعاء القبور"
+ ],
+ "ht.bone_king.a1": [
+  "Grave Call",
+  "نداء القبر"
+ ],
+ "ht.bone_king.b1": [
+  "Soul Siphon",
+  "سحب الأرواح"
+ ],
+ "ht.bone_king.a2": [
+  "Endless Ranks",
+  "الصفوف التي لا تنتهي"
+ ],
+ "ht.bone_king.a2b": [
+  "Bone Giants",
+  "عمالقة العظام"
+ ],
+ "ht.bone_king.b2": [
+  "Withering Touch",
+  "لمسة الذبول"
+ ],
+ "ht.bone_king.b2b": [
+  "Grave Chill",
+  "برد القبر"
+ ],
+ "ht.bone_king.a3": [
+  "Undying Legion",
+  "الفيلق الخالد"
+ ],
+ "ht.bone_king.b3": [
+  "Death's Embrace",
+  "عناق الموت"
+ ],
+ "ht.bone_king.path_a": [
+  "Lord of the Legion",
+  "سيد الفيلق"
+ ],
+ "ht.bone_king.path_b": [
+  "Death Sorcerer",
+  "ساحر الموت"
+ ],
+ "ht.bone_king.path_a_desc": [
+  "Command an ever-growing army of the dead.",
+  "قُد جيشًا من الموتى يكبر بلا توقف."
+ ],
+ "ht.bone_king.path_b_desc": [
+  "Drain life, wither and weaken the living.",
+  "امتصاص الحياة وإذبال الأحياء وإضعافهم."
+ ],
+ "ht.frost_mage.core_1": [
+  "Winter's Edge",
+  "حد الشتاء"
+ ],
+ "ht.frost_mage.core_2": [
+  "Cold Focus",
+  "التركيز البارد"
+ ],
+ "ht.frost_mage.core_3": [
+  "Frozen Heart",
+  "القلب المتجمد"
+ ],
+ "ht.frost_mage.core_4": [
+  "Frost Surge",
+  "موجة الصقيع"
+ ],
+ "ht.frost_mage.core_5": [
+  "Long Winter",
+  "الشتاء الطويل"
+ ],
+ "ht.frost_mage.a1": [
+  "Deep Freeze",
+  "التجميد العميق"
+ ],
+ "ht.frost_mage.b1": [
+  "Ice Shards",
+  "شظايا الجليد"
+ ],
+ "ht.frost_mage.a2": [
+  "Shatter",
+  "التحطيم"
+ ],
+ "ht.frost_mage.a2b": [
+  "Frozen Ground",
+  "الأرض المتجمدة"
+ ],
+ "ht.frost_mage.b2": [
+  "Frostbite",
+  "عضة الصقيع"
+ ],
+ "ht.frost_mage.b2b": [
+  "Brittle Bones",
+  "العظام الهشة"
+ ],
+ "ht.frost_mage.a3": [
+  "Eternal Winter",
+  "الشتاء الأبدي"
+ ],
+ "ht.frost_mage.b3": [
+  "Comet Storm",
+  "عاصفة المذنبات"
+ ],
+ "ht.frost_mage.path_a": [
+  "Glacial Archon",
+  "حاكم الجليد"
+ ],
+ "ht.frost_mage.path_b": [
+  "Frostfire Sorcerer",
+  "ساحر النار الجليدية"
+ ],
+ "ht.frost_mage.path_a_desc": [
+  "Freezes the battlefield and shatters the frozen.",
+  "يجمّد ساحة المعركة ويحطم المتجمدين."
+ ],
+ "ht.frost_mage.path_b_desc": [
+  "Ice shards, brittle armour and falling comets.",
+  "شظايا جليد ودروع هشة ومذنبات ساقطة."
+ ],
+ "ht.blueflame_warlock.core_1": [
+  "Azure Power",
+  "القوة اللازوردية"
+ ],
+ "ht.blueflame_warlock.core_2": [
+  "Quick Sigils",
+  "الأختام السريعة"
+ ],
+ "ht.blueflame_warlock.core_3": [
+  "Warded Robes",
+  "الأردية المحصنة"
+ ],
+ "ht.blueflame_warlock.core_4": [
+  "Focused Blast",
+  "الانفجار المركز"
+ ],
+ "ht.blueflame_warlock.core_5": [
+  "Lasting Surge",
+  "الفوران الدائم"
+ ],
+ "ht.blueflame_warlock.a1": [
+  "Blue Flames",
+  "اللهب الأزرق"
+ ],
+ "ht.blueflame_warlock.b1": [
+  "Mana Font",
+  "ينبوع الطاقة"
+ ],
+ "ht.blueflame_warlock.a2": [
+  "Inferno Pools",
+  "برك الجحيم"
+ ],
+ "ht.blueflame_warlock.a2b": [
+  "Wave of Ruin",
+  "موجة الخراب"
+ ],
+ "ht.blueflame_warlock.b2": [
+  "Overload",
+  "الحمل الزائد"
+ ],
+ "ht.blueflame_warlock.b2b": [
+  "Glass Cannon",
+  "المدفع الزجاجي"
+ ],
+ "ht.blueflame_warlock.a3": [
+  "Phoenix Flame",
+  "لهب العنقاء"
+ ],
+ "ht.blueflame_warlock.b3": [
+  "Arcane Echo",
+  "صدى السحر"
+ ],
+ "ht.blueflame_warlock.path_a": [
+  "Azure Pyromancer",
+  "ساحر اللهب اللازوردي"
+ ],
+ "ht.blueflame_warlock.path_b": [
+  "Arcane Channeler",
+  "قناة السحر"
+ ],
+ "ht.blueflame_warlock.path_a_desc": [
+  "Blue fire that burns, spreads and rises again.",
+  "نار زرقاء تحرق وتنتشر وتنهض من جديد."
+ ],
+ "ht.blueflame_warlock.path_b_desc": [
+  "Endless mana and spells that echo twice.",
+  "طاقة سحرية لا تنضب وتعاويذ تتردد مرتين."
+ ],
+ "ht.giant_executioner.core_1": [
+  "Heavy Blade",
+  "النصل الثقيل"
+ ],
+ "ht.giant_executioner.core_2": [
+  "Momentum",
+  "الزخم"
+ ],
+ "ht.giant_executioner.core_3": [
+  "Giant's Frame",
+  "هيكل العملاق"
+ ],
+ "ht.giant_executioner.core_4": [
+  "Deeper Chop",
+  "القطع الأعمق"
+ ],
+ "ht.giant_executioner.core_5": [
+  "Relentless Charge",
+  "الاندفاع العنيد"
+ ],
+ "ht.giant_executioner.a1": [
+  "Keen Edge",
+  "الحد القاطع"
+ ],
+ "ht.giant_executioner.b1": [
+  "Thirst",
+  "العطش"
+ ],
+ "ht.giant_executioner.a2": [
+  "Merciless",
+  "بلا رحمة"
+ ],
+ "ht.giant_executioner.a2b": [
+  "Heavy Swing",
+  "الأرجحة الثقيلة"
+ ],
+ "ht.giant_executioner.b2": [
+  "Frenzied",
+  "المسعور"
+ ],
+ "ht.giant_executioner.b2b": [
+  "Unyielding",
+  "الصامد"
+ ],
+ "ht.giant_executioner.a3": [
+  "Reaper's Toll",
+  "ضريبة الحاصد"
+ ],
+ "ht.giant_executioner.b3": [
+  "Rampage",
+  "الهياج"
+ ],
+ "ht.giant_executioner.path_a": [
+  "Headsman",
+  "قاطع الرؤوس"
+ ],
+ "ht.giant_executioner.path_b": [
+  "Bloodbath",
+  "حمام الدم"
+ ],
+ "ht.giant_executioner.path_a_desc": [
+  "Critical strikes and executions that chain into each other.",
+  "ضربات حرجة وإعدامات يتبع بعضها بعضًا."
+ ],
+ "ht.giant_executioner.path_b_desc": [
+  "Drinks blood, shrugs off wounds and rampages.",
+  "يشرب الدماء ويتجاهل الجراح ويهيج."
+ ],
+ "ht.dragon_lord.core_1": [
+  "Draconic Blood",
+  "الدم التنيني"
+ ],
+ "ht.dragon_lord.core_2": [
+  "Wyrm Vigor",
+  "حيوية الأفعى"
+ ],
+ "ht.dragon_lord.core_3": [
+  "Scaled Hide",
+  "الجلد المحرشف"
+ ],
+ "ht.dragon_lord.core_4": [
+  "Scorching Breath",
+  "النَّفَس الحارق"
+ ],
+ "ht.dragon_lord.core_5": [
+  "Larger Brood",
+  "حضنة أكبر"
+ ],
+ "ht.dragon_lord.a1": [
+  "Dragon Scales",
+  "حراشف التنين"
+ ],
+ "ht.dragon_lord.b1": [
+  "Whelp Bond",
+  "رابطة الصغار"
+ ],
+ "ht.dragon_lord.a2": [
+  "Wing Buffet",
+  "ضربة الجناح"
+ ],
+ "ht.dragon_lord.a2b": [
+  "Molten Blood",
+  "الدم المنصهر"
+ ],
+ "ht.dragon_lord.b2": [
+  "Brood Call",
+  "نداء الحضنة"
+ ],
+ "ht.dragon_lord.b2b": [
+  "Wyrm's Fury",
+  "غضب التنين"
+ ],
+ "ht.dragon_lord.a3": [
+  "Dragonform",
+  "هيئة التنين"
+ ],
+ "ht.dragon_lord.b3": [
+  "Dragon Brood",
+  "حضنة التنين"
+ ],
+ "ht.dragon_lord.path_a": [
+  "Wyrm Rider",
+  "فارس التنين"
+ ],
+ "ht.dragon_lord.path_b": [
+  "Brood Master",
+  "سيد الحضنة"
+ ],
+ "ht.dragon_lord.path_a_desc": [
+  "Fights at the front and takes on dragon form.",
+  "يقاتل في المقدمة ويتحول إلى هيئة التنين."
+ ],
+ "ht.dragon_lord.path_b_desc": [
+  "Leads an endless brood of dragon whelps.",
+  "يقود حضنة لا تنتهي من صغار التنانين."
+ ],
+ "ht.stone_beast.core_1": [
+  "Mountain Body",
+  "جسد الجبل"
+ ],
+ "ht.stone_beast.core_2": [
+  "Bedrock",
+  "الصخر الأساسي"
+ ],
+ "ht.stone_beast.core_3": [
+  "Heavy Fists",
+  "القبضات الثقيلة"
+ ],
+ "ht.stone_beast.core_4": [
+  "Wider Quake",
+  "الزلزال الأوسع"
+ ],
+ "ht.stone_beast.core_5": [
+  "Hurled Stone",
+  "الحجر المقذوف"
+ ],
+ "ht.stone_beast.a1": [
+  "Granite Hide",
+  "جلد الجرانيت"
+ ],
+ "ht.stone_beast.b1": [
+  "Crushing Blows",
+  "الضربات الساحقة"
+ ],
+ "ht.stone_beast.a2": [
+  "Rebound",
+  "الارتداد"
+ ],
+ "ht.stone_beast.a2b": [
+  "Taunting Roar",
+  "الزئير المستفز"
+ ],
+ "ht.stone_beast.b2": [
+  "Aftershock",
+  "الهزة الارتدادية"
+ ],
+ "ht.stone_beast.b2b": [
+  "Boulder Barrage",
+  "وابل الصخور"
+ ],
+ "ht.stone_beast.a3": [
+  "Unbreakable",
+  "الذي لا ينكسر"
+ ],
+ "ht.stone_beast.b3": [
+  "Seismic Fury",
+  "الغضب الزلزالي"
+ ],
+ "ht.stone_beast.path_a": [
+  "Living Fortress",
+  "الحصن الحي"
+ ],
+ "ht.stone_beast.path_b": [
+  "Earthshaker",
+  "هازّ الأرض"
+ ],
+ "ht.stone_beast.path_a_desc": [
+  "An unbreakable wall that returns every blow.",
+  "جدار لا ينكسر يرد كل ضربة."
+ ],
+ "ht.stone_beast.path_b_desc": [
+  "Stuns, boulders and quakes with every step.",
+  "شلّ وصخور وزلازل مع كل خطوة."
+ ],
+ "ht.shadow_knight.core_1": [
+  "Shadow Edge",
+  "حد الظل"
+ ],
+ "ht.shadow_knight.core_2": [
+  "Fleet Shadow",
+  "الظل الخاطف"
+ ],
+ "ht.shadow_knight.core_3": [
+  "Night Cloak",
+  "عباءة الليل"
+ ],
+ "ht.shadow_knight.core_4": [
+  "Extra Strike",
+  "الضربة الإضافية"
+ ],
+ "ht.shadow_knight.core_5": [
+  "Wider Blades",
+  "الشفرات الأوسع"
+ ],
+ "ht.shadow_knight.a1": [
+  "Assassin's Mark",
+  "علامة القاتل"
+ ],
+ "ht.shadow_knight.b1": [
+  "Twin Shadows",
+  "الظلان التوأم"
+ ],
+ "ht.shadow_knight.a2": [
+  "Blade Dance",
+  "رقصة الشفرات"
+ ],
+ "ht.shadow_knight.a2b": [
+  "Dash Strike",
+  "ضربة الاندفاع"
+ ],
+ "ht.shadow_knight.b2": [
+  "Dark Pact",
+  "الميثاق المظلم"
+ ],
+ "ht.shadow_knight.b2b": [
+  "Weakening Blades",
+  "الشفرات المُضعفة"
+ ],
+ "ht.shadow_knight.a3": [
+  "Thousand Cuts",
+  "الألف جرح"
+ ],
+ "ht.shadow_knight.b3": [
+  "Legion of Shadows",
+  "فيلق الظلال"
+ ],
+ "ht.shadow_knight.path_a": [
+  "Phantom Blade",
+  "النصل الشبح"
+ ],
+ "ht.shadow_knight.path_b": [
+  "Umbral Puppeteer",
+  "محرّك الظلال"
+ ],
+ "ht.shadow_knight.path_a_desc": [
+  "Teleporting strikes and deadly critical hits.",
+  "ضربات انتقالية وضربات حرجة قاتلة."
+ ],
+ "ht.shadow_knight.path_b_desc": [
+  "Commands shadow clones that fight at his side.",
+  "يقود نسخًا ظلية تقاتل إلى جانبه."
+ ],
+ "ht.night_sniper.core_1": [
+  "Tungsten Bolts",
+  "مسامير التنغستن"
+ ],
+ "ht.night_sniper.core_2": [
+  "Scope",
+  "المنظار"
+ ],
+ "ht.night_sniper.core_3": [
+  "Padded Coat",
+  "المعطف المبطن"
+ ],
+ "ht.night_sniper.core_4": [
+  "Piercing Power",
+  "قوة الاختراق"
+ ],
+ "ht.night_sniper.core_5": [
+  "Deep Mark",
+  "العلامة العميقة"
+ ],
+ "ht.night_sniper.a1": [
+  "Steady Hands",
+  "اليد الثابتة"
+ ],
+ "ht.night_sniper.b1": [
+  "Blast Powder",
+  "بارود التفجير"
+ ],
+ "ht.night_sniper.a2": [
+  "Hollow Point",
+  "الرأس المجوف"
+ ],
+ "ht.night_sniper.a2b": [
+  "Long Barrel",
+  "الماسورة الطويلة"
+ ],
+ "ht.night_sniper.b2": [
+  "Incendiary Bolts",
+  "المسامير الحارقة"
+ ],
+ "ht.night_sniper.b2b": [
+  "Smoke Screen",
+  "ستار الدخان"
+ ],
+ "ht.night_sniper.a3": [
+  "One Shot",
+  "طلقة واحدة"
+ ],
+ "ht.night_sniper.b3": [
+  "Carpet Bombing",
+  "القصف الشامل"
+ ],
+ "ht.night_sniper.path_a": [
+  "Ghost Marksman",
+  "الرامي الشبح"
+ ],
+ "ht.night_sniper.path_b": [
+  "Demolitionist",
+  "خبير التفجير"
+ ],
+ "ht.night_sniper.path_a_desc": [
+  "One perfect shot at a time.",
+  "طلقة مثالية في كل مرة."
+ ],
+ "ht.night_sniper.path_b_desc": [
+  "Explosive and incendiary bolts that clear crowds.",
+  "مسامير متفجرة وحارقة تنظف الحشود."
+ ],
+ "ht.storm_warden.core_1": [
+  "Storm Blood",
+  "دم العاصفة"
+ ],
+ "ht.storm_warden.core_2": [
+  "Charged Mind",
+  "العقل المشحون"
+ ],
+ "ht.storm_warden.core_3": [
+  "Thunder Hide",
+  "جلد الرعد"
+ ],
+ "ht.storm_warden.core_4": [
+  "Forked Lightning",
+  "البرق المتشعب"
+ ],
+ "ht.storm_warden.core_5": [
+  "Wide Overcharge",
+  "الشحن الواسع"
+ ],
+ "ht.storm_warden.a1": [
+  "Conduction",
+  "التوصيل"
+ ],
+ "ht.storm_warden.b1": [
+  "Battery",
+  "البطارية"
+ ],
+ "ht.storm_warden.a2": [
+  "Static Charge",
+  "الشحنة الساكنة"
+ ],
+ "ht.storm_warden.a2b": [
+  "Arc Surge",
+  "فوران القوس"
+ ],
+ "ht.storm_warden.b2": [
+  "Guardian Winds",
+  "رياح الحماية"
+ ],
+ "ht.storm_warden.b2b": [
+  "Charged Towers",
+  "الأبراج المشحونة"
+ ],
+ "ht.storm_warden.a3": [
+  "Living Storm",
+  "العاصفة الحية"
+ ],
+ "ht.storm_warden.b3": [
+  "Eye of the Storm",
+  "عين العاصفة"
+ ],
+ "ht.storm_warden.path_a": [
+  "Thunder Lord",
+  "سيد الرعد"
+ ],
+ "ht.storm_warden.path_b": [
+  "Storm Shepherd",
+  "راعي العاصفة"
+ ],
+ "ht.storm_warden.path_a_desc": [
+  "Becomes a living storm of chain lightning.",
+  "يصبح عاصفة حية من البرق المتسلسل."
+ ],
+ "ht.storm_warden.path_b_desc": [
+  "Empowers towers and shelters allies.",
+  "يقوي الأبراج ويحمي الحلفاء."
+ ],
+ "nav.hero_tree": [
+  "Hero Mastery",
+  "إتقان الأبطال"
+ ],
+ "ht.title": [
+  "Hero Mastery",
+  "إتقان الأبطال"
+ ],
+ "ht.marks": [
+  "Hero Marks",
+  "علامات البطل"
+ ],
+ "ht.marks_desc": [
+  "Each hero earns Hero Marks by levelling up (one per level, plus a bonus every 5 levels). Marks are spent in that hero's own tree.",
+  "يكسب كل بطل علامات عند ارتقاء مستواه (علامة لكل مستوى ومكافأة كل 5 مستويات)، وتُصرف في شجرة ذلك البطل فقط."
+ ],
+ "ht.req_level": [
+  "Requires hero level %d",
+  "تتطلب مستوى البطل %d"
+ ],
+ "ht.cost": [
+  "Cost: %d marks",
+  "التكلفة: %d علامة"
+ ],
+ "ht.not_enough": [
+  "Not enough marks",
+  "علامات غير كافية"
+ ],
+ "ht.reset": [
+  "Reset this hero",
+  "إعادة ضبط هذا البطل"
+ ],
+ "ht.reset_confirm": [
+  "Refund %d marks for %d gold?",
+  "استرجاع %d علامة مقابل %d ذهب؟"
+ ],
+ "ht.level": [
+  "Level %d",
+  "المستوى %d"
+ ],
+ "ht.locked_hero": [
+  "Hero not yet recruited",
+  "لم يُجنّد هذا البطل بعد"
+ ],
+ "ht.choose_path": [
+  "Pick one of two paths — the other closes until you reset.",
+  "اختر أحد المسارين — يُغلق الآخر حتى تعيد الضبط."
+ ],
+ "ht.new_unlock": [
+  "Hero mastery unlocked!",
+  "تم فتح إتقان البطل!"
+ ],
+ "ht.fx.damage_pct": [
+  "+%d%% damage",
+  "+%d%% ضرر"
+ ],
+ "ht.fx.health_pct": [
+  "+%d%% health",
+  "+%d%% صحة"
+ ],
+ "ht.fx.defense_pct": [
+  "+%d%% defence",
+  "+%d%% دفاع"
+ ],
+ "ht.fx.attack_speed": [
+  "+%d%% attack speed",
+  "+%d%% سرعة هجوم"
+ ],
+ "ht.fx.move_speed": [
+  "+%d%% movement speed",
+  "+%d%% سرعة حركة"
+ ],
+ "ht.fx.range_add": [
+  "+%.1f m attack range",
+  "+%.1f م مدى الهجوم"
+ ],
+ "ht.fx.crit": [
+  "+%d%% critical chance",
+  "+%d%% فرصة حرجة"
+ ],
+ "ht.fx.crit_dmg": [
+  "+%d%% critical damage",
+  "+%d%% ضرر حرج"
+ ],
+ "ht.fx.lifesteal": [
+  "+%d%% life steal",
+  "+%d%% سرقة حياة"
+ ],
+ "ht.fx.cdr": [
+  "-%d%% ability cooldowns",
+  "-%d%% زمن تهدئة القدرات"
+ ],
+ "ht.fx.energy_regen": [
+  "+%.1f energy per second",
+  "+%.1f طاقة في الثانية"
+ ],
+ "ht.fx.ult_mult": [
+  "+%d%% ultimate power",
+  "+%d%% قوة القدرة الخارقة"
+ ],
+ "ht.fx.dr": [
+  "Takes %d%% less damage",
+  "يتلقى ضررًا أقل بـ %d%%"
+ ],
+ "ht.fx.thorns": [
+  "Reflects %d%% of melee damage as fire",
+  "يعكس %d%% من الضرر القريب نارًا"
+ ],
+ "ht.fx.regen": [
+  "Regenerates %.1f%% health per second",
+  "يستعيد %.1f%% صحة في الثانية"
+ ],
+ "ht.fx.splash": [
+  "Attacks hit %.1f m around the target",
+  "الهجمات تصيب %.1f م حول الهدف"
+ ],
+ "ht.fx.multishot": [
+  "Fires %d extra projectile(s) at other enemies",
+  "يطلق %d مقذوف إضافي على أعداء آخرين"
+ ],
+ "ht.fx.pierce": [
+  "Projectiles pierce %d more enemies",
+  "المقذوفات تخترق %d أعداء إضافيين"
+ ],
+ "ht.fx.chain": [
+  "Attacks chain to %d more enemies",
+  "الهجمات تتسلسل إلى %d أعداء إضافيين"
+ ],
+ "ht.fx.on_hit": [
+  "Attacks apply %s",
+  "الهجمات تطبّق %s"
+ ],
+ "ht.fx.on_hit_chance": [
+  "%d%% of attacks apply %s",
+  "%d%% من الهجمات تطبّق %s"
+ ],
+ "ht.fx.on_hit_execute": [
+  "Attacks slay non-boss enemies below %d%% health",
+  "الهجمات تقتل الأعداء (غير الزعماء) تحت %d%% صحة"
+ ],
+ "ht.fx.bonus_status": [
+  "+%d%% damage to slowed or frozen enemies",
+  "+%d%% ضرر ضد المبطئين أو المتجمدين"
+ ],
+ "ht.fx.revive": [
+  "Once per battle, rises again at %d%% health instead of falling",
+  "مرة في كل معركة ينهض من جديد بـ %d%% صحة بدل السقوط"
+ ],
+ "ht.fx.aura": [
+  "Aura: burns every enemy within %.1f m each second",
+  "هالة: تصيب كل عدو ضمن %.1f م كل ثانية"
+ ],
+ "ht.fx.aura_drain": [
+  "…and heals the hero for part of it",
+  "…وتشفي البطل بجزء منها"
+ ],
+ "ht.fx.on_ult": [
+  "Ultimate transforms the hero for %ds: +%d%% damage, takes %d%% less damage",
+  "القدرة الخارقة تحوّل البطل %d ث: +%d%% ضرر ويتلقى ضررًا أقل بـ %d%%"
+ ],
+ "ht.fx.ult_echo": [
+  "The ultimate strikes again %.1fs later at %d%% power",
+  "القدرة الخارقة تضرب مرة ثانية بعد %.1f ث بقوة %d%%"
+ ],
+ "ht.fx.kill.explode": [
+  "Slain enemies explode (%.1f m)",
+  "الأعداء المقتولون ينفجرون (%.1f م)"
+ ],
+ "ht.fx.kill.raise": [
+  "%d%% of nearby kills rise as skeleton warriors",
+  "%d%% من القتلى القريبين ينهضون هياكل محاربة"
+ ],
+ "ht.fx.kill.reset_cd": [
+  "Kills reset %s",
+  "القتل يعيد تجهيز %s"
+ ],
+ "ht.fx.kill.energy": [
+  "Kills restore %d energy",
+  "القتل يعيد %d طاقة"
+ ],
+ "ht.fx.kill.rampage": [
+  "Kills stack Rampage: +%d%% attack speed (up to %d)",
+  "القتل يراكم الهياج: +%d%% سرعة هجوم (حتى %d)"
+ ],
+ "ht.fx.kill.heal": [
+  "Kills heal %d%% health",
+  "القتل يشفي %d%% صحة"
+ ],
+ "ht.fx.ab": [
+  "%s: %s",
+  "%s: %s"
+ ],
+ "ht.ab.dmg": [
+  "+%d%% damage",
+  "+%d%% ضرر"
+ ],
+ "ht.ab.radius": [
+  "+%.1f m radius",
+  "+%.1f م نطاق"
+ ],
+ "ht.ab.range": [
+  "+%.1f m range",
+  "+%.1f م مدى"
+ ],
+ "ht.ab.cooldown": [
+  "-%d%% cooldown",
+  "-%d%% زمن التهدئة"
+ ],
+ "ht.ab.energy": [
+  "%d energy cost",
+  "%d تكلفة الطاقة"
+ ],
+ "ht.ab.count": [
+  "+%d",
+  "+%d عدد"
+ ],
+ "ht.ab.hits": [
+  "+%d strikes",
+  "+%d ضربات"
+ ],
+ "ht.ab.duration": [
+  "+%.0fs duration",
+  "+%.0f ث مدة"
+ ],
+ "ht.ab.execute": [
+  "executes below +%d%%",
+  "إعدام تحت +%d%%"
+ ],
+ "ht.ab.lifesteal": [
+  "+%d%% life steal",
+  "+%d%% سرقة حياة"
+ ],
+ "ht.ab.status": [
+  "applies %s",
+  "يطبّق %s"
+ ],
+ "ht.ab.status_power": [
+  "+%d%% effect",
+  "+%d%% تأثير"
+ ],
+ "ht.ab.buff_duration": [
+  "buff lasts +%.0fs",
+  "المعزز يدوم +%.0f ث"
+ ],
+ "ht.ab.buff_mult": [
+  "+%d%% buff strength",
+  "+%d%% قوة المعزز"
+ ],
+ "ht.ab.summon_hp": [
+  "summons +%d%% health",
+  "المستدعون +%d%% صحة"
+ ],
+ "ht.ab.summon_dmg": [
+  "summons +%d%% damage",
+  "المستدعون +%d%% ضرر"
+ ],
+ "ht.sp.periodic": [
+  "Every %.0fs: %s",
+  "كل %.0f ث: %s"
+ ],
+ "ht.sp.every_attacks": [
+  "Every %d attacks: %s",
+  "كل %d هجمات: %s"
+ ],
+ "ht.syn.nova": [
+  "a blast around the hero",
+  "انفجار حول البطل"
+ ],
+ "ht.syn.blast": [
+  "an explosion at the target",
+  "انفجار عند الهدف"
+ ],
+ "ht.syn.line": [
+  "a piercing killing shot",
+  "طلقة خارقة قاتلة"
+ ],
+ "ht.syn.summon": [
+  "summons %d %s",
+  "يستدعي %d %s"
+ ],
+ "ht.syn.blink_strike": [
+  "teleports and strikes %d times",
+  "ينتقل ويضرب %d مرات"
+ ],
+ "ht.syn.execute": [
+  "a crippling marked shot",
+  "طلقة مُعلِّمة مُعطّلة"
+ ],
+ "ht.syn.chain": [
+  "lightning strikes %d enemies",
+  "البرق يضرب %d أعداء"
+ ],
+ "ht.syn.tower_buff": [
+  "overcharges nearby towers and heals allies",
+  "يشحن الأبراج القريبة ويشفي الحلفاء"
+ ],
+ "status.weaken": [
+  "weakness",
+  "الضعف"
+ ],
+ "status.armor_break": [
+  "armour break",
+  "كسر الدروع"
+ ],
+ "status.fear": [
+  "fear",
+  "الرعب"
+ ],
+ "status.blind": [
+  "blindness",
+  "العمى"
+ ],
+ "ally.risen_skeleton": [
+  "skeleton warriors",
+  "هياكل محاربة"
+ ],
+ "ally.raven": [
+  "ravens",
+  "غربان"
+ ],
+ "ally.dragon_whelp": [
+  "dragon whelp",
+  "صغير تنين"
+ ],
+ "ally.shadow_clone": [
+  "shadow clone",
+  "نسخة ظلية"
+ ],
+ "battle.hero_mastery": [
+  "Hero mastery",
+  "إتقان البطل"
  ]
 }

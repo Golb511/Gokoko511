@@ -97,6 +97,7 @@ func _default_profile() -> Dictionary:
 		"shop": {"date": "", "bought": []},
 		"guild": {"level": 1, "xp": 0, "perks": {}},
 		"tower_tree": {"earned": 0, "nodes": {}, "respecs": 0},
+		"hero_tree": {"nodes": {}, "respecs": 0},
 		"settings": {"lang": "ar", "music": 0.7, "sfx": 0.8, "quality": 2, "shadows": true, "fog": true, "camera_speed": 1.0, "show_fps": false, "tutorial_done": false},
 	}
 
@@ -359,19 +360,21 @@ func hero_stats(id: String) -> Dictionary:
 	var eq := equipment_stats(id)
 	var caps: Dictionary = DB.items.affix_caps
 	var s := {}
-	s.health = (float(base.health) * (1.0 + float(g.health) * lvl) + eq.get("health", 0.0)) * (1.0 + _skill_bonus(id, "health_pct"))
-	s.damage = (float(base.damage) * (1.0 + float(g.damage) * lvl) + eq.get("damage", 0.0)) * (1.0 + _skill_bonus(id, "damage_pct"))
-	s.defense = (float(base.defense) * (1.0 + float(g.defense) * lvl) + eq.get("defense", 0.0)) * (1.0 + _skill_bonus(id, "defense_pct"))
-	s.attack_speed = float(base.attack_speed) * (1.0 + minf(caps.attack_speed, eq.get("attack_speed", 0.0) + _skill_bonus(id, "attack_speed")))
-	s.move_speed = float(base.move_speed) * (1.0 + minf(caps.move_speed, eq.get("move_speed", 0.0) + _skill_bonus(id, "move_speed")))
+	# Hero Mastery (HeroTree) bonuses stack on top of the older skill ranks.
+	var hm := func(k: String) -> float: return HeroTree.stat(id, k)
+	s.health = (float(base.health) * (1.0 + float(g.health) * lvl) + eq.get("health", 0.0)) * (1.0 + _skill_bonus(id, "health_pct") + hm.call("health_pct"))
+	s.damage = (float(base.damage) * (1.0 + float(g.damage) * lvl) + eq.get("damage", 0.0)) * (1.0 + _skill_bonus(id, "damage_pct") + hm.call("damage_pct"))
+	s.defense = (float(base.defense) * (1.0 + float(g.defense) * lvl) + eq.get("defense", 0.0)) * (1.0 + _skill_bonus(id, "defense_pct") + hm.call("defense_pct"))
+	s.attack_speed = float(base.attack_speed) * (1.0 + minf(caps.attack_speed, eq.get("attack_speed", 0.0) + _skill_bonus(id, "attack_speed")) + hm.call("attack_speed"))
+	s.move_speed = float(base.move_speed) * (1.0 + minf(caps.move_speed, eq.get("move_speed", 0.0) + _skill_bonus(id, "move_speed")) + hm.call("move_speed"))
 	s.energy = float(base.energy)
-	s.energy_regen = 2.0 + eq.get("energy_regen", 0.0)
-	s.crit = minf(caps.crit, float(base.crit) + eq.get("crit", 0.0) + _skill_bonus(id, "crit"))
-	s.crit_dmg = 1.5 + eq.get("crit_dmg", 0.0)
-	s.cdr = minf(caps.cdr, eq.get("cdr", 0.0) + _skill_bonus(id, "cdr"))
-	s.lifesteal = minf(caps.lifesteal, eq.get("lifesteal", 0.0) + _skill_bonus(id, "lifesteal"))
-	s.ult_mult = 1.0 + _skill_bonus(id, "ult_mult")
-	s.range = float(base.range)
+	s.energy_regen = 2.0 + eq.get("energy_regen", 0.0) + hm.call("energy_regen")
+	s.crit = minf(caps.crit, float(base.crit) + eq.get("crit", 0.0) + _skill_bonus(id, "crit")) + hm.call("crit")
+	s.crit_dmg = 1.5 + eq.get("crit_dmg", 0.0) + hm.call("crit_dmg")
+	s.cdr = minf(caps.cdr, eq.get("cdr", 0.0) + _skill_bonus(id, "cdr")) + hm.call("cdr")
+	s.lifesteal = minf(caps.lifesteal, eq.get("lifesteal", 0.0) + _skill_bonus(id, "lifesteal")) + hm.call("lifesteal")
+	s.ult_mult = 1.0 + _skill_bonus(id, "ult_mult") + hm.call("ult_mult")
+	s.range = float(base.range) + hm.call("range_add")
 	s.level = lvl + 1
 	return s
 

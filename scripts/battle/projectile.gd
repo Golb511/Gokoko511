@@ -157,5 +157,7 @@ func _damage(v: Unit, mult: float) -> void:
 		v.apply_status("stun", 1.0, 1.0)
 	for xs in p.get("extra_status", []):
 		v.apply_status(xs.id, float(xs.duration), float(xs.power), src)
+	if is_instance_valid(src) and src is Hero and v is Enemy:
+		src.on_hit_landed(v)
 	if randf() < float(p.get("fear_chance", 0.0)) and not v.tags.has("boss"):
 		v.apply_status("fear", 1.5, 1.0)

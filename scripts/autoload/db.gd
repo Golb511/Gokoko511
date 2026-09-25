@@ -14,6 +14,7 @@ var layouts: Dictionary = {}
 var regions: Array = []
 var explicit_waves: Dictionary = {}
 var tower_tree: Dictionary = {}
+var hero_tree: Dictionary = {}
 
 const ENDLESS := "endless"
 var hero_order: Array = []
@@ -28,6 +29,7 @@ func _ready() -> void:
 	abilities = _load("res://data/abilities.json")
 	towers = _load("res://data/towers.json")
 	tower_tree = _load("res://data/tower_tree.json")
+	hero_tree = _load("res://data/hero_tree.json")
 	var units := _load("res://data/units.json")
 	enemies = units.get("enemies", {})
 	bosses = units.get("bosses", {})

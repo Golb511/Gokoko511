@@ -265,6 +265,12 @@ static func draw_glyph(ci: CanvasItem, g: String, c: Vector2, r: float, col: Col
 			_poly(ci, [Vector2(-0.6, -0.85), Vector2(0.6, -0.85), Vector2(0.45, -0.1), Vector2(0.12, 0.2), Vector2(0.12, 0.55), Vector2(0.4, 0.85), Vector2(-0.4, 0.85), Vector2(-0.12, 0.55), Vector2(-0.12, 0.2), Vector2(-0.45, -0.1)], c, r, col)
 			ci.draw_arc(c + Vector2(-0.62, -0.5) * r, 0.25 * r, PI * 0.5, PI * 1.5, 12, col, 0.08 * r)
 			ci.draw_arc(c + Vector2(0.62, -0.5) * r, 0.25 * r, -PI * 0.5, PI * 0.5, 12, col, 0.08 * r)
+		"crown":
+			_poly(ci, [Vector2(-0.85, 0.55), Vector2(-0.9, -0.45), Vector2(-0.45, 0.0), Vector2(0.0, -0.75), Vector2(0.45, 0.0), Vector2(0.9, -0.45), Vector2(0.85, 0.55)], c, r, col)
+			_poly(ci, [Vector2(-0.85, 0.62), Vector2(0.85, 0.62), Vector2(0.85, 0.82), Vector2(-0.85, 0.82)], c, r, col.darkened(0.25))
+			for p in [Vector2(-0.9, -0.55), Vector2(0.0, -0.87), Vector2(0.9, -0.55)]:
+				ci.draw_circle(c + p * r, 0.12 * r, col.lightened(0.2))
+			ci.draw_circle(c + Vector2(0, 0.25) * r, 0.13 * r, dark)
 		"scroll", "missions":
 			_poly(ci, [Vector2(-0.6, -0.8), Vector2(0.6, -0.8), Vector2(0.6, 0.8), Vector2(-0.6, 0.8)], c, r, col)
 			for k in 4:

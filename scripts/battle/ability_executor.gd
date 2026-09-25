@@ -88,7 +88,10 @@ static func execute(hero: Hero, id: String, ab: Dictionary, point: Vector3, targ
 				var p := pos + Vector3(cos(ang), 0, sin(ang)) * 1.4
 				var d: Dictionary = DB.allies[ab.unit]
 				var scale := 1.0 + 0.06 * (lvl - 1)
-				var u: AllyUnit = b.spawn_ally(ab.unit, {"hp": float(d.hp) * scale, "dmg": [float(d.damage[0]) * scale, float(d.damage[1]) * scale], "lifetime": float(ab.duration), "engage": 5.0}, b.clamp_to_bounds(p))
+				# Hero Mastery can strengthen summons (summon_hp / summon_dmg).
+				var hs := scale * (1.0 + float(ab.get("summon_hp", 0.0)))
+				var ds := scale * (1.0 + float(ab.get("summon_dmg", 0.0)))
+				var u: AllyUnit = b.spawn_ally(ab.unit, {"hp": float(d.hp) * hs, "dmg": [float(d.damage[0]) * ds, float(d.damage[1]) * ds], "lifetime": float(ab.duration), "engage": 5.0}, b.clamp_to_bounds(p))
 				u.slot_offset = Vector3.ZERO
 				if elem == "shadow":
 					VFX.shadow_burst(b.fx_root, p, 1.0)
@@ -232,13 +235,14 @@ static func _hit(hero: Hero, e: Enemy, dmg: float, dtype: String, ab: Dictionary
 		return
 	var crit := randf() < hero.crit
 	var dealt := e.take_damage(dmg * (hero.crit_dmg if crit else 1.0), dtype, hero, crit)
-	hero.heal(dealt * hero.lifesteal)
+	hero.heal(dealt * (hero.lifesteal + float(ab.get("lifesteal", 0.0))))
 	var st := _status_abs(ab, hero)
 	if not st.is_empty():
 		e.apply_status(st.id, st.duration, st.power, hero)
 	var thr := float(ab.get("execute", 0.0))
 	if thr > 0.0 and e.alive and e.hp_ratio() <= thr and not e.tags.has("boss"):
 		e.take_damage(e.hp + 1.0, "true", hero)
+	hero.on_hit_landed(e)
 
 
 static func _status_abs(ab: Dictionary, hero: Hero) -> Dictionary:

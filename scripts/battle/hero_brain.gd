@@ -23,6 +23,7 @@ var _role := ""
 var _anchor := Vector3.INF      # the choke point every ground road passes
 var _kz_cache: Dictionary = {}  # PathRoute -> [offset, time]
 var _retreat_to := Vector3.INF  # fixed once per retreat so the hero can stop and recover
+var _ult_hold := 0.0            # seconds spent saving energy for a mastery-empowered ultimate
 
 
 func update(delta: float) -> void:
@@ -314,6 +315,20 @@ func _use_abilities() -> void:
 	var ult_cd: float = hero.cooldowns[4] if hero.ability_ids.size() > 4 else 99.0
 	var ult_ready_soon: bool = (ult_cd > 0.0 and ult_cd < 5.0) \
 		or (ult_cd <= 0.0 and hero.energy < ult_cost and hero.energy >= ult_cost * 0.7 and _threat(hero.global_position, 12.0) >= 5.0)
+	# Hero Mastery capstones that trigger on the ultimate (a transformation, an
+	# echo) make it worth saving for: hold energy for it, but only for a
+	# bounded amount of fighting time so the hero never stalls.
+	var ult_focus: bool = hero.ability_ids.size() > 4 and (hero.mfx.has("on_ult") or hero.mfx.has("ult_echo"))
+	if ult_focus and ult_cd < 5.0:
+		# Hold for 14 s of fighting, then spend freely for 20 s, then hold again.
+		if not b.enemies_near(hero.global_position, 10.0).is_empty():
+			_ult_hold += 0.4
+		if _ult_hold >= 34.0:
+			_ult_hold = 0.0
+		if _ult_hold < 14.0:
+			ult_ready_soon = true
+	elif ult_focus:
+		_ult_hold = 0.0
 	# Summon upkeep: heroes whose summons are their main damage keep enough
 	# energy for the next summon instead of spending it on self-buffs.
 	var summon_cost := 0.0
@@ -341,10 +356,12 @@ func _use_abilities() -> void:
 		var boss_near: bool = cluster.boss
 		var threat := _threat(hero.global_position, rng)
 		var need := 4 if i == 4 else 2
+		if i == 4 and ult_focus:
+			need = 3
 		match ab.type:
 			"summon", "summon_dragon":
 				# Summons are worth it against a crowd, a big enemy or a leak.
-				if n >= (4 if i == 4 else 1) or boss_near or threat >= (6.0 if i == 4 else 1.0) or _leak_near(rng):
+				if n >= (need if i == 4 else 1) or boss_near or threat >= (6.0 if i == 4 and not ult_focus else (4.0 if i == 4 else 1.0)) or _leak_near(rng):
 					hero.cast(i, _summon_point(cluster, rng))
 					return
 			"taunt":
