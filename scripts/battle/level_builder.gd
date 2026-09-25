@@ -15,6 +15,7 @@ var rng := RandomNumberGenerator.new()
 var _occupied: Array = []      # [Vector3, radius]
 var hazards: Array = []        # FireVent / VolcanoBombs nodes (environmental dangers)
 var crater_pos := Vector3.INF
+var bogs: Array = []           # [Vector3, radius] mud that slows ground units
 
 
 func build(b: Node, parent: Node3D, stage_id: String) -> void:
@@ -49,6 +50,7 @@ func build(b: Node, parent: Node3D, stage_id: String) -> void:
 	_landmarks()
 	_water()
 	_inferno_terrain()
+	_blight_terrain()
 	if layout.has("slots"):
 		_authored_slots()
 	else:
@@ -125,6 +127,44 @@ func _inferno_terrain() -> void:
 		Inferno.ash_fall(root, Vector3(bounds.get_center().x, 0, bounds.get_center().y), bounds)
 
 
+## Region 4 terrain: toxic pools, mud bogs, giant trees, fallen logs,
+## glowing mushrooms, god rays, acid rain and the Blight Heart skyline.
+func _blight_terrain() -> void:
+	for tp in layout.get("toxic", []):
+		Blight.toxic_pool(self, Vector3(float(tp[0]), 0, float(tp[1])), float(tp[2]))
+	for bg in layout.get("bogs", []):
+		Blight.bog(self, Vector3(float(bg[0]), 0, float(bg[1])), float(bg[2]))
+	for gt in layout.get("giant_trees", []):
+		Blight.giant_tree(self, Vector3(float(gt[0]), 0, float(gt[1])), float(gt[2]), float(gt[3]))
+	for lg in layout.get("logs", []):
+		Blight.fallen_log(self, Vector3(float(lg[0]), 0, float(lg[1])), float(lg[2]), float(lg[3]))
+	for ms in layout.get("mushrooms", []):
+		var mp := Vector3(float(ms[0]), 0, float(ms[1]))
+		Blight.glow_mushrooms(self, mp, float(ms[2]), 5)
+		_occupied.append([mp, float(ms[2]) * 0.8])
+	if theme.has("god_rays"):
+		Blight.god_rays(root, bounds, int(theme.god_rays), rng)
+	if theme.get("acid_rain", false):
+		Blight.acid_rain(root, Vector3(bounds.get_center().x, 0, bounds.get_center().y), bounds)
+	if theme.has("blight_heart"):
+		Blight.blight_heart(root, theme.blight_heart)
+
+
+## Speed multiplier for a ground unit standing at p (mud bogs slow it).
+func terrain_speed(p: Vector3) -> float:
+	for bg in bogs:
+		if Vector2(p.x - bg[0].x, p.z - bg[0].z).length() < float(bg[1]):
+			return 0.55
+	return 1.0
+
+
+func _near_ground_road(p: Vector3, d: float) -> bool:
+	for r in ground_routes():
+		if r.distance_to(p) < d:
+			return true
+	return false
+
+
 func _hazards() -> void:
 	for v in layout.get("vents", []):
 		var vent := FireVent.new()
@@ -134,6 +174,22 @@ func _hazards() -> void:
 		vent.setup(battle, v)
 		hazards.append(vent)
 		_occupied.append([vent.global_position, float(v.get("radius", 1.9)) + 0.6])
+	for rs in layout.get("roots", []):
+		var snare := RootSnare.new()
+		snare.name = "RootSnare"
+		root.add_child(snare)
+		snare.global_position = Vector3(float(rs.pos[0]), 0, float(rs.pos[1]))
+		snare.setup(battle, rs)
+		hazards.append(snare)
+		_occupied.append([snare.global_position, float(rs.get("radius", 2.4)) + 0.6])
+	for sp in layout.get("spore_pods", []):
+		var pod := SporePod.new()
+		pod.name = "SporePod"
+		root.add_child(pod)
+		pod.global_position = Vector3(float(sp.pos[0]), 0, float(sp.pos[1]))
+		pod.setup(battle, sp)
+		hazards.append(pod)
+		_occupied.append([pod.global_position, 1.8])
 	if layout.has("volcano") and layout.volcano.has("bombs"):
 		var vb := VolcanoBombs.new()
 		vb.name = "VolcanoBombs"
@@ -244,6 +300,14 @@ func _castle() -> void:
 	var c := _place("env/building_castle_red", castle_pos, 2.6, face, Color(0.4, 0.37, 0.36), Color(1, 0.5, 0.15), 0.4)
 	c.name = "Citadel"
 	var side := Vector3(-dir.z, 0, dir.x)
+	if not layout.get("castle_walls", true):
+		# Citadel in the middle of the map: roads arrive from every side, so no
+		# flanking walls — a ring of braziers instead.
+		for k in 8:
+			var a := TAU * k / 8.0
+			VFX.torch_flame(root, castle_pos + Vector3(cos(a), 0, sin(a)) * 7.5 + Vector3(0, 0.2, 0), Color(1, 0.6, 0.25), k % 2 == 0)
+		_occupied.append([castle_pos, 9.0])
+		return
 	for s in [-1.0, 1.0]:
 		for k in range(1, 4):
 			var wp: Vector3 = castle_pos + side * s * (3.2 + k * 2.3) - dir * 1.5

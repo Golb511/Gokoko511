@@ -1966,5 +1966,37 @@
  "stage.r3s4": [
   "Summit of the Inferno Tower",
   "قمة برج الجحيم"
+ ],
+ "enemy.spore_bearer": [
+  "Spore Bearer",
+  "حامل الأبواغ"
+ ],
+ "enemy.plague_bat": [
+  "Plague Bat",
+  "خفاش الطاعون"
+ ],
+ "enemy.venom_spitter": [
+  "Venom Spitter",
+  "باصق السم"
+ ],
+ "enemy.rotwood_brute": [
+  "Rotwood Brute",
+  "عملاق الخشب العفن"
+ ],
+ "stage.r4s1": [
+  "Rotwood Hollow",
+  "جوف الخشب العفن"
+ ],
+ "stage.r4s2": [
+  "Spore Cathedral",
+  "كاتدرائية الأبواغ"
+ ],
+ "stage.r4s3": [
+  "Blightwater Braids",
+  "ضفائر المستنقع"
+ ],
+ "stage.r4s4": [
+  "Heart of the Blight",
+  "قلب اللعنة"
  ]
 }

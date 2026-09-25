@@ -5,6 +5,23 @@ Heroes, branching towers, enemy AI, multi-phase bosses, loot, inventory, shop an
 progression. Menus are in Arabic and English, and the controls work with mouse,
 keyboard or touch.
 
+> **New in 0.5 — Region 4, the Poison Forest, fully hand-designed**, with
+> road shapes, obstacles, enemies and a boss unlike the earlier regions:
+> 4-1 *Rotwood Hollow* (two roads that cross in an X, mud bogs that slow
+> everyone, toxic pools, giant trees and fallen logs), 4-2 *Spore Cathedral*
+> (a ring road around an overgrown cathedral, **spore pods** that burst into
+> poison clouds, and a bat route that takes the short way over the ring),
+> 4-3 *Blightwater Braids* (two roads that split and swap lanes three times,
+> **strangling roots** at the junctions that pin everything in place, acid
+> rain) and 4-4 *Heart of the Blight* (the citadel stands in the middle of the
+> map, three roads spiral in from three sides, the Blight Heart pulses on the
+> horizon). New enemies: **Spore Bearer** (dies in a poison cloud that mends
+> nearby enemies), **Plague Bat** (flying swarm), **Venom Spitter** (ranged,
+> poisons its target) and **Rotwood Brute** (armoured, regrows its bark when
+> left alone). The **Plague Colossus** now vents spore bursts that poison the
+> defenders and heal its horde. Also: smarter hero AUTO bot (see Key systems)
+> and fixes to taunt and stuns.
+>
 > **New in 0.4 — Region 3, the Inferno Tower, fully hand-designed:** four
 > stages, each with its own map, obstacles, enemies and atmosphere:
 > 3-1 *Ashen Causeway* (two roads crossing a flowing lava river on stone
@@ -115,7 +132,8 @@ data/                 All game design as JSON (moddable, no code changes)
   units.json          enemies (AI role, skills), bosses (phases), allied soldiers/summons
   regions.json        shared layouts + per-stage authored maps ("map": paths/air
                       routes, slots, landmarks, water, lava rivers/pools, basalt,
-                      vents, volcano, theme), hand-made waves for regions 1-3
+                      vents, volcano, toxic pools, bogs, roots, spore pods,
+                      giant trees, theme), hand-made waves for regions 1-4
   items.json          item bases, affixes, gems, runes, materials, drop weights
   meta.json           achievements, daily quests, daily rewards, shop, guild
   config.json         economy, XP curves, rarities, global powers, upgrade costs
@@ -198,7 +216,7 @@ real-time shadows.
 
 ## Roadmap
 
-- Hand-authored stages for regions 4-8 (regions 1-3 are hand-designed; the rest still use generated waves)
+- Hand-authored stages for regions 5-8 (regions 1-4 are hand-designed; the rest still use generated waves)
 - Bespoke creature models (dragon, monsters) to replace procedural assemblies
 - Store plugins (Google Play Billing / StoreKit) for real gem purchases (currently a test stub)
 - Online guild features (the current guild is offline, with AI companions)

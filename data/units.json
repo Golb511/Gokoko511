@@ -717,6 +717,192 @@
         "scale": 1.0,
         "anim": "staff"
       }
+    },
+    "spore_bearer": {
+      "ai": "attacker",
+      "hp": 150,
+      "armor": 0.1,
+      "mres": 0.2,
+      "speed": 1.9,
+      "damage": [
+        8,
+        12
+      ],
+      "attack_rate": 1.0,
+      "range": 1.3,
+      "gold": 12,
+      "xp": 9,
+      "lives": 1,
+      "tags": [
+        "human",
+        "ground"
+      ],
+      "loot": 0.05,
+      "skills": {
+        "death_cloud": {
+          "radius": 2.3,
+          "duration": 4.0,
+          "ally_dps": 14,
+          "enemy_heal": 0.02
+        }
+      },
+      "model": {
+        "base": "Rogue_Hooded",
+        "show": [
+          "Rogue_Cape"
+        ],
+        "tint": [
+          0.18,
+          0.26,
+          0.1
+        ],
+        "emission": [
+          0.5,
+          1.0,
+          0.2
+        ],
+        "emission_strength": 2.2,
+        "scale": 1.08,
+        "anim": "1h"
+      }
+    },
+    "plague_bat": {
+      "ai": "flyer",
+      "hp": 48,
+      "armor": 0.0,
+      "mres": 0.1,
+      "speed": 2.0,
+      "damage": [
+        4,
+        6
+      ],
+      "attack_rate": 1.0,
+      "range": 1.2,
+      "gold": 6,
+      "xp": 4,
+      "lives": 1,
+      "tags": [
+        "beast",
+        "flying"
+      ],
+      "loot": 0.02,
+      "flying": true,
+      "model": {
+        "base": "Skeleton_Rogue",
+        "show": [
+          "Skeleton_Rogue_Hood"
+        ],
+        "tint": [
+          0.2,
+          0.28,
+          0.12
+        ],
+        "emission": [
+          0.5,
+          1.0,
+          0.2
+        ],
+        "emission_strength": 2.5,
+        "scale": 0.62,
+        "anim": "fly",
+        "wings": true
+      }
+    },
+    "venom_spitter": {
+      "ai": "ranged",
+      "hp": 130,
+      "armor": 0.05,
+      "mres": 0.15,
+      "speed": 2.0,
+      "damage": [
+        10,
+        15
+      ],
+      "attack_rate": 0.8,
+      "range": 6.0,
+      "gold": 12,
+      "xp": 9,
+      "lives": 1,
+      "tags": [
+        "undead",
+        "ground"
+      ],
+      "loot": 0.05,
+      "projectile": "poison_bolt",
+      "dmg_type": "poison",
+      "on_hit": {
+        "id": "poison",
+        "duration": 3.0,
+        "power": 6.0
+      },
+      "model": {
+        "base": "Skeleton_Rogue",
+        "show": [
+          "Skeleton_Rogue_Hood",
+          "Skeleton_Rogue_Cape"
+        ],
+        "weapon_r": "Skeleton_Crossbow",
+        "tint": [
+          0.22,
+          0.3,
+          0.14
+        ],
+        "emission": [
+          0.45,
+          1.0,
+          0.15
+        ],
+        "emission_strength": 2.4,
+        "scale": 0.95,
+        "anim": "ranged_1h"
+      }
+    },
+    "rotwood_brute": {
+      "ai": "tank",
+      "hp": 950,
+      "armor": 0.3,
+      "mres": 0.3,
+      "speed": 1.1,
+      "damage": [
+        24,
+        36
+      ],
+      "attack_rate": 0.55,
+      "range": 1.8,
+      "gold": 38,
+      "xp": 28,
+      "lives": 2,
+      "tags": [
+        "beast",
+        "ground"
+      ],
+      "loot": 0.12,
+      "skills": {
+        "regen": {
+          "rate": 0.015,
+          "delay": 3.5
+        }
+      },
+      "model": {
+        "base": "Barbarian",
+        "show": [
+          "2H_Axe"
+        ],
+        "tint": [
+          0.16,
+          0.14,
+          0.08
+        ],
+        "emission": [
+          0.45,
+          1.0,
+          0.15
+        ],
+        "emission_strength": 2.4,
+        "scale": 1.8,
+        "anim": "2h",
+        "stone": true
+      }
     }
   },
   "bosses": {
@@ -1003,7 +1189,8 @@
         {
           "hp": 1.0,
           "skills": [
-            "ground_slam"
+            "ground_slam",
+            "plague_burst"
           ],
           "speed_mult": 1.0
         },
@@ -1011,6 +1198,7 @@
           "hp": 0.66,
           "skills": [
             "ground_slam",
+            "plague_burst",
             "summon_horde",
             "tower_smash"
           ],
@@ -1020,14 +1208,16 @@
           "hp": 0.33,
           "skills": [
             "ground_slam",
+            "plague_burst",
             "summon_horde",
-            "tower_smash",
-            "fire_rain"
+            "tower_smash"
           ],
           "speed_mult": 1.3,
           "enrage": true
         }
-      ]
+      ],
+      "horde_unit": "cultist",
+      "horde_elite": "spore_bearer"
     },
     "frost_lich": {
       "ai": "boss",

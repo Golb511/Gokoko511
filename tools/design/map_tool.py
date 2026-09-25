@@ -60,6 +60,16 @@ def main():
             if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] + 2.4: return True
         for v in m.get("vents", []):
             if math.hypot(c[0] - v["pos"][0], c[1] - v["pos"][1]) < v.get("radius", 1.9) + 2.8: return True
+        for o in m.get("toxic", []) + m.get("bogs", []):
+            if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] + 2.4: return True
+        for o in m.get("giant_trees", []):
+            if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] * 0.9 + 2.6: return True
+        for o in m.get("logs", []):
+            if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] * 0.5 + 2.6: return True
+        for o in m.get("mushrooms", []):
+            if math.hypot(c[0] - o[0], c[1] - o[1]) < o[2] * 0.8 + 2.4: return True
+        for v in m.get("roots", []) + m.get("spore_pods", []):
+            if math.hypot(c[0] - v["pos"][0], c[1] - v["pos"][1]) < 4.8: return True
         if "volcano" in m:
             vp = m["volcano"]["pos"]
             if math.hypot(c[0] - vp[0], c[1] - vp[1]) < m["volcano"].get("radius", 7) + 2.2: return True
@@ -122,6 +132,11 @@ def main():
         for (x, z, _) in densify(lr["points"], 0.8): put(x, z, "=")
     for o in m.get("lava", []): put(o[0], o[1], "@")
     for o in m.get("basalt", []): put(o[0], o[1], "B")
+    for o in m.get("toxic", []): put(o[0], o[1], "%")
+    for o in m.get("bogs", []): put(o[0], o[1], "b")
+    for o in m.get("giant_trees", []): put(o[0], o[1], "T")
+    for v in m.get("roots", []): put(v["pos"][0], v["pos"][1], "R")
+    for v in m.get("spore_pods", []): put(v["pos"][0], v["pos"][1], "P")
     for v in m.get("vents", []): put(v["pos"][0], v["pos"][1], "V")
     if "volcano" in m: put(m["volcano"]["pos"][0], m["volcano"]["pos"][1], "^")
     for p in m["paths"]:

@@ -7,8 +7,8 @@ var phases: Array = []
 var phase := 0
 var _invuln := 0.0
 var skill_list: Array = []
-var boss_cd := {"ground_slam": 5.0, "summon_horde": 9.0, "tower_smash": 8.0, "fire_rain": 10.0}
-const COOLDOWNS := {"ground_slam": 7.0, "summon_horde": 18.0, "tower_smash": 13.0, "fire_rain": 11.0}
+var boss_cd := {"ground_slam": 5.0, "summon_horde": 9.0, "tower_smash": 8.0, "fire_rain": 10.0, "plague_burst": 6.0}
+const COOLDOWNS := {"ground_slam": 7.0, "summon_horde": 18.0, "tower_smash": 13.0, "fire_rain": 11.0, "plague_burst": 12.0}
 
 
 func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, start_progress := 0.0) -> void:
@@ -79,6 +79,24 @@ func think() -> void:
 		if call("_skill_" + s):
 			boss_cd[s] = COOLDOWNS[s] * mult
 			return
+
+
+## Plague Colossus: vents a huge spore cloud around itself that poisons the
+## defenders and knits the wounds of every enemy inside it.
+func _skill_plague_burst() -> bool:
+	if battle.allies_near(global_position, 7.0).is_empty() and battle.towers_near(global_position, 8.0).is_empty():
+		return false
+	var r := 5.0
+	var tele := VFX.area_disc(battle.fx_root, global_position, r, Color(0.45, 1.0, 0.15))
+	_busy = 1.0
+	model.play_action("special", 0.8)
+	get_tree().create_timer(0.8, false).timeout.connect(func():
+		if is_instance_valid(tele): tele.queue_free()
+		if not alive: return
+		ToxicCloud.spawn(battle, global_position, {"radius": r, "duration": 5.0, "ally_dps": 24.0, "enemy_heal": 0.025})
+		VFX.nova(battle.fx_root, global_position, r, "poison")
+		Sfx.play("explosion", -6.0))
+	return true
 
 
 func _skill_ground_slam() -> bool:

@@ -205,6 +205,8 @@ func speed_mult() -> float:
 	if statuses.has("slow"):
 		m *= 1.0 - clampf(float(statuses.slow.p), 0.0, 0.85)
 	m *= _buff_mult("speed")
+	if not flying and battle != null and battle.level != null:
+		m *= battle.level.terrain_speed(global_position)
 	return m
 
 

@@ -29,6 +29,7 @@ var _busy := 0.0        # action lock (attack / cast wind-up)
 var _moving := false
 var summoned := false
 var taunt_time := 0.0     # while > 0 the enemy keeps chasing its taunting blocker
+var _since_hit := 99.0    # seconds since last damage (regen skill)
 
 
 func setup(b: Node, enemy_id: String, r: PathRoute, ridx: int, hp_mult: float, start_progress := 0.0) -> void:
@@ -91,6 +92,10 @@ func _physics_process(delta: float) -> void:
 	for k in skill_cd:
 		skill_cd[k] = float(skill_cd[k]) - delta
 	taunt_time -= delta
+	_since_hit += delta
+	if skills.has("regen") and _since_hit > float(skills.regen.delay) and hp < max_hp:
+		# Rotwood regrows its bark when left alone.
+		heal(max_hp * float(skills.regen.rate) * delta)
 	_think -= delta
 	if _think <= 0.0:
 		_think = randf_range(0.25, 0.4)
@@ -188,7 +193,10 @@ func _role_skills() -> void:
 		# Only summon when it perceives a threat (defenders in sight).
 		if not battle.allies_near(global_position, SIGHT).is_empty() or not battle.towers_near(global_position, SIGHT).is_empty():
 			for i in int(sk.count):
-				battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, minf(progress - 1.0, route.length * 0.6) - i * 0.6), true)
+				var minion: Enemy = battle.spawn_enemy(sk.unit, route_idx, maxf(0.0, minf(progress - 1.0, route.length * 0.5) - i * 0.6), true)
+				if minion:
+					# The dead claw their way out of the ground first.
+					minion.apply_status("stun", 0.8, 1.0)
 			VFX.shadow_burst(battle.fx_root, global_position, 1.5)
 			_cast_anim("summon")
 			skill_cd.summon = float(sk.cooldown)
@@ -253,6 +261,11 @@ func _role_skills() -> void:
 				a.take_damage(roll_damage() * 1.3, "physical", self)
 			VFX.nova(battle.fx_root, global_position, float(sk.radius), "shadow"))
 		skill_cd.cleave = float(sk.cooldown)
+
+
+func take_damage(amount: float, dmg_type: String = "physical", source: Node = null, crit := false) -> float:
+	_since_hit = 0.0
+	return super.take_damage(amount, dmg_type, source, crit)
 
 
 ## Forced to fight `by` for `duration` seconds (taunt abilities).
@@ -345,7 +358,7 @@ func _melee_hit(ref: WeakRef) -> void:
 func _ranged_shot(ref: WeakRef) -> void:
 	var tgt: Unit = ref.get_ref()
 	if alive and tgt != null and tgt.alive:
-		battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": def.get("dmg_type", "physical" if projectile_type == "bolt" else "shadow"), "speed": 14.0, "team": Team.ENEMY, "source": self})
+		battle.spawn_projectile(global_position + Vector3(0, 1.3, 0), tgt, {"type": projectile_type, "damage": roll_damage(), "dmg_type": def.get("dmg_type", "physical" if projectile_type == "bolt" else "shadow"), "speed": 14.0, "team": Team.ENEMY, "source": self, "status": def.get("on_hit", {})})
 
 
 func _retreat(delta: float) -> void:
@@ -368,6 +381,10 @@ func _on_death() -> void:
 		VFX.explosion(battle.fx_root, pos, float(sk.radius), "fire")
 		for a in battle.allies_near(pos, float(sk.radius)):
 			a.take_damage(float(sk.damage), "fire", null)
+	if skills.has("death_cloud") and not battle.ended:
+		# Spore Bearers burst into a cloud that poisons defenders and mends enemies.
+		var sk: Dictionary = skills.death_cloud
+		ToxicCloud.spawn(battle, global_position, {"radius": float(sk.radius), "duration": float(sk.duration), "ally_dps": float(sk.ally_dps), "enemy_heal": float(sk.get("enemy_heal", 0.0))})
 	if skills.has("split") and not battle.ended:
 		# Obsidian golems crack apart into molten imps.
 		var sk: Dictionary = skills.split

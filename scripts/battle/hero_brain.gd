@@ -33,7 +33,7 @@ func update(delta: float) -> void:
 	if _role == "":
 		_role = str(hero.hdef.get("role", "attacker"))
 	var b = hero.battle
-	var escape: Vector3 = b.hazard_escape(hero.global_position)
+	var escape: Vector3 = b.hazard_escape(hero.global_position, hero.hp_ratio())
 	if escape != Vector3.INF:
 		hero.command_move(escape)
 		return

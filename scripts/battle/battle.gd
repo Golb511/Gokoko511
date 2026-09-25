@@ -136,9 +136,14 @@ func towers_near(p: Vector3, r: float) -> Array:
 
 ## Where a unit standing at p should step to get clear of an erupting vent or
 ## an incoming volcanic bomb, or Vector3.INF when p is safe.
-func hazard_escape(p: Vector3) -> Vector3:
+func hazard_escape(p: Vector3, hp_ratio := 1.0) -> Vector3:
 	for h in level.hazards:
-		if is_instance_valid(h) and h.is_threat(p):
+		if not is_instance_valid(h):
+			continue
+		# Minor hazards (lingering poison clouds) are only worth leaving a fight for when hurt.
+		if hp_ratio > 0.4 and "minor" in h and h.minor:
+			continue
+		if h.is_threat(p):
 			var c: Vector3 = h.threat_center(p)
 			var away := p - c
 			away.y = 0.0
