@@ -40,6 +40,19 @@ func setup_animations(player: AnimationPlayer, set_name: String) -> void:
 	play_loop("idle")
 
 
+## Imported models: explicit logical -> clip mapping (see ExternalCharacter).
+func setup_external_animations(player: AnimationPlayer, mapping: Dictionary, looping: Array) -> void:
+	anim = player
+	anim_set = mapping
+	if anim == null:
+		return
+	for logical in looping:
+		var n = mapping.get(logical, "")
+		if n is String and anim.has_animation(n):
+			anim.get_animation(n).loop_mode = Animation.LOOP_LINEAR
+	play_loop("idle")
+
+
 func _process(delta: float) -> void:
 	_time += delta
 	if _flash > 0.0:

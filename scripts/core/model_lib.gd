@@ -160,6 +160,8 @@ static func character(def: Dictionary) -> Node3D:
 		return ProceduralCreatures.dragon(float(def.get("scale", 1.0)))
 	if base == "raven":
 		return ProceduralCreatures.raven()
+	if ExternalCharacter.available(def):
+		return ExternalCharacter.build(def)
 	var ps := scene(CHAR_DIR % base)
 	var model := CharacterModel.new()
 	model.name = "Model"

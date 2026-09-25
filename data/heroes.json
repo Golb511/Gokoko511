@@ -42,7 +42,13 @@
       "forge_gear": [
         "cape"
       ],
-      "portrait_focus": 1.72
+      "portrait_focus": 1.72,
+      "external": {
+        "path": "res://assets/models/heroes/hell_knight/hell_knight.glb",
+        "height": 1.95,
+        "yaw": 0.0,
+        "anims": {}
+      }
     },
     "stats": {
       "health": 950,
